@@ -1,0 +1,181 @@
+.slider {
+    height: 1000px;
+    position: relative;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Màu sắc của lớp phủ */
+    opacity: 0.5; /* Độ mờ của lớp phủ */
+}
+
+.slider > img {
+    height: 100%;
+    width: 100%;  
+}
+
+.container_content {
+    text-align: center;
+    position: relative;
+}
+
+.container_icon {
+    position: relative;
+    text-align: center;
+}
+
+.container_icon > .with_icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container_icon > .diamond_icon {
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}
+
+.container_content_title {
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.about_content {
+    margin-top: 20px;
+    font-size: 16px;
+}
+.about_read_btn {
+    margin-top: 40px;
+    padding: 15px 40px;
+    border: solid 1px #000;
+    font-size: 14px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.about_read_btn:hover {
+    border-color: var(--main-color);
+}
+
+.about_dash-icon {
+    display: block !important;
+    margin-bottom: 40px;
+}
+
+.container_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container_item {
+    border: solid 1px #EBEBEB;
+    padding: 40px 0;
+    transition: all .3s;
+}
+
+.container_item:hover {
+    border-color: var(--main-color);
+}
+
+.container_link {
+    text-decoration: none;
+    color: #000;
+}
+
+.container_list_icon {
+    color: var(--main-color);
+    font-size: 60px;
+    margin-bottom: 24px;
+}
+
+.container_content_item_title {
+    font-weight: 400;
+    color: #111;
+}
+
+.wonkids_club_list > li {
+    width: calc(100% / 3 - 20px);
+}
+
+.media_list {
+    flex-wrap: wrap;
+    gap: 20px 0;
+}
+
+.media_list > li {
+    width: calc(100% / 2 - 20px);
+}
+
+.media_description {
+    color: #555;
+    margin-top: 15px;
+}
+
+.notification_link {
+    display: block;
+    width: 25%;
+    text-decoration: none;
+    color: #000;
+}
+
+.notification_img {
+    width: 100%;
+    height: 190px;
+}
+.notification_description {
+    margin: 8px 0;
+}
+
+.container_form_up {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.container_form_up > input {
+    width: calc(100% / 3 - 20px);
+    padding: 8px;
+}
+
+.container_text_area {
+    width: 100%;
+    height: 106px;
+    padding: 8px;
+}
+
+.container_button_wrap {
+    text-align: right;
+}
+
+.container_submit_btn {
+    padding: 15px 40px;
+    background-color: transparent;
+    border: solid 1px #000;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: all .3s;
+    font-weight: bold;
+}
+
+.container_submit_btn:hover {
+    border-color: var(--main-color);
+}

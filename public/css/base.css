@@ -1,0 +1,17 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+:root {
+    --menu-z-index: 9999;
+    --menu-text-color: #fff;
+    --main-color: #924094;
+    --body-background: #F5F5F5;
+    --footer-background: #484848;
+}
+
+body {
+    background-color: var(--body-background);
+}

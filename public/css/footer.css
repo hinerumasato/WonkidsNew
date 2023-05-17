@@ -1,0 +1,16 @@
+footer {
+    background-color: var(--footer-background);
+    height: 230px;
+    display: flex;
+    align-items: center;
+}
+
+.footer_title {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+}
+.footer_description {
+    font-size: 12px;
+    color: #BCBCBC;
+}
