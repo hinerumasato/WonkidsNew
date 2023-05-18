@@ -10,6 +10,12 @@
     --main-color: #924094;
     --body-background: #F5F5F5;
     --footer-background: #484848;
+
+    --slider-img-top: calc(50% - 225px);
+    --slider-img-left: calc(50% - 342px);
+
+    --slider-content-top: calc(50% - -154px);
+    --slider-content-left: calc(50% - 320px);
 }
 
 body {

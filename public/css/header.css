@@ -39,6 +39,14 @@ header {
 .header_right {
     width: 15%;
 }
-.header_right_languages {
 
+.locale-link {
+    width: 32px;
+    height: 21px;
+    display: inline-block;
+}
+
+.flag-img {
+    width: 100%;
+    height: 100%;
 }

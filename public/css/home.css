@@ -14,9 +14,28 @@
     opacity: 0.5; /* Độ mờ của lớp phủ */
 }
 
-.slider > img {
+.slider_img {
     height: 100%;
-    width: 100%;  
+    width: 100%;
+}
+
+.slider_logo_img {
+    position: absolute;
+    width: 684px;
+    height: 450px;
+    top: var(--slider-img-top);
+    left: var(--slider-img-left);
+    animation: fadeInTop 1 linear 1.5s;
+}
+
+.slider_float_in_content {
+    position: absolute;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    top: var(--slider-content-top);
+    left: var(--slider-content-left);
+    animation: fadeInBottom 1 linear 1.5s;
 }
 
 .container_content {
@@ -178,4 +197,22 @@
 
 .container_submit_btn:hover {
     border-color: var(--main-color);
+}
+
+.contact_content {
+    margin-bottom: 40px;
+}
+
+@keyframes fadeIn {
+    from {
+        top: calc(var(--slider-img-top) - 50px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInBottom {
+    from {
+        top: calc(var(--slider-content-top) + 50px);
+        opacity: 0;
+    }
 }
