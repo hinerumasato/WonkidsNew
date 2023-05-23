@@ -203,7 +203,21 @@
     margin-bottom: 40px;
 }
 
-@keyframes fadeIn {
+.container_video {
+    background-color: #292929;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.container_video > iframe {
+    width: 900px;
+    height: 600px;
+}
+
+@keyframes fadeInTop {
     from {
         top: calc(var(--slider-img-top) - 50px);
         opacity: 0;

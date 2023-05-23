@@ -10,8 +10,9 @@ return [
 
     "slider-content"                    => "Sân chơi với những câu chuyện Kinh Thánh thú vị",
 
-    "about-content"                     => "Wonkids Club là",
-    "about-description"                 => "một chương trình dạy Kinh Thánh dành cho nhóm thiếu nhi bằng nội dung truyền thông(media contents).",
+    "about-title"                       => "Wonkids Club là",
+    "about-content"                     => "một chương trình dạy Kinh Thánh dành cho nhóm thiếu nhi bằng nội dung truyền thông(media contents).",
+    "learn-more"                        => "Đọc thêm",
 
     "small-nav-title"                   => "Wonkids Club",
 

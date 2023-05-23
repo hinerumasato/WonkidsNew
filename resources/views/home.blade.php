@@ -1,34 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/home.css')}}">
-    <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
-    <link rel="stylesheet" href="{{asset('css/base.css')}}">
-    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css')}}">
-    <link rel="stylesheet" href="{{asset('css/footer.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Document</title>
-</head>
-<body>
-    @include('partials.header')
-    <main>
-        <div class="slider">
-            <img src="{{asset('imgs/sliders/slider1.jpg')}}" alt="" class="slider_img">
-            <div class="slider_float_in">
-                <img src="{{asset('imgs/sliders/wonkidsclub_logo_slider.png')}}" alt="" class="slider_logo_img">
-                <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
-            </div>
+@extends('layouts/master')
+@section('content')
+<main>
+    <div class="slider">
+        <img src="{{asset('imgs/sliders/slider1.jpg')}}" alt="" class="slider_img">
+        <div class="slider_float_in">
+            <img src="{{asset('imgs/sliders/wonkidsclub_logo_slider.png')}}" alt="" class="slider_logo_img">
+            <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
         </div>
+    </div>
 
-        <div class="grid container">
+    <div class="container">
+        
+        <div class="grid">
             <div class="about container_content">
                 <h2 class="about_title container_content_title">{{ trans('home.about-title') }}</h2>
                 <p class="about_content">{{ trans('home.about-content') }}</p>
-                <button class="about_read_btn">Đọc thêm</button>
+                <button class="about_read_btn">{{ trans('home.learn-more') }}</button>
                 <div class="container_icon">
                     <span class="with_icon"></span>
                     <span class="diamond_icon"></span>
@@ -36,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="container_content">
+            <div class="wonkids_club_is container_content">
                 <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
                 <ul class="wonkids_club_list container_list">
                     <li class="container_item">
@@ -64,7 +51,13 @@
                     <span class="with_icon"></span>
                 </div>
             </div>
+        </div>
 
+        <div class="container_content container_video">
+            <iframe class="container_iframe" width="560" height="315" src="https://www.youtube.com/embed/MMDRukV6Kbg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class="grid">
             <div class="container_content">
                 <h2 class="container_content_title">{{ trans('home.media-content') }}</h2>
                 <ul class="container_list media_list">
@@ -143,9 +136,6 @@
                 </form>
             </div>
         </div>
-    </main>
-
-    @include('partials.footer')
-    <script src="{{ asset('js/header.js') }}"></script>
-</body>
-</html>
+    </div>
+</main>
+@endsection

@@ -1,0 +1,21 @@
+.about-us_section {
+    margin: 40px 0;
+}
+
+.about-us_title {
+    font-size: 26px;
+    font-weight: bold;
+}
+.about-us_content {
+    font-size: 14px;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.about-us_section ul {
+    list-style: disc;
+}
+
+.about-us_section ul > li {
+    padding: 4px 0;
+}

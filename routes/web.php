@@ -16,4 +16,5 @@ use App\Http\Middleware\Locale;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->middleware(Locale::class)->name('home');
+Route::get('/', [HomeController::class, 'index'])->middleware(Locale::class)->name('index');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->middleware(Locale::class)->name('about-us');

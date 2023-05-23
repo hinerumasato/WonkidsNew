@@ -12,6 +12,7 @@ return [
 
     "about-title"                       => "Won Kids Club is",
     "about-content"                     => "A Children Bible Study Group through various Media Contents.",
+    "learn-more"                        => "Learn more",
 
     "small-nav-title"                   => "Wonkids Club",
 
