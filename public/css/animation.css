@@ -1,0 +1,10 @@
+@keyframes displayAnimation {
+    from {
+        top: calc(var(--sub-menu-top) - 10px);
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

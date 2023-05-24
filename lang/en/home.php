@@ -1,6 +1,7 @@
 <?php 
 
 return [
+    "title"                             => "Home",
     "menu-item-1"                       => "HOME",
     "menu-item-2"                       => "Wonkids Club",
     "menu-item-3"                       => "Won Kids Club Contents",
@@ -12,6 +13,7 @@ return [
 
     "about-title"                       => "Won Kids Club is",
     "about-content"                     => "A Children Bible Study Group through various Media Contents.",
+    "learn-more"                        => "Learn more",
 
     "small-nav-title"                   => "Wonkids Club",
 

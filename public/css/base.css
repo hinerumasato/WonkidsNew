@@ -5,8 +5,10 @@
 }
 
 :root {
+    --header-height: 100px;
+    --slider-height: 1000px;
     --menu-z-index: 9999;
-    --menu-text-color: #fff;
+    --home-menu-text-color: #fff;
     --main-color: #924094;
     --body-background: #F5F5F5;
     --footer-background: #484848;
@@ -16,6 +18,8 @@
 
     --slider-content-top: calc(50% - -154px);
     --slider-content-left: calc(50% - 320px);
+
+    --sub-menu-top: calc(100% + calc(var(--header-height) / 2) - 10px);
 }
 
 body {

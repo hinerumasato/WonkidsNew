@@ -1,6 +1,7 @@
 <?php 
 
 return [
+    "title"                             => "홈",
     "menu-item-1"                       => "홈",
     "menu-item-2"                       => "원 키즈 클럽 ",
     "menu-item-3"                       => "원 키즈 클럽 콘텐츠",
