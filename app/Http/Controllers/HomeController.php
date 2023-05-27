@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Language;
 
 class HomeController extends Controller {
 
@@ -20,12 +21,5 @@ class HomeController extends Controller {
     public function operation() {
         $title = trans('home.title') ?? "Document";
         return view('operation', compact('title'));
-    }
-
-    public function zone() {
-        $title = trans('home.11-period') ?? "Document";
-        $post = new Post('post');
-        $posts = $post->getAllPosts();
-        return view('post', compact('title', 'posts'));
     }
 }

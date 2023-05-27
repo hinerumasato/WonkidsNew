@@ -5,6 +5,7 @@
 }
 
 :root {
+    --noto-san-font: font-family: 'Quicksand', sans-serif; font-family: 'Roboto', sans-serif;
     --header-height: 100px;
     --slider-height: 1000px;
     --menu-z-index: 9999;

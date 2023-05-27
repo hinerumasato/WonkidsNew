@@ -1,0 +1,17 @@
+.post-detail_header {
+    margin-top: 40px;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+}
+.post-detail_category {
+    border-right: solid 1px #ccc;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 21px;
+}
+.post-detail_title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 21px;
+}
+.post-detail_content {
+
+}

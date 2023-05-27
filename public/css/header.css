@@ -35,6 +35,7 @@
 }
 .header_center {
     width: 70%;
+    font-family: 'Times New Roman', Times, serif;
 }
 .header_menu_list {
     display: flex;

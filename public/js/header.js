@@ -23,4 +23,4 @@ function setHeaderClass() {
 }
 
 setHeaderClass();
-setLocaleLink();
+// setLocaleLink();

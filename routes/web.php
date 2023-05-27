@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Locale;
 
@@ -16,9 +17,18 @@ use App\Http\Middleware\Locale;
 |
 */
 
-Route::prefix("/")->name("home.")->middleware(Locale::class)->group(function() {
+Route::get("/chang-language/{locale}", function($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name("change-language");
+
+Route::prefix("/")->name("home.")->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
     Route::get('/operation', [HomeController::class, 'operation'])->name('operation');
-    Route::get('/11zones', [HomeController::class, 'zone'])->name('11-zones');
+});
+
+Route::prefix("/posts")->name("posts.")->group(function() {
+    Route::get('/', [PostController::class, 'index'])->name('index');
+    Route::get("/{id}", [PostController::class, 'postDetail'])->name('post-detail');
 });

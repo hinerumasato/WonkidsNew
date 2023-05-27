@@ -20,7 +20,7 @@
                     {{ trans('home.menu-item-3') }}
                     <i class="fa-solid fa-angle-down header_menu_icon"></i>
                     <ul class="header_submenu">
-                        <li class="header_subitem"><a href="{{route('home.11-zones')}}" class="header_sublink">11 Thời Kỳ</a></li>
+                        <li class="header_subitem"><a href="{{route('posts.index')}}" class="header_sublink">11 Thời Kỳ</a></li>
                         <li class="header_subitem"><a href="{{route('home.operation')}}" class="header_sublink">Nội dung truyền thông</a></li>
                     </ul>
                 </a>
@@ -47,9 +47,9 @@
     </div>
     <div class="header_right">
         <div class="header_right_languages">
-            <a class="locale-link" href=""><img class="flag-img" locale="vi" src="{{asset('imgs/flags/vietnam-flag-icon-32.png')}}" alt=""></a>
-            <a class="locale-link" href=""><img class="flag-img" locale="ko" src="{{asset('imgs/flags/south-korea-flag-icon-32.png')}}" alt=""></a>
-            <a class="locale-link" href=""><img class="flag-img" locale="en" src="{{asset('imgs/flags/uk-flag-icon-32.png')}}" alt=""></a>
+            <a class="locale-link" href="{{route('change-language', ['locale' => 'vi'])}}"><img class="flag-img" locale="vi" src="{{asset('imgs/flags/vietnam-flag-icon-32.png')}}" alt=""></a>
+            <a class="locale-link" href="{{route('change-language', ['locale' => 'ko'])}}"><img class="flag-img" locale="ko" src="{{asset('imgs/flags/south-korea-flag-icon-32.png')}}" alt=""></a>
+            <a class="locale-link" href="{{route('change-language', ['locale' => 'en'])}}"><img class="flag-img" locale="en" src="{{asset('imgs/flags/uk-flag-icon-32.png')}}" alt=""></a>
         </div>
     </div>
 </header>

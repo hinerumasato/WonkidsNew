@@ -1,0 +1,17 @@
+table {
+    font-size: 12px;
+}
+
+table tr {
+    border-bottom: solid 1px #ccc;
+    font-family: var(--noto-san-font);
+}
+
+table tr a {
+    text-decoration: none;
+    color: #4A4A4A;
+}
+
+table tr a:hover {
+    text-decoration: underline;
+}
