@@ -34,7 +34,7 @@
     height: 50px;
 }
 .header_center {
-    width: 70%;
+    width: 75%;
 }
 .header_menu_list {
     display: flex;
@@ -61,7 +61,7 @@
 }
 
 .header_right {
-    width: 15%;
+    width: 10%;
 }
 
 .locale-link {

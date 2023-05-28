@@ -17,7 +17,7 @@ class Locale
      */
     public function handle(Request $request, Closure $next)
     {
-        $locale = $request->query("lang") ?? "vi";
+        $locale = session('locale');
         App::setlocale($locale);
         return $next($request);
     }

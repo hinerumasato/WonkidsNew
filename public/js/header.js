@@ -3,9 +3,9 @@ function setLocaleLink() {
     const localeLinks = document.querySelectorAll(".locale-link");
     
     flags.forEach((flag, index) => {
-        let url = window.location.href.split('?')[0];
         const locale = flag.getAttribute("locale");
-        localeLinks[index].setAttribute("href", `${url}?lang=${locale}`);
+        const oldHref = localeLinks[index].getAttribute("href");
+        localeLinks[index].setAttribute("href", `${oldHref}/${locale}`);
     })
 }
 
@@ -23,4 +23,4 @@ function setHeaderClass() {
 }
 
 setHeaderClass();
-setLocaleLink();
+// setLocaleLink();

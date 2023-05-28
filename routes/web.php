@@ -16,9 +16,15 @@ use App\Http\Middleware\Locale;
 |
 */
 
+
 Route::prefix("/")->name("home.")->middleware(Locale::class)->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
     Route::get('/operation', [HomeController::class, 'operation'])->name('operation');
     Route::get('/11zones', [HomeController::class, 'zone'])->name('11-zones');
 });
+
+Route::get('/change-language/{locale}', function($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name("change-language");
