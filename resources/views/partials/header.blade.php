@@ -20,7 +20,7 @@
                     {{ trans('home.menu-item-3') }}
                     <i class="fa-solid fa-angle-down header_menu_icon"></i>
                     <ul class="header_submenu">
-                        <li class="header_subitem"><a href="{{route('home.11-zones')}}" class="header_sublink">11 Thời Kỳ</a></li>
+                        <li class="header_subitem"><a href="{{route('posts.index')}}" class="header_sublink">11 Thời Kỳ</a></li>
                         <li class="header_subitem"><a href="{{route('home.operation')}}" class="header_sublink">Nội dung truyền thông</a></li>
                     </ul>
                 </a>
