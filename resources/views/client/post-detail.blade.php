@@ -1,9 +1,9 @@
-@extends('layouts/master')
+@extends('client.layouts.master')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/post-detail.css')}}">
 @endsection
 @section('content')
-    @include('partials/small-slider')
+    @include('client.partials.small-slider')
     <div class="container">
         <div class="post-detail_header row py-4">
             <div class="post-detail_category col-sm-3 col-12">{{ $category }}</div>
@@ -11,7 +11,7 @@
         </div>
         
         <div class="post-detail_content">
-            {{ $post["postContent"] }}
+            {!! $post["postContent"] !!}
         </div>
     </div>
 @endsection

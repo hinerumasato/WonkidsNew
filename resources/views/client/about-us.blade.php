@@ -1,7 +1,7 @@
-@extends('layouts/master')
+@extends('client.layouts.master')
 @section('content')
 
-@include('partials/small-slider')
+@include('client.partials.small-slider')
 
 <div class="about-us_container grid">
     <section class="about-us_section">

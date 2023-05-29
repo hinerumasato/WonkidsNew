@@ -38,6 +38,7 @@
     top: var(--slider-content-top);
     left: var(--slider-content-left);
     animation: fadeInBottom 1 linear 1.5s;
+    z-index: 2;
 }
 
 .container_content {

@@ -1,3 +1,8 @@
+@php
+    use App\Models\Category;
+    $categories = Category::all();
+@endphp
+
 <header class="home_header">
     <div class="header_left">
         <img src="{{asset('imgs/logo/logo.png')}}" alt="" class="header_logo">
@@ -20,7 +25,18 @@
                     {{ trans('home.menu-item-3') }}
                     <i class="fa-solid fa-angle-down header_menu_icon"></i>
                     <ul class="header_submenu">
-                        <li class="header_subitem"><a href="{{route('posts.index')}}" class="header_sublink">11 Thời Kỳ</a></li>
+                        <li class="header_subitem">
+                            <a href="{{route('posts.index')}}" class="header_sublink">
+                                11 Thời Kỳ
+                            </a>
+                            <ul class="menu_submenu">
+                                @foreach ($categories as $category)
+                                    <li class="menu_subitem">
+                                        {{ $category->name }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                         <li class="header_subitem"><a href="{{route('home.operation')}}" class="header_sublink">Nội dung truyền thông</a></li>
                     </ul>
                 </a>

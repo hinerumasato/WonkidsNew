@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('client.layouts.master')
 @section('content')
-@include('partials/small-slider')
+@include('client.partials.small-slider')
 <div class="grid">
     <ul style="list-style: upper-roman" class="fw-bold fs-2">
         <li class="my-5">

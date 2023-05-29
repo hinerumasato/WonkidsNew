@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Locale;
+use App\Http\Controllers\AdminPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,13 @@ Route::prefix("/")->name("home.")->group(function() {
 Route::prefix("/posts")->name("posts.")->group(function() {
     Route::get('/', [PostController::class, 'index'])->name('index');
     Route::get("/{id}", [PostController::class, 'postDetail'])->name('post-detail');
+});
+
+Route::prefix("/admin")->name("admin.")->group(function() {
+    Route::prefix("/posts")->name("posts.")->group(function() {
+        Route::get("/add", [AdminPostController::class, 'index'])->name("add");
+        Route::post("/postAdd", [AdminPostController::class, 'postAdd'])->name("postAdd");
+        Route::get("/edit/{post_id}/{language_id}", [AdminPostController::class, 'editIndex'])->name("edit");
+        Route::put("/edit/{post_id}/{language_id}", [AdminPostController::class, 'putEdit'])->name("putEdit");
+    });
 });

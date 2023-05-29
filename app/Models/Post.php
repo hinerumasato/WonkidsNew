@@ -14,9 +14,10 @@ class Post extends Model
     protected $table;
     protected $fillable = ['category_id'];
     protected $guarded = ['id'];
+    public $timestamps = false;
 
     public function languages(): BelongsToMany {
-        return $this->belongsToMany(Language::class, 'posts_has_languages')->withPivot('title', 'content');
+        return $this->belongsToMany(Language::class, 'posts_has_languages')->withPivot('title', 'content')->withTimestamps();
     }
 
     public function category(): BelongsTo {

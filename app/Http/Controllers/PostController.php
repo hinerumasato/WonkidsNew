@@ -21,7 +21,7 @@ class PostController extends Controller
         }
 
 
-        return view('post', ['title' => $title, "posts" => $posts]);
+        return view('client.post', ['title' => $title, "posts" => $posts]);
     }
 
     function postDetail($id) {
@@ -35,7 +35,7 @@ class PostController extends Controller
         $post = ["postTitle" => $postTitle, "postContent" => $postContent];
         $title = $postTitle;
 
-        return view('post-detail', ['title' => $title, 'post' => $post, 'category' => $postFind->category->name]);
+        return view('client.post-detail', ['title' => $title, 'post' => $post, 'category' => $postFind->category->name]);
 
     }
 }

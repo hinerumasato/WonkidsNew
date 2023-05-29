@@ -10,16 +10,16 @@ class HomeController extends Controller {
 
     public function index() {
         $title = trans('home.title') ?? "Document";
-        return view('home', compact('title'));
+        return view('client.home', compact('title'));
     }
 
     public function aboutUs() {
         $title = trans('home.title') ?? "Document";
-        return view('about-us', compact('title'));
+        return view('client.about-us', compact('title'));
     }
 
     public function operation() {
         $title = trans('home.title') ?? "Document";
-        return view('operation', compact('title'));
+        return view('client.operation', compact('title'));
     }
 }
