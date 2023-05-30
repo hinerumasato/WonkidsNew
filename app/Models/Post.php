@@ -17,7 +17,7 @@ class Post extends Model
     public $timestamps = false;
 
     public function languages(): BelongsToMany {
-        return $this->belongsToMany(Language::class, 'posts_has_languages')->withPivot('title', 'content')->withTimestamps();
+        return $this->belongsToMany(Language::class, 'posts_has_languages')->withPivot('title', 'content', 'slug')->withTimestamps();
     }
 
     public function category(): BelongsTo {

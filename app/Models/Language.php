@@ -12,6 +12,6 @@ class Language extends Model {
     protected $guarded = ['id'];
 
     public function posts(): BelongsToMany {
-        return $this->belongsToMany(Post::class, 'posts_has_languages')->withPivot('title', 'content')->withTimestamps();
+        return $this->belongsToMany(Post::class, 'posts_has_languages')->withPivot('title', 'content', 'slug')->withTimestamps();
     }
 }

@@ -7,6 +7,8 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Locale;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,9 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
+
+Route::post('/register', [LoginController::class, 'register'])->name('register');
 
 Route::get("/chang-language/{locale}", function($locale) {
     session()->put('locale', $locale);
@@ -32,7 +37,7 @@ Route::prefix("/")->name("home.")->group(function() {
 
 Route::prefix("/posts")->name("posts.")->group(function() {
     Route::get('/', [PostController::class, 'index'])->name('index');
-    Route::get("/{id}", [PostController::class, 'postDetail'])->name('post-detail');
+    Route::get("/{slug}", [PostController::class, 'postDetail'])->name('post-detail');
 });
 
 Route::prefix("/admin")->name("admin.")->group(function() {

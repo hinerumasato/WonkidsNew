@@ -18,7 +18,7 @@
               @foreach ($posts as $key => $post)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td><a href="{{route('posts.post-detail', ['id' => $post->post_id])}}">{{ $post->title }}</a></td>
+                    <td><a href="{{route('posts.post-detail', ['slug' => $post->slug])}}">{{ $post->title }}</a></td>
                 </tr>
               @endforeach
             </tbody>

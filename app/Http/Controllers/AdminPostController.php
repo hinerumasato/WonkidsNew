@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Language;
 use App\Models\Post;
+use App\Helpers\StringHelper;
 
 class AdminPostController extends Controller
 {
@@ -57,7 +58,11 @@ class AdminPostController extends Controller
         $newestPostId = Post::orderBy('id', 'desc')->get()->first()->id;
         $post = Post::find($newestPostId);
         $post->languages()->attach([
-            $language_id => ["title" => $title, "content" => $content],
+            $language_id => [
+                "title" => $title, 
+                "content" => $content, 
+                "slug" => StringHelper::toSlug($title),
+            ],
         ]);
 
         $languages = Language::all();
@@ -65,7 +70,11 @@ class AdminPostController extends Controller
             if($language->id != $language_id) {
                 $id = $language->id;
                 $post->languages()->attach([
-                    $id => ["title" => $title, "content" => "null"],
+                    $id => [
+                        "title" => $title, 
+                        "content" => "null",
+                        "slug" => StringHelper::toSlug($title),
+                    ],
                 ]);
             }
         }
@@ -90,6 +99,7 @@ class AdminPostController extends Controller
         $post->languages()->updateExistingPivot($language_id, [
             "title" => $title,
             "content" => $content,
+            "slug" => StringHelper::toSlug($title),
         ]);
 
         return redirect()->route('admin.indexRedirect')->with('msg', trans('general.edit-post-success'));

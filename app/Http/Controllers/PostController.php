@@ -24,10 +24,10 @@ class PostController extends Controller
         return view('client.post', ['title' => $title, "posts" => $posts]);
     }
 
-    function postDetail($id) {
+    function postDetail($slug) {
         $locale = session('locale') ?? 'vi';
         $language = Language::where('locale', $locale)->first();
-        $postFind = $language->posts->where('id', $id)->first();
+        $postFind = $language->posts()->wherePivot('slug', $slug)->first();
         
         $postTitle = $postFind->pivot->title;
         $postContent = $postFind->pivot->content;
