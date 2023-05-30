@@ -1,6 +1,8 @@
 @php
     use App\Models\Category;
+    use App\Models\Language;
     $categories = Category::all();
+    $languages = Language::all();
 @endphp
 
 <header class="home_header">
@@ -58,6 +60,13 @@
                     {{ trans('home.menu-item-6') }}
                     <i class="fa-solid fa-angle-down header_menu_icon"></i>
                 </a>
+                <ul class="header_submenu">
+                    @foreach ($languages as $language)
+                        <li class="header_subitem">
+                            <a href="{{route('change-language', ['locale' => $language->locale])}}" class="header_sublink">{{ $language->name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
             </li>
         </ul>
     </div>

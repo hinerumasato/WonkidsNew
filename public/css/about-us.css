@@ -1,5 +1,6 @@
 .about-us_section {
     margin: 40px 0;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .about-us_title {
@@ -18,4 +19,5 @@
 
 .about-us_section ul > li {
     padding: 4px 0;
+    margin-left: 3%;
 }

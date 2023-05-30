@@ -17,11 +17,6 @@
     </h1>
 
     <div class="container">
-        @if (session('msg'))
-            <div class="alert alert-success">
-                {{ session('msg') }}
-            </div>
-        @endif
         <form action="{{route('admin.posts.postAdd')}}" method="POST">
             <p class="fs-3 mb-0">Chọn ngôn ngữ</p>
             <select name="language_id" class="form-select" aria-label="Default select example">
@@ -50,7 +45,7 @@
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <button type="submit" class="btn btn-primary ms-auto d-block py-2 px-3">Đăng</button>
+            <button type="submit" class="btn btn-primary ms-auto d-block py-2 my-3 px-3">Đăng</button>
             @csrf
         </form>
     </div>

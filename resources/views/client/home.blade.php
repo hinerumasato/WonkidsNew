@@ -46,7 +46,9 @@
         <div class="about container_content">
             <h2 class="about_title container_content_title">{{ trans('home.about-title') }}</h2>
             <p class="about_content">{{ trans('home.about-content') }}</p>
-            <button class="about_read_btn">{{ trans('home.learn-more') }}</button>
+            <button class="about_read_btn">
+                <a class="about_read_link" href="{{route('home.about-us')}}">{{ trans('home.learn-more') }}</a>
+            </button>
             <div class="container_icon">
                 <span class="with_icon"></span>
                 <span class="diamond_icon"></span>

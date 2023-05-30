@@ -79,7 +79,7 @@
 .header_submenu {
     position: absolute;
     background-color: #fff;
-    width: 110%;
+    width: 200px;
     left: 0;
     top: var(--sub-menu-top);
     display: none;

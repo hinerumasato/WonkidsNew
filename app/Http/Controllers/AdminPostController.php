@@ -50,8 +50,6 @@ class AdminPostController extends Controller
         $category_id = $request->input("category_id");
         $language_id = $request->input("language_id");
         
-        
-
         Post::create([
             'category_id' => $category_id
         ]);
@@ -67,12 +65,12 @@ class AdminPostController extends Controller
             if($language->id != $language_id) {
                 $id = $language->id;
                 $post->languages()->attach([
-                    $id => ["title" => "null", "content" => "null"],
+                    $id => ["title" => $title, "content" => "null"],
                 ]);
             }
         }
 
-        return back()->withInput()->with('msg', 'Thêm bài viết mới thành công');
+        return redirect()->route('admin.indexRedirect')->with('msg', trans('general.add-post-success'));
     }
 
     public function putEdit(Request $request, $post_id, $language_id) {
@@ -94,6 +92,12 @@ class AdminPostController extends Controller
             "content" => $content,
         ]);
 
-        return back()->with('msg', 'Cập Nhật Bài Viết Thành Công');
+        return redirect()->route('admin.indexRedirect')->with('msg', trans('general.edit-post-success'));
     }
+
+    public function delete($post_id) {
+        $post = Post::find($post_id);
+        $post->languages()->detach();
+        return redirect()->route('admin.indexRedirect')->with('msg', trans('general.delete-post-success'));
+    } 
 }

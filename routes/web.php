@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Locale;
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +36,13 @@ Route::prefix("/posts")->name("posts.")->group(function() {
 });
 
 Route::prefix("/admin")->name("admin.")->group(function() {
+    Route::get("/", [AdminController::class, 'indexRedirect'])->name('indexRedirect');
+    Route::get("/{language_id}", [AdminController::class, 'index'])->name('index');
     Route::prefix("/posts")->name("posts.")->group(function() {
         Route::get("/add", [AdminPostController::class, 'index'])->name("add");
         Route::post("/postAdd", [AdminPostController::class, 'postAdd'])->name("postAdd");
         Route::get("/edit/{post_id}/{language_id}", [AdminPostController::class, 'editIndex'])->name("edit");
         Route::put("/edit/{post_id}/{language_id}", [AdminPostController::class, 'putEdit'])->name("putEdit");
+        Route::delete("/delete/{post_id}", [AdminPostController::class, 'delete'])->name('delete');
     });
 });

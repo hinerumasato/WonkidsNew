@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 @section('content')
 @include('client.partials.small-slider')
-<div class="grid">
+<div class="grid" style="font-family: 'Times New Roman', Times, serif">
     <ul style="list-style: upper-roman" class="fw-bold fs-2">
         <li class="my-5">
             <h2 class="mb-3">Giáo viên tham dự</h2>
