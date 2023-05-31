@@ -42,7 +42,7 @@
           </div>
     </div>
         
-    <div class="grid">
+    <div class="container">
         <div class="about container_content">
             <h2 class="about_title container_content_title">{{ trans('home.about-title') }}</h2>
             <p class="about_content">{{ trans('home.about-content') }}</p>
@@ -90,7 +90,7 @@
         <iframe class="container_iframe" width="560" height="315" src="https://www.youtube.com/embed/MMDRukV6Kbg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
-    <div class="grid">
+    <div class="container">
         <div class="container_content">
             <h2 class="container_content_title">{{ trans('home.media-content') }}</h2>
             <ul class="container_list media_list">
