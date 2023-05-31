@@ -1,8 +1,15 @@
 @php
     use App\Models\Category;
     use App\Models\Language;
+    use App\Helpers\LoopHelper;
+
     $categories = Category::all();
     $languages = Language::all();
+    $oneLevelCategories = LoopHelper::buildHeaderHTML($categories);
+
+    // dd($oneLevelCategories);
+    // dd(LoopHelper::buildHTML($categories, 'menu_submenu', 'menu_subitem', 12));
+
 @endphp
 
 <header class="home_header">
@@ -31,13 +38,9 @@
                             <a href="{{route('posts.index')}}" class="header_sublink">
                                 11 Thời Kỳ
                             </a>
-                            <ul class="menu_submenu">
-                                @foreach ($categories as $category)
-                                    <li class="menu_subitem">
-                                        {{ $category->name }}
-                                    </li>
-                                @endforeach
-                            </ul>
+                            @php
+                                echo LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
+                            @endphp
                         </li>
                         <li class="header_subitem"><a href="{{route('home.operation')}}" class="header_sublink">Nội dung truyền thông</a></li>
                     </ul>
@@ -78,6 +81,20 @@
         </div>
     </div>
 </header>
+
+<script>
+    function fitTop() {
+        const subItems = document.querySelectorAll('.menu_subitem');
+        subItems.forEach(item => {
+            item.onmouseover = () => {
+                const subMenu = item.querySelector('.menu_submenu');
+                const top = item.offsetTop;
+                subMenu.style.top = `${top}px`;
+            }
+        });
+    }
+    fitTop();
+</script>
 
 @push('scripts')
     <script src="{{ asset('js/header.js') }}"></script>

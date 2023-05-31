@@ -6,7 +6,8 @@
 
 @section('content')
     @include('client.partials.small-slider')
-    <div class="grid">
+    @include('client.partials.small-nav')
+    <div class="container">
         <table class="table table-borderless">
             <thead>
               <tr>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -64,10 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $avatar = asset('imgs/avatar/default_avatar.png');
+        if(array_key_exists('avatar', $data)) {
+            $avatarRequest = $data['avatar'];
+            $avatar_name = $avatarRequest->getClientoriginalName();
+            $avatarRequest->move(public_path('uploads/avatars'), $avatar_name);
+            $avatar = asset('uploads/avatars/'. $avatar_name);
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar' => $avatar,
         ]);
     }
 }

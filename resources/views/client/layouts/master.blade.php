@@ -11,13 +11,13 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
         <link rel="stylesheet" href="{{asset('css/home.css')}}">
         <link rel="stylesheet" href="{{asset('css/animation.css')}}">
-        <link rel="stylesheet" href="{{asset('css/reponsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/base.css')}}">
         <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
         <link rel="stylesheet" href="{{asset('css/header.css')}}">
         <link rel="stylesheet" href="{{asset('css/footer.css')}}">
         <link rel="stylesheet" href="{{asset('css/about-us.css')}}">
         <link rel="stylesheet" href="{{asset('css/small-slider.css')}}">
+        <link rel="stylesheet" href="{{asset('css/small-nav.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         @yield('css')

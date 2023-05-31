@@ -136,3 +136,13 @@
 .menu_subitem:hover {
     border-left: 5px solid var(--main-color);
 }
+
+.menu_subitem:hover > .menu_submenu {
+    display: block;
+    animation: displayAnimation 0.3s linear 1;
+}
+
+.menu_sublink {
+    color: #000;
+    text-decoration: none;
+}

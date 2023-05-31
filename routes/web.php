@@ -8,6 +8,7 @@ use App\Http\Middleware\Locale;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -21,8 +22,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Auth::routes(['verify' => true]);
-
-Route::post('/register', [LoginController::class, 'register'])->name('register');
 
 Route::get("/chang-language/{locale}", function($locale) {
     session()->put('locale', $locale);

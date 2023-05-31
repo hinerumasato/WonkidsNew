@@ -44,40 +44,6 @@ class LoginController extends Controller
     }
 
 
-    protected function register(Request $request) {
-        $defaultAvatar = asset('imgs/avatar/default_avatar.png');
-        $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-        ]);
-        $avatar = null;
-
-        if ($request->has('avatar')) {
-            $avatar = $request->avatar;
-            $avatar_name = $avatar->getClientoriginalName();
-            $avatar->move(public_path('uploads/avatars'), $avatar_name);
-
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-                'avatar' => asset('uploads/avatars/'. $avatar_name),
-            ]);
-        }
-        else {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-                'avatar' => $defaultAvatar,
-            ]);
-        }
-
-
-        $user->sendEmailVerificationNotification();
-        return view('auth.verify');
-    }
-
     public function logout(Request $request) {
         $this->guard()->logout();
         $request->session()->invalidate();

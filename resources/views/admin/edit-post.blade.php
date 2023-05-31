@@ -1,3 +1,7 @@
+@php
+    use App\Helpers\StringHelper;
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{app()->getLocale()}}">
 <head>
@@ -33,7 +37,7 @@
             <p class="fs-3 mt-3 mb-0">Chọn mục</p>
             <select selected name="category_id" class="form-select category-select" aria-label="Default select example">
                 @foreach ($categories as $category)
-                    <option value="{{$category->id}}">{{ $category->name }}</option>
+                    <option value="{{$category->id}}">{{ StringHelper::gerateLineByLevel($category['level']).$category->name }}</option>
                 @endforeach
             </select>
             <div class="my-3">

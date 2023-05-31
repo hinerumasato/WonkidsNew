@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LoopHelper;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Language;
@@ -12,12 +13,14 @@ class AdminPostController extends Controller
 {
     public function index() {
         $categories = Category::all();
+        $categories = LoopHelper::dataTree($categories);
         $languages = Language::all();
         return view('admin.add-post', ["categories" => $categories, "languages" => $languages]);
     }
 
     public function editIndex($post_id, $language_id) {
         $categories = Category::all();
+        $categories = LoopHelper::dataTree($categories);
         $languages = Language::all();
         $post = Post::find($post_id);
         $category_id = $post->category_id;
