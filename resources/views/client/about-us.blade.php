@@ -3,7 +3,7 @@
 
 @include('client.partials.small-slider')
 
-<div class="about-us_container grid">
+<div class="about-us_container container">
     <section class="about-us_section">
         <h2 class="about-us_title">Bối cảnh</h2>
         <p class="about-us_content">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -13,18 +15,48 @@ class AdminController extends Controller
     {
         $this->middleware(['auth', 'verified']);
     }
-
-    public function indexRedirect() {
-        $locale = app()->getLocale();
-        $language = Language::where('locale', $locale)->first();
+    
+    public function index(Request $request) {
+        $languages = Language::all();
+        $languageLocale = $request->input('post_lang') ?? 'vi';
+        $languageId = Language::where('locale', $languageLocale)->first()->id;
+        $posts = Language::where('locale', $languageLocale)->first()->posts;
+        $user = Auth::user();
         $msg = session('msg');
-        return redirect()->route('admin.index', ['language_id' => $language->id])->with('msg', $msg);
+        return view('admin.index', ["languageId" => $languageId, "languages" => $languages, "posts" => $posts, "languageLocale" => $languageLocale, "user" => $user])->with('msg', $msg);
     }
 
-    public function index($language_id) {
-        $languages = Language::all();
-        $posts = Language::find($language_id)->posts;
+    public function setting() {
         $user = Auth::user();
-        return view('admin/index', ["languages" => $languages, "posts" => $posts, "language_id" => $language_id, "user" => $user]);
+        return view('admin.setting', ['user' => $user]);
+    }
+
+    public function profile() {
+        $user = Auth::user();
+        return view('admin.profile', ['user' => $user]);
+    }
+
+    public function settingPost(Request $request) {
+        $user = Auth::user();
+
+        if($request->has('avatar')) {
+            $newAvatar = $request->avatar;
+            $oldAvatar = $user->avatar;
+            $path = parse_url($oldAvatar, PHP_URL_PATH);
+            $path = substr($path, 1);
+            File::delete($path);
+            $newAvatarName = $newAvatar->getClientoriginalName();
+            $newAvatar->move(public_path('uploads/avatars'), $newAvatarName);
+            $user->avatar = asset('uploads/avatars/'. $newAvatarName);
+        }
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->company = $request->company;
+        $user->designation = $request->designation;
+        $user->save();
+        return redirect()->back();
     }
 }

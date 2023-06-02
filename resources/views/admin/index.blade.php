@@ -5,9 +5,10 @@
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <div class="d-flex justify-content-start align-items-center">
                     <h6 style="width: 190px" class="mb-0">Bài Đăng</h6>
+                    
                     <select name="language_id" class="form-select language-select" aria-label="Default select example">
                         @foreach ($languages as $language)
-                            <option link="{{route('admin.index', ['language_id' => $language->id])}}" value="{{$language->id}}">{{ $language->name }}</option>
+                            <option link="{{route('admin.index')}}" value="{{$language->locale}}">{{ $language->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -33,6 +34,7 @@
                             </div>
                         @endif
 
+
                         @if (empty($posts->toArray()))
                             <tr role="alert">
                                 <td colspan="6">
@@ -46,7 +48,7 @@
                                     <td>{{ $post->pivot->title }}</td>
                                     <td>{{ $post->pivot->created_at }}</td>
                                     <td>{{ $post->pivot->updated_at }}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="{{route("admin.posts.edit", ['post_id' => $post->id, 'language_id' => $language_id ])}}">Sửa</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="{{route("admin.posts.edit", ['post_id' => $post->id, 'language_id' => $languageId ])}}">Sửa</a></td>
                                     <td>
                                         <button postid="{{$post->id}}" class="btn btn-sm btn-danger btn-modal" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                             Xoá
@@ -88,14 +90,12 @@
 
 @section('scripts')
     <script>
-        function changeHrefWithSelect() {
+        function changeLanguagePost() {
             const languageSelect = document.querySelector('.language-select');
-            const languageId = @php echo $language_id; @endphp;
-            languageSelect.value = languageId;
-
+            languageSelect.value = @json($languageLocale);
             languageSelect.onchange = () => {
                 const selectedIndex = languageSelect.selectedIndex;
-                const link = languageSelect.querySelectorAll('option')[selectedIndex].getAttribute('link');
+                const link = `${languageSelect.querySelectorAll('option')[selectedIndex].getAttribute('link')}?post_lang=${languageSelect.value}`;
                 window.location.replace(link);
             }
         }
@@ -120,6 +120,6 @@
         }
 
         passDataToModal();
-        changeHrefWithSelect();
+        changeLanguagePost();
     </script>
 @endsection

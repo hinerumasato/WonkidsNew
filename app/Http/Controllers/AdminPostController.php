@@ -58,6 +58,7 @@ class AdminPostController extends Controller
             'category_id' => $category_id
         ]);
 
+
         $newestPostId = Post::orderBy('id', 'desc')->get()->first()->id;
         $post = Post::find($newestPostId);
         $post->languages()->attach([
@@ -112,5 +113,5 @@ class AdminPostController extends Controller
         $post = Post::find($post_id);
         $post->languages()->detach();
         return redirect()->route('admin.indexRedirect')->with('msg', trans('general.delete-post-success'));
-    } 
+    }
 }

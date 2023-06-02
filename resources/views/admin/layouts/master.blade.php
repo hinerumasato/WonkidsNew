@@ -29,6 +29,8 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
+
+    @yield('css')
 </head>
 
 <body>
@@ -40,7 +42,7 @@
             </div>
         </div>
         <!-- Spinner End -->
-
+            
         @include('admin.partials.sidebar')
 
 
@@ -60,6 +62,7 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="{{asset('lib/chart/chart.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>

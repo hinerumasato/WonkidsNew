@@ -34,7 +34,7 @@
                     {{ trans('home.menu-item-3') }}
                     <i class="fa-solid fa-angle-down header_menu_icon"></i>
                     <ul class="header_submenu">
-                        <li class="header_subitem">
+                        <li class="header_subitem d-flex">
                             <a href="{{route('posts.index')}}" class="header_sublink">
                                 11 Thời Kỳ
                             </a>

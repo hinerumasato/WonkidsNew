@@ -109,7 +109,7 @@
 
 .header_subitem:hover > .menu_submenu {
     display: block;
-    animation: displayAnimation 0.3s linear 1;
+    animation: floatRight 0.3s linear 1;
 }
 
 .header_sublink {
@@ -139,10 +139,22 @@
 
 .menu_subitem:hover > .menu_submenu {
     display: block;
-    animation: displayAnimation 0.3s linear 1;
+    animation: floatRight 0.3s linear 1;
 }
 
 .menu_sublink {
     color: #000;
     text-decoration: none;
+}
+
+@keyframes floatRight {
+    from {
+        left: 90%;
+        opacity: 0;
+    }
+
+    to {
+        left: 100%;
+        opacity: 1;
+    }
 }

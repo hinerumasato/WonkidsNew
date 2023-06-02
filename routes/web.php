@@ -40,8 +40,10 @@ Route::prefix("/posts")->name("posts.")->group(function() {
 });
 
 Route::prefix("/admin")->name("admin.")->group(function() {
-    Route::get("/", [AdminController::class, 'indexRedirect'])->name('indexRedirect');
-    Route::get("/{language_id}", [AdminController::class, 'index'])->name('index');
+    Route::get("/", [AdminController::class, 'index'])->name('index');
+    Route::get("/profile", [AdminController::class, 'profile'])->name('profile');
+    Route::get("/setting", [AdminController::class, 'setting'])->name('setting');
+    Route::post("/setting", [AdminController::class, 'settingPost'])->name('settingPost');
     Route::prefix("/posts")->name("posts.")->group(function() {
         Route::get("/add", [AdminPostController::class, 'index'])->name("add");
         Route::post("/postAdd", [AdminPostController::class, 'postAdd'])->name("postAdd");
