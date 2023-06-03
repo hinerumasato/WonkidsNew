@@ -23,16 +23,16 @@
     <div class="container">
         <form action="{{route('admin.posts.postAdd')}}" method="POST">
             <p class="fs-3 mb-0">Chọn ngôn ngữ</p>
-            <select name="language_id" class="form-select" aria-label="Default select example">
+            <select name="language_locale" class="form-select language-select" aria-label="Default select example">
                 @foreach ($languages as $language)
-                    <option value="{{$language->id}}">{{ $language->name }}</option>
+                    <option link="{{route('admin.posts.add')}}" value="{{$language->locale}}">{{ $language->name }}</option>
                 @endforeach
             </select>
 
             <p class="fs-3 mt-3 mb-0">Chọn mục</p>
             <select name="category_id" id="category_select" class="form-select" aria-label="Default select example">
                 @foreach ($categories as $category)
-                    <option originText="{{StringHelper::gerateLineByLevel($category['level']).$category['name']}}" value="{{$category->id}}">{{ StringHelper::gerateLineByLevel($category['level']).$category['name'] }}</option>
+                    <option originText="{{StringHelper::gerateLineByLevel($category['level']).$category['name']}}" value="{{$category['id']}}">{{ StringHelper::gerateLineByLevel($category['level']).$category['name'] }}</option>
                 @endforeach
             </select>
             <div class="my-3">
@@ -67,6 +67,21 @@
         //     { value: 'Email', title: 'Email' },
         //   ]
         });
+    </script>
+
+    <script>
+        function changeLanguagePost() {
+            const languageSelect = document.querySelector('.language-select');
+            languageSelect.value = @json($languageLocale);
+            console.log(languageSelect.value);
+            languageSelect.onchange = () => {
+                const selectedIndex = languageSelect.selectedIndex;
+                const link = `${languageSelect.querySelectorAll('option')[selectedIndex].getAttribute('link')}?post_lang=${languageSelect.value}`;
+                window.location.replace(link);
+            }
+        }
+
+        changeLanguagePost();
     </script>
 </body>
 </html>

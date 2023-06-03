@@ -3,9 +3,13 @@
     use App\Models\Language;
     use App\Helpers\LoopHelper;
 
-    $categories = Category::all();
+    $currentLocale = app()->getLocale();
+    $currentLanguage = Language::where('locale', $currentLocale)->first();
+    $categories = $currentLanguage->categories;
+    $categoriesArr = LoopHelper::filterCategory($categories);
+
     $languages = Language::all();
-    $oneLevelCategories = LoopHelper::buildHeaderHTML($categories);
+    $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
 
     // dd($oneLevelCategories);
     // dd(LoopHelper::buildHTML($categories, 'menu_submenu', 'menu_subitem', 12));
@@ -50,8 +54,33 @@
                 <a href="#" class="header_menu_item_link">
                     {{ trans('home.menu-item-4') }}
                     <i class="fa-solid fa-angle-down header_menu_icon"></i>
+                    <ul class="header_submenu">
+                        <li class="header_subitem">
+                            <a href="{{route('home.book')}}" class="header_sublink">Wonderful Story Book</a>
+                            <ul class="menu_submenu">
+                                <li class="menu_subitem"><a href="{{route('home.book')}}" class="menu_sublink">Giới thiệu</a></li>
+                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a></li>
+                            </ul>
+                        </li>
+                        <li class="header_subitem">
+                            <a href="{{route('home.camp')}}" class="header_sublink">Wonderful Story Camp</a>
+                            <ul class="menu_submenu">
+                                <li class="menu_subitem"><a href="{{route('home.camp')}}" class="menu_sublink">Giới thiệu</a></li>
+                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a></li>
+                            </ul>
+                        </li>
+                        <li class="header_subitem">
+                            <a href="{{route('home.wonkidsclub')}}" class="header_sublink">Wonkids Club</a>
+                            <ul class="menu_submenu">
+                                <li class="menu_subitem"><a href="{{route('home.wonkidsclub')}}" class="menu_sublink">Giới thiệu</a></li>
+                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </a>
+                
             </li>
+            
             <li class="header_menu_item">
                 <a href="#" class="header_menu_item_link">
                     {{ trans('home.menu-item-5') }}
@@ -82,18 +111,10 @@
     </div>
 </header>
 
+<script src="{{ asset('js/fittop.js') }}"></script>
 <script>
-    function fitTop() {
-        const subItems = document.querySelectorAll('.menu_subitem');
-        subItems.forEach(item => {
-            item.onmouseover = () => {
-                const subMenu = item.querySelector('.menu_submenu');
-                const top = item.offsetTop;
-                subMenu.style.top = `${top}px`;
-            }
-        });
-    }
-    fitTop();
+    fitTop('.menu_submenu', '.menu_subitem');
+    fitTop('.menu_submenu', '.header_subitem');
 </script>
 
 @push('scripts')

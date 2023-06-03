@@ -27,6 +27,18 @@ hr {
     display: block;
 }
 
+.small-nav_subitem {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.small-nav_subitem:hover > .small-nav_sublist { 
+    display: block;
+    left: 100%;
+    top: 0;
+    animation: floatRight 0.3s linear 1 alternate;
+}
+
 .small-nav_sublist {
     position: absolute;
     top: 100%;

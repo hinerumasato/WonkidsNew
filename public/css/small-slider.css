@@ -16,8 +16,8 @@
 }
 
 .small-slider_img {
-    width: 200px;
-    height: 110px;
+    width: 300px;
+    height: auto;
 }
 
 .small-slider_title {

@@ -32,6 +32,9 @@ Route::prefix("/")->name("home.")->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
     Route::get('/operation', [HomeController::class, 'operation'])->name('operation');
+    Route::get('/wonderful-story-book', [HomeController::class, 'book'])->name('book');
+    Route::get('/wonderful-story-camp', [HomeController::class, 'camp'])->name('camp');
+    Route::get('/wonkidsclub', [HomeController::class, 'wonkidsclub'])->name('wonkidsclub');
 });
 
 Route::prefix("/posts")->name("posts.")->group(function() {

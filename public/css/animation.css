@@ -1,10 +1,22 @@
 @keyframes displayAnimation {
     from {
-        top: calc(var(--sub-menu-top) - 10px);
+        top: 90%;
         opacity: 0;
     }
 
     to {
+        opacity: 1;
+    }
+}
+
+@keyframes floatRight {
+    from {
+        left: 90%;
+        opacity: 0;
+    }
+
+    to {
+        left: 100%;
         opacity: 1;
     }
 }

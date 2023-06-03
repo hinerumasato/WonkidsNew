@@ -11,16 +11,20 @@ use App\Helpers\StringHelper;
 
 class AdminPostController extends Controller
 {
-    public function index() {
-        $categories = Category::all();
-        $categories = LoopHelper::dataTree($categories);
+    public function index(Request $request) {
+        $languageLocale = $request->input('post_lang') ?? 'vi';
+        $language = Language::where('locale', $languageLocale)->first();
+        $categories = $language->categories;
+        $categoriesArr = LoopHelper::filterCategory($categories);
+        $categories = LoopHelper::dataTree($categoriesArr);
         $languages = Language::all();
-        return view('admin.add-post', ["categories" => $categories, "languages" => $languages]);
+        return view('admin.add-post', ["categories" => $categories, "languages" => $languages, "languageLocale" => $languageLocale]);
     }
 
     public function editIndex($post_id, $language_id) {
-        $categories = Category::all();
-        $categories = LoopHelper::dataTree($categories);
+        $categories = Language::find($language_id)->categories;
+        $categoriesArr = LoopHelper::filterCategory($categories);
+        $categories = LoopHelper::dataTree($categoriesArr);
         $languages = Language::all();
         $post = Post::find($post_id);
         $category_id = $post->category_id;
@@ -41,6 +45,7 @@ class AdminPostController extends Controller
     
     public function postAdd(Request $request) {
 
+
         $validate = $request->validate([
             'title' => ['required'],
             'content' => ['required'],
@@ -52,7 +57,8 @@ class AdminPostController extends Controller
         $title = $request->input("title");
         $content = $request->input("content");
         $category_id = $request->input("category_id");
-        $language_id = $request->input("language_id");
+        $language_locale = $request->input("language_locale");
+        $language_id = Language::where('locale', $language_locale)->first()->id;
         
         Post::create([
             'category_id' => $category_id
@@ -83,7 +89,7 @@ class AdminPostController extends Controller
             }
         }
 
-        return redirect()->route('admin.indexRedirect')->with('msg', trans('general.add-post-success'));
+        return redirect()->route('admin.index')->with('msg', trans('general.add-post-success'));
     }
 
     public function putEdit(Request $request, $post_id, $language_id) {
@@ -106,12 +112,12 @@ class AdminPostController extends Controller
             "slug" => StringHelper::toSlug($title),
         ]);
 
-        return redirect()->route('admin.indexRedirect')->with('msg', trans('general.edit-post-success'));
+        return redirect()->route('admin.index')->with('msg', trans('general.edit-post-success'));
     }
 
     public function delete($post_id) {
         $post = Post::find($post_id);
         $post->languages()->detach();
-        return redirect()->route('admin.indexRedirect')->with('msg', trans('general.delete-post-success'));
+        return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
     }
 }

@@ -22,4 +22,19 @@ class HomeController extends Controller {
         $title = trans('home.title') ?? "Document";
         return view('client.operation', compact('title'));
     }
+
+    public function book() {
+        $title = trans('home.title') ?? "Document";
+        return view('client.book', ['title' => $title]);
+    }
+
+    public function camp() {
+        $title = trans('home.title') ?? "Document";
+        return view('client.camp', ['title' => $title]);
+    }
+
+    public function wonkidsclub() {
+        $title = trans('home.title') ?? "Document";
+        return view('client.wonkidsclub', ['title' => $title]);
+    }
 }

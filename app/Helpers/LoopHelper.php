@@ -31,7 +31,7 @@ class LoopHelper {
 
     public static function buildHeaderHTML($categories) {
         $oneLevelCategories = [];
-        foreach (LoopHelper::dataTree($categories->toArray()) as $category) {
+        foreach (LoopHelper::dataTree($categories) as $category) {
             if($category['level'] >= 1) {
                 if($category['level'] == 1)
                     $category['parent_id'] = 0;
@@ -39,5 +39,20 @@ class LoopHelper {
             }
         }
         return $oneLevelCategories;
+    }
+
+    public static function filterCategory($categories) {
+
+        $categoriesArr = [];
+
+        foreach($categories as $category) {
+            $temp = [];
+            $temp['id'] = $category->id;
+            $temp['name'] = $category->pivot->name;
+            $temp['parent_id'] = $category->parent_id;
+            $categoriesArr[] = $temp;
+        }
+
+        return $categoriesArr;
     }
 }
