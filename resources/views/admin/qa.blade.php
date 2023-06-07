@@ -42,7 +42,7 @@
                                 </p>
                                 <p>
                                     <i class="fa-solid fa-user"></i>
-                                    70 Views
+                                    {{ $qa->name }}
                                 </p>
                             </div>
                         </div>
