@@ -37,7 +37,7 @@ class AdminQAController extends Controller
         $qa->answered_by = $user->id;
         $qa->token = StringHelper::generateToken($data);
         $qa->save();
-        Mail::to($user->email)->send(new AnswerMail($request->title, $request->content, $qa->token));
+        Mail::to($qa->email)->send(new AnswerMail($request->title, $request->content, $qa->token));
         return redirect()->route('admin.qa.index');
     }
 }
