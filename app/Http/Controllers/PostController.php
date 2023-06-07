@@ -44,14 +44,29 @@ class PostController extends Controller
         $locale = session('locale') ?? 'vi';
         $language = Language::where('locale', $locale)->first();
         $postFind = $language->posts()->wherePivot('slug', $slug)->first();
+
+        if($postFind == null) {
+            $languages = Language::all();
+            foreach ($languages as $language) {
+                foreach ($language->posts as $post ) {
+                    if($post->pivot->slug == $slug) {
+                        $newSlug = $post->languages()->where('locale', $locale)->first()->pivot->slug;
+                        return redirect()->route('posts.post-detail', ['slug' => $newSlug]);
+                    }
+                }
+            }
+
+        }
         
         $postTitle = $postFind->pivot->title;
         $postContent = $postFind->pivot->content;
+
+        $category = $postFind->category->languages()->where('locale', $locale)->first()->pivot->name;
         
         $post = ["postTitle" => $postTitle, "postContent" => $postContent];
         $title = $postTitle;
 
-        return view('client.post-detail', ['title' => $title, 'post' => $post, 'category' => $postFind->category->name]);
+        return view('client.post-detail', ['title' => $title, 'post' => $post, 'category' => $category]);
 
     }
 }

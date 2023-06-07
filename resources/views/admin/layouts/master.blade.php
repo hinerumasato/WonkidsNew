@@ -19,6 +19,7 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Libraries Stylesheet -->
     <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
@@ -63,6 +64,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/pd9ebc8uusu182469qo1vzpwdf8zyocpvs7jp1qotwdh1c08/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{asset('lib/chart/chart.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
@@ -73,8 +75,22 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('js/admin.js')}}"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            //   tinycomments_author: 'Author name',
+            //   mergetags_list: [
+            //     { value: 'First.Name', title: 'First Name' },
+            //     { value: 'Email', title: 'Email' },
+            //   ]
+        });
+    </script>
 
     @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>

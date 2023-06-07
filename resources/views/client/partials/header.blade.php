@@ -118,5 +118,21 @@
 </script>
 
 @push('scripts')
-    <script src="{{ asset('js/header.js') }}"></script>
+    <script>
+        function setHeaderClass() {
+            const header = document.querySelector("header");
+            const route = window.location.href.split('#')[0];
+            const homeURL = @json(route('home.index')) + '/';
+            if(route === homeURL) {
+                header.classList.add("home_header");
+                header.classList.remove("other_header");
+            } 
+            else {
+                header.classList.add("other_header");
+                header.classList.remove("home_header");
+            } 
+        }
+
+        setHeaderClass();
+    </script>
 @endpush

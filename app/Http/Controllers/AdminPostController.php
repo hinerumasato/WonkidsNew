@@ -94,6 +94,7 @@ class AdminPostController extends Controller
 
     public function putEdit(Request $request, $post_id, $language_id) {
 
+
         $validate = $request->validate([
             'title' => ['required'],
             'content' => ['required'],
@@ -105,6 +106,7 @@ class AdminPostController extends Controller
         $post = Post::find($post_id);
         $title = $request->input('title');
         $content = $request->input('content');
+        $locale = Language::find($language_id)->locale;
         
         $post->languages()->updateExistingPivot($language_id, [
             "title" => $title,
@@ -112,12 +114,27 @@ class AdminPostController extends Controller
             "slug" => StringHelper::toSlug($title),
         ]);
 
-        return redirect()->route('admin.index')->with('msg', trans('general.edit-post-success'));
+        $redirectUrl = route('admin.index').'/?post_lang='.$locale;
+
+        return redirect($redirectUrl)->with('msg', trans('general.edit-post-success'));
     }
 
-    public function delete($post_id) {
+    public function deleteOne($post_id) {
         $post = Post::find($post_id);
         $post->languages()->detach();
+        return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
+    }
+
+    public function deleteMany(Request $request) {
+        $idsStr = explode(",", $request->postIds);
+        $ids = array_map(function($str) {
+            return intval($str); 
+        }, $idsStr);
+
+        foreach ($ids as $id) {
+            $post = Post::find($id);
+            $post->languages()->detach();
+        }
         return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
     }
 }

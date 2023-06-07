@@ -151,15 +151,22 @@
             </div>
         </div>
 
-        <div class="container_content contact_content">
-            <h2 class="container_content_title">Hỏi đáp</h2>
-            <form action="">
-                <div class="container_form_up">
-                    <input type="text" name="name" id="name" placeholder="Name*">
-                    <input type="email" name="email" id="email" placeholder="Email*">
-                    <input type="text" name="tel" id="tel" placeholder="Tel">
+        <div id="qa" class="container_content contact_content">
+            @if (session('msg'))
+                <div class="alert alert-success">
+                    {{ session('msg') }}
                 </div>
-                <textarea class="container_text_area" name="message" id="message" placeholder="Message*"></textarea>
+            @endif
+            <h2 class="container_content_title">Hỏi đáp</h2>
+            <form action="" method="POST">
+                @csrf
+                <div class="container_form_up">
+                    <input type="text" name="name" id="name" placeholder="{{trans('general.name')}}*">
+                    <input type="email" name="email" id="email" placeholder="Email*">
+                    <input type="text" name="phone" id="tel" placeholder="{{trans('general.tel')}}">
+                </div>
+                <input type="text" name="title" id="" placeholder="{{trans('general.title')}}" class="title_input">
+                <textarea class="container_text_area" name="message" id="message" placeholder="{{trans('general.message')}}*"></textarea>
                 <div class="container_button_wrap">
                     <button class="container_submit_btn" type="submit">
                         <i class="fa-solid fa-share"></i>
@@ -171,4 +178,14 @@
     </div>
 
 </main>
+@endsection
+
+@section('scripts')
+    <script>
+        let msg = @json(session('msg'));
+        console.log(msg);
+        if(msg != null) {
+            window.location.replace(@json(route('home.index')) + '#qa');
+        }
+    </script>
 @endsection

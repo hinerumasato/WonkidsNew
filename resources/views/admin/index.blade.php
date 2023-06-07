@@ -1,27 +1,40 @@
 @extends('admin.layouts.master')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
+
 @section('content')
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex justify-content-start align-items-center">
-                    <h6 style="width: 190px" class="mb-0">Bài Đăng</h6>
-                    
-                    <select name="language_id" class="form-select language-select" aria-label="Default select example">
+            <div class="d-block d-md-flex align-items-center justify-content-between mb-4">
+                <div class="d-block d-md-flex align-items-center">
+                    <h6 class="mb-md-0 mb-2 text-start">Bài Đăng</h6>
+
+                    <select name="language_id" class="py-1 mx-md-2 mb-md-0 mb-2 border border-none language-select"
+                        aria-label="Default select example">
                         @foreach ($languages as $language)
-                            <option link="{{route('admin.index')}}" value="{{$language->locale}}">{{ $language->name }}</option>
+                            <option link="{{ route('admin.index') }}" value="{{ $language->locale }}">{{ $language->name }}
+                            </option>
                         @endforeach
                     </select>
+
+                    <button class="mb-md-0 mb-2 btn btn-danger d-none btn-delete-all" data-bs-toggle="modal"
+                        data-bs-target="#deleteSelectModal">
+                        <i class="fa-solid fa-trash"></i>
+                        Xoá đã chọn
+                    </button>
                 </div>
-                <a href="{{route('admin.posts.add')}}" class="btn btn-primary">+ Thêm bài viết</a>
+                <a href="{{ route('admin.posts.add') }}" class="btn btn-primary add-post-btn">+ Thêm bài viết</a>
             </div>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
                         <tr class="text-dark">
-                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                            <th scope="col"><input class="form-check-input check-all-input" type="checkbox"></th>
                             <th scope="col">Tiêu đề</th>
-                            <th scope="col">Ngày Đăng</th>
-                            <th scope="col">Ngày Sửa</th>
+                            <th class="d-none d-md-table-cell" scope="col">Ngày Đăng</th>
+                            <th class="d-none d-md-table-cell" scope="col">Ngày Sửa</th>
                             <th scope="col">Sửa</th>
                             <th scope="col">Xoá</th>
                         </tr>
@@ -44,13 +57,17 @@
                         @else
                             @foreach ($posts as $post)
                                 <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td><input class="form-check-input check-input" type="checkbox"></td>
                                     <td>{{ $post->pivot->title }}</td>
-                                    <td>{{ $post->pivot->created_at }}</td>
-                                    <td>{{ $post->pivot->updated_at }}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="{{route("admin.posts.edit", ['post_id' => $post->id, 'language_id' => $languageId ])}}">Sửa</a></td>
+                                    <td class="d-none d-md-table-cell">{{ $post->pivot->created_at }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $post->pivot->updated_at }}</td>
+                                    <td><a class="btn btn-sm btn-primary"
+                                            href="{{ route('admin.posts.edit', ['post_id' => $post->id, 'language_id' => $languageId]) }}">Sửa</a>
+                                    </td>
                                     <td>
-                                        <button postid="{{$post->id}}" class="btn btn-sm btn-danger btn-modal" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                        <button postid="{{ $post->id }}"
+                                            class="btn btn-sm btn-danger btn-modal btn-delete" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal">
                                             Xoá
                                         </button>
                                     </td>
@@ -67,15 +84,34 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Bạn có chắc chắn muốn xoá bài viết này?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button link="{{route('admin.posts.delete', ['post_id' => 0])}}" type="button" class="btn btn-danger btn-submit" onclick="submitDelete();">Xoá</button>
+                    <button link="{{ route('admin.posts.deleteOne', ['post_id' => 0]) }}" type="button"
+                        class="btn btn-danger btn-submit" onclick="submitDelete();">Xoá</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteSelectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xoá các bài viết đã chọn?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger btn-submit" onclick="submitSelectDelete();">Xoá</button>
                 </div>
             </div>
         </div>
@@ -84,6 +120,7 @@
     <form id="deletePostForm" action="" method="POST">
         @method('delete')
         @csrf
+        <input type="hidden" name="postIds">
     </form>
 
 @endsection
@@ -95,7 +132,8 @@
             languageSelect.value = @json($languageLocale);
             languageSelect.onchange = () => {
                 const selectedIndex = languageSelect.selectedIndex;
-                const link = `${languageSelect.querySelectorAll('option')[selectedIndex].getAttribute('link')}?post_lang=${languageSelect.value}`;
+                const link =
+                    `${languageSelect.querySelectorAll('option')[selectedIndex].getAttribute('link')}?post_lang=${languageSelect.value}`;
                 window.location.replace(link);
             }
         }
@@ -119,6 +157,77 @@
             deleteForm.submit();
         }
 
+        function submitSelectDelete() {
+            const deleteForm = document.getElementById('deletePostForm');
+            const input = deleteForm.querySelector('input[name="postIds"]');
+            const selectedCheckboxs = document.querySelectorAll('.check-input');
+            const postIds = [];
+            const submitLink = @json(route('admin.posts.deleteMany'));
+            deleteForm.setAttribute('action', submitLink);
+            selectedCheckboxs.forEach((checkbox, index) => {
+                if (checkbox.checked)
+                    postIds.push(parseInt(document.querySelectorAll('.btn-delete')[index].getAttribute('postId')));
+            })
+            input.value = postIds;
+            deleteForm.submit();
+        }
+
+        function displayDeleteAll(deleteAllBtn) {
+            deleteAllBtn.classList.remove('d-none');
+            deleteAllBtn.classList.add('d-block');
+        }
+
+        function undisplayDeleteAll(deleteAllBtn) {
+            deleteAllBtn.classList.remove('d-block');
+            deleteAllBtn.classList.add('d-none');
+        }
+
+        function checkAll() {
+            const checkboxs = document.querySelectorAll('.check-input');
+            const checkAll = document.querySelector('.check-all-input');
+            const deleteAllBtn = document.querySelector('.btn-delete-all');
+            let countSelected = 0;
+            checkboxs.forEach(checkbox => {
+                checkbox.onclick = () => {
+                    if (checkbox.checked)
+                        countSelected++;
+                    else
+                        countSelected--;
+
+                    if (countSelected === checkboxs.length)
+                        checkAll.checked = true;
+                    else checkAll.checked = false;
+
+                    if (countSelected > 0) {
+                        displayDeleteAll(deleteAllBtn);
+                    } else {
+                        undisplayDeleteAll(deleteAllBtn);
+                    }
+                }
+            });
+
+
+            checkAll.onclick = () => {
+                if (checkAll.checked) {
+                    countSelected = checkboxs.length;
+                    checkboxs.forEach(checkbox => {
+                        checkbox.checked = true;
+                    });
+                } else {
+                    countSelected = 0;
+                    checkboxs.forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+                }
+                if (countSelected > 0) {
+                    displayDeleteAll(deleteAllBtn);
+                } else {
+                    undisplayDeleteAll(deleteAllBtn);
+                }
+            }
+        }
+
+        checkAll();
         passDataToModal();
         changeLanguagePost();
     </script>

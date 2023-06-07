@@ -31,6 +31,7 @@
     @include('client.partials.footer')
 
     <script src="{{asset('js/bootstrap.js')}}"></script>
+    @yield('scripts')
     @stack('scripts')
 </body>
 </html>

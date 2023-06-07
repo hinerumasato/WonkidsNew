@@ -229,6 +229,13 @@
     height: 600px;
 }
 
+.title_input {
+    width: 100%;
+    display: block;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
 @keyframes fadeInTop {
     from {
         top: calc(var(--slider-img-top) - 50px);

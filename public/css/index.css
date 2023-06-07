@@ -1,0 +1,30 @@
+.btn-delete-all {
+    animation: display .3s linear 1 alternate;
+}
+
+select {
+    width: 150px;
+}
+
+@media (max-width: 768px ) {
+    select {
+        width: 100%;
+    }
+    .add-post-btn {
+        width: 100%;
+    }
+    .btn-delete-all {
+        width: 100%;
+    }
+}
+
+@keyframes display {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

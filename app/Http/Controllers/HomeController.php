@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
+use App\Models\QA;
 
 class HomeController extends Controller {
 
@@ -36,5 +37,10 @@ class HomeController extends Controller {
     public function wonkidsclub() {
         $title = trans('home.title') ?? "Document";
         return view('client.wonkidsclub', ['title' => $title]);
+    }
+
+    public function postQA(Request $request) {
+        QA::create($request->all());
+        return back()->with('msg', 'Cảm ơn bạn đã gửi câu hỏi, Câu hỏi của bạn đã được ghi lại');
     }
 }
