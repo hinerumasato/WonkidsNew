@@ -112,14 +112,10 @@
     margin-bottom: 40px;
 }
 
-.container_list {
-    display: flex;
-    justify-content: space-between;
-}
 
 .container_item {
     border: solid 1px #EBEBEB;
-    padding: 40px 0;
+    padding: 40px 20px;
     transition: all .3s;
 }
 
@@ -141,19 +137,6 @@
 .container_content_item_title {
     font-weight: 400;
     color: #111;
-}
-
-.wonkids_club_list > li {
-    width: calc(100% / 3 - 20px);
-}
-
-.media_list {
-    flex-wrap: wrap;
-    gap: 20px 0;
-}
-
-.media_list > li {
-    width: calc(100% / 2 - 20px);
 }
 
 .media_description {
@@ -234,6 +217,34 @@
     display: block;
     padding: 8px;
     margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .carousel.slide {
+        height: 100% !important;
+    }
+    .carousel-inner {
+        height: 100% !important;
+    }
+    .carousel-item {
+        height: 100% !important;
+    }
+    .slider {
+        margin-top: 100px;
+        height: var(--md-slider-height);
+    }
+    .slider_img {
+        height: 100%;
+    }
+    .slider_logo_img {
+        width: 300px;
+        height: 300px;
+        left: 31%;
+        top: 15%;
+    }
+    .slider_float_in_content {
+        top: 77%;
+    }
 }
 
 @keyframes fadeInTop {

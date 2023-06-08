@@ -58,20 +58,20 @@
 
         <div class="wonkids_club_is container_content">
             <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
-            <ul class="wonkids_club_list container_list">
-                <li class="container_item">
+            <ul class="wonkids_club_list container_list row">
+                <li class="container_item col-lg col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-user-group container_list_icon"></i>
                         <p>{{ trans('home.operating-instructions') }}</p>
                     </a>
                 </li>
-                <li class="container_item">
+                <li class="container_item col-lg col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-book container_list_icon"></i>
                         <p>{{ trans('home.11-period') }}</p>
                     </a>
                 </li>
-                <li class="container_item">
+                <li class="container_item col-lg col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-video container_list_icon"></i>
                         <p>{{ trans('home.media-content') }}</p>
@@ -93,8 +93,8 @@
     <div class="container">
         <div class="container_content">
             <h2 class="container_content_title">{{ trans('home.media-content') }}</h2>
-            <ul class="container_list media_list">
-                <li class="container_item">
+            <ul class="container_list row justify-content-between media_list">
+                <li class="container_item col-lg-6 col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-music container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-song') }}</p>
@@ -103,7 +103,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="container_item">
+                <li class="container_item col-lg-6 col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-book container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-story') }}</p>
@@ -112,7 +112,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="container_item">
+                <li class="container_item col-lg-6 col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-scissors container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-activities') }}</p>
@@ -121,7 +121,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="container_item">
+                <li class="container_item col-lg-6 col-12">
                     <a href="#" class="container_link">
                         <i class="fa-solid fa-bookmark container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-bible') }}</p>

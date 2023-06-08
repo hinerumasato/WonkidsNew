@@ -6,8 +6,8 @@ return [
     "menu-item-2"                       => "Wonkids Club",
     "menu-item-3"                       => "Nội dung Wonkids Club",
     "menu-item-4"                       => "Wonderful Story",
-    "menu-item-5"                       => "Cộng đồng (Community)",
-    "menu-item-6"                       => "Ngôn ngữ (Language)",
+    "menu-item-5"                       => "Cộng đồng",
+    "menu-item-6"                       => "Ngôn ngữ",
 
     "slider-content"                    => "Sân chơi với những câu chuyện Kinh Thánh thú vị",
 

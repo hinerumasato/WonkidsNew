@@ -2,111 +2,279 @@
     use App\Models\Category;
     use App\Models\Language;
     use App\Helpers\LoopHelper;
-
+    
     $currentLocale = app()->getLocale();
     $currentLanguage = Language::where('locale', $currentLocale)->first();
     $categories = $currentLanguage->categories;
     $categoriesArr = LoopHelper::filterCategory($categories);
-
+    
     $languages = Language::all();
     $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
-
+        
     // dd($oneLevelCategories);
     // dd(LoopHelper::buildHTML($categories, 'menu_submenu', 'menu_subitem', 12));
-
+    
 @endphp
 
-<header class="home_header">
-    <div class="header_left">
-        <img src="{{asset('imgs/logo/logo.png')}}" alt="" class="header_logo">
+<header class="row align-items-center home_header justify-content-between">
+
+    <div class="d-xl-none d-block col-2">
+        <button class="btn btn-light open-side-nav-btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="side-nav">
+            <div class="side-nav-header bg-light d-flex align-items-center">
+                <div class="px-3 d-flex w-100 justify-content-between">
+                    <div class="language d-flex align-items-center">
+                        <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img
+                                class="flag-img" src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}"
+                                alt=""></a>
+                        <a class="locale-link" href="{{ route('change-language', ['locale' => 'ko']) }}"><img
+                                class="flag-img" src="{{ asset('imgs/flags/south-korea-flag-icon-32.png') }}"
+                                alt=""></a>
+                        <a class="locale-link" href="{{ route('change-language', ['locale' => 'en']) }}"><img
+                                class="flag-img" src="{{ asset('imgs/flags/uk-flag-icon-32.png') }}" alt=""></a>
+                    </div>
+
+                    <button class="close-side-nav-btn">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="side-nav-content">
+                <ul class="side-nav-list">
+                    <li class="side-nav-item d-flex justify-content-between"><a href="{{ route('home.index') }}"
+                            class="side-nav-link">{{ trans('home.menu-item-1') }}</a></li>
+                    <li class="side-nav-item">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="side-nav-link">
+                                {{ trans('home.menu-item-2') }}
+                            </a>
+                            <button class="side-nav-submenu-open-btn">
+                                <i class="fa-solid fa-plus side-nav-icon"></i>
+                            </button>
+                        </div>
+                        <ul class="side-nav-submenu">
+                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
+                                    class="side-nav-sublink">Khái
+                                    quát</a></li>
+                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
+                                    class="side-nav-sublink">Điều
+                                    hành</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="side-nav-link">
+                                {{ trans('home.menu-item-3') }}
+                            </a>
+                            <button class="side-nav-submenu-open-btn">
+                                <i class="fa-solid fa-plus side-nav-icon"></i>
+                            </button>
+                        </div>
+                        <ul class="side-nav-submenu">
+                            <li class="side-nav-subitem">
+                                <span href="{{ route('home.about-us') }}" class="d-flex justify-content-between">
+                                    <a href="{{ route('home.about-us') }}" class="side-nav-sublink d-flex">11 Thời Kỳ</a>
+                                    <button class="side-nav-submenu-open-btn">
+                                        <i class="fa-solid fa-plus side-nav-icon"></i>
+                                    </button>
+                                </span>
+                                @php
+                                    echo LoopHelper::buildSideNavHTML(
+                                        $oneLevelCategories, 
+                                        'side-nav-submenu', 
+                                        'side-nav-subitem', 
+                                        'side-nav-sublink'
+                                    );
+                                @endphp
+                            </li>
+                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
+                                    class="side-nav-sublink">Nội dung truyền thông</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="side-nav-link">
+                                {{ trans('home.menu-item-4') }}
+                            </a>
+                            <button class="side-nav-submenu-open-btn">
+                                <i class="fa-solid fa-plus side-nav-icon"></i>
+                            </button>
+                        </div>
+                        <ul class="side-nav-submenu">
+                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
+                                    class="side-nav-sublink">Wonderful Story Book</a></li>
+                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
+                                    class="side-nav-sublink">Wonderful Story Camp</a></li>
+                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
+                                    class="side-nav-sublink">Wonkids Club</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="side-nav-link">
+                                {{ trans('home.menu-item-5') }}
+                            </a>
+                            <button class="side-nav-submenu-open-btn">
+                                <i class="fa-solid fa-plus side-nav-icon"></i>
+                            </button>
+                        </div>
+                        <ul class="side-nav-submenu">
+                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
+                                    class="side-nav-sublink">Khái
+                                    quát</a></li>
+                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
+                                    class="side-nav-sublink">Điều
+                                    hành</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="side-nav-item">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="side-nav-link">
+                                {{ trans('home.menu-item-6') }}
+                            </a>
+                            <button class="side-nav-submenu-open-btn">
+                                <i class="fa-solid fa-plus side-nav-icon"></i>
+                            </button>
+                        </div>
+                        <ul class="side-nav-submenu">
+                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
+                                    class="side-nav-sublink">Khái
+                                    quát</a></li>
+                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
+                                    class="side-nav-sublink">Điều
+                                    hành</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="header_center">
-        <ul class="header_menu_list">
-            <li class="header_menu_item"><a href="{{route('home.index')}}" class="header_menu_item_link">{{ trans('home.menu-item-1') }}</a></li>
-            <li class="header_menu_item">
-                <a href="#" class="header_menu_item_link">
+
+    <div class="col-xl-1 col-2 header_left">
+        <img src="{{ asset('imgs/logo/logo.png') }}" alt="" class="header_logo w-100">
+    </div>
+    <div class="col-xl-9 d-xl-block d-none header_center">
+        <ul class="header_menu_list d-xl-flex align-items-center">
+            <li class="header_menu_item d-flex justify-content-between"><a href="{{ route('home.index') }}"
+                    class="header_menu_link">{{ trans('home.menu-item-1') }}</a></li>
+            <li class="header_menu_item d-flex justify-content-between">
+                <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-2') }}
-                    <i class="fa-solid fa-angle-down header_menu_icon"></i>
+                    <button class="side-nav-submenu-open-btn">
+                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                    </button>
                 </a>
                 <ul class="header_submenu">
-                    <li class="header_subitem"><a href="{{route('home.about-us')}}" class="header_sublink">Khái quát</a></li>
-                    <li class="header_subitem"><a href="{{route('home.operation')}}" class="header_sublink">Điều hành</a></li>
+                    <li class="header_subitem"><a href="{{ route('home.about-us') }}" class="header_sublink">Khái
+                            quát</a></li>
+                    <li class="header_subitem"><a href="{{ route('home.operation') }}" class="header_sublink">Điều
+                            hành</a></li>
                 </ul>
             </li>
-            <li class="header_menu_item">
-                <a href="#" class="header_menu_item_link">
+            <li class="header_menu_item d-flex justify-content-between">
+                <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-3') }}
-                    <i class="fa-solid fa-angle-down header_menu_icon"></i>
+                    <button class="side-nav-submenu-open-btn">
+                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                    </button>
                     <ul class="header_submenu">
                         <li class="header_subitem d-flex">
-                            <a href="{{route('posts.index')}}" class="header_sublink">
+                            <a href="{{ route('posts.index') }}" class="header_sublink">
                                 11 Thời Kỳ
                             </a>
                             @php
                                 echo LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
                             @endphp
                         </li>
-                        <li class="header_subitem"><a href="{{route('home.operation')}}" class="header_sublink">Nội dung truyền thông</a></li>
+                        <li class="header_subitem"><a href="{{ route('home.operation') }}"
+                                class="header_sublink">Nội
+                                dung truyền thông</a></li>
                     </ul>
                 </a>
             </li>
-            <li class="header_menu_item">
-                <a href="#" class="header_menu_item_link">
+            <li class="header_menu_item d-flex justify-content-between">
+                <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-4') }}
-                    <i class="fa-solid fa-angle-down header_menu_icon"></i>
+                    <button class="side-nav-submenu-open-btn">
+                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                    </button>
                     <ul class="header_submenu">
                         <li class="header_subitem">
-                            <a href="{{route('home.book')}}" class="header_sublink">Wonderful Story Book</a>
+                            <a href="{{ route('home.book') }}" class="header_sublink">Wonderful Story Book</a>
                             <ul class="menu_submenu">
-                                <li class="menu_subitem"><a href="{{route('home.book')}}" class="menu_sublink">Giới thiệu</a></li>
-                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a></li>
+                                <li class="menu_subitem"><a href="{{ route('home.book') }}"
+                                        class="menu_sublink">Giới
+                                        thiệu</a></li>
+                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="header_subitem">
-                            <a href="{{route('home.camp')}}" class="header_sublink">Wonderful Story Camp</a>
+                            <a href="{{ route('home.camp') }}" class="header_sublink">Wonderful Story Camp</a>
                             <ul class="menu_submenu">
-                                <li class="menu_subitem"><a href="{{route('home.camp')}}" class="menu_sublink">Giới thiệu</a></li>
-                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a></li>
+                                <li class="menu_subitem"><a href="{{ route('home.camp') }}"
+                                        class="menu_sublink">Giới
+                                        thiệu</a></li>
+                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="header_subitem">
-                            <a href="{{route('home.wonkidsclub')}}" class="header_sublink">Wonkids Club</a>
+                            <a href="{{ route('home.wonkidsclub') }}" class="header_sublink">Wonkids Club</a>
                             <ul class="menu_submenu">
-                                <li class="menu_subitem"><a href="{{route('home.wonkidsclub')}}" class="menu_sublink">Giới thiệu</a></li>
-                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a></li>
+                                <li class="menu_subitem"><a href="{{ route('home.wonkidsclub') }}"
+                                        class="menu_sublink">Giới thiệu</a></li>
+                                <li class="menu_subitem"><a href="" class="menu_sublink">Chia sẻ tài liệu</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </a>
-                
+
             </li>
-            
-            <li class="header_menu_item">
-                <a href="#" class="header_menu_item_link">
+
+            <li class="header_menu_item d-flex justify-content-between">
+                <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-5') }}
-                    <i class="fa-solid fa-angle-down header_menu_icon"></i>
+                    <button class="side-nav-submenu-open-btn">
+                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                    </button>
                 </a>
             </li>
-            <li class="header_menu_item">
-                <a href="#" class="header_menu_item_link">
+            <li class="header_menu_item d-flex justify-content-between">
+                <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-6') }}
-                    <i class="fa-solid fa-angle-down header_menu_icon"></i>
+                    <button class="side-nav-submenu-open-btn">
+                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                    </button>
                 </a>
                 <ul class="header_submenu">
                     @foreach ($languages as $language)
                         <li class="header_subitem">
-                            <a href="{{route('change-language', ['locale' => $language->locale])}}" class="header_sublink">{{ $language->name }}</a>
+                            <a href="{{ route('change-language', ['locale' => $language->locale]) }}"
+                                class="header_sublink">{{ $language->name }}</a>
                         </li>
                     @endforeach
                 </ul>
             </li>
         </ul>
     </div>
-    <div class="header_right">
+    <div class="col-3 col-xl header_right">
         <div class="header_right_languages">
-            <a class="locale-link" href="{{route('change-language', ['locale' =>'vi'])}}"><img class="flag-img" src="{{asset('imgs/flags/vietnam-flag-icon-32.png')}}" alt=""></a>
-            <a class="locale-link" href="{{route('change-language', ['locale' =>'ko'])}}"><img class="flag-img" src="{{asset('imgs/flags/south-korea-flag-icon-32.png')}}" alt=""></a>
-            <a class="locale-link" href="{{route('change-language', ['locale' =>'en'])}}"><img class="flag-img" src="{{asset('imgs/flags/uk-flag-icon-32.png')}}" alt=""></a>
+            <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img class="flag-img"
+                    src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}" alt=""></a>
+            <a class="locale-link" href="{{ route('change-language', ['locale' => 'ko']) }}"><img class="flag-img"
+                    src="{{ asset('imgs/flags/south-korea-flag-icon-32.png') }}" alt=""></a>
+            <a class="locale-link" href="{{ route('change-language', ['locale' => 'en']) }}"><img class="flag-img"
+                    src="{{ asset('imgs/flags/uk-flag-icon-32.png') }}" alt=""></a>
         </div>
     </div>
 </header>
@@ -123,16 +291,60 @@
             const header = document.querySelector("header");
             const route = window.location.href.split('#')[0];
             const homeURL = @json(route('home.index')) + '/';
-            if(route === homeURL) {
+            if (route === homeURL) {
                 header.classList.add("home_header");
                 header.classList.remove("other_header");
-            } 
-            else {
+            } else {
                 header.classList.add("other_header");
                 header.classList.remove("home_header");
-            } 
+            }
+        }
+
+        function displaySideNav() {
+            const sideNav = document.querySelector('.side-nav');
+            const barBtn = document.querySelector('.open-side-nav-btn');
+            const closeBarBtn = document.querySelector('.close-side-nav-btn');
+
+
+            barBtn.onclick = () => {
+                sideNav.classList.add('open');
+            }
+
+            closeBarBtn.onclick = () => {
+                sideNav.classList.remove('open');
+            }
+        }
+
+        function displaySubMenu() {
+            const openSubMenuBtns = document.querySelectorAll('.side-nav-submenu-open-btn');
+            
+            openSubMenuBtns.forEach((btn, index) => {
+                btn.onclick = () => {
+                    const parent = btn.parentNode.parentNode;
+                    const subMenu = parent.querySelector('.side-nav-submenu')
+                    const icon = btn.querySelector('i');
+
+                    if(!btn.classList.contains('open')) {
+                        subMenu.style.height = 'fit-content';
+                        subMenu.style.marginTop = `${20}px`;
+                        btn.classList.add('open');
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                    else {
+                        subMenu.style.height = '0';
+                        subMenu.style.marginTop = `0`;
+                        btn.classList.remove('open');
+                        icon.classList.add('fa-plus');
+                        icon.classList.remove('fa-minus');
+                    }
+                }
+            });
+
         }
 
         setHeaderClass();
+        displaySideNav();
+        displaySubMenu();
     </script>
 @endpush
