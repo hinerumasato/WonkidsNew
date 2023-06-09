@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminMemberController;
 use App\Http\Controllers\AdminQAController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +57,10 @@ Route::prefix("/admin")->name("admin.")->group(function() {
         Route::get("/", [AdminQAController::class, 'index'])->name('index');
         Route::get('/answer/{id}', [AdminQAController::class, 'answer'])->name('answer');
         Route::post('/answer/{id}', [AdminQAController::class, 'postAnswer'])->name('postAnswer');
+    });
+
+    Route::prefix('/member')->name('member.')->group(function() {
+        Route::get('/', [AdminMemberController::class, 'index'])->name('index');
     });
 
     Route::prefix("/posts")->name("posts.")->group(function() {

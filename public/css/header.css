@@ -30,14 +30,14 @@
 .home_header .header_menu_link {
     color: var(--home-menu-text-color);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
     text-decoration: none;
 }
 
 .other_header .header_menu_link {
     color: #000;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
     text-decoration: none;
 }
 
@@ -73,6 +73,10 @@
 .header_menu_item {
     padding: 0 16px;
     position: relative;
+}
+
+.home_header .header_menu_item button i {
+    color: #fff;
 }
 
 .header_menu_item:hover > .header_submenu {
@@ -128,6 +132,10 @@
     text-decoration: none;
 }
 
+.locale-link {
+    margin: 0 4px;
+}
+
 .side-nav {
     background: #332F2E;
     position: fixed;
@@ -152,7 +160,7 @@
 }
 
 .side-nav.open {
-    width: fit-content !important;
+    width: 380px !important;
 }
 
 .close-side-nav-btn {

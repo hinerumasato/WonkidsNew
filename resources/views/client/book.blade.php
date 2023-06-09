@@ -6,7 +6,7 @@
 @include('client.partials.small-slider')
     <div class="container">
         <h2 class="py-5 fs-1 fw-bold">Wonderful Story Book</h2>
-        <img class="d-block" src="{{ asset('imgs/books/book1.jpg') }}" alt="">
+        <img class="d-block w-100" src="{{ asset('imgs/books/book1.jpg') }}" alt="">
         <img class="d-block" src="{{ asset('imgs/books/bach_logo.png') }}" alt="">
         <p class="fs-6 my-3 lh-base">
             Sách “ Những câu chuyện kỳ diệu” là truyện tranh Kinh Thánh được đọc bởi tấm lòng của người mẹ và xuất bản bởi
@@ -18,82 +18,82 @@
             Bộ truyện tranh này cũng được dịch, xuất bản và phổ biến với nhiều ngôn ngữ dân tộc thiểu số của Việt Nam và
             khoảng 30 quốc gia khác trên toàn thế giới.
         </p>
-        <img class="d-block" src="{{ asset('imgs/books/book2.jpg') }}" alt="">
+        <img class="d-block w-100" src="{{ asset('imgs/books/book2.jpg') }}" alt="">
         <ul>
             <h2 class="py-3 fs-2 fw-bold">Lịch sử và tình hình hiện nay</h2>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2007-2009</p>
-                <p>Chế tác sách ‘Những câu chuyện kỳ diệu’ (BACH)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2007-2009</p>
+                <p class="col">Chế tác sách ‘Những câu chuyện kỳ diệu’ (BACH)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2011</p>
-                <p>Có giấy phép tại Việt Nam và xuất bản lần đầu (BACH), Bắt dầu dự án cộng đồng Wonderful Story (BACH, Tổ
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2011</p>
+                <p class="col">Có giấy phép tại Việt Nam và xuất bản lần đầu (BACH), Bắt dầu dự án cộng đồng Wonderful Story (BACH, Tổ
                     chức Chiếc Cầu Việt Nam)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2011-2018</p>
-                <p>Xuất bản tiếng Việt đầu tiên(2.000 bộ), thứ 2(5.000 bộ), thứ 3(10.000 bộ), thứ 4(12.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2011-2018</p>
+                <p class="col">Xuất bản tiếng Việt đầu tiên(2.000 bộ), thứ 2(5.000 bộ), thứ 3(10.000 bộ), thứ 4(12.000 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2014-2019</p>
-                <p>Tiếng Thái</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2014-2019</p>
+                <p class="col">Tiếng Thái</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2015</p>
-                <p>Tiếng Mông Cổ, Trung Quốc, Hàn Quốc, Anh, Hindi(Ấn Độ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2015</p>
+                <p class="col">Tiếng Mông Cổ, Trung Quốc, Hàn Quốc, Anh, Hindi(Ấn Độ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2016</p>
-                <p>Tiếng Syria, Hy Lạp, Campuchia, El Salvador, Myanmar, Thổ Nhĩ Kỳ</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2016</p>
+                <p class="col">Tiếng Syria, Hy Lạp, Campuchia, El Salvador, Myanmar, Thổ Nhĩ Kỳ</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2017</p>
-                <p>Tiếng Tây Ban Nha, Syria(thứ 2), Dari, Ả Rập, Bengal(Ấn Độ), Quảng Đông(Trung Quốc)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2017</p>
+                <p class="col">Tiếng Tây Ban Nha, Syria(thứ 2), Dari, Ả Rập, Bengal(Ấn Độ), Quảng Đông(Trung Quốc)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2018</p>
-                <p>Tiếng Ả Rập Levant, dân tộc Pura của Thái Lan, Tag Tag(Phillipines), Shai(Tanzania)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2018</p>
+                <p class="col">Tiếng Ả Rập Levant, dân tộc Pura của Thái Lan, Tag Tag(Phillipines), Shai(Tanzania)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2019</p>
-                <p>Nepal, Syria</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2019</p>
+                <p class="col">Nepal, Syria</p>
             </li>
         </ul>
 
         <ul class="mt-3">
             <h2 class="py-3 fs-2 fw-bold">Tình hình xuất bản của những dân tộc thiểu số Việt Nam</h2>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2014</p>
-                <p>H'Mong (2.500 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2014</p>
+                <p class="col">H'Mong (2.500 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2015</p>
-                <p>Cơ Ho (1.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2015</p>
+                <p class="col">Cơ Ho (1.000 bộ)</p>
             </li>
             
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2015</p>
-                <p>M’ Nông (1.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2015</p>
+                <p class="col">M’ Nông (1.000 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2016</p>
-                <p>Ê Đê (1.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2016</p>
+                <p class="col">Ê Đê (1.000 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2016</p>
-                <p>X’ Tiêng (2.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2016</p>
+                <p class="col">X’ Tiêng (2.000 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2017</p>
-                <p>Ra Glai (2.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2017</p>
+                <p class="col">Ra Glai (2.000 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2018</p>
-                <p>Ba Na (2.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2018</p>
+                <p class="col">Ba Na (2.000 bộ)</p>
             </li>
-            <li class="d-flex mb-2">
-                <p class="wonderful-year">2019</p>
-                <p>Giẻ Triêng (2.000 bộ)</p>
+            <li class="row mb-2">
+                <p class="wonderful-year col-2">2019</p>
+                <p class="col">Giẻ Triêng (2.000 bộ)</p>
             </li>
         </ul>
     </div>

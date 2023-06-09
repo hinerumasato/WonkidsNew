@@ -20,145 +20,12 @@
 
     <div class="d-xl-none d-block col-2">
         <button class="btn btn-light open-side-nav-btn">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars fs-2"></i>
         </button>
-
-        <div class="side-nav">
-            <div class="side-nav-header bg-light d-flex align-items-center">
-                <div class="px-3 d-flex w-100 justify-content-between">
-                    <div class="language d-flex align-items-center">
-                        <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img
-                                class="flag-img" src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}"
-                                alt=""></a>
-                        <a class="locale-link" href="{{ route('change-language', ['locale' => 'ko']) }}"><img
-                                class="flag-img" src="{{ asset('imgs/flags/south-korea-flag-icon-32.png') }}"
-                                alt=""></a>
-                        <a class="locale-link" href="{{ route('change-language', ['locale' => 'en']) }}"><img
-                                class="flag-img" src="{{ asset('imgs/flags/uk-flag-icon-32.png') }}" alt=""></a>
-                    </div>
-
-                    <button class="close-side-nav-btn">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="side-nav-content">
-                <ul class="side-nav-list">
-                    <li class="side-nav-item d-flex justify-content-between"><a href="{{ route('home.index') }}"
-                            class="side-nav-link">{{ trans('home.menu-item-1') }}</a></li>
-                    <li class="side-nav-item">
-                        <div class="d-flex justify-content-between">
-                            <a href="#" class="side-nav-link">
-                                {{ trans('home.menu-item-2') }}
-                            </a>
-                            <button class="side-nav-submenu-open-btn">
-                                <i class="fa-solid fa-plus side-nav-icon"></i>
-                            </button>
-                        </div>
-                        <ul class="side-nav-submenu">
-                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                                    class="side-nav-sublink">Khái
-                                    quát</a></li>
-                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                                    class="side-nav-sublink">Điều
-                                    hành</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="side-nav-item">
-                        <div class="d-flex justify-content-between">
-                            <a href="#" class="side-nav-link">
-                                {{ trans('home.menu-item-3') }}
-                            </a>
-                            <button class="side-nav-submenu-open-btn">
-                                <i class="fa-solid fa-plus side-nav-icon"></i>
-                            </button>
-                        </div>
-                        <ul class="side-nav-submenu">
-                            <li class="side-nav-subitem">
-                                <span href="{{ route('home.about-us') }}" class="d-flex justify-content-between">
-                                    <a href="{{ route('home.about-us') }}" class="side-nav-sublink d-flex">11 Thời Kỳ</a>
-                                    <button class="side-nav-submenu-open-btn">
-                                        <i class="fa-solid fa-plus side-nav-icon"></i>
-                                    </button>
-                                </span>
-                                @php
-                                    echo LoopHelper::buildSideNavHTML(
-                                        $oneLevelCategories, 
-                                        'side-nav-submenu', 
-                                        'side-nav-subitem', 
-                                        'side-nav-sublink'
-                                    );
-                                @endphp
-                            </li>
-                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                                    class="side-nav-sublink">Nội dung truyền thông</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="side-nav-item">
-                        <div class="d-flex justify-content-between">
-                            <a href="#" class="side-nav-link">
-                                {{ trans('home.menu-item-4') }}
-                            </a>
-                            <button class="side-nav-submenu-open-btn">
-                                <i class="fa-solid fa-plus side-nav-icon"></i>
-                            </button>
-                        </div>
-                        <ul class="side-nav-submenu">
-                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                                    class="side-nav-sublink">Wonderful Story Book</a></li>
-                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                                    class="side-nav-sublink">Wonderful Story Camp</a></li>
-                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                                    class="side-nav-sublink">Wonkids Club</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="side-nav-item">
-                        <div class="d-flex justify-content-between">
-                            <a href="#" class="side-nav-link">
-                                {{ trans('home.menu-item-5') }}
-                            </a>
-                            <button class="side-nav-submenu-open-btn">
-                                <i class="fa-solid fa-plus side-nav-icon"></i>
-                            </button>
-                        </div>
-                        <ul class="side-nav-submenu">
-                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                                    class="side-nav-sublink">Khái
-                                    quát</a></li>
-                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                                    class="side-nav-sublink">Điều
-                                    hành</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="side-nav-item">
-                        <div class="d-flex justify-content-between">
-                            <a href="#" class="side-nav-link">
-                                {{ trans('home.menu-item-6') }}
-                            </a>
-                            <button class="side-nav-submenu-open-btn">
-                                <i class="fa-solid fa-plus side-nav-icon"></i>
-                            </button>
-                        </div>
-                        <ul class="side-nav-submenu">
-                            <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                                    class="side-nav-sublink">Khái
-                                    quát</a></li>
-                            <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                                    class="side-nav-sublink">Điều
-                                    hành</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        @include('client.partials.sidenav')
     </div>
 
-    <div class="col-xl-1 col-2 header_left">
+    <div class="col-xl-1 col-sm-2 col-4 header_left">
         <img src="{{ asset('imgs/logo/logo.png') }}" alt="" class="header_logo w-100">
     </div>
     <div class="col-xl-9 d-xl-block d-none header_center">
@@ -169,7 +36,7 @@
                 <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-2') }}
                     <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                        <i class="fa-solid fa-angle-down"></i>
                     </button>
                 </a>
                 <ul class="header_submenu">
@@ -183,7 +50,7 @@
                 <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-3') }}
                     <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                        <i class="fa-solid fa-angle-down"></i>
                     </button>
                     <ul class="header_submenu">
                         <li class="header_subitem d-flex">
@@ -204,7 +71,7 @@
                 <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-4') }}
                     <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                        <i class="fa-solid fa-angle-down"></i>
                     </button>
                     <ul class="header_submenu">
                         <li class="header_subitem">
@@ -245,7 +112,7 @@
                 <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-5') }}
                     <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                        <i class="fa-solid fa-angle-down"></i>
                     </button>
                 </a>
             </li>
@@ -253,7 +120,7 @@
                 <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-6') }}
                     <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-angle-down side-nav-icon"></i>
+                        <i class="fa-solid fa-angle-down"></i>
                     </button>
                 </a>
                 <ul class="header_submenu">
@@ -268,7 +135,7 @@
         </ul>
     </div>
     <div class="col-3 col-xl header_right">
-        <div class="header_right_languages">
+        <div class="header_right_languages d-xl-flex d-none">
             <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img class="flag-img"
                     src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}" alt=""></a>
             <a class="locale-link" href="{{ route('change-language', ['locale' => 'ko']) }}"><img class="flag-img"
