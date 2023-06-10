@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+    @php
+        use App\Helpers\LoopHelper;
+        use App\Helpers\StringHelper;
+        $levelCategories = LoopHelper::dataTree($categories);
+    @endphp
+
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
             <div class="d-block d-md-flex align-items-center justify-content-between mb-4">
@@ -14,7 +20,16 @@
                     <select name="language_id" class="py-1 mx-md-2 mb-md-0 mb-2 border border-none language-select"
                         aria-label="Default select example">
                         @foreach ($languages as $language)
-                            <option link="{{ route('admin.index') }}" value="{{ $language->locale }}">{{ $language->name }}
+                        <option link="{{ route('admin.index') }}" value="{{ $language->locale }}">{{ $language->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                    
+                    <select name="category_id" class="py-1 mx-md-2 mb-md-0 mb-2 border border-none category-select"
+                    aria-label="Default select example">
+                            <option categoryText="Tất cả" value="0" selected>Tất cả</option>
+                        @foreach ($levelCategories as $category)
+                            <option categoryText="{{ $category->pivot->name }}" value="{{ $category->id }}">{{ StringHelper::gerateLineByLevel($category->level).$category->pivot->name }}
                             </option>
                         @endforeach
                     </select>
@@ -48,7 +63,7 @@
                         @endif
 
 
-                        @if (empty($posts->toArray()))
+                        @if (empty($posts))
                             <tr role="alert">
                                 <td colspan="6">
                                     <p class="alert alert-primary text-center">Chưa có bài viết nào</p>
@@ -58,14 +73,14 @@
                             @foreach ($posts as $post)
                                 <tr>
                                     <td><input class="form-check-input check-input" type="checkbox"></td>
-                                    <td>{{ $post->pivot->title }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $post->pivot->created_at }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $post->pivot->updated_at }}</td>
+                                    <td>{{ $post['title'] }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $post['created_at'] }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $post['updated_at'] }}</td>
                                     <td><a class="btn btn-sm btn-primary"
-                                            href="{{ route('admin.posts.edit', ['post_id' => $post->id, 'language_id' => $languageId]) }}">Sửa</a>
+                                            href="{{ route('admin.posts.edit', ['post_id' => $post['post_id'], 'language_id' => $languageId]) }}">Sửa</a>
                                     </td>
                                     <td>
-                                        <button postid="{{ $post->id }}"
+                                        <button postid="{{ $post['post_id'] }}"
                                             class="btn btn-sm btn-danger btn-modal btn-delete" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">
                                             Xoá
@@ -126,15 +141,36 @@
 @endsection
 
 @section('scripts')
-    <script>
-        function changeLanguagePost() {
+<script>
+        function changeSelect() {
+            let link = new URL(window.location.href);
+            const params = new URLSearchParams();
             const languageSelect = document.querySelector('.language-select');
+            const categorySelect = document.querySelector('.category-select');
+            
+            
             languageSelect.value = @json($languageLocale);
+            categorySelect.value = @json($post_category_id);
+
+            const option = categorySelect.options[categorySelect.selectedIndex];
+            option.textContent = option.getAttribute('categoryText');
+
             languageSelect.onchange = () => {
+                link = new URL(window.location.href);
                 const selectedIndex = languageSelect.selectedIndex;
-                const link =
-                    `${languageSelect.querySelectorAll('option')[selectedIndex].getAttribute('link')}?post_lang=${languageSelect.value}`;
-                window.location.replace(link);
+                params.append('post_lang', languageSelect.value);
+                params.append('post_category', categorySelect.value);
+                link.search = params.toString();
+                window.location.replace(link.toString());
+            }
+
+            categorySelect.onchange = () => {
+                link = new URL(window.location.href);
+                const selectedIndex = categorySelect.selectedIndex;
+                params.append('post_lang', languageSelect.value);
+                params.append('post_category', categorySelect.value);
+                link.search = params.toString();
+                window.location.replace(link.toString());
             }
         }
 
@@ -229,6 +265,6 @@
 
         checkAll();
         passDataToModal();
-        changeLanguagePost();
+        changeSelect();
     </script>
 @endsection

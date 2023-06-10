@@ -188,4 +188,6 @@
             window.location.replace(@json(route('home.index')) + '#qa');
         }
     </script>
+
+    <script src="{{asset('js/header.js')}}"></script>
 @endsection

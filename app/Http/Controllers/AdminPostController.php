@@ -107,12 +107,16 @@ class AdminPostController extends Controller
         $title = $request->input('title');
         $content = $request->input('content');
         $locale = Language::find($language_id)->locale;
+        $category_id = $request->category_id;
         
         $post->languages()->updateExistingPivot($language_id, [
             "title" => $title,
             "content" => $content,
             "slug" => StringHelper::toSlug($title),
         ]);
+
+        $post->category_id = $category_id;
+        $post->save();
 
         $redirectUrl = route('admin.index').'/?post_lang='.$locale;
 

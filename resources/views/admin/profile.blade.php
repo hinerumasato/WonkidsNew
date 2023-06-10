@@ -19,7 +19,7 @@
                 <div class="card mb-4 col-lg-4">
                     <div class="card-body text-center">
                         <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-fluid"
-                            style="width: 150px;">
+                            style="width: 150px; height: 150px;">
                         <h5 class="my-3">{{ $user->name }}</h5>
                         <p class="text-muted mb-1">{{ $user->designation }}</p>
                         <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>

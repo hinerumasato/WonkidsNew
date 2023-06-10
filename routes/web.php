@@ -48,7 +48,7 @@ Route::prefix("/posts")->name("posts.")->group(function() {
     Route::get("/{slug}", [PostController::class, 'postDetail'])->name('post-detail');
 });
 
-Route::prefix("/admin")->name("admin.")->group(function() {
+Route::prefix("/admin")->middleware(['auth', 'verified'])->name("admin.")->group(function() {
     Route::get("/", [AdminController::class, 'index'])->name('index');
     Route::get("/profile", [AdminController::class, 'profile'])->name('profile');
     Route::get("/setting", [AdminController::class, 'setting'])->name('setting');
@@ -61,6 +61,8 @@ Route::prefix("/admin")->name("admin.")->group(function() {
 
     Route::prefix('/member')->name('member.')->group(function() {
         Route::get('/', [AdminMemberController::class, 'index'])->name('index');
+        Route::post('/add', [AdminMemberController::class, 'postAddMember'])->name('add');
+        Route::post('/send-message', [AdminMemberController::class, 'postSendMessage'])->name('send');
     });
 
     Route::prefix("/posts")->name("posts.")->group(function() {

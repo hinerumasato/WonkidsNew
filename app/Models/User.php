@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -29,6 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone',
         'company',
         'designation',
+        'role_id',
     ];
 
     /**
@@ -50,4 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function role(): BelongsTo {
+        return $this->belongsTo(Role::class);
+    }
 }

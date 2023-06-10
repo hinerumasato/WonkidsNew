@@ -42,7 +42,7 @@
 .add_member_btn {
     color: #fff;
     background-color: #0098E6;
-    width: 141px;
+    width: 160px;
     height: 100%;
     border: none;
     position: relative;
@@ -117,4 +117,8 @@
 .member_cancel_btn {
     color: #FF2748;
     cursor: pointer;
+}
+
+.role_col,.role_option,.role_select  {
+    text-transform: capitalize;
 }

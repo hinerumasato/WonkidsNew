@@ -67,4 +67,6 @@ function changeData(...rules) {
     });
 }
 
+
+
 changeData('.role_col', '.email_col', '.role_col', '.phone_col');
