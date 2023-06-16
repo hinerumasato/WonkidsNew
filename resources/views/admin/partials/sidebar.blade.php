@@ -15,9 +15,9 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="{{route('admin.index')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Quản lý bài viết</a>
-            <a href="{{route('admin.qa.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Hỏi đáp</a>
-            <a href="{{route('admin.member.index')}}" class="nav-item nav-link"><i class="fa-solid fa-users"></i>Thành viên</a>
+            <a href="{{route('admin.index')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>{{ trans('admin.posts') }}</a>
+            <a href="{{route('admin.qa.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>{{ trans('admin.qa') }}</a>
+            <a href="{{route('admin.member.index')}}" class="nav-item nav-link"><i class="fa-solid fa-users"></i>{{ trans('admin.members') }}</a>
         </div>
     </nav>
 </div>

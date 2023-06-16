@@ -1,0 +1,37 @@
+.upload-post_header {
+    background-color: #efefef;
+}
+
+.upload-post-info {
+    background-color: #fff;
+}
+
+.upload-post-info-imgs {
+    min-height: 70px;
+}
+
+.upload-post-info-wrap:first-child {
+    margin-left: 0;
+}
+
+.upload-post-info-wrap {
+    margin-left: 5px;
+}
+
+.upload-post-info-img {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    border: 3px solid #ccc;
+}
+
+
+.upload-post-info-wrap {
+    position: relative;
+}
+
+.upload-post-info-wrap > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

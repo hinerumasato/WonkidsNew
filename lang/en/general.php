@@ -8,4 +8,5 @@ return [
     'tel' => 'Tel',
     'title' => 'title',
     'message' => 'Message',
+    'notification' => 'Notification',
 ];

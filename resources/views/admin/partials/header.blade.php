@@ -27,7 +27,7 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fa fa-envelope me-lg-2"></i>
-                <span class="d-none d-lg-inline-flex">Message</span>
+                <span class="d-none d-lg-inline-flex">{{ trans('general.message') }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 @foreach ($sendUsers as $key => $sendUser)
@@ -36,20 +36,20 @@
                             <img class="rounded-circle" src="{{ $sendUser->avatar }}" alt=""
                                 style="width: 40px; height: 40px;">
                             <div class="ms-2">
-                                <h6 class="fw-normal mb-0">{{ $sendUser->name }} send you a message</h6>
+                                <h6 class="fw-normal mb-0">{{ $sendUser->name }} {{ trans('admin.header.send-you-a-message') }}</h6>
                                 <small>{{ $messages[$key]->created_at->diffForHumans() }}</small>
                             </div>
                         </div>
                     </a>
                     <hr class="dropdown-divider">
                 @endforeach
-                <a href="#" class="dropdown-item text-center">See all message</a>
+                <a href="#" class="dropdown-item text-center">{{ trans('admin.header.see-all-message') }}</a>
             </div>
         </div>
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <i class="fa fa-bell me-lg-2"></i>
-                <span class="d-none d-lg-inline-flex">Notificatin</span>
+                <span class="d-none d-lg-inline-flex">{{ trans('general.notification') }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <a href="#" class="dropdown-item">
@@ -77,10 +77,10 @@
                 <span class="d-none d-lg-inline-flex">{{ $user->name }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                <a href="{{ route('admin.profile') }}" class="dropdown-item">My Profile</a>
-                <a href="{{ route('admin.setting') }}" class="dropdown-item">Settings</a>
+                <a href="{{ route('admin.profile') }}" class="dropdown-item">{{ trans('admin.header.my-profile') }}</a>
+                <a href="{{ route('admin.setting') }}" class="dropdown-item">{{ trans('admin.header.settings') }}</a>
                 <a href="{{ route('logout') }}" class="dropdown-item"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ trans('admin.header.logout') }}</a>
             </div>
         </div>
     </div>

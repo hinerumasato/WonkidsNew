@@ -55,15 +55,14 @@
                     <ul class="header_submenu">
                         <li class="header_subitem d-flex">
                             <a href="{{ route('posts.index') }}" class="header_sublink">
-                                11 Thời Kỳ
+                                {{ trans('home.11-period') }}
                             </a>
                             @php
                                 echo LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
                             @endphp
                         </li>
                         <li class="header_subitem"><a href="{{ route('home.operation') }}"
-                                class="header_sublink">Nội
-                                dung truyền thông</a></li>
+                                class="header_sublink">{{ trans('home.media-content') }}</a></li>
                     </ul>
                 </a>
             </li>

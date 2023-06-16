@@ -8,4 +8,7 @@ return [
     'tel' => 'SĐT',
     'title' => 'Tiêu đề',
     'message' => 'Tin nhắn',
+    'phone' => 'Số điện thoại',
+    'notification' => 'Thông báo',
+    
 ];

@@ -8,10 +8,15 @@ use App\Models\Category;
 use App\Models\Language;
 use App\Models\Post;
 use App\Helpers\StringHelper;
+use App\Models\PostLanguageUploadImg;
+use App\Models\StagingArea;
+use App\Models\UploadImg;
+use Illuminate\Support\Facades\File;
 
 class AdminPostController extends Controller
 {
     public function index(Request $request) {
+
         $languageLocale = $request->input('post_lang') ?? 'vi';
         $language = Language::where('locale', $languageLocale)->first();
         $categories = $language->categories;
@@ -32,6 +37,14 @@ class AdminPostController extends Controller
         $title = $language->pivot->title;
         $content = $language->pivot->content;
 
+        $imgUploads = PostLanguageUploadImg::where('post_id', $post_id)->where('language_id', $language_id)->get();
+        $imgLinks = [];
+        if(count($imgUploads) > 0) {
+            foreach ($imgUploads as $img)
+                $imgLinks[] = UploadImg::find($img->upload_img_id)->link;
+            
+        }
+
         $data = [
             "post_id" => $post->id,
             "category_id" => $category_id,
@@ -40,11 +53,10 @@ class AdminPostController extends Controller
             "content" => $content,
         ];
 
-        return view('admin.edit-post', ["data" => $data, "categories" => $categories, "languages" => $languages]);
+        return view('admin.edit-post', ["data" => $data, "categories" => $categories, "languages" => $languages, "imgLinks" => $imgLinks]);
     }
     
     public function postAdd(Request $request) {
-
 
         $validate = $request->validate([
             'title' => ['required'],
@@ -52,8 +64,15 @@ class AdminPostController extends Controller
         ], [
             'title.required' => "Vui lòng nhập tiêu đề",
             'content.required' => "Vui lòng nhập nội dung",
-        ]);     
+        ]);
 
+        $areas = StagingArea::all();
+        foreach ($areas as $area) {
+            $decodedContents = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $area->contents));
+            file_put_contents(public_path('uploads/posts/'.$area->file_name), $decodedContents);
+            StagingArea::destroy($area->id);
+        }
+        
         $title = $request->input("title");
         $content = $request->input("content");
         $category_id = $request->input("category_id");
@@ -63,6 +82,14 @@ class AdminPostController extends Controller
         Post::create([
             'category_id' => $category_id
         ]);
+
+        $imgSrcs = $request->imgSrc;
+        $uploadImgs = [];
+        foreach ($imgSrcs as $src) {
+            $uploadImgs[] = UploadImg::create([
+                'link' => $src,
+            ]);
+        }
 
 
         $newestPostId = Post::orderBy('id', 'desc')->get()->first()->id;
@@ -74,6 +101,14 @@ class AdminPostController extends Controller
                 "slug" => StringHelper::toSlug($title),
             ],
         ]);
+
+        foreach ($uploadImgs as $img) {
+            PostLanguageUploadImg::create([
+                'upload_img_id' => $img->id,
+                'post_id' => $newestPostId,
+                'language_id' => $language_id,
+            ]);
+        }
 
         $languages = Language::all();
         foreach($languages as $language) {
@@ -124,8 +159,18 @@ class AdminPostController extends Controller
     }
 
     public function deleteOne($post_id) {
+        $uploadImgs = PostLanguageUploadImg::where('post_id', $post_id)->get();
+        foreach ($uploadImgs as $img) {
+            PostLanguageUploadImg::destroy($img->id);
+            $link = UploadImg::find($img->upload_img_id)->link;
+            $path = parse_url($link, PHP_URL_PATH);
+            $path = substr($path, 1);
+            File::delete($path);
+            UploadImg::destroy($img->upload_img_id);
+        }
         $post = Post::find($post_id);
         $post->languages()->detach();
+
         return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
     }
 
@@ -136,6 +181,16 @@ class AdminPostController extends Controller
         }, $idsStr);
 
         foreach ($ids as $id) {
+            $uploadImgs = PostLanguageUploadImg::where('post_id', $id)->get();
+            foreach ($uploadImgs as $img) {
+                PostLanguageUploadImg::destroy($img->id);
+
+                $link = UploadImg::find($img->upload_img_id)->link;
+                $path = parse_url($link, PHP_URL_PATH);
+                $path = substr($path, 1);
+                File::delete($path);
+                UploadImg::destroy($img->upload_img_id);
+            }
             $post = Post::find($id);
             $post->languages()->detach();
         }
