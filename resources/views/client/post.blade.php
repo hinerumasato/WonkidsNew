@@ -9,22 +9,27 @@
     @include('client.partials.small-slider')
     @include('client.partials.small-nav')
     <div class="container">
-        @include('client.partials.category-list')
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tiêu đề</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $key => $post)
+        @if (request()->has('category'))
+            @include('client.partials.category-list')
+            <table class="table table-borderless">
+                <thead>
                     <tr>
-                        <td>{{ $key + 1 }}</td>
-                        <td><a href="{{ route('posts.post-detail', ['slug' => $post->slug]) }}">{{ $post->title }}</a></td>
+                        <th scope="col">#</th>
+                        <th scope="col">Tiêu đề</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($posts as $key => $post)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td><a href="{{ route('posts.post-detail', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            @include('client.partials.category-img')
+        @endif
     </div>
 @endsection

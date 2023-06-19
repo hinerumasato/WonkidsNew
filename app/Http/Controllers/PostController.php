@@ -11,33 +11,17 @@ use App\Models\Category;
 class PostController extends Controller
 {
     public function index(Request $request) {
-        $category_id = $request->input('category');
+
+        $languageModel = new Language();
+        $postModel = new Post();
+
         $title = trans('home.11-period') ?? "Document";
-
+        $category_id = $request->input('category');
         $locale = app()->getLocale() ?? 'vi';
-        $language = Language::where('locale', $locale)->first();
-        $posts = [];
+        $language = $languageModel->findByLocale($locale);
+        
 
-        foreach($language->posts as $post) {
-            if($category_id == null)
-                $posts[] = $post->pivot;
-                else {
-
-                    if($post->category->id == $category_id)
-                        $posts[] = $post->pivot;
-
-                    // Lấy các bài viết cấp con
-                    $categories = Category::all(); 
-                    $categoryTree = LoopHelper::dataTree($categories->toArray(), $category_id);
-                    foreach ($categoryTree as $category) {
-                        if($category['id'] == $post->category->id)
-                            $posts[] = $post->pivot;
-                    }
-    
-                }
-            }
-
-        return view('client.post', ['title' => $title, "posts" => $posts]);
+        return view('client.post', ['title' => $title, "posts" => $postModel->getAllChildByLanguage($category_id, $language)]);
     }
 
     function postDetail($slug) {

@@ -23,4 +23,11 @@ class PostLanguageUploadImg extends Model
     public function languages(): BelongsTo {
         return $this->belongsTo(Language::class);
     }
+
+    public function findByRelatedId($post_id, $language_id, $upload_img_id) {
+        return $this->where('post_id', $post_id)
+            ->where('language_id', $language_id)
+            ->where('upload_img_id', $upload_img_id)
+            ->first();
+    }
 }

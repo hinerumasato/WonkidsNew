@@ -16,17 +16,36 @@ use Illuminate\Support\Facades\File;
 class AdminPostController extends Controller
 {
     public function index(Request $request) {
-
+        $title = 'ĐĂNG BÀI';
+        $areaModel = new StagingArea();
         $languageLocale = $request->input('post_lang') ?? 'vi';
         $language = Language::where('locale', $languageLocale)->first();
         $categories = $language->categories;
         $categoriesArr = LoopHelper::filterCategory($categories);
         $categories = LoopHelper::dataTree($categoriesArr);
         $languages = Language::all();
-        return view('admin.add-post', ["categories" => $categories, "languages" => $languages, "languageLocale" => $languageLocale]);
+        $imgLinks = $areaModel->getAllLinks();
+
+        $data = [
+            "title" => '',
+            "content" => '',
+        ];
+
+        return view('admin.add-post', 
+            [
+                "categories" => $categories, 
+                "languages" => $languages, 
+                "languageLocale" => $languageLocale, 
+                "imgLinks" => $imgLinks,
+                "title" => $title,
+                "data" => $data,
+            ]
+        );
+
     }
 
     public function editIndex($post_id, $language_id) {
+        $title = 'SỬA BÀI';
         $categories = Language::find($language_id)->categories;
         $categoriesArr = LoopHelper::filterCategory($categories);
         $categories = LoopHelper::dataTree($categoriesArr);
@@ -34,9 +53,7 @@ class AdminPostController extends Controller
         $post = Post::find($post_id);
         $category_id = $post->category_id;
         $language = $post->languages->where('id', $language_id)->first();
-        $title = $language->pivot->title;
-        $content = $language->pivot->content;
-
+        
         $imgUploads = PostLanguageUploadImg::where('post_id', $post_id)->where('language_id', $language_id)->get();
         $imgLinks = [];
         if(count($imgUploads) > 0) {
@@ -49,11 +66,19 @@ class AdminPostController extends Controller
             "post_id" => $post->id,
             "category_id" => $category_id,
             "language_id" => $language_id,
-            "title" => $title,
-            "content" => $content,
+            "title" => $language->pivot->title,
+            "content" => $language->pivot->content,
         ];
 
-        return view('admin.edit-post', ["data" => $data, "categories" => $categories, "languages" => $languages, "imgLinks" => $imgLinks]);
+        return view('admin.edit-post', 
+            [
+                "data" => $data, 
+                "categories" => $categories, 
+                "languages" => $languages, 
+                "imgLinks" => $imgLinks,
+                "title" => $title,
+            ]
+        );
     }
     
     public function postAdd(Request $request) {
@@ -67,9 +92,12 @@ class AdminPostController extends Controller
         ]);
 
         $areas = StagingArea::all();
+
+        $uploadImgs = [];
         foreach ($areas as $area) {
-            $decodedContents = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $area->contents));
-            file_put_contents(public_path('uploads/posts/'.$area->file_name), $decodedContents);
+            $uploadImgs[] = UploadImg::create([
+                'link' => $area->link,
+            ]);
             StagingArea::destroy($area->id);
         }
         
@@ -82,14 +110,6 @@ class AdminPostController extends Controller
         Post::create([
             'category_id' => $category_id
         ]);
-
-        $imgSrcs = $request->imgSrc;
-        $uploadImgs = [];
-        foreach ($imgSrcs as $src) {
-            $uploadImgs[] = UploadImg::create([
-                'link' => $src,
-            ]);
-        }
 
 
         $newestPostId = Post::orderBy('id', 'desc')->get()->first()->id;

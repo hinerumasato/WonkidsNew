@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use DB;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+use App\Helpers\LoopHelper;
 
 class Post extends Model
 {
@@ -22,5 +23,30 @@ class Post extends Model
 
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getAllChildByLanguage($category_id, $language) {
+        $posts = [];
+
+        foreach($language->posts as $post) {
+            if($category_id == null)
+                $posts[] = $post->pivot;
+            else {
+
+                if($post->category->id == $category_id)
+                    $posts[] = $post->pivot;
+
+                // Lấy các bài viết cấp con
+                $categories = Category::all(); 
+                $categoryTree = LoopHelper::dataTree($categories->toArray(), $category_id);
+                foreach ($categoryTree as $category) {
+                    if($category['id'] == $post->category->id)
+                        $posts[] = $post->pivot;
+                }
+
+            }
+        }
+
+        return $posts;
     }
 }
