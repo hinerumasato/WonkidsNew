@@ -62,7 +62,6 @@
                             </div>
                         @endif
 
-
                         @if (empty($posts))
                             <tr role="alert">
                                 <td colspan="6">

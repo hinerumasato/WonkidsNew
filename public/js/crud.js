@@ -27,6 +27,7 @@ function imageUploadHandler(blobInfo) {
         }
 
         appendLocation(json.location);
+        insertToPostDuringUpload(json.location);
         resolve(json.location);
 
     });
@@ -43,7 +44,19 @@ async function imageDeleteOneHandler(location) {
     const response = await fetch(deleteLink, {
         method: 'DELETE',
     });
+
+    deleteFromPost(location);
+
     return await response.json();
+}
+
+function deleteFromPost(location) {
+    const editor = tinymce.get('crudArea');
+    const elements = editor.dom.select(`img[src="${location}"]`);
+    elements.forEach(element => {
+        if(element.nodeName === 'IMG')
+            editor.dom.remove(element);
+    })
 }
 
 
@@ -67,9 +80,11 @@ function appendLocation(location) {
 function fileListener(fileSelector) {
     const fileInput = document.querySelector(fileSelector);
     fileInput.onchange = e => {
-        const file = e.target.files[0];
-        const myBlobInfo = new MyBlobInfo(file);
-        imageUploadHandler(myBlobInfo);
+        const files = Array.from(e.target.files);
+        files.forEach(file => {
+            const myBlobInfo = new MyBlobInfo(file);
+            imageUploadHandler(myBlobInfo);
+        })
     }
 }
 
@@ -88,11 +103,23 @@ function insertToPost() {
     checkboxs.forEach(checkbox => {
         const selectedImg = checkbox.parentNode.querySelector('img');
         const editor = tinymce.get('crudArea');
-        console.log(editor);
         editor.focus();
         editor.execCommand('mceInsertContent', false, `<p> ${selectedImg.outerHTML} </p>`);
     });
 }
+
+function insertToPostDuringUpload(location) {
+    const editor = tinymce.get('crudArea');
+    const wrapImg = editor.dom.create('p');
+    const newImg = editor.dom.create('img', {
+        'src': location,
+        'class': 'upload-post-info-img',
+    });
+
+    wrapImg.appendChild(newImg);
+
+    editor.dom.add(editor.selection.getNode(), wrapImg);
+} 
 
 function deleteUploaded() {
     const checkboxs = document.querySelectorAll('input[type="checkbox"]:checked');

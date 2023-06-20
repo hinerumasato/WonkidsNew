@@ -10,6 +10,28 @@ select {
     width: 250px;
 }
 
+.alert-box {
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    left: 100%;
+}
+.alert-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.alert-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    position: absolute;
+    top: 130px;
+    left: 14%;
+}
+
 @media (max-width: 768px ) {
     select {
         width: 100%;
