@@ -275,3 +275,18 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+.message {
+    position: relative;
+}
+
+.message.unread::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    left: 72%;
+    top: 0;
+}

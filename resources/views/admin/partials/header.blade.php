@@ -26,12 +26,12 @@
     <div class="navbar-nav align-items-center ms-auto">
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <i class="fa fa-envelope me-lg-2"></i>
+                <i class="fa fa-envelope me-lg-2 message"></i>
                 <span class="d-none d-lg-inline-flex">{{ trans('general.message') }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 @foreach ($sendUsers as $key => $sendUser)
-                    <a href="#" class="dropdown-item">
+                    <a href="{{route('admin.messages.detail', ['id' => $messages[$key]])}}" class="dropdown-item">
                         <div class="d-flex align-items-center">
                             <img class="rounded-circle" src="{{ $sendUser->avatar }}" alt=""
                                 style="width: 40px; height: 40px;">
@@ -89,4 +89,31 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
     @csrf
 </form>
-<!-- Navbar End -->
+
+@push('scripts')
+    <script>
+        const messageIcon = document.querySelector('.message');
+        function checkHasUnreadMessage() {
+            const messages = @json($messages);
+            let count = 0;
+            messages.forEach(message => {
+                if(message.read === 0) {
+                    count++;
+                }
+            });
+
+            if(count !== 0)
+                return true;
+            else return false;
+
+        }
+
+        console.log(checkHasUnreadMessage());
+
+        if(checkHasUnreadMessage() == true) {
+            messageIcon.classList.add('unread');
+        }
+        else messageIcon.classList.remove('unread');
+
+    </script>
+@endpush

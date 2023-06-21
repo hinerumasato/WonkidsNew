@@ -44,7 +44,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'avatar',
         'created_at',
         'updated_at',
-        'id',
         'email_verified_at',
         'role',
     ];
@@ -60,5 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function role(): BelongsTo {
         return $this->belongsTo(Role::class);
+    }
+
+    public function findById($id) {
+        return $this->find($id);
     }
 }

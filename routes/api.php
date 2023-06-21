@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\UploadImgController;
 use App\Http\Controllers\API\StagingAreaController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/user/update', [UserController::class, 'update'])->name('update-user-api');
 
 Route::post('/upload-staging-area', [StagingAreaController::class, 'upload'])->name('upload-staging-area');
 Route::delete('/delete-staging-area', [StagingAreaController::class, 'deleteOne'])->name('delete-staging-area');

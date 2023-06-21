@@ -6,9 +6,32 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/member.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alert.css') }}">
 @endsection
 
 @section('content')
+
+    <div class="alert-wrap"></div>
+
+    {{-- <div class="my-alert">
+        <div class="my-alert_header">
+            <img src="{{asset('imgs/alert/success-alert-icon.png')}}" alt="">
+            <p class="my-alert_title">Success</p>
+        </div>
+
+        <div class="my-alert_body">
+            <p class="my-alert_body_content">
+                
+            </p>
+        </div>
+
+        <div class="my-alert_footer">
+            <div class="my-alert_footer_buttons">
+                <button>Close</button>
+            </div>
+        </div>
+    </div> --}}
+
     <section class="member_container mt-5">
         @if (session('msg'))
             <div class="alert alert-success">
@@ -50,16 +73,16 @@
 
             <tbody>
                 @foreach ($members as $member)
-                    <tr>
-                        <td class="name_col d-flex align-items-center" data="{{ $member->name }}">
+                    <tr memberId="{{$member->id}}">
+                        <td feild="name" class="name_col d-flex align-items-center" data="{{ $member->name }}">
                             <img src="{{ $member->avatar }}" alt="" class="member_avatar">
                             {{ $member->name }}
                         </td>
-                        <td class="email_col" data="{{ $member->email }}">{{ $member->email }}</td>
+                        <td feild="email" class="email_col" data="{{ $member->email }}">{{ $member->email }}</td>
                         <td class="role_col" data="{{ $member->role->name }}">{{ $member->role->name }}</td>
 
                         <td>{{ DateHelper::formatVietNamDate($member->created_at) }}</td>
-                        <td class="phone_col" data="{{ $member->phone }}">{{ $member->phone }}</td>
+                        <td feild="phone" class="phone_col" data="{{ $member->phone }}">{{ $member->phone }}</td>
 
                         <td>
                             <button onclick='inboxTo(@json($member));' class="member_inbox_btn" data-bs-toggle="modal" data-bs-target="#sendMessageModal"><i class="fa-solid fa-envelope"></i></button>
@@ -87,8 +110,9 @@
                         <div class="modal-body">
                             <input type="hidden" name="send_id" value="{{$user->id}}">
                             <div class="mb-3">
-                                <label for="toMail" class="form-label">To: </label>
-                                <input name="receive_id" type="text" class="form-control" id="toMail" readonly>
+                                <label for="to" class="form-label">To: </label>
+                                <input name="to" type="text" class="form-control" id="to" readonly>
+                                <input type="hidden" name="receive_id">
                             </div>
 
                             <div class="mb-3">
@@ -196,24 +220,30 @@
 
     <script>
         function inboxTo(member) {
+            console.log(member);
             const inboxModal = document.querySelector('#sendMessageModal');
             const sendMessageForm = document.querySelector('.sendMessageForm')
-            const toMail = inboxModal.querySelector('#toMail');
-            toMail.value = member.email;
+            const to = inboxModal.querySelector('#to');
+            to.value = member.name;
             sendMessageForm.setAttribute('memberId', member.id);
         }
 
         function submitSendMsgForm() {
             const sendMessageForm = document.querySelector('.sendMessageForm');
-            const emailField = sendMessageForm.querySelector('#toMail');
+            const receiveId = sendMessageForm.querySelector('input[name="receive_id"]');
             sendMessageForm.onsubmit = e => {
                 e.preventDefault();
-                emailField.value= sendMessageForm.getAttribute('memberId');
+                receiveId.value= sendMessageForm.getAttribute('memberId');
                 sendMessageForm.submit();
             }
         
         }
         submitSendMsgForm();
+    </script>
+
+    <script>
+        const updateUserApiLink = @json(route('update-user-api'));
+        const alertIcon = @json(asset('imgs/alert/success-alert-icon.png'));
     </script>
 
     

@@ -27,18 +27,23 @@
 .header_menu_icon {
     font-size: 12px;
 }
+
+.header_menu_link {
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.header_menu_item i {
+    font-size: 15px;
+}
+
 .home_header .header_menu_link {
     color: var(--home-menu-text-color);
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration: none;
 }
 
 .other_header .header_menu_link {
     color: #000;
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration: none;
 }
 
 .locale-link {

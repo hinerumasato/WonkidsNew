@@ -10,9 +10,6 @@
     
     $languages = Language::all();
     $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
-        
-    // dd($oneLevelCategories);
-    // dd(LoopHelper::buildHTML($categories, 'menu_submenu', 'menu_subitem', 12));
     
 @endphp
 

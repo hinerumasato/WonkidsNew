@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminMemberController;
+use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\AdminQAController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,7 @@ Route::prefix("/posts")->name("posts.")->group(function() {
     Route::get("/{slug}", [PostController::class, 'postDetail'])->name('post-detail');
 });
 
-Route::prefix("/admin")->middleware(['auth', 'verified'])->name("admin.")->group(function() {
+Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin.")->group(function() {
     Route::get("/", [AdminController::class, 'index'])->name('index');
     Route::get("/profile", [AdminController::class, 'profile'])->name('profile');
     Route::get("/setting", [AdminController::class, 'setting'])->name('setting');
@@ -72,5 +73,10 @@ Route::prefix("/admin")->middleware(['auth', 'verified'])->name("admin.")->group
         Route::put("/edit/{post_id}/{language_id}", [AdminPostController::class, 'putEdit'])->name("putEdit");
         Route::delete("/delete/{post_id}", [AdminPostController::class, 'deleteOne'])->name('deleteOne');
         Route::delete("/delete", [AdminPostController::class, 'deleteMany'])->name('deleteMany');
+    });
+
+    Route::prefix('/messages')->name('messages.')->group(function() {
+        Route::get('/detail/{id}', [AdminMessageController::class, 'detail'])->name('detail');
+        Route::post('/send', [AdminMessageController::class, 'postSend'])->name('send');
     });
 });
