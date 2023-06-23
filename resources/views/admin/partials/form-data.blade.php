@@ -6,7 +6,7 @@
             <i class="fa-solid fa-paperclip"></i>
             Đính kèm
         </button>
-        <small class="ms-2" style="cursor: pointer" onclick="document.querySelector('.file-post-input').click()">
+        <small class="ms-2" style="cursor: pointer" onclick="fileHandler()">
             Bấm vào đây để đính kèm file
         </small>
     </div>

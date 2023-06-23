@@ -27,9 +27,9 @@ function imageUploadHandler(blobInfo) {
         }
 
         appendLocation(json.location);
-        insertToPostDuringUpload(json.location);
+        if(blobInfo instanceof MyBlobInfo)
+            insertToPostDuringUpload(json.location);
         resolve(json.location);
-
     });
 }
 
@@ -137,6 +137,10 @@ function deleteUploaded() {
             alert(result.message);
         }
     });
+}
+
+function fileHandler() {
+    document.querySelector('.file-post-input').click();
 }
 
 postImgListener();
