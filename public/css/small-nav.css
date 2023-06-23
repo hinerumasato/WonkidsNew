@@ -7,6 +7,14 @@ hr {
     padding: 24px 0;
 }
 
+.small-nav_item.active {
+    border-bottom: 1px solid var(--main-color);
+}
+
+.small-nav_item.active > a {
+    color: var(--main-color);
+}
+
 .small-nav_item > a {
     display: block;
     width: 100%;

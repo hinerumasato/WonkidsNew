@@ -9,4 +9,16 @@ return [
     'title' => 'title',
     'message' => 'Message',
     'notification' => 'Notification',
+
+    'home' => 'Home',
+    'about-us' => 'About',
+    'operation' => 'Operation',
+    'media' => 'Media Contents',
+    'book' => 'Wonderful Story Book',
+    'camp' => 'Wonderful Story Camp',
+    'wonkidsclub' => 'Wonkids club',
+    'share' => 'Share',
+    'document-share' => 'Document sharing',
+
+    '11zones' => '11 Zones',
 ];

@@ -27,20 +27,20 @@
     <script>
         const uploadStagingAreaLink = @json(route('upload-staging-area'));
         const deleteStagingAreaLink = @json(route('delete-staging-area'));
-
         const uploadImgLink = @json(route('upload-img-area'));
         const deleteImgLink = @json(route('delete-img-area'));
-
-
+        const uploadMediaStagingAreaLink = @json(route('upload-media-area'));
         const postFolder = @json(asset('uploads/posts'));
         const addPostLink = @json(route('admin.posts.add'));
+        const medias = @json($data['medias']);
     </script>
 
-    <script src="{{ asset('js/crud.js') }}"></script>
-    <script src="{{ asset('js/MyBlobInfo.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/pd9ebc8uusu182469qo1vzpwdf8zyocpvs7jp1qotwdh1c08/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
+    <script src="{{ asset('js/crud.js') }}"></script>
+    <script src="{{asset('js/plugin.js')}}"></script>
+    <script src="{{ asset('js/MyBlobInfo.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script>
         tinymce.init({
             selector: '#crudArea',
@@ -48,8 +48,8 @@
             images_upload_base_path: @json(asset('uploads/posts')),
             relative_urls: false,
             remove_script_host: false,
-            plugins: 'code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            plugins: 'customButton code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'customButton | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
 

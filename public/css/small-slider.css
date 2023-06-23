@@ -1,11 +1,9 @@
 .small-slider_container {
     height: 246px;
     background-image: linear-gradient(to right, #BD8DC9, #C98DA4, #B386AE, #C98DA4, #BD8DC9);
-    position: relative;
 }
 
 .small-slider_img_wrap {
-    position: absolute;
     left: 0;
     top: 0;
     display: flex;

@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminMemberController;
 use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\AdminQAController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -42,6 +43,10 @@ Route::prefix("/")->name("home.")->group(function() {
     Route::get('/wonderful-story-book', [HomeController::class, 'book'])->name('book');
     Route::get('/wonderful-story-camp', [HomeController::class, 'camp'])->name('camp');
     Route::get('/wonkidsclub', [HomeController::class, 'wonkidsclub'])->name('wonkidsclub');
+
+    Route::prefix('/media-contents')->name('media.')->group(function() {
+        Route::get('/{mediaSlug}', [MediaController::class, 'index'])->name('index');
+    });
 });
 
 Route::prefix("/posts")->name("posts.")->group(function() {

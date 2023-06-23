@@ -19,6 +19,10 @@ class Language extends Model {
         return $this->belongsToMany(Category::class, 'categories_has_languages')->withPivot('name')->withTimestamps();
     }
 
+    public function medias(): BelongsToMany {
+        return $this->belongsToMany(Media::class, 'medias_languages')->withPivot('name');
+    }
+
     public function findByLocale($locale) {
         return $this->where('locale', $locale)->first();
     }

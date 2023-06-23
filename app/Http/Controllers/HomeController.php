@@ -9,34 +9,65 @@ use App\Models\QA;
 
 class HomeController extends Controller {
 
+    private $smallSliderTitle;
+
+    public function __construct()
+    {
+        $this->smallSliderTitle = 'Document';   
+    }
+
     public function index() {
-        $title = trans('home.title') ?? "Document";
-        return view('client.home', compact('title'));
+        $title = trans('general.home') ?? "Document";
+        $this->smallSliderTitle = $title;
+        return view('client.home', [
+            'title' => $title, 
+            'smallSliderTitle' => $this->smallSliderTitle,
+        ]);
     }
 
     public function aboutUs() {
-        $title = trans('home.title') ?? "Document";
-        return view('client.about-us', compact('title'));
+        $title = trans('general.about-us') ?? "Document";
+        $this->smallSliderTitle = $title;
+        return view('client.about-us', [
+            'title' => $title, 
+            'smallSliderTitle' => $this->smallSliderTitle,
+        ]);
     }
 
     public function operation() {
-        $title = trans('home.title') ?? "Document";
-        return view('client.operation', compact('title'));
+        $title = trans('general.operation') ?? "Document";
+        $this->smallSliderTitle = $title;
+        return view('client.operation', [
+            'title' => $title, 
+            'smallSliderTitle' => $this->smallSliderTitle,
+        ]);
     }
 
     public function book() {
-        $title = trans('home.title') ?? "Document";
-        return view('client.book', ['title' => $title]);
+        $title = trans('general.book') ?? "Document";
+        $this->smallSliderTitle = $title;
+        return view('client.book', [
+            'title' => $title, 
+            'smallSliderTitle' => $this->smallSliderTitle,
+        ]);
     }
 
     public function camp() {
-        $title = trans('home.title') ?? "Document";
-        return view('client.camp', ['title' => $title]);
+        $title = trans('general.camp') ?? "Document";
+        $this->smallSliderTitle = $title;
+        return view('client.camp', [
+            'title' => $title, 
+            'smallSliderTitle' => $this->smallSliderTitle,
+        ]);
     }
 
     public function wonkidsclub() {
-        $title = trans('home.title') ?? "Document";
-        return view('client.wonkidsclub', ['title' => $title]);
+        $title = trans('general.wonkidsclub') ?? "Document";
+        $this->smallSliderTitle = $title;
+        return view('client.wonkidsclub', [
+            'title' => $title, 
+            'smallSliderTitle' => $this->smallSliderTitle,
+        ]);
     }
 
     public function postQA(Request $request) {

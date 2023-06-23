@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Helpers\LoopHelper;
 use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Models\Language;
 use App\Models\Post;
 use App\Helpers\StringHelper;
+use App\Models\Media;
+use App\Models\MediaStagingArea;
+use App\Models\PostLanguageMedia;
 use App\Models\PostLanguageUploadImg;
 use App\Models\StagingArea;
 use App\Models\UploadImg;
@@ -16,8 +18,9 @@ use Illuminate\Support\Facades\File;
 class AdminPostController extends Controller
 {
     public function index(Request $request) {
-        $title = 'ĐĂNG BÀI';
+        $title = 'Đăng bài';
         $areaModel = new StagingArea();
+        $mediaModel = new Media();
         $languageLocale = $request->input('post_lang') ?? 'vi';
         $language = Language::where('locale', $languageLocale)->first();
         $categories = $language->categories;
@@ -29,6 +32,7 @@ class AdminPostController extends Controller
         $data = [
             "title" => '',
             "content" => '',
+            'medias' => $mediaModel->getAllByLocale($languageLocale),
         ];
 
         return view('admin.add-post', 
@@ -45,7 +49,7 @@ class AdminPostController extends Controller
     }
 
     public function editIndex($post_id, $language_id) {
-        $title = 'SỬA BÀI';
+        $title = 'Sửa bài';
         $categories = Language::find($language_id)->categories;
         $categoriesArr = LoopHelper::filterCategory($categories);
         $categories = LoopHelper::dataTree($categoriesArr);
@@ -53,6 +57,7 @@ class AdminPostController extends Controller
         $post = Post::find($post_id);
         $category_id = $post->category_id;
         $language = $post->languages->where('id', $language_id)->first();
+        $mediaModel = new Media();
         
         $imgUploads = PostLanguageUploadImg::where('post_id', $post_id)->where('language_id', $language_id)->get();
         $imgLinks = [];
@@ -68,6 +73,7 @@ class AdminPostController extends Controller
             "language_id" => $language_id,
             "title" => $language->pivot->title,
             "content" => $language->pivot->content,
+            'medias' => $mediaModel->getAllByLocale($language->locale),
         ];
 
         return view('admin.edit-post', 
@@ -92,6 +98,8 @@ class AdminPostController extends Controller
         ]);
 
         $areas = StagingArea::all();
+        $mediaAreaModel = new MediaStagingArea();
+        $postLanguageMedia = new PostLanguageMedia();
 
         $uploadImgs = [];
         foreach ($areas as $area) {
@@ -113,6 +121,14 @@ class AdminPostController extends Controller
 
 
         $newestPostId = Post::orderBy('id', 'desc')->get()->first()->id;
+
+        foreach ($mediaAreaModel->all() as $media) {
+            if($media->content != null)
+                $postLanguageMedia->insert($newestPostId, $language_id, $media->id, $title, $media->content);
+        }
+
+        $mediaAreaModel->refresh();
+
         $post = Post::find($newestPostId);
         $post->languages()->attach([
             $language_id => [

@@ -18,16 +18,19 @@
     $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
 @endphp
 
-<div class="container">
+<div class="container mt-5 mb-4">
     <nav>
         <ul class="small-nav_list d-flex justify-content-center">
-            <li class="small-nav_item mx-3">
-                <a href="{{route('posts.index')}}">11 Thời Kỳ</a>
+            <li class="small-nav_item active mx-3">
+                <a href="{{route('posts.index')}}">
+                    {{ trans('home.11-period') }}
+                    <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
+                </a>
                 @php
                     echo LoopHelper::buildHTML($oneLevelCategories, 'small-nav_sublist', 'small-nav_subitem', 'small-nav_sublink');
                 @endphp
             </li>
-            <li class="small-nav_item mx-3"><a href="">Nội dung truyền thông</a></li>
+            <li class="small-nav_item mx-3"><a href="">{{ trans('home.media-content') }}</a></li>
         </ul>
     </nav>
     <hr>

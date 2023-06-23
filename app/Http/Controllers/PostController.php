@@ -8,20 +8,33 @@ use App\Models\Post;
 use App\Models\Language;
 use App\Models\Category;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+
+    private $smallSliderTitle;
+
+    public function __construct()
+    {
+        $this->smallSliderTitle = "Document";
+    }
+    
     public function index(Request $request) {
 
         $languageModel = new Language();
         $postModel = new Post();
 
-        $title = trans('home.11-period') ?? "Document";
+        $title = trans('general.11zones') ?? "Document";
+        $this->smallSliderTitle = $title;
         $category_id = $request->input('category');
         $locale = app()->getLocale() ?? 'vi';
         $language = $languageModel->findByLocale($locale);
         
 
-        return view('client.post', ['title' => $title, "posts" => $postModel->getAllChildByLanguage($category_id, $language)]);
+        return view('client.post', [
+                'title' => $title, 
+                "posts" => $postModel->getAllChildByLanguage($category_id, $language),
+                'smallSliderTitle' => $this->smallSliderTitle,
+            ]
+        );
     }
 
     function postDetail($slug) {
@@ -49,8 +62,14 @@ class PostController extends Controller
         
         $post = ["postTitle" => $postTitle, "postContent" => $postContent];
         $title = $postTitle;
+        $this->smallSliderTitle = trans('general.11zones') ?? "Document";
 
-        return view('client.post-detail', ['title' => $title, 'post' => $post, 'category' => $category]);
+        return view('client.post-detail', [
+                'title' => $title, 
+                'post' => $post, 
+                'category' => $category,
+                'smallSliderTitle' => $this->smallSliderTitle,
+            ]);
 
     }
 }

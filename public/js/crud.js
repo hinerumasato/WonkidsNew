@@ -33,6 +33,33 @@ function imageUploadHandler(blobInfo) {
     });
 }
 
+function onSubmitHandler() {
+    const form = document.querySelector('form[method="POST"]');
+    form.onsubmit = async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        const editor = tinymce.get('crudArea');
+        const elements = editor.dom.select('*[media]');
+        elements.forEach(element => {
+            const mediaId = editor.dom.getAttrib(element, 'media');
+            if(!formData.has(mediaId))
+                formData.append(mediaId, `<p>${element.outerHTML}</p>`);
+            else {
+                const oldData = formData.get(mediaId);
+                formData.set(mediaId, oldData + `<p>${element.outerHTML}</p>`);
+            }
+        })
+
+        await fetch(uploadMediaStagingAreaLink, {
+            method: 'POST',
+            body: formData,
+        });
+
+        form.submit();
+        
+    }
+}
+
 async function imageDeleteOneHandler(location) {
     let deleteLink = deleteStagingAreaLink + `/?location=${location}`;
     if(state == 'edit') {
@@ -145,3 +172,4 @@ function fileHandler() {
 
 postImgListener();
 fileListener('.file-post-input');
+onSubmitHandler();

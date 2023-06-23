@@ -1,7 +1,9 @@
 @php
     use App\Models\Category;
     use App\Models\Language;
+    use App\Models\Media;
     use App\Helpers\LoopHelper;
+    use App\Helpers\StringHelper;
     
     $currentLocale = app()->getLocale();
     $currentLanguage = Language::where('locale', $currentLocale)->first();
@@ -10,6 +12,9 @@
     
     $languages = Language::all();
     $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
+
+    $mediaModel = new Media();
+    $medias = $mediaModel->getAllByLocale(app()->getLocale());
     
 @endphp
 
@@ -58,8 +63,19 @@
                                 echo LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
                             @endphp
                         </li>
-                        <li class="header_subitem"><a href="{{ route('home.operation') }}"
-                                class="header_sublink">{{ trans('home.media-content') }}</a></li>
+                        <li class="header_subitem">
+                            <a href="{{ route('home.operation') }}" class="header_sublink">{{ trans('home.media-content') }}</a>
+                            <ul class="menu_submenu">
+                                @foreach ($medias as $media)
+                                    @php
+                                        $mediaSlug = StringHelper::toSlug($media->pivot->name)
+                                    @endphp
+                                    <li class="menu_subitem">
+                                        <a href="{{route('home.media.index', ['mediaSlug' => $mediaSlug])}}" class="menu_sublink">{{ $media->pivot->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
                 </a>
             </li>

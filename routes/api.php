@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\MediaStagingAreaController;
 use App\Http\Controllers\API\UploadImgController;
 use App\Http\Controllers\API\StagingAreaController;
 use App\Http\Controllers\API\UserController;
@@ -28,4 +29,6 @@ Route::delete('/delete-staging-area', [StagingAreaController::class, 'deleteOne'
 
 Route::post('/upload-img-area', [UploadImgController::class, 'upload'])->name('upload-img-area');
 Route::delete('/delete-img-area', [UploadImgController::class, 'deleteOne'])->name('delete-img-area');
+
+Route::post('/media/upload', [MediaStagingAreaController::class, 'upload'])->name('upload-media-area');
 
