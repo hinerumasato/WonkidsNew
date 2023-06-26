@@ -131,10 +131,31 @@ class MediaController extends Controller
             abort(404);
         }
 
+        $medias = $this->postLanguageMediaModel->getAllByIdAndLocale($mediaType->id, app()->getLocale());
+        $mediaTypes = $this->mediaModel->getTypes($medias);
+
+        $detailSlugs = [];
+        foreach ($medias as $media) {
+            $detailSlugs[] = StringHelper::toSlug($media->title);
+        }
+
+        $mediaSlugs = [];
+
+        foreach ($mediaTypes as $type) {
+            $mediaSlugs[] = StringHelper::toSlug($type);
+        }
+
+        $mediaNavs = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+
         return view('client.media-detail', [
             'title' => $title,
             'smallSliderTitle' => $smallSliderTitle,
             'mediaDetail' => $mediaDetail,
+            'medias' => $medias,
+            'mediaTypes' => $mediaTypes,
+            'mediaSlugs' => $mediaSlugs,
+            'detailSlugs' => $detailSlugs,
+            'mediaNavs' => $mediaNavs,
         ]);
     }
 }
