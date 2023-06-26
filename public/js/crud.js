@@ -48,14 +48,30 @@ function onSubmitHandler() {
                 const oldData = formData.get(mediaId);
                 formData.set(mediaId, oldData + `<p>${element.outerHTML}</p>`);
             }
-        })
-
-        await fetch(uploadMediaStagingAreaLink, {
-            method: 'POST',
-            body: formData,
         });
 
-        form.submit();
+        if(state === 'add') {
+            await fetch(uploadMediaStagingAreaLink, {
+                method: 'POST',
+                body: formData,
+            });
+            form.submit();
+        }
+
+        else {
+            const currentLink = window.location.href;
+            const language_id = currentLink.split('/')[currentLink.split('/').length - 1]; 
+            const post_id = currentLink.split('/')[currentLink.split('/').length - 2];
+            formData.append('language_id', language_id);
+            formData.append('post_id', post_id);
+            const api = await fetch(uploadMediaLink, {
+                method: 'POST',
+                body: formData,
+            });
+            form.submit();
+        }
+
+
         
     }
 }

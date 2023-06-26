@@ -64,14 +64,14 @@
                             @endphp
                         </li>
                         <li class="header_subitem">
-                            <a href="{{ route('home.operation') }}" class="header_sublink">{{ trans('home.media-content') }}</a>
+                            <a href="{{ route('home.media.index') }}" class="header_sublink">{{ trans('home.media-content') }}</a>
                             <ul class="menu_submenu">
                                 @foreach ($medias as $media)
                                     @php
                                         $mediaSlug = StringHelper::toSlug($media->pivot->name)
                                     @endphp
                                     <li class="menu_subitem">
-                                        <a href="{{route('home.media.index', ['mediaSlug' => $mediaSlug])}}" class="menu_sublink">{{ $media->pivot->name }}</a>
+                                        <a href="{{route('home.media.index-slug', ['mediaSlug' => $mediaSlug])}}" class="menu_sublink">{{ $media->pivot->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>

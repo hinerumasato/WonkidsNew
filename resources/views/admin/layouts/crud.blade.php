@@ -30,6 +30,7 @@
         const uploadImgLink = @json(route('upload-img-area'));
         const deleteImgLink = @json(route('delete-img-area'));
         const uploadMediaStagingAreaLink = @json(route('upload-media-area'));
+        const uploadMediaLink = @json(route('upload-media'));
         const postFolder = @json(asset('uploads/posts'));
         const addPostLink = @json(route('admin.posts.add'));
         const medias = @json($data['medias']);
@@ -48,6 +49,7 @@
             images_upload_base_path: @json(asset('uploads/posts')),
             relative_urls: false,
             remove_script_host: false,
+            extended_valid_elements: 'img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|media]',
             plugins: 'customButton code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'customButton | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });

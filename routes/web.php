@@ -45,7 +45,12 @@ Route::prefix("/")->name("home.")->group(function() {
     Route::get('/wonkidsclub', [HomeController::class, 'wonkidsclub'])->name('wonkidsclub');
 
     Route::prefix('/media-contents')->name('media.')->group(function() {
-        Route::get('/{mediaSlug}', [MediaController::class, 'index'])->name('index');
+        Route::get('/', [MediaController::class, 'index'])->name('index');
+        Route::prefix('/{mediaSlug}')->group(function() {
+            Route::get('/', [MediaController::class, 'indexSlug'])->name('index-slug');
+            Route::get('/{detailSlug}', [MediaController::class, 'detail'])->name('detail');
+
+        });
     });
 });
 

@@ -89,6 +89,7 @@ class AdminPostController extends Controller
     
     public function postAdd(Request $request) {
 
+
         $validate = $request->validate([
             'title' => ['required'],
             'content' => ['required'],
@@ -123,8 +124,18 @@ class AdminPostController extends Controller
         $newestPostId = Post::orderBy('id', 'desc')->get()->first()->id;
 
         foreach ($mediaAreaModel->all() as $media) {
-            if($media->content != null)
-                $postLanguageMedia->insert($newestPostId, $language_id, $media->id, $title, $media->content);
+
+            foreach (Language::all() as $language) {
+                if($language->id != $language_id) {
+                    $postLanguageMedia->insert($newestPostId, $language->id, $media->id, $title, null);   
+                }
+                else {
+                    if($media->content != null)
+                        $postLanguageMedia->insert($newestPostId, $language_id, $media->id, $title, $media->content);
+                    else $postLanguageMedia->insert($newestPostId, $language_id, $media->id, $title, null);
+                }
+            }
+
         }
 
         $mediaAreaModel->refresh();
@@ -173,6 +184,10 @@ class AdminPostController extends Controller
             'title.required' => "Vui lòng nhập tiêu đề",
             'content.required' => "Vui lòng nhập nội dung",
         ]);
+
+        $postLanguageMediaModel = new PostLanguageMedia();
+
+        $postLanguageMediaModel->updateByPostIdLanguageId($post_id, $language_id, $request->title);
 
         $post = Post::find($post_id);
         $title = $request->input('title');
