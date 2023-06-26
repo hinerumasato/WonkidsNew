@@ -1,5 +1,18 @@
 @extends('client.layouts.master')
 
+@section('css')
+    <style>
+        .media-link {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .media-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+@endsection
+
 @section('content')
     @include('client.partials.small-slider')
     @include('client.partials.small-nav')
@@ -16,8 +29,12 @@
             <tbody class="table-group-divider">
                 @foreach ($medias as $index => $media)
                     <tr style="cursor: pointer;">
-                        <td>{{ $mediaTypes[$index] }}</td>
-                        <td>{{ $media->title  }}</td>
+                        <td>
+                            <a class="media-link" href="{{ route('home.media.index-slug', ['mediaSlug' => $mediaSlugs[$index]]) }}">{{ $mediaTypes[$index] }}</a>
+                        </td>
+                        <td>
+                            <a class="media-link" href="{{ route('home.media.detail', ['mediaSlug' => $mediaSlugs[$index], 'detailSlug' => $detailSlugs[$index]]) }}">{{ $media->title }}</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

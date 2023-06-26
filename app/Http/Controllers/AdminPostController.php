@@ -210,40 +210,20 @@ class AdminPostController extends Controller
     }
 
     public function deleteOne($post_id) {
-        $uploadImgs = PostLanguageUploadImg::where('post_id', $post_id)->get();
-        foreach ($uploadImgs as $img) {
-            PostLanguageUploadImg::destroy($img->id);
-            $link = UploadImg::find($img->upload_img_id)->link;
-            $path = parse_url($link, PHP_URL_PATH);
-            $path = substr($path, 1);
-            File::delete($path);
-            UploadImg::destroy($img->upload_img_id);
-        }
-        $post = Post::find($post_id);
-        $post->languages()->detach();
-
+        $postModel = new Post();
+        $postModel->deleteOne($post_id);
         return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
     }
 
     public function deleteMany(Request $request) {
+        $postModel = new Post();
         $idsStr = explode(",", $request->postIds);
         $ids = array_map(function($str) {
             return intval($str); 
         }, $idsStr);
 
         foreach ($ids as $id) {
-            $uploadImgs = PostLanguageUploadImg::where('post_id', $id)->get();
-            foreach ($uploadImgs as $img) {
-                PostLanguageUploadImg::destroy($img->id);
-
-                $link = UploadImg::find($img->upload_img_id)->link;
-                $path = parse_url($link, PHP_URL_PATH);
-                $path = substr($path, 1);
-                File::delete($path);
-                UploadImg::destroy($img->upload_img_id);
-            }
-            $post = Post::find($id);
-            $post->languages()->detach();
+            $postModel->deleteOne($id);
         }
         return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
     }

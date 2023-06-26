@@ -26,8 +26,19 @@ class MediaController extends Controller
         $smallSliderTitle = trans('general.media');
         $title = trans('general.media');
         $medias = $this->postLanguageMediaModel->getAllByLocale(app()->getLocale());
-        $mediaTypes = $this->mediaModel->getTypeById($medias);
+        $mediaTypes = $this->mediaModel->getTypes($medias);
         $mediaNavs = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+
+        $detailSlugs = [];
+        foreach ($medias as $media) {
+            $detailSlugs[] = StringHelper::toSlug($media->title);
+        }
+
+        $mediaSlugs = [];
+
+        foreach ($mediaTypes as $type) {
+            $mediaSlugs[] = StringHelper::toSlug($type);
+        }
 
         return view('client.media', [
             'title' => $title,
@@ -35,6 +46,8 @@ class MediaController extends Controller
             'medias' => $medias,
             'mediaTypes' => $mediaTypes,
             'mediaNavs' => $mediaNavs,
+            'mediaSlugs' => $mediaSlugs,
+            'detailSlugs' => $detailSlugs,
         ]);
     }
 
@@ -56,8 +69,20 @@ class MediaController extends Controller
         }
         
         $medias = $this->postLanguageMediaModel->getAllByIdAndLocale($mediaType->id, app()->getLocale());
-        $mediaTypes = $this->mediaModel->getTypeById($medias);
+        $mediaTypes = $this->mediaModel->getTypes($medias);
         $mediaNavs = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+
+        $detailSlugs = [];
+        foreach ($medias as $media) {
+            $detailSlugs[] = StringHelper::toSlug($media->title);
+        }
+
+        $mediaSlugs = [];
+
+        foreach ($mediaTypes as $type) {
+            $mediaSlugs[] = StringHelper::toSlug($type);
+        }
+
 
         return view('client.media', [
             'title' => $title,
@@ -65,6 +90,8 @@ class MediaController extends Controller
             'medias' => $medias,
             'mediaTypes' => $mediaTypes,
             'mediaNavs' => $mediaNavs,
+            'mediaSlugs' => $mediaSlugs,
+            'detailSlugs' => $detailSlugs,
         ]);
     }
 
@@ -88,8 +115,21 @@ class MediaController extends Controller
         }
 
         $mediaDetail = $this->postLanguageMediaModel->getBySlug($mediaSlug ,$detailSlug, app()->getLocale());
-        if($mediaDetail == null)
+        if($mediaDetail == null) {
+            $allLocales = $this->languageModel->allLocale();
+            foreach ($allLocales as $locale) {
+                $translateMediaSlug = $this->languageModel->translateSlug($mediaType, $locale);
+                $mediaDetail = $this->postLanguageMediaModel->getBySlug($translateMediaSlug ,$detailSlug, $locale);
+                if($mediaDetail != null) {
+                    $post_id = $mediaDetail->post_id;
+                    $language_id = $this->languageModel->findByLocale(app()->getLocale())->id;
+                    $newPostDetail = $this->postLanguageMediaModel->findByAllIds($post_id, $language_id, $mediaDetail->media_id);
+                    $newDetailSlug = StringHelper::toSlug($newPostDetail->title);
+                    return redirect()->route('home.media.detail', ['mediaSlug' => $mediaSlug, 'detailSlug' => $newDetailSlug]);
+                }
+            }
             abort(404);
+        }
 
         return view('client.media-detail', [
             'title' => $title,

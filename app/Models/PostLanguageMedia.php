@@ -59,4 +59,15 @@ class PostLanguageMedia extends Model
         }
         return null;
     }
+
+    public function deleteByPostId($post_id) {
+        $all = $this->where('post_id', $post_id)->get();
+        foreach ($all as $item) {
+            $item->delete();
+        }
+    }
+
+    public function findByAllIds($post_id, $language_id, $media_id) {
+        return $this->where('post_id', $post_id)->where('language_id', $language_id)->where('media_id', $media_id)->first();
+    }
 }

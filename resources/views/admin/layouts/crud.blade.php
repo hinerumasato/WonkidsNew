@@ -49,7 +49,7 @@
             images_upload_base_path: @json(asset('uploads/posts')),
             relative_urls: false,
             remove_script_host: false,
-            extended_valid_elements: 'img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|media]',
+            extended_valid_elements: 'div[class|hspace|vspace|width|height|align|onmouseover|onmouseout|name|media]',
             plugins: 'customButton code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'customButton | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });

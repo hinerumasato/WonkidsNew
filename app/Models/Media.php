@@ -44,11 +44,12 @@ class Media extends Model
         return null;
     }
 
-    public function getTypeById($medias) {
+    public function getTypes($medias) {
         $types = [];
         foreach ($medias as $media) {
             $types[] = $this->find($media->media_id)->languages()->where('locale', app()->getLocale())->first()->pivot->name;
         }
         return $types;
     }
+
 }
