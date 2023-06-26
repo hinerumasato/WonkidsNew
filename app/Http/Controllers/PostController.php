@@ -38,6 +38,10 @@ class PostController extends Controller {
     }
 
     function postDetail($slug) {
+
+        $languageModel = new Language();
+        $postModel = new Post();
+
         $locale = session('locale') ?? 'vi';
         $language = Language::where('locale', $locale)->first();
         $postFind = $language->posts()->wherePivot('slug', $slug)->first();
@@ -54,6 +58,8 @@ class PostController extends Controller {
             }
 
         }
+
+        $posts = $postModel->getAllChildByLanguage($postFind->category->id, $language);
         
         $postTitle = $postFind->pivot->title;
         $postContent = $postFind->pivot->content;
@@ -64,11 +70,16 @@ class PostController extends Controller {
         $title = $postTitle;
         $this->smallSliderTitle = trans('general.11zones') ?? "Document";
 
+
+        $postDetailCategoryId = $postFind->category->id;
+
         return view('client.post-detail', [
                 'title' => $title, 
                 'post' => $post, 
                 'category' => $category,
                 'smallSliderTitle' => $this->smallSliderTitle,
+                'postDetailCategoryId' => $postDetailCategoryId,
+                'posts' => $posts,
             ]);
 
     }

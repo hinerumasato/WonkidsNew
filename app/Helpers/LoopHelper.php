@@ -31,7 +31,7 @@ class LoopHelper {
         return $html;
     }
 
-    public static function getIdArrayByData($data, $state = 'parent') {
+    public static function getIdArrayByData($data, $state = 'parent', $childCategoryId = 0) {
         $result = [];
         if($state === 'parent') {
             while($data != null) {
@@ -42,7 +42,7 @@ class LoopHelper {
         }
 
         else if($state === 'child') {
-            $childs = LoopHelper::dataTree($data, request()->input('category'));
+            $childs = LoopHelper::dataTree($data, $childCategoryId);
             foreach ($childs as $child) {
                 if($child['level'] == 0)
                     $result[] = $child['id'];
@@ -100,8 +100,9 @@ class LoopHelper {
     public static function buildCategorySubListHTML($data, $listClass, $itemClass, $linkClass) {
         
         $parentIds = LoopHelper::getIdArrayByData($data);
+        $childCategoryId = $data->id;
         $data = Category::all();
-        $childIds = LoopHelper::getIdArrayByData($data->toArray(), 'child');
+        $childIds = LoopHelper::getIdArrayByData($data->toArray(), 'child', $childCategoryId);
         
         $html = LoopHelper::buildFlatHTML($parentIds, $listClass, $itemClass, $linkClass);
         $html .= LoopHelper::buildFlatHTML($childIds, $listClass, $itemClass, $linkClass, 'child');

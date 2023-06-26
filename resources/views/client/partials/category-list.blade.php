@@ -2,7 +2,7 @@
     use App\Helpers\LoopHelper;
     use App\Models\Category;
 
-    $categoryHrefId = request()->input('category');
+    $categoryHrefId = request()->input('category') ?? $postDetailCategoryId;
     $parentIds = LoopHelper::getIdArrayByData(Category::find($categoryHrefId));
 
 @endphp
@@ -10,6 +10,10 @@
 {!! LoopHelper::buildCategorySubListHTML(Category::find($categoryHrefId) ,'category-list', 'category-item', 'category-link'); !!}
 
 <hr>
+
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/category-list.css') }}">
+@endpush
 
 @push('scripts')
     <script>
@@ -25,9 +29,9 @@
         function categoryHandle(itemSelector) {
             const categoryItems = document.querySelectorAll(itemSelector);
             categoryItems.forEach(item => {
-                const currentLink = window.location.href;
-                const itemLink = item.querySelector('a').href;
-                if(itemLink == currentLink)
+                const categoryHrefId = @json($categoryHrefId);
+                const itemCategoryId = item.querySelector('a').href.split('=')[item.querySelector('a').href.split('=').length - 1];
+                if(categoryHrefId == itemCategoryId)
                     item.classList.add('open');
                 else {
                     if(item.classList.contains('open'))
