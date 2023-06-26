@@ -60,19 +60,19 @@
             <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
             <ul class="wonkids_club_list container_list row">
                 <li class="container_item col-lg col-12">
-                    <a href="#" class="container_link">
+                    <a href="{{route('home.operation')}}" class="container_link">
                         <i class="fa-solid fa-user-group container_list_icon"></i>
                         <p>{{ trans('home.operating-instructions') }}</p>
                     </a>
                 </li>
                 <li class="container_item col-lg col-12">
-                    <a href="#" class="container_link">
+                    <a href="{{route('posts.index')}}" class="container_link">
                         <i class="fa-solid fa-book container_list_icon"></i>
                         <p>{{ trans('home.11-period') }}</p>
                     </a>
                 </li>
                 <li class="container_item col-lg col-12">
-                    <a href="#" class="container_link">
+                    <a href="{{route('home.media.index')}}" class="container_link">
                         <i class="fa-solid fa-video container_list_icon"></i>
                         <p>{{ trans('home.media-content') }}</p>
                     </a>
@@ -187,6 +187,16 @@
         if(msg != null) {
             window.location.replace(@json(route('home.index')) + '#qa');
         }
+    </script>
+
+    <script>
+        const containerItems = document.querySelectorAll('.container_item');
+        containerItems.forEach(item => {
+            const link = item.querySelector('a');
+            item.onclick = () => {
+                link.click();
+            }
+        });
     </script>
 
     <script src="{{asset('js/header.js')}}"></script>

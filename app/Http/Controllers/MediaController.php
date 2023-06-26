@@ -146,6 +146,7 @@ class MediaController extends Controller
         }
 
         $mediaNavs = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+        $type = $mediaDetail->getType();
 
         return view('client.media-detail', [
             'title' => $title,
@@ -156,6 +157,7 @@ class MediaController extends Controller
             'mediaSlugs' => $mediaSlugs,
             'detailSlugs' => $detailSlugs,
             'mediaNavs' => $mediaNavs,
+            'type' => $type,
         ]);
     }
 }

@@ -114,6 +114,7 @@
 
 
 .container_item {
+    cursor: pointer;
     border: solid 1px #EBEBEB;
     padding: 40px 20px;
     transition: all .3s;

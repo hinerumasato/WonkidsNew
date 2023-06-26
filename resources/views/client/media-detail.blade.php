@@ -15,9 +15,12 @@
     @include('client.partials.small-slider')
     @include('client.partials.small-nav')
     <div class="container my-5">
-        <p class="h3 fw-bold">
-            {{ $mediaDetail->title }}
-        </p>
+        <div class="row">
+            <p class="col-3 h4 fw-bold">{{ $type }}</p>
+            <p class="col-7 h4 fw-bold">
+                {{ $mediaDetail->title }}
+            </p>
+        </div>
 
         <div class="content">
             {!! $mediaDetail->content !!}

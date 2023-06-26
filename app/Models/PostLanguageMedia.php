@@ -70,4 +70,10 @@ class PostLanguageMedia extends Model
     public function findByAllIds($post_id, $language_id, $media_id) {
         return $this->where('post_id', $post_id)->where('language_id', $language_id)->where('media_id', $media_id)->first();
     }
+
+    public function getType() {
+        $mediaModel = new Media();
+        $name = $mediaModel->find($this->media_id)->languages()->where('locale', app()->getLocale())->first()->pivot->name;
+        return $name;
+    }
 }
