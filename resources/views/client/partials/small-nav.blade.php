@@ -45,7 +45,6 @@
     <script src="{{ asset('js/fittop.js') }}"></script>
     <script>
         const windowLink = window.location.href;
-        console.log(windowLink);
         const smallNavItems = document.querySelectorAll('.small-nav_item')
         smallNavItems.forEach(item => {
             const link = item.querySelector('a').getAttribute('href');

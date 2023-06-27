@@ -27,28 +27,30 @@ class Post extends Model
     }
 
     public function getAllChildByLanguage($category_id, $language) {
-        $posts = [];
+        $result = [];
 
         foreach($language->posts as $post) {
-            if($category_id == null)
-                $posts[] = $post->pivot;
+            if($category_id == null || $category_id == 0)
+                $result[] = $post->pivot;
             else {
 
                 if($post->category->id == $category_id)
-                    $posts[] = $post->pivot;
+                    $result[] = $post->pivot;
 
                 // Lấy các bài viết cấp con
                 $categories = Category::all(); 
                 $categoryTree = LoopHelper::dataTree($categories->toArray(), $category_id);
                 foreach ($categoryTree as $category) {
                     if($category['id'] == $post->category->id)
-                        $posts[] = $post->pivot;
+                        $result[] = $post->pivot;
                 }
 
             }
         }
 
-        return $posts;
+
+
+        return $result;
     }
 
     public function deleteOne($post_id) {

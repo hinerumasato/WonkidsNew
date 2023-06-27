@@ -40,7 +40,6 @@
             });
 
             const parentIds = @json($parentIds);
-            console.log(parentIds);
             parentIds.forEach(id => {
                 categoryItems.forEach(item => {
                     const itemId = parseInt(item.querySelector('a').href.split('=')[1]);

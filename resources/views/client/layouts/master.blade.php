@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{asset('css/home.css')}}">
         <link rel="stylesheet" href="{{asset('css/animation.css')}}">
         <link rel="stylesheet" href="{{asset('css/base.css')}}">
-        <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
+        {{-- <link rel="stylesheet" href="{{asset('css/normalize.css')}}"> --}}
         <link rel="stylesheet" href="{{asset('css/header.css')}}">
         <link rel="stylesheet" href="{{asset('css/footer.css')}}">
         <link rel="stylesheet" href="{{asset('css/about-us.css')}}">

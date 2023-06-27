@@ -170,7 +170,6 @@ function deleteUploaded() {
         const selectedImg = checkbox.parentNode.querySelector('img');
         const location = selectedImg.src;
         const result = await imageDeleteOneHandler(location);
-        console.log(result);
         if(result.message == 'success') {
             const wrap = selectedImg.parentNode;
             wrap.outerHTML = '';

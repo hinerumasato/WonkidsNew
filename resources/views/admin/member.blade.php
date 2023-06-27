@@ -220,7 +220,6 @@
 
     <script>
         function inboxTo(member) {
-            console.log(member);
             const inboxModal = document.querySelector('#sendMessageModal');
             const sendMessageForm = document.querySelector('.sendMessageForm')
             const to = inboxModal.querySelector('#to');

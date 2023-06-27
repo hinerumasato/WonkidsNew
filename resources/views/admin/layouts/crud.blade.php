@@ -51,6 +51,7 @@
             remove_script_host: false,
             extended_valid_elements: 'div[class|hspace|vspace|width|height|align|onmouseover|onmouseout|name|media]',
             plugins: 'customButton code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            contextmenu: 'image link customButton',
             toolbar: 'customButton | undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>

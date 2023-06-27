@@ -58,7 +58,7 @@ hr {
     animation: displayAnimation 0.3s linear 1 alternate;
 }
 
-.small-nav_sublist::before {
+/* .small-nav_sublist::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -66,7 +66,7 @@ hr {
     left: 0;
     top: 0px;
     background-color: transparent;
-}
+} */
 
 .small-nav_subitem {
     width: 200px;

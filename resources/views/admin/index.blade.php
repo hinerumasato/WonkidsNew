@@ -34,6 +34,7 @@
                         @endforeach
                     </select>
 
+
                     <button class="mb-md-0 mb-2 btn btn-danger d-none btn-delete-all" data-bs-toggle="modal"
                         data-bs-target="#deleteSelectModal">
                         <i class="fa-solid fa-trash"></i>
@@ -42,6 +43,7 @@
                 </div>
                 <a href="{{ route('admin.posts.add') }}" class="btn btn-primary add-post-btn">+ {{ trans('admin.add-post') }}</a>
             </div>
+            <input type="text" class="form-control mb-3" type="search" placeholder="Search..." id="post-search">
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
                     <thead>
@@ -89,6 +91,9 @@
                             @endforeach
                         @endif
                 </table>
+                <div class="mt-4">
+                    {!! $posts->links() !!}
+                </div>
             </div>
         </div>
     </div>
@@ -262,6 +267,19 @@
             }
         }
 
+        function searchPost() {
+            const searchInput = document.getElementById('post-search');
+            searchInput.onkeypress = e => {
+                if(e.key === 'Enter') {
+                    const  url = new URL(window.location.href);
+                    const searchValue = searchInput.value;
+                    url.searchParams.set('search', searchValue);
+                    window.location.replace(url.toString());
+                }
+            }
+        }
+
+        searchPost();
         checkAll();
         passDataToModal();
         changeSelect();

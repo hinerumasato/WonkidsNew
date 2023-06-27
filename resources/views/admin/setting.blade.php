@@ -226,7 +226,6 @@
             reader.addEventListener('load', (event) => {
                 const contents = event.target.result;
                 image.src = contents;
-                console.log(contents);
             });
 
             reader.readAsDataURL(file);

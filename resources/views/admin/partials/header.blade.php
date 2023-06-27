@@ -108,7 +108,6 @@
 
         }
 
-        console.log(checkHasUnreadMessage());
 
         if(checkHasUnreadMessage() == true) {
             messageIcon.classList.add('unread');

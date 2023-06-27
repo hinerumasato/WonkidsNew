@@ -4,16 +4,18 @@ tinymce.PluginManager.add('customButton', editor => {
         onAction: function() {
             const selectedMedia = editor.selection.getContent();
 
-            console.log(selectedMedia);
-
             if(!selectedMedia)
                 showErrorDialog(editor);
             else {
                 showMediaDialog(editor);
             }
         },
-    }) 
-})
+    });
+
+    editor.ui.registry.addContextMenu('customButton', {
+        update: (element) => 'customButton',
+    })
+});
 
 function showErrorDialog(editor) {
     editor.notificationManager.open({
@@ -70,7 +72,6 @@ function showMediaDialog(editor) {
             deleteItems.forEach(item => {
                 item.removeAttribute('media');
             });
-            console.log(node.outerHTML);
             editor.selection.setContent(node.outerHTML, {format: 'raw'});
             editor.windowManager.close();
         }

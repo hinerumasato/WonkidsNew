@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\LoopHelper;
-use App\Models\Category;
+use App\Helpers\PaginateHelper;
+use App\Helpers\StringHelper;
 use Illuminate\Http\Request;
 use App\Models\Language;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -13,41 +14,31 @@ class AdminController extends Controller
 {
     
     public function index(Request $request) {
+        $postModel = new Post();
         $languages = Language::all();
         $languageLocale = $request->input('post_lang') ?? 'vi';
         $post_category_id = $request->input('post_category') ?? 0;
         $languageId = Language::where('locale', $languageLocale)->first()->id;
         $language = Language::where('locale', $languageLocale)->first();
         $categories = Language::where('locale', $languageLocale)->first()->categories;
-        $posts = [];
+        $posts = $postModel->getAllChildByLanguage($post_category_id, $language, 4);
+        $posts = PaginateHelper::paginate($posts, 4, null, [
+            'path' => route('admin.index'),
+        ]);
 
-        if($post_category_id == 0) {
-            $temp = Language::where('locale', $languageLocale)->first()->posts;
-            foreach ($temp as $post) {
-                $posts[] = $post->pivot;
+        if($request->has('search')) {
+            $searchPosts = [];
+            $search = $request->search;
+            foreach ($posts as $post) {
+                $searchLower = StringHelper::toSlug($search);
+                $titleLower = StringHelper::toSlug($post->title);
+                if(str_contains($titleLower, $searchLower))
+                    $searchPosts[] = $post;
             }
-        }
-        else {
 
-            //Lấy ra tất cả các bài viết con
-            foreach($language->posts as $post) {
-                if($post_category_id == null)
-                    $posts[] = $post->pivot;
-                    else {
-    
-                        if($post->category->id == $post_category_id)
-                            $posts[] = $post->pivot;
-    
-                        $tempCategories = Category::all(); 
-                        $categoryTree = LoopHelper::dataTree($tempCategories->toArray(), $post_category_id);
-                        foreach ($categoryTree as $category) {
-                            if($category['id'] == $post->category->id)
-                                $posts[] = $post->pivot;
-                        }
-        
-                    }
-                }
+            $posts = $searchPosts;
         }
+
         $user = Auth::user();
         $msg = session('msg');
         return view('admin.index', [
@@ -73,6 +64,7 @@ class AdminController extends Controller
     }
 
     public function settingPost(Request $request) {
+
         $user = Auth::user();
 
         if($request->has('avatar')) {
@@ -88,14 +80,8 @@ class AdminController extends Controller
             $user->avatar = asset('uploads/avatars/'. $newAvatarName);
         }
 
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->company = $request->company;
-        $user->designation = $request->designation;
-        
-        $user->save();
+        $user->update($request->all());
+
         return redirect()->back();
     }
 }

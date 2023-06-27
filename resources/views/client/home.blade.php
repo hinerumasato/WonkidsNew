@@ -183,7 +183,6 @@
 @section('scripts')
     <script>
         let msg = @json(session('msg'));
-        console.log(msg);
         if(msg != null) {
             window.location.replace(@json(route('home.index')) + '#qa');
         }
