@@ -76,4 +76,14 @@ class PostLanguageMedia extends Model
         $name = $mediaModel->find($this->media_id)->languages()->where('locale', app()->getLocale())->first()->pivot->name;
         return $name;
     }
+
+    public function getTypes() {
+        $mediaModel = new Media();
+        $name = [];
+        $allMedia = $mediaModel->all();
+        foreach ($allMedia as $media) {
+            $name[] = $media->languages()->where('locale', app()->getLocale())->first()->pivot->name;
+        }
+        return $name;
+    }
 }

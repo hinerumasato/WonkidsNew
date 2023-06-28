@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
+use App\Models\Media;
 use App\Models\QA;
 
 class HomeController extends Controller {
@@ -17,11 +18,24 @@ class HomeController extends Controller {
     }
 
     public function index() {
+
+        $mediaModel = new Media();
+        $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+        $wonkidsSong = $medias[0];
+        $wonkidsStory = $medias[1];
+        $wonkidsCraft = $medias[2];
+        $wonkidsMemorize = $medias[3];
+        
+
         $title = trans('general.home') ?? "Document";
         $this->smallSliderTitle = $title;
         return view('client.home', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,
+            'wonkidsSong' => $wonkidsSong,
+            'wonkidsStory' => $wonkidsStory,
+            'wonkidsCraft' => $wonkidsCraft,
+            'wonkidsMemorize' => $wonkidsMemorize,
         ]);
     }
 

@@ -1,17 +1,3 @@
-@php
-    use App\Models\Category;
-    use App\Models\Language;
-    use App\Helpers\LoopHelper;
-
-    $currentLocale = app()->getLocale();
-    $currentLanguage = Language::where('locale', $currentLocale)->first();
-    $categories = $currentLanguage->categories;
-    $categoriesArr = LoopHelper::filterCategory($categories);
-    
-    $languages = Language::all();
-    $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
-@endphp
-
 <nav class="side-nav">
     <div class="side-nav-header bg-light d-flex align-items-center">
         <div class="px-3 d-flex w-100 justify-content-between">
@@ -72,14 +58,7 @@
                                 <i class="fa-solid fa-plus side-nav-icon"></i>
                             </button>
                         </span>
-                        @php
-                            echo LoopHelper::buildSideNavHTML(
-                                $oneLevelCategories, 
-                                'side-nav-submenu', 
-                                'side-nav-subitem', 
-                                'side-nav-sublink'
-                            );
-                        @endphp
+                        {!! $sideNav !!}
                     </li>
                     <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
                             class="side-nav-sublink">Nội dung truyền thông</a></li>

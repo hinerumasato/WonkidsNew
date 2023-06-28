@@ -21,10 +21,7 @@ class AdminController extends Controller
         $languageId = Language::where('locale', $languageLocale)->first()->id;
         $language = Language::where('locale', $languageLocale)->first();
         $categories = Language::where('locale', $languageLocale)->first()->categories;
-        $posts = $postModel->getAllChildByLanguage($post_category_id, $language, 4);
-        $posts = PaginateHelper::paginate($posts, 4, null, [
-            'path' => route('admin.index'),
-        ]);
+        $posts = $postModel->getAllChildByLanguage($post_category_id, $language);
 
         if($request->has('search')) {
             $searchPosts = [];
@@ -38,6 +35,10 @@ class AdminController extends Controller
 
             $posts = $searchPosts;
         }
+
+        $posts = PaginateHelper::paginate($posts, 10, null, [
+            'path' => route('admin.index'),
+        ]);
 
         $user = Auth::user();
         $msg = session('msg');

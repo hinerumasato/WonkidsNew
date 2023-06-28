@@ -1,25 +1,4 @@
-@php
-    use App\Models\Category;
-    use App\Models\Language;
-    use App\Models\Media;
-    use App\Helpers\LoopHelper;
-    use App\Helpers\StringHelper;
-    
-    $currentLocale = app()->getLocale();
-    $currentLanguage = Language::where('locale', $currentLocale)->first();
-    $categories = $currentLanguage->categories;
-    $categoriesArr = LoopHelper::filterCategory($categories);
-    
-    $languages = Language::all();
-    $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
-
-    $mediaModel = new Media();
-    $medias = $mediaModel->getAllByLocale(app()->getLocale());
-    
-@endphp
-
-<header class="row align-items-center home_header justify-content-between">
-
+<header class="w-100 row align-items-center home_header justify-content-between">
     <div class="d-xl-none d-block col-2">
         <button class="btn btn-light open-side-nav-btn">
             <i class="fa-solid fa-bars fs-2"></i>
@@ -27,11 +6,11 @@
         @include('client.partials.sidenav')
     </div>
 
-    <div class="col-xl-1 col-sm-2 col-4 header_left">
-        <img src="{{ asset('imgs/logo/logo.png') }}" alt="" class="header_logo w-100">
+    <div class="col-xl-1 col-sm-2 col-4 header_left justify-content-center d-flex">
+        <img src="{{ asset('imgs/logo/logo.png') }}" alt="" class="header_logo">
     </div>
-    <div class="col-xl-9 d-xl-block d-none header_center">
-        <ul class="header_menu_list d-xl-flex align-items-center">
+    <div class="col-xl-9 d-xl-block d-none header_center align-items-center px-5">
+        <ul class="header_menu_list d-xl-flex" style="height: 100%; margin: 0">
             <li class="header_menu_item d-flex justify-content-between"><a href="{{ route('home.index') }}"
                     class="header_menu_link">{{ trans('home.menu-item-1') }}</a></li>
             <li class="header_menu_item d-flex justify-content-between">
@@ -59,19 +38,15 @@
                             <a href="{{ route('posts.index') }}" class="header_sublink">
                                 {{ trans('home.11-period') }}
                             </a>
-                            @php
-                                echo LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
-                            @endphp
+                            
+                            {!! $subCategoriesList !!}
                         </li>
                         <li class="header_subitem">
                             <a href="{{ route('home.media.index') }}" class="header_sublink">{{ trans('home.media-content') }}</a>
                             <ul class="menu_submenu">
                                 @foreach ($medias as $media)
-                                    @php
-                                        $mediaSlug = StringHelper::toSlug($media->pivot->name)
-                                    @endphp
                                     <li class="menu_subitem">
-                                        <a href="{{route('home.media.index-slug', ['mediaSlug' => $mediaSlug])}}" class="menu_sublink">{{ $media->pivot->name }}</a>
+                                        <a href="{{route('home.media.index-slug', ['mediaSlug' => $media['slug']])}}" class="menu_sublink">{{ $media['name'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>

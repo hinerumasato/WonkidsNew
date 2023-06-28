@@ -68,6 +68,10 @@ hr {
     background-color: transparent;
 } */
 
+.media-contents_sublist {
+    left: 0;
+}
+
 .small-nav_subitem {
     width: 200px;
 }

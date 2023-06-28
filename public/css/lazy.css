@@ -1,0 +1,18 @@
+[lazy-element] {
+    opacity: 0;
+}
+
+[lazy-element="loaded"] {
+    animation: lazyFade 1s forwards;
+}
+
+@keyframes lazyFade {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

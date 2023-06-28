@@ -1,40 +1,26 @@
-@php
-    use App\Models\Category;
-    use App\Models\Language;
-    use App\Helpers\LoopHelper;
-
-    $currentLocale = app()->getLocale();
-    $currentLanguage = Language::where('locale', $currentLocale)->first();
-    $categories = $currentLanguage->categories;
-    $categoriesArr = [];
-    foreach($categories as $category) {
-        $temp = [];
-        $temp['id'] = $category->id;
-        $temp['name'] = $category->pivot->name;
-        $temp['parent_id'] = $category->parent_id;
-        $categoriesArr[] = $temp;
-    }
-
-    $oneLevelCategories = LoopHelper::buildHeaderHTML($categoriesArr);
-@endphp
-
-<div class="container mt-5 mb-4">
+<div class="container mt-5">
     <nav>
-        <ul class="small-nav_list d-flex justify-content-center">
+        <ul class="small-nav_list d-flex justify-content-center my-0">
             <li class="small-nav_item mx-3">
                 <a href="{{route('posts.index')}}">
                     {{ trans('home.11-period') }}
                     <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
-                @php
-                    echo LoopHelper::buildHTML($oneLevelCategories, 'small-nav_sublist', 'small-nav_subitem', 'small-nav_sublink');
-                @endphp
+                {!! $smallNavHTML !!}
             </li>
             <li class="small-nav_item mx-3">
                 <a href="{{route('home.media.index')}}">
                     {{ trans('home.media-content') }}
                     <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
+
+                <ul class="small-nav_sublist media-contents_sublist">
+                    @foreach ($medias as $media)
+                        <li class="small-nav_subitem">
+                            <a href="{{route('home.media.index-slug', ['mediaSlug' => $media['slug']])}}" class="small-nav_sublink">{{ $media['name'] }}</a>
+                        </li>
+                    @endforeach
+                </ul>
             </li>
         </ul>
     </nav>

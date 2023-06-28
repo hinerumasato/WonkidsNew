@@ -18,7 +18,9 @@
         <link rel="stylesheet" href="{{asset('css/about-us.css')}}">
         <link rel="stylesheet" href="{{asset('css/small-slider.css')}}">
         <link rel="stylesheet" href="{{asset('css/small-nav.css')}}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="{{asset('css/lazy.css')}}">
+        <link rel="stylesheet" href="{{asset('css/preloader.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         @yield('css')
         @stack('css')
@@ -32,7 +34,11 @@
     @include('client.partials.footer')
 
     <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('js/preloader.js')}}"></script>
+    <script src="{{asset('js/placeholder.js')}}"></script>
+    <script src="{{asset('js/lazy.js')}}"></script>
     @yield('scripts')
     @stack('scripts')
+
 </body>
 </html>

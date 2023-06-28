@@ -1,0 +1,23 @@
+#preloader {
+    z-index: 9999999;
+    background: lightgray;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#preloader.disappear {
+    animation: vanish 1s forwards;
+}
+
+@keyframes vanish {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
