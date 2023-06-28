@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\LoopHelper;
+use App\Helpers\PaginateHelper;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
@@ -27,11 +28,17 @@ class PostController extends Controller {
         $category_id = $request->input('category');
         $locale = app()->getLocale() ?? 'vi';
         $language = $languageModel->findByLocale($locale);
+        $posts = $postModel->getAllChildByLanguage($category_id, $language);
+        if($category_id) {
+            $posts = PaginateHelper::paginate($posts, 4, null, [
+                'path' => route('posts.index') . '?category='. $category_id,
+            ]);
+        }
         
 
         return view('client.post', [
                 'title' => $title, 
-                "posts" => $postModel->getAllChildByLanguage($category_id, $language),
+                "posts" => $posts,
                 'smallSliderTitle' => $this->smallSliderTitle,
             ]
         );
@@ -39,7 +46,6 @@ class PostController extends Controller {
 
     function postDetail($slug) {
 
-        $languageModel = new Language();
         $postModel = new Post();
 
         $locale = session('locale') ?? 'vi';
