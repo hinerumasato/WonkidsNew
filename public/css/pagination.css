@@ -1,0 +1,25 @@
+.page-link {
+    font-size: 13px;
+    color: #767676;
+    background-color: #F6F6F6;
+    padding: 1px 8px;
+}
+
+.page-link:hover {
+    font-size: 13px;
+    color: #767676;
+}
+
+.page-item {
+    margin: 0 3px;
+    font: 700 11px/22px Tahoma,Sans-serif;
+    border-radius: 2px;
+}
+
+.page-item.my-active > .page-link {
+    color: #D88700;
+}
+
+.page-item.my-active {
+    background-color: #F6F6F6;
+}
