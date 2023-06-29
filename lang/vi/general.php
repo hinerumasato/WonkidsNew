@@ -22,5 +22,7 @@ return [
     'document-share' => 'Chia sẻ tài liệu',
 
     '11zones' => '11 Thời kỳ',
+
+    'search' => 'Tìm kiếm',
     
 ];

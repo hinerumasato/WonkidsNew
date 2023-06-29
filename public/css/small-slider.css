@@ -19,7 +19,12 @@
 }
 
 .small-slider_title {
+    height: 246px;
     font-size: 36px;
     color: #fff;
     line-height: 246px;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }

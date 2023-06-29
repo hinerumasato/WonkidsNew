@@ -60,8 +60,22 @@
                         </span>
                         {!! $sideNav !!}
                     </li>
-                    <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                            class="side-nav-sublink">Nội dung truyền thông</a></li>
+                    <li class="side-nav-subitem">
+                        <span class="d-flex justify-content-between">
+                            <a href="{{ route('home.media.index') }}" class="side-nav-sublink">{{ trans('general.media') }}</a>
+                            <button class="side-nav-submenu-open-btn">
+                                <i class="fa-solid fa-plus side-nav-icon"></i>
+                            </button>
+                        </span>
+
+                        <ul class="side-nav-submenu">
+                            @foreach ($medias as $media)
+                                <li class="side-nav-subitem">
+                                    <a href="{{route('home.media.index-slug', ['mediaSlug' => $media['slug']])}}" class="side-nav-sublink">{{ $media['name'] }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                 </ul>
             </li>
 

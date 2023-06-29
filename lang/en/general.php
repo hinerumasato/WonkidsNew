@@ -21,4 +21,6 @@ return [
     'document-share' => 'Document sharing',
 
     '11zones' => '11 Zones',
+
+    'search' => 'Search',
 ];

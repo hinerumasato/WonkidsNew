@@ -15,4 +15,6 @@ return [
     'document-share' => 'Chia sẻ tài liệu',
 
     '11zones' => '11존',
+
+    'search' => 'Search',
 ];

@@ -30,7 +30,7 @@ class PostController extends Controller {
         $language = $languageModel->findByLocale($locale);
         $posts = $postModel->getAllChildByLanguage($category_id, $language);
         if($category_id) {
-            $posts = PaginateHelper::paginate($posts, 4, null, [
+            $posts = PaginateHelper::paginate($posts, 20, null, [
                 'path' => route('posts.index') . '?category='. $category_id,
             ]);
         }

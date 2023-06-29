@@ -13,6 +13,7 @@ use App\Helpers\StringHelper;
 class HeaderController extends Controller
 {
     public static function index($view) {
+        $mediaModel = new Media();
         $currentLocale = app()->getLocale();
         $currentLanguage = Language::where('locale', $currentLocale)->first();
         $categories = $currentLanguage->categories;
@@ -31,7 +32,6 @@ class HeaderController extends Controller
             'side-nav-subitem', 
             'side-nav-sublink'
         );
-        
 
         $view->with([
             'oneLevelCategories' => $oneLevelCategories,

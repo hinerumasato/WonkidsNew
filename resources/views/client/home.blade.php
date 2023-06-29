@@ -23,7 +23,7 @@
 
         <div class="wonkids_club_is container_content" lazy-element>
             <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
-            <ul class="wonkids_club_list container_list row">
+            <ul class="wonkids_club_list container_list row gap-3">
                 <li class="container_item col-lg col-12">
                     <a href="{{route('home.operation')}}" class="container_link">
                         <i class="fa-solid fa-user-group container_list_icon"></i>

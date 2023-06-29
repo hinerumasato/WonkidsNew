@@ -32,6 +32,41 @@ select {
     left: 14%;
 }
 
+.search-wrap {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.search-wrap.active {
+    border: 1px solid var(--main, #2A59FE);
+    border-radius: 8px;
+    background: var(--back-light, linear-gradient(0deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%), linear-gradient(0deg, rgba(42, 89, 254, 0.30) 0%, rgba(42, 89, 254, 0.30) 100%), #000);
+}
+
+.search-input {
+    color: #000;
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+}
+
+.search-input:focus {
+    outline: none !important;
+}
+
+.search-btn {
+    height: fit-content;
+    padding: 6px 12px;
+    width: 20px;
+}
+
+.search-icon {
+    display: inline-block;
+    margin-right: 16px;
+    color: #0b1d5c;
+}
+
 @media (max-width: 768px ) {
     select {
         width: 100%;
