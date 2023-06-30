@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\LocaleController;
 use App\Http\Controllers\API\MediaController;
 use App\Http\Controllers\API\MediaStagingAreaController;
 use App\Http\Controllers\API\UploadImgController;
@@ -34,3 +35,4 @@ Route::delete('/delete-img-area', [UploadImgController::class, 'deleteOne'])->na
 Route::post('/media/area/upload', [MediaStagingAreaController::class, 'upload'])->name('upload-media-area');
 Route::post('/media/upload', [MediaController::class, 'upload'])->name('upload-media');
 
+Route::post('/locale/change', [LocaleController::class, 'changeLocale'])->name('change-locale');

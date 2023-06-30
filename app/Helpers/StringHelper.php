@@ -62,4 +62,10 @@ class StringHelper {
     public static function generateToken($data) {
         return str_replace('/', '_', bcrypt($data.StringHelper::randomString()));
     }
+
+    public static function getParseUrlPath($oldPath) {
+        $path = parse_url($oldPath, PHP_URL_PATH);
+        $path = substr($path, 1);
+        return $path;
+    }
 }

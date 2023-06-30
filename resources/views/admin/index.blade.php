@@ -62,8 +62,10 @@
                     <tbody>
 
                         @if (session('msg'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <i class="fa fa-exclamation-circle me-2"></i>
                                 {{ session('msg') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
 
@@ -152,6 +154,7 @@
         const languageLocale = @json($languageLocale);
         const postCategoryId = @json($post_category_id);
         const deleteLink = @json(route('admin.posts.deleteMany'));
+        const changeLocaleLink = @json(route('change-language', ['locale' => 'vi']));
     </script>
     <script src="{{asset('js/index.js')}}"></script>
 @endsection

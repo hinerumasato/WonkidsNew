@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'previous' => 'Next page',
-    'next' => 'Previous page',
+    'previous' => 'Trang trước',
+    'next' => 'Trang sau',
 
 
 

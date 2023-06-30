@@ -12,8 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-
-    'error' => 'Something went wrong',
+    'error' => 'Đã xảy ra lỗi',
     'accepted' => 'The :attribute must be accepted.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
     'active_url' => 'The :attribute is not a valid URL.',
@@ -126,7 +125,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => 'Trường :attribute không được bỏ trống',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',
@@ -151,7 +150,7 @@ return [
     'url' => 'The :attribute must be a valid URL.',
     'ulid' => 'The :attribute must be a valid ULID.',
     'uuid' => 'The :attribute must be a valid UUID.',
-    'old_password' => "The old password doesn't match with your password",
+    'old_password' => "Mật khẩu cũ không đúng",
 
     /*
     |--------------------------------------------------------------------------
@@ -165,19 +164,17 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
         'old-password' => [
-            'required' => 'Field is required',
+            'required' => 'Không được bỏ trống',
         ],
 
         'new-password' => [
-            'required' => 'Field is required',
+            'required' => 'Không được bỏ trống',
         ],
 
         'new-password_confirmation' => [
-            'required' => 'Field is required',
+            'required' => 'Không được bỏ trống',
+            'confirmed' => 'Nhập lại mật khẩu không đúng',
         ],
     ],
 
@@ -193,9 +190,9 @@ return [
     */
 
     'attributes' => [
-        'old-password' => 'Old password',
-        'new-password' => 'New password',
-        'new-password_confirmation' => 'Confirm new pasword',
+        'old-password' => 'Mật khẩu cũ',
+        'new-password' => 'Mật khẩu mới',
+        'new-password_confirmation' => 'Nhập lại mật khẩu mới',
     ],
 
 ];

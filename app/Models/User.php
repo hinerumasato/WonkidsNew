@@ -64,4 +64,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function findById($id) {
         return $this->find($id);
     }
+
+    public function saveUser($user) {
+        $user->save();
+    }
 }

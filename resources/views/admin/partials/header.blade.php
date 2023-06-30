@@ -78,7 +78,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <a href="{{ route('admin.profile') }}" class="dropdown-item">{{ trans('admin.header.my-profile') }}</a>
-                <a href="{{ route('admin.setting') }}" class="dropdown-item">{{ trans('admin.header.settings') }}</a>
+                <a href="{{ route('admin.setting.account') }}" class="dropdown-item">{{ trans('admin.header.settings') }}</a>
                 <a href="{{ route('logout') }}" class="dropdown-item"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ trans('admin.header.logout') }}</a>
             </div>

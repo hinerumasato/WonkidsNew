@@ -1,3 +1,9 @@
+function getChangeLocaleLink(link, locale) {
+    const linkArr = link.split('/');
+    const format = linkArr.reduce((acc, curr, index) => index < linkArr.length - 1 ? acc.concat('/').concat(curr) : acc.concat(`/${locale}`));
+    return format;
+}
+
 function changeSelect() {
     let link = new URL(window.location.href);
     const params = new URLSearchParams();
@@ -11,7 +17,7 @@ function changeSelect() {
     const option = categorySelect.options[categorySelect.selectedIndex];
     option.textContent = option.getAttribute('categoryText');
 
-    languageSelect.onchange = () => {
+    languageSelect.onchange = async () => {
         link = new URL(window.location.href);
         const selectedIndex = languageSelect.selectedIndex;
         params.append('post_lang', languageSelect.value);

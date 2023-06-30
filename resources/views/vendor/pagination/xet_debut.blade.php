@@ -37,11 +37,17 @@
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                            <span class="page-link" aria-hidden="true">Trang trước</span>
+                            <span class="page-link" aria-hidden="true">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                @lang('pagination.previous')
+                            </span>
                         </li>
                     @else
                         <li class="page-item">
-                            <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">Trang trước</a>
+                            <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                @lang('pagination.previous')
+                            </a>
                         </li>
                     @endif
 
@@ -67,11 +73,17 @@
                     {{-- Next Page Link --}}
                     @if ($paginator->hasMorePages())
                         <li class="page-item">
-                            <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">Trang sau</a>
+                            <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">
+                                @lang('pagination.next')
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </li>
                     @else
                         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                            <span class="page-link" aria-hidden="true">Trang sau</span>
+                            <span class="page-link" aria-hidden="true">
+                                @lang('pagination.next')
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </span>
                         </li>
                     @endif
                 </ul>

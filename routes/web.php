@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminMemberController;
 use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\AdminQAController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Auth;
@@ -25,10 +26,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes(['verify' => true]);
 
 
-Route::get("/chang-language/{locale}", function($locale) {
-    session()->put('locale', $locale);
-    return redirect()->back();
-})->name("change-language");
+Route::get("/chang-language/{locale}", [LocaleController::class, 'changeLocale'])->name("change-language");
 
 Route::prefix('/mail')->name('mail.')->group(function() {
     Route::get('/success/{token}', [MailController::class, 'success'])->name('success');
@@ -60,8 +58,13 @@ Route::prefix("/posts")->name("posts.")->group(function() {
 Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin.")->group(function() {
     Route::get("/", [AdminController::class, 'index'])->name('index');
     Route::get("/profile", [AdminController::class, 'profile'])->name('profile');
-    Route::get("/setting", [AdminController::class, 'setting'])->name('setting');
-    Route::post("/setting", [AdminController::class, 'settingPost'])->name('settingPost');
+    Route::prefix("/setting")->name('setting.')->group(function() {
+        Route::get('/account', [AdminController::class, 'account'])->name('account');
+        Route::post('/account', [AdminController::class, 'accountPost'])->name('accountPost');
+        Route::get('/password', [AdminController::class, 'password'])->name('password');
+        Route::post('/password', [AdminController::class, 'passwordPost'])->name('passwordPost');
+    });
+
     Route::prefix('/qa')->name('qa.')->group(function() {
         Route::get("/", [AdminQAController::class, 'index'])->name('index');
         Route::get('/answer/{id}', [AdminQAController::class, 'answer'])->name('answer');

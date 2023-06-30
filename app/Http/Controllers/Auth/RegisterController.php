@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -70,7 +71,7 @@ class RegisterController extends Controller
         $roleMember = Role::where('name', 'member')->first();
         if(array_key_exists('avatar', $data)) {
             $avatarRequest = $data['avatar'];
-            $avatar_name = $avatarRequest->getClientoriginalName();
+            $avatar_name = Str::uuid($avatarRequest->getClientoriginalName()) . '.' . $avatarRequest->getClientoriginalExtension();
             $avatarRequest->move(public_path('uploads/avatars'), $avatar_name);
             $avatar = asset('uploads/avatars/'. $avatar_name);
         }
