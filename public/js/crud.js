@@ -1,5 +1,13 @@
 const state = window.location.href === addPostLink ? 'add' : 'edit';
 
+function isImageFile(extension) {
+    return extension === 'jpg' || 
+           extension === 'png' || 
+           extension === 'jepg' ||
+           extension === 'gif' ||
+           extension === 'bmp';
+}
+
 function imageUploadHandler(blobInfo) {
     return new Promise(async (resolve, reject) => {
         const formData = new FormData();
@@ -19,16 +27,22 @@ function imageUploadHandler(blobInfo) {
             body: formData,
         });
 
+        
         const json = await api.json();
-
+        
         if (!json || typeof json.location != 'string') {
             reject('Invalid JSON: ');
             return;
         }
 
-        appendLocation(json.location);
+        if(isImageFile(json.extension))
+            appendImgLocation(json.location);
+        else {
+            appendOtherFileLocation(json);
+        }
+
         if(blobInfo instanceof MyBlobInfo)
-            insertToPostDuringUpload(json.location);
+            insertToPostDuringUpload(json);
         resolve(json.location);
     });
 }
@@ -70,8 +84,6 @@ function onSubmitHandler() {
             });
             form.submit();
         }
-
-
         
     }
 }
@@ -95,15 +107,14 @@ async function imageDeleteOneHandler(location) {
 
 function deleteFromPost(location) {
     const editor = tinymce.get('crudArea');
-    const elements = editor.dom.select(`img[src="${location}"]`);
+    const elements = editor.dom.select(`img[src="${location}"],a[href="${location}"]`);
     elements.forEach(element => {
-        if(element.nodeName === 'IMG')
-            editor.dom.remove(element);
-    })
+        editor.dom.remove(element);
+    });
 }
 
 
-function appendLocation(location) {
+function appendImgLocation(location) {
     const postImgs = document.querySelector('.upload-post-info-imgs');
     const wrap = document.createElement('div')
     const img = document.createElement('img');
@@ -118,6 +129,23 @@ function appendLocation(location) {
     postImgs.appendChild(wrap);
     postImgListener();
 
+}
+
+function appendOtherFileLocation(json) {
+    const postOthers = document.querySelector('.upload-post-info-others');
+    const wrap = document.createElement('div');
+    const anchor = document.createElement('a');
+    const checkbox = document.createElement('input');
+
+    anchor.href = json.location;
+    anchor.className = 'upload-post-info-link';
+    anchor.innerText = json.name;
+    checkbox.type = 'checkbox';
+    wrap.className = 'upload-post-info-wrap';
+    wrap.appendChild(anchor);
+    wrap.appendChild(checkbox);
+    postOthers.appendChild(wrap);
+    postOtherListener();
 }
 
 function fileListener(fileSelector) {
@@ -141,37 +169,65 @@ function postImgListener() {
     })
 }
 
+function postOtherListener() {
+    const files = document.querySelectorAll('.upload-post-info-others .upload-post-info-link');
+    files.forEach(file => {
+        file.onclick = () => {
+            const checkbox = file.parentNode.querySelector('input');
+            checkbox.checked = !checkbox.checked;
+        }
+    })
+}
+
+
+function insertToPostDuringUpload(file) {
+
+    const location = file.location;
+    const editor = tinymce.get('crudArea');
+    const wrap = editor.dom.create('p');
+
+    if(isImageFile(file.extension)) {
+        const newImg = editor.dom.create('img', {
+            'src': location,
+            'class': 'upload-post-info-img',
+        });
+        wrap.appendChild(newImg);
+    }
+
+    else {
+        const newLink = editor.dom.create('a', {
+            'href': location,
+            'class': 'upload-post-info-link',
+        });
+        wrap.appendChild(newLink);
+    }
+    editor.dom.add(editor.selection.getNode(), wrap);
+}
+
 function insertToPost() {
     const checkboxs = document.querySelectorAll('input[type="checkbox"]:checked');
     checkboxs.forEach(checkbox => {
         const selectedImg = checkbox.parentNode.querySelector('img');
+        const selectedOtherFile = checkbox.parentNode.querySelector('a');
+        const outerHTML = selectedImg ? selectedImg.outerHTML : selectedOtherFile.outerHTML;
+        
         const editor = tinymce.get('crudArea');
         editor.focus();
-        editor.execCommand('mceInsertContent', false, `<p> ${selectedImg.outerHTML} </p>`);
+        editor.execCommand('mceInsertContent', false, `<p> ${outerHTML} </p>`);
     });
 }
-
-function insertToPostDuringUpload(location) {
-    const editor = tinymce.get('crudArea');
-    const wrapImg = editor.dom.create('p');
-    const newImg = editor.dom.create('img', {
-        'src': location,
-        'class': 'upload-post-info-img',
-    });
-
-    wrapImg.appendChild(newImg);
-
-    editor.dom.add(editor.selection.getNode(), wrapImg);
-} 
 
 function deleteUploaded() {
     const checkboxs = document.querySelectorAll('input[type="checkbox"]:checked');
     checkboxs.forEach(async checkbox => {
         const selectedImg = checkbox.parentNode.querySelector('img');
-        const location = selectedImg.src;
+        const selectedOtherFile = checkbox.parentNode.querySelector('a');
+        const location = selectedImg ? selectedImg.src : selectedOtherFile.href;
+
         const result = await imageDeleteOneHandler(location);
+        
         if(result.message == 'success') {
-            const wrap = selectedImg.parentNode;
+            const wrap = selectedImg ? selectedImg.parentNode : selectedOtherFile.parentNode;
             wrap.outerHTML = '';
         }
 
@@ -188,3 +244,4 @@ function fileHandler() {
 postImgListener();
 fileListener('.file-post-input');
 onSubmitHandler();
+postOtherListener();

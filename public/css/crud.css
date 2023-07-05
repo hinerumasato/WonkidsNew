@@ -30,6 +30,33 @@
     position: relative;
 }
 
+.upload-post-info-others {
+    padding: 0 30px;
+}
+
+.upload-post-info-others .upload-post-info-wrap {
+    display: flex;
+}
+
+.upload-post-info-link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.upload-post-info-link:hover {
+    text-decoration: underline;
+}
+
+.upload-post-info-others .upload-post-info-wrap > .upload-post-info-link {
+    display: block;
+    width: 100%;
+}
+
+.upload-post-info-others .upload-post-info-wrap > input {
+    position: relative;
+}
+
 .upload-post-info-wrap > input {
     position: absolute;
     top: 0;

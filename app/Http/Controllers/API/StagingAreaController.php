@@ -14,18 +14,23 @@ class StagingAreaController extends Controller
 
     public function upload(Request $request) {
 
-        $image = $request->file('file');
+        $file = $request->file('file');
+        $extension = $file->guessExtension();
+        $originName = $file->getClientOriginalName();
+
         
-        
-        $uuidFile = Str::uuid($image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('uploads/posts'), $uuidFile);
+        $uuidFile = Str::uuid($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads/posts'), $uuidFile);
 
         StagingArea::create([
             'link' => asset('uploads/posts/'. $uuidFile),
+            'name' => $originName,
         ]);
 
         return response()->json([
             'location' => asset('uploads/posts/'. $uuidFile),
+            'name' => $originName,
+            'extension' => $extension,
         ], 200);
     }
 

@@ -15,13 +15,22 @@
     <div class="upload-post-info">
         <div class="d-flex justify-content-end">
             <div class="file-action-btn" onclick="insertToPost();">Chèn vào bài viết</div>
-            <div class="file-action-btn" onclick="deleteUploaded();">Xoá file đã chọn</div>
+            <div class="file-action-btn" onclick="deleteUploaded();">Xoá khỏi bài viết</div>
         </div>
 
         <div class="upload-post-info-imgs d-flex">
             @foreach ($imgLinks as $link)
                 <div class="upload-post-info-wrap">
                     <img src="{{ $link }}" alt="" class="upload-post-info-img">
+                    <input type="checkbox" name="" id="">
+                </div>
+            @endforeach
+        </div>
+
+        <div class="upload-post-info-others">
+            @foreach ($otherFiles as $file)
+                <div class="upload-post-info-wrap">
+                    <a href="{{ $file->link }}" class="upload-post-info-link">{{ $file->name }}</a>
                     <input type="checkbox" name="" id="">
                 </div>
             @endforeach

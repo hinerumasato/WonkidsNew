@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Helpers\LoopHelper;
 use Illuminate\Http\Request;
+use App\Helpers\StringHelper;
+
 use App\Models\Language;
 use App\Models\Post;
-use App\Helpers\StringHelper;
 use App\Models\Media;
 use App\Models\MediaStagingArea;
 use App\Models\PostLanguageMedia;
 use App\Models\PostLanguageUploadImg;
 use App\Models\StagingArea;
 use App\Models\UploadImg;
-use Illuminate\Support\Facades\File;
 
 class AdminPostController extends Controller
 {
     public function index(Request $request) {
-        $title = 'Đăng bài';
+        $title = trans('crud.add-post');
         $areaModel = new StagingArea();
         $mediaModel = new Media();
         $languageLocale = $request->input('post_lang') ?? 'vi';
@@ -27,7 +27,8 @@ class AdminPostController extends Controller
         $categoriesArr = LoopHelper::filterCategory($categories);
         $categories = LoopHelper::dataTree($categoriesArr);
         $languages = Language::all();
-        $imgLinks = $areaModel->getAllLinks();
+        $imgLinks = $areaModel->getImgLinks();
+        $otherFiles = $areaModel->getAllOtherFiles();
 
         $data = [
             "title" => '',
@@ -41,6 +42,7 @@ class AdminPostController extends Controller
                 "languages" => $languages, 
                 "languageLocale" => $languageLocale, 
                 "imgLinks" => $imgLinks,
+                "otherFiles" => $otherFiles,
                 "title" => $title,
                 "data" => $data,
             ]
@@ -49,7 +51,7 @@ class AdminPostController extends Controller
     }
 
     public function editIndex($post_id, $language_id) {
-        $title = 'Sửa bài';
+        $title = trans('crud.edit-post');
         $categories = Language::find($language_id)->categories;
         $categoriesArr = LoopHelper::filterCategory($categories);
         $categories = LoopHelper::dataTree($categoriesArr);
@@ -58,12 +60,25 @@ class AdminPostController extends Controller
         $category_id = $post->category_id;
         $language = $post->languages->where('id', $language_id)->first();
         $mediaModel = new Media();
+        $uploadImgModel = new UploadImg();
         
         $imgUploads = PostLanguageUploadImg::where('post_id', $post_id)->where('language_id', $language_id)->get();
         $imgLinks = [];
+        $otherFiles = [];
         if(count($imgUploads) > 0) {
-            foreach ($imgUploads as $img)
-                $imgLinks[] = UploadImg::find($img->upload_img_id)->link;
+            foreach ($imgUploads as $img) {
+                $uploadImg = $uploadImgModel->findById($img->upload_img_id);
+                $link = $uploadImg->link;
+                $extension = StringHelper::getExtension($link);
+                if(StringHelper::isImageFile($extension))
+                    $imgLinks[] = $link;
+                else {
+                    //This $img is not a img, this is a .docx, .pdf file so i change it to the new variable to store it
+                    $otherFile = $uploadImg;
+                    $otherFiles[] = $otherFile;
+                }
+
+            }
             
         }
 
@@ -82,6 +97,7 @@ class AdminPostController extends Controller
                 "categories" => $categories, 
                 "languages" => $languages, 
                 "imgLinks" => $imgLinks,
+                "otherFiles" => $otherFiles,
                 "title" => $title,
             ]
         );
@@ -106,6 +122,7 @@ class AdminPostController extends Controller
         foreach ($areas as $area) {
             $uploadImgs[] = UploadImg::create([
                 'link' => $area->link,
+                'name' => $area->name,
             ]);
             StagingArea::destroy($area->id);
         }

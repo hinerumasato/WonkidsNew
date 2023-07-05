@@ -39,7 +39,7 @@
     <script src="https://cdn.tiny.cloud/1/pd9ebc8uusu182469qo1vzpwdf8zyocpvs7jp1qotwdh1c08/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="{{ asset('js/crud.js') }}"></script>
-    <script src="{{asset('js/plugin.js')}}"></script>
+    <script src="{{ asset('js/plugin.js') }}"></script>
     <script src="{{ asset('js/MyBlobInfo.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script>

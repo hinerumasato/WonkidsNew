@@ -68,4 +68,16 @@ class StringHelper {
         $path = substr($path, 1);
         return $path;
     }
+
+    public static function isImageFile($extension) {
+        return $extension === 'jpg' || 
+               $extension === 'png' || 
+               $extension === 'jepg' ||
+               $extension === 'gif' ||
+               $extension === 'bmp';
+    }
+
+    public static function getExtension($fileName) {
+        return explode('.', $fileName)[1];
+    }
 }
