@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrapFive();
-        Paginator::useTailwind();
 
         View::composer('client.partials.header', function($view) {
             app()->call([HeaderController::class, 'index'], ['view' => $view]);

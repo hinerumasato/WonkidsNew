@@ -3,7 +3,6 @@ class MyBlobInfo {
     constructor(file) {
         this.file = file;
         this.name = file.name;
-
     };
 
     createBlob() {

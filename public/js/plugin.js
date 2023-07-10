@@ -11,10 +11,6 @@ tinymce.PluginManager.add('customButton', editor => {
             }
         },
     });
-
-    editor.ui.registry.addContextMenu('customButton', {
-        update: (element) => 'customButton',
-    })
 });
 
 function showErrorDialog(editor) {
@@ -77,3 +73,4 @@ function showMediaDialog(editor) {
         }
     });
 }
+
