@@ -18,9 +18,15 @@ return [
     'camp' => 'Wonderful Story Camp',
     'wonkidsclub' => 'Wonkids club',
     'share' => 'Share',
+    'introduction' => 'Introduction',
     'document-share' => 'Document sharing',
+    'email' => 'Email',
 
     '11zones' => '11 Zones',
 
     'search' => 'Search',
+
+    'book' => 'Wonderful Story Book',
+    'camp' => 'Wonderful Story Camp',
+    'club' => 'Wonkids Club',
 ];

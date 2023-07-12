@@ -122,12 +122,12 @@
                     {{ session('msg') }}
                 </div>
             @endif
-            <h2 class="container_content_title">Hỏi đáp</h2>
+            <h2 class="container_content_title">@lang('home.qa')</h2>
             <form action="" method="POST">
                 @csrf
                 <div class="container_form_up">
                     <input type="text" name="name" id="name" placeholder="{{trans('general.name')}}*">
-                    <input type="email" name="email" id="email" placeholder="Email*">
+                    <input type="email" name="email" id="email" placeholder="{{trans('general.email')}}*">
                     <input type="text" name="phone" id="tel" placeholder="{{trans('general.tel')}}">
                 </div>
                 <input type="text" name="title" id="" placeholder="{{trans('general.title')}}" class="title_input">

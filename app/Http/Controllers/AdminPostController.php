@@ -181,7 +181,7 @@ class AdminPostController extends Controller
                 $post->languages()->attach([
                     $id => [
                         "title" => $title, 
-                        "content" => "null",
+                        "content" => $content,
                         "slug" => StringHelper::toSlug($title),
                     ],
                 ]);
