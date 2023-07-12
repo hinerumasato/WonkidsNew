@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminMemberController;
 use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\AdminQAController;
+use App\Http\Controllers\AdminUIController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
@@ -89,5 +90,9 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
     Route::prefix('/messages')->name('messages.')->group(function() {
         Route::get('/detail/{id}', [AdminMessageController::class, 'detail'])->name('detail');
         Route::post('/send', [AdminMessageController::class, 'postSend'])->name('send');
+    });
+
+    Route::prefix('/ui')->name('ui.')->group(function() {
+        Route::get('/slider', [AdminUIController::class, 'slider'])->name('slider');
     });
 });

@@ -29,5 +29,4 @@ class MyBlobInfo {
         return await this.createBlob();
     };
 
-
 }

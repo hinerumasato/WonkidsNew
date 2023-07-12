@@ -39,4 +39,7 @@ return [
     'header.my-profile' => 'Tài khoản của tôi',
     'header.settings' => 'Cài đặt',
     'header.logout' => 'Đăng xuất',
+
+    //ui setting
+    'ui.setting' => 'Thiết lập giao diện',
 ];

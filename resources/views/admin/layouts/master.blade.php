@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
+    <link href="{{asset('css/variable.css')}}" rel="stylesheet">
 
     @yield('css')
 </head>

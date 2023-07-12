@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Partials\AdminLayoutController;
 use App\Http\Controllers\Partials\CategoryController;
 use App\Http\Controllers\Partials\HeaderController;
 use App\Http\Controllers\Partials\SmallNavController;
@@ -29,8 +30,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //Paginator
         Paginator::useBootstrapFive();
 
+        //Client
         View::composer('client.partials.header', function($view) {
             app()->call([HeaderController::class, 'index'], ['view' => $view]);
         });
@@ -45,6 +48,11 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('client.partials.category-img', function($view) {
             app()->call([CategoryController::class, 'index'], ['view' => $view]);
+        });
+
+        //Admin
+        View::composer('admin.layouts.master', function($view) {
+            app()->call([AdminLayoutController::class, 'index'], ['view' => $view]);
         });
     }
 }

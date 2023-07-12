@@ -40,4 +40,7 @@ return [
     'header.my-profile' => 'My Profile',
     'header.settings' => 'Settings',
     'header.logout' => 'Logout',
+
+    //ui setting
+    'ui.setting' => 'UI Setting',
 ];

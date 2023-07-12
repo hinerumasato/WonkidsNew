@@ -18,6 +18,7 @@
             <a href="{{route('admin.index')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>{{ trans('admin.posts') }}</a>
             <a href="{{route('admin.qa.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>{{ trans('admin.qa') }}</a>
             <a href="{{route('admin.member.index')}}" class="nav-item nav-link"><i class="fa-solid fa-users"></i>{{ trans('admin.members') }}</a>
+            <a href="{{route('admin.ui.slider')}}" class="nav-item nav-link"><i class="fa-solid fa-display"></i>@lang('admin.ui.setting')</a>
         </div>
     </nav>
 </div>
