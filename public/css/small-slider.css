@@ -16,6 +16,7 @@
 .small-slider_img {
     width: 300px;
     height: auto;
+    align-items: center;
 }
 
 .small-slider_title {
@@ -27,4 +28,10 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+}
+
+@media (max-width: 990px) {
+    .small-slider_img_wrap {
+        flex-direction: column;
+    }
 }

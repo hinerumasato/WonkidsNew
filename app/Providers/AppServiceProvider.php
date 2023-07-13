@@ -8,6 +8,7 @@ use App\Http\Controllers\Partials\CategoryController;
 use App\Http\Controllers\Partials\HeaderController;
 use App\Http\Controllers\Partials\SmallNavController;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
+        if (env('APP_ENV') === 'production') {
+            URL::forceScheme('https');
+        }
+
         //Paginator
         Paginator::useBootstrapFive();
 

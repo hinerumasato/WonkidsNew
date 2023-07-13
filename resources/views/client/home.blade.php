@@ -103,19 +103,6 @@
             </div>
         </div>
 
-        <div class="container_content" lazy-element>
-            <h2 class="container_content_title">{{ trans('home.notification-content') }}</h2>
-            <a class="notification_link" href="#">
-                <img src="{{asset('imgs/notifications/notification1.jpg')}}" alt="" class="notification_img">
-                <p class="notification_description">Tôi đang xây dựng một trang web</p>
-            </a>
-            <div class="container_icon">
-                <span class="with_icon"></span>
-                <span class="diamond_icon"></span>
-                <span class="with_icon"></span>
-            </div>
-        </div>
-
         <div id="qa" class="container_content contact_content" lazy-element>
             @if (session('msg'))
                 <div class="alert alert-success">

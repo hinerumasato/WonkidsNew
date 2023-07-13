@@ -136,7 +136,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-3 col-xl header_right">
+    <div class="col-2 col-xl header_right">
         <div class="header_right_languages d-xl-flex d-none">
             <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img class="flag-img"
                     src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}" alt=""></a>

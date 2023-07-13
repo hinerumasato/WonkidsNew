@@ -32,12 +32,16 @@
                     </button>
                 </div>
                 <ul class="side-nav-submenu">
-                    <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                            class="side-nav-sublink">Khái
-                            quát</a></li>
-                    <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                            class="side-nav-sublink">Điều
-                            hành</a></li>
+                    <li class="side-nav-subitem">
+                        <a href="{{ route('home.about-us') }}" class="side-nav-sublink">
+                            @lang('general.introduction')
+                        </a>
+                    </li>
+                    <li class="side-nav-subitem">
+                        <a href="{{ route('home.operation') }}" class="side-nav-sublink">
+                            @lang('general.operation')
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -53,7 +57,7 @@
                 <ul class="side-nav-submenu">
                     <li class="side-nav-subitem">
                         <span class="d-flex justify-content-between">
-                            <a href="{{ route('posts.index') }}" class="side-nav-sublink d-flex">11 Thời Kỳ</a>
+                            <a href="{{ route('posts.index') }}" class="side-nav-sublink d-flex">@lang('general.11zones')</a>
                             <button class="side-nav-submenu-open-btn">
                                 <i class="fa-solid fa-plus side-nav-icon"></i>
                             </button>
@@ -90,30 +94,11 @@
                 </div>
                 <ul class="side-nav-submenu">
                     <li class="side-nav-subitem"><a href="{{ route('home.book') }}"
-                            class="side-nav-sublink">Wonderful Story Book</a></li>
+                            class="side-nav-sublink">@lang('general.book')</a></li>
                     <li class="side-nav-subitem"><a href="{{ route('home.camp') }}"
-                            class="side-nav-sublink">Wonderful Story Camp</a></li>
+                            class="side-nav-sublink">@lang('general.camp')</a></li>
                     <li class="side-nav-subitem"><a href="{{ route('home.wonkidsclub') }}"
-                            class="side-nav-sublink">Wonkids Club</a></li>
-                </ul>
-            </li>
-
-            <li class="side-nav-item">
-                <div class="d-flex justify-content-between">
-                    <a href="#" class="side-nav-link">
-                        {{ trans('home.menu-item-5') }}
-                    </a>
-                    <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-plus side-nav-icon"></i>
-                    </button>
-                </div>
-                <ul class="side-nav-submenu">
-                    <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                            class="side-nav-sublink">Khái
-                            quát</a></li>
-                    <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                            class="side-nav-sublink">Điều
-                            hành</a></li>
+                            class="side-nav-sublink">@lang('general.club')</a></li>
                 </ul>
             </li>
             
@@ -127,13 +112,22 @@
                     </button>
                 </div>
                 <ul class="side-nav-submenu">
-                    <li class="side-nav-subitem"><a href="{{ route('home.about-us') }}"
-                            class="side-nav-sublink">Khái
-                            quát</a></li>
-                    <li class="side-nav-subitem"><a href="{{ route('home.operation') }}"
-                            class="side-nav-sublink">Điều
-                            hành</a></li>
+                    @foreach ($languages as $language)
+                        <li class="side-nav-subitem">
+                            <a href="{{ route('change-language', ['locale' => $language->locale]) }}" class="side-nav-sublink">
+                                {{ $language->name }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
+            </li>
+
+            <li class="side-nav-item">
+                <div class="d-flex justify-content-between">
+                    <a href="#" class="side-nav-link">
+                        {{ trans('home.menu-item-5') }}
+                    </a>
+                </div>
             </li>
         </ul>
     </div>

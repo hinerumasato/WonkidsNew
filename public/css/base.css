@@ -20,8 +20,14 @@
     --slider-img-top: calc(50% - 225px);
     --slider-img-left: calc(50% - 342px);
 
+    --slider-img-md-top: calc(50% - 108px);
+    --slider-img-md-left: calc(50% - 102px);
+
     --slider-content-top: calc(50% - -154px);
     --slider-content-left: calc(50% - 320px);
+
+    --slider-content-md-top: calc(50% - -74px);
+    --slider-content-md-left: calc(50% - 177px);
 
     --sub-menu-top: calc(100% + calc(var(--header-height) / 2) - 13px);
     --back-light: #2A59FE4D;

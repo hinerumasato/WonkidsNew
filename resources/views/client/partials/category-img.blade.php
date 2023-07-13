@@ -7,6 +7,26 @@
         .category-wrap:hover .category-name {
             text-decoration: underline;
         }
+
+        @media (max-width: 485px) {
+            .category-name {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .category-img {
+                padding-top: 50%;
+            }
+
+            .category-wrap {
+                height: 150px;
+            }
+
+            .category-name {
+                font-size: 10px;
+            }
+        }
     </style>
 @endpush
 
@@ -15,7 +35,7 @@
         <div class="col my-2 category-wrap">
             <a href="{{ route('posts.index', ['category' => $category['id']]) }}" class="text-decoration-none d-block w-100 h-100 text-dark">
                 <img data-src="{{ $categoryImgs[$index] }}"
-                    src="{{ asset('imgs/transparent/transparent.png') }}" alt="" class="w-100 placeholder" height="80%">
+                    src="{{ asset('imgs/transparent/transparent.png') }}" alt="" class="category-img w-100 placeholder" height="80%">
                 
                 <p class="category-name text-center fw-bold mt-3">{{ $categoryNames[$index] }}</p>
             </a>

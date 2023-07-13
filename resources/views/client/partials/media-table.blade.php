@@ -1,9 +1,19 @@
+@push('css')
+    <style>
+        @media (max-width: 480px) {
+            .media-table-title {
+                font-size: 10px;
+            }
+        }
+    </style>
+@endpush
+
 <div class="container">
     <table class="table table-hover">
         <thead class="fw-bold">
             <tr>
-                <th class="col-2" scope="col">Thể loại</th>
-                <th class="col-10" scope="col">Tiêu đề</th>
+                <th class="media-table-title col-2" scope="col">Thể loại</th>
+                <th class="media-table-title col-10" scope="col">Tiêu đề</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">

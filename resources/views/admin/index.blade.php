@@ -69,7 +69,7 @@
                             </div>
                         @endif
 
-                        @if (empty($posts))
+                        @if (count($posts) === 0)
                             <tr role="alert">
                                 <td colspan="6">
                                     <p class="alert alert-primary text-center">{{ trans('admin.empty-post') }}</p>
