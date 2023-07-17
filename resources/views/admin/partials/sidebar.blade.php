@@ -29,7 +29,7 @@
         const currentUrl = window.location.href;
         const navItems = document.querySelectorAll('.nav-item.nav-link');
         navItems.forEach(item => {
-            if(item.getAttribute('href') == currentUrl)
+            if(currentUrl.includes(item.getAttribute('href')))
                 item.classList.add('active');
         });
     </script>
