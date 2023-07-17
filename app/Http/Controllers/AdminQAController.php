@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\StringHelper;
-use App\mail\AnswerMail;
+use App\Mail\AnswerMail;
 use Illuminate\Http\Request;
 use App\Models\QA;
 use Illuminate\Support\Facades\Auth;

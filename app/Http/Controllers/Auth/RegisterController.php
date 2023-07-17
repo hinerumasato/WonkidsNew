@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -67,21 +64,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $avatar = asset('imgs/avatar/default_avatar.png');
-        $roleMember = Role::where('name', 'member')->first();
-        if(array_key_exists('avatar', $data)) {
-            $avatarRequest = $data['avatar'];
-            $avatar_name = Str::uuid($avatarRequest->getClientoriginalName()) . '.' . $avatarRequest->getClientoriginalExtension();
-            $avatarRequest->move(public_path('uploads/avatars'), $avatar_name);
-            $avatar = asset('uploads/avatars/'. $avatar_name);
-        }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $avatar,
-            'role_id' => $roleMember->id,
         ]);
     }
 }

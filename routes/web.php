@@ -96,3 +96,6 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
         Route::get('/slider', [AdminUIController::class, 'slider'])->name('slider');
     });
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
