@@ -2,7 +2,7 @@
 return [
     'posts' => '등록',
     'qa' => 'QA',
-    'members' => 'Members',
+    'members' => '회원',
 
     'title' => '제목',
     'date-post' => '등록시간',
@@ -12,9 +12,9 @@ return [
     'add-new-post' => '쓰기',
     'post' => '등록',
     'all' => 'All',
-    'delete-selected' => 'Delete Selected',
+    'delete-selected' => '선택된 것을 지워 라',
     'add-post' => '쓰기',
-    'empty-post' => 'There are no posts yet',
+    'empty-post' => '아직 게시물이 없습니다',
 
     //member
     'member.add-member' => 'Add Member',
