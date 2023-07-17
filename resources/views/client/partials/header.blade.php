@@ -159,8 +159,8 @@
         function setHeaderClass() {
             const header = document.querySelector("header");
             const route = window.location.href;
-            const homeURL = @json(route('home.index'));
-            if (route.includes(homeURL)) {
+            const homeURL = @json(route('home.index')) + '/';
+            if (homeURL === route.split('?')[0] || homeURL === route.split('#')[0]) {
                 header.classList.add("home_header");
                 header.classList.remove("other_header");
             } else {
