@@ -80,6 +80,11 @@
     margin-top: 40px;
 }
 
+.wonkids_club_list_title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
 .about_content {
     margin-top: 20px;
     font-size: 16px;
@@ -141,8 +146,9 @@
 }
 
 .container_content_item_title {
-    font-weight: 400;
+    font-weight: bold;
     color: #111;
+    font-size: 24px;
 }
 
 .media_description {

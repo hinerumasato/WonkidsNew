@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LocaleHelper;
 use App\Helpers\LoopHelper;
 use Illuminate\Http\Request;
 use App\Helpers\StringHelper;
@@ -22,6 +23,10 @@ class AdminPostController extends Controller
         $areaModel = new StagingArea();
         $mediaModel = new Media();
         $languageLocale = $request->input('post_lang') ?? 'vi';
+        if($languageLocale !== app()->getLocale()) {
+            LocaleHelper::changeLocale($languageLocale);
+            return redirect()->route('admin.posts.add', ['post_lang' => $languageLocale]);
+        }
         $language = Language::where('locale', $languageLocale)->first();
         $categories = $language->categories;
         $categoriesArr = LoopHelper::filterCategory($categories);
@@ -36,8 +41,17 @@ class AdminPostController extends Controller
             'medias' => $mediaModel->getAllByLocale($languageLocale),
         ];
 
-        return view('admin.add-post', 
-            [
+        $view = view('admin.add-post', [
+            "categories" => $categories, 
+            "languages" => $languages, 
+            "languageLocale" => $languageLocale, 
+            "imgLinks" => $imgLinks,
+            "otherFiles" => $otherFiles,
+            "title" => $title,
+            "data" => $data,
+        ]);
+        
+        return view('admin.add-post', [
                 "categories" => $categories, 
                 "languages" => $languages, 
                 "languageLocale" => $languageLocale, 
@@ -45,8 +59,7 @@ class AdminPostController extends Controller
                 "otherFiles" => $otherFiles,
                 "title" => $title,
                 "data" => $data,
-            ]
-        );
+            ]);
 
     }
 
@@ -188,7 +201,7 @@ class AdminPostController extends Controller
             }
         }
 
-        return redirect()->route('admin.index')->with('msg', trans('general.add-post-success'));
+        return redirect()->route('admin.index', ['post_lang' => app()->getLocale()])->with('msg', trans('general.add-post-success'));
     }
 
     public function putEdit(Request $request, $post_id, $language_id) {
@@ -229,7 +242,7 @@ class AdminPostController extends Controller
     public function deleteOne($post_id) {
         $postModel = new Post();
         $postModel->deleteOne($post_id);
-        return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
+        return redirect()->route('admin.index', ['post_lang' => app()->getLocale()])->with('msg', trans('general.delete-post-success'));
     }
 
     public function deleteMany(Request $request) {
@@ -242,6 +255,6 @@ class AdminPostController extends Controller
         foreach ($ids as $id) {
             $postModel->deleteOne($id);
         }
-        return redirect()->route('admin.index')->with('msg', trans('general.delete-post-success'));
+        return redirect()->route('admin.index', ['post_lang' => app()->getLocale()])->with('msg', trans('general.delete-post-success'));
     }
 }
