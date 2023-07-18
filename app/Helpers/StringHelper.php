@@ -78,6 +78,7 @@ class StringHelper {
     }
 
     public static function getExtension($fileName) {
-        return explode('.', $fileName)[1];
+        $arr = explode('.', $fileName);
+        return $arr[count($arr) - 1];
     }
 }
