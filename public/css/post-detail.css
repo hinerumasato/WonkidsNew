@@ -12,6 +12,24 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 21px;
 }
-.post-detail_content {
 
+@media (max-width: 572px) {
+    .post-detail_category {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 16px;
+        padding-bottom: 24px;
+        border-right: none;
+        border-bottom: 1px #ccc solid;
+    }
+
+    .post-detail_header {
+        margin-top: 0;
+    }
+
+    .post-detail_title {
+        font-size: 16px;
+        text-align: center;
+    }
 }

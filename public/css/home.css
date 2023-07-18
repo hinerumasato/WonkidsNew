@@ -260,7 +260,7 @@ body {
     }
     .slider_logo_img {
         position: absolute;
-        width: 200px;
+        width: 250px;
         height: 200px;
         left: var(--slider-img-md-left);
         top: var(--slider-img-md-top);
