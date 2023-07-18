@@ -1,3 +1,7 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .slider {
     height: var(--slider-height);
     position: relative;
@@ -40,6 +44,7 @@
     left: var(--slider-content-left);
     animation: fadeInBottom 1 linear 1.5s;
     z-index: 2;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .container_content {
@@ -132,6 +137,11 @@
 .container_link {
     text-decoration: none;
     color: #000;
+}
+
+.container_list {
+    list-style: none;
+    padding-left: 0 !important;
 }
 
 .container_list_icon {

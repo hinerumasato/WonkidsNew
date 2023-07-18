@@ -9,7 +9,6 @@
         <link rel="shortcut icon" href="{{asset('imgs/icon/favicon.ico')}}">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-        <link rel="stylesheet" href="{{asset('css/home.css')}}">
         <link rel="stylesheet" href="{{asset('css/animation.css')}}">
         <link rel="stylesheet" href="{{asset('css/base.css')}}">
         {{-- <link rel="stylesheet" href="{{asset('css/normalize.css')}}"> --}}
@@ -20,7 +19,7 @@
         <link rel="stylesheet" href="{{asset('css/small-nav.css')}}">
         <link rel="stylesheet" href="{{asset('css/lazy.css')}}">
         <link rel="stylesheet" href="{{asset('css/preloader.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         @yield('css')
         @stack('css')

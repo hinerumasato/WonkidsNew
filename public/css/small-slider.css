@@ -1,6 +1,7 @@
 .small-slider_container {
     height: 246px;
     background-image: linear-gradient(to right, #BD8DC9, #C98DA4, #B386AE, #C98DA4, #BD8DC9);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .small-slider_img_wrap {

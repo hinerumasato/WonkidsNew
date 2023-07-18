@@ -15,3 +15,8 @@ table tr a {
 table tr a:hover {
     text-decoration: underline;
 }
+
+.post-detail_content ul {
+    list-style: disc;
+    padding-left: 30px !important;
+}
