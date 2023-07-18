@@ -31,16 +31,18 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 @foreach ($sendUsers as $key => $sendUser)
-                    <a href="{{route('admin.messages.detail', ['id' => $messages[$key]])}}" class="dropdown-item">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle" src="{{ $sendUser->avatar }}" alt=""
-                                style="width: 40px; height: 40px;">
-                            <div class="ms-2">
-                                <h6 class="fw-normal mb-0">{{ $sendUser->name }} {{ trans('admin.header.send-you-a-message') }}</h6>
-                                <small>{{ $messages[$key]->created_at->diffForHumans() }}</small>
+                    @if ($sendUser != null)
+                        <a href="{{route('admin.messages.detail', ['id' => $messages[$key]])}}" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle" src="{{ $sendUser->avatar }}" alt=""
+                                    style="width: 40px; height: 40px;">
+                                <div class="ms-2">
+                                    <h6 class="fw-normal mb-0">{{ $sendUser->name }} {{ trans('admin.header.send-you-a-message') }}</h6>
+                                    <small>{{ $messages[$key]->created_at->diffForHumans() }}</small>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    @endif
                     <hr class="dropdown-divider">
                 @endforeach
                 <a href="#" class="dropdown-item text-center">{{ trans('admin.header.see-all-message') }}</a>

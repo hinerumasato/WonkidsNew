@@ -5,6 +5,7 @@
 
 @section('content')
     @include('client.partials.small-slider')
+    @include('client.partials.small-nav-wonderful')
     <div class="container">
         <h2 class="py-5 fs-1 fw-bold">Wonkids Club</h2>
         <img src="{{asset('imgs/wonkidsclub/wonkidsclub_title.jpg')}}" alt="" class="w-100">

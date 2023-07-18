@@ -12,6 +12,8 @@
     --slider-img-top: calc(50% - 225px);
     --slider-img-left: calc(50% - 342px);
 
+    --slider-img-md-left: calc(50% - 150px);
+
     --slider-content-top: calc(50% - -154px);
     --slider-content-left: calc(50% - 320px);
 

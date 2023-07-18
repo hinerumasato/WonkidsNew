@@ -4,6 +4,7 @@
 @endsection
 @section('content')
 @include('client.partials.small-slider')
+@include('client.partials.small-nav-wonderful')
     <div class="container">
         <h2 class="py-5 fs-1 fw-bold">Wonderful Story Book</h2>
         <img class="d-block w-100" src="{{ asset('imgs/books/book1.jpg') }}" alt="">

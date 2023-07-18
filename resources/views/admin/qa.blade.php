@@ -56,37 +56,6 @@
                     <div class="text-white bg-danger my-3 py-3 fw-bold fs-6 px-2">{{ trans('qa.question') }} ({{ count($questions) }})</div>
                     <div class="text-white bg-success my-3 py-3 fw-bold fs-6 px-2">{{ trans('qa.answer') }} ({{ count($answered) }})</div>
                 </div>
-                <div class="find-us d-none d-xl-block shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                    <h2 class="fs-3 text-primary">Find Us</h2>
-                    <hr>
-                    <div class="bg-warning d-flex justify-content-between fs-5 fw-bold px-2 align-items-center text-white py-3">
-                        <div>
-                            Home Page
-                        </div>
-                        <i class="fa-solid fa-wifi"></i>
-                    </div>
-
-                    <div class="bg-primary d-flex justify-content-between fs-5 fw-bold px-2 align-items-center text-white py-3">
-                        <div>
-                            Facebook
-                        </div>
-                        <i class="fa-brands fa-facebook"></i>
-                    </div>
-
-                    <div class="bg-info d-flex justify-content-between fs-5 fw-bold px-2 align-items-center text-white py-3">
-                        <div>
-                            Twitter
-                        </div>
-                        <i class="fa-brands fa-twitter" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="bg-danger d-flex justify-content-between fs-5 fw-bold px-2 align-items-center text-white py-3">
-                        <div>
-                            Youtube
-                        </div>
-                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

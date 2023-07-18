@@ -28,19 +28,19 @@
                 <li class="container_item col-lg col-12">
                     <a href="{{route('home.operation')}}" class="container_link">
                         <i class="fa-solid fa-user-group container_list_icon"></i>
-                        <p>{{ trans('home.operating-instructions') }}</p>
+                        <p class="wonkids_club_list_title">{{ trans('home.operating-instructions') }}</p>
                     </a>
                 </li>
                 <li class="container_item col-lg col-12">
                     <a href="{{route('posts.index')}}" class="container_link">
                         <i class="fa-solid fa-book container_list_icon"></i>
-                        <p>{{ trans('home.11-period') }}</p>
+                        <p class="wonkids_club_list_title">{{ trans('home.11-period') }}</p>
                     </a>
                 </li>
                 <li class="container_item col-lg col-12">
                     <a href="{{route('home.media.index')}}" class="container_link">
                         <i class="fa-solid fa-video container_list_icon"></i>
-                        <p>{{ trans('home.media-content') }}</p>
+                        <p class="wonkids_club_list_title">{{ trans('home.media-content') }}</p>
                     </a>
                 </li>
             </ul>

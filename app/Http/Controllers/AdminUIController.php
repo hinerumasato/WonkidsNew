@@ -17,7 +17,7 @@ class AdminUIController extends Controller
     public function slider() {
         $currentLanguage = $this->languageModel->findByLocale(app()->getLocale());
         $allLanguages = $this->languageModel->all();
-        return view('admin.ui.slider', compact(
+        return view('admin.UI.slider', compact(
             'currentLanguage', 'allLanguages',
         ));
     }

@@ -27,6 +27,7 @@
     margin: 20px 0;
     font-size: 11px;
     display: flex;
+    flex-wrap: wrap;
 }
 .category-item {
     padding: 0 15px;

@@ -41,7 +41,7 @@
                         {{ trans('admin.delete-selected') }}
                     </button>
                 </div>
-                <a href="{{ route('admin.posts.add') }}" class="btn btn-primary add-post-btn">+ {{ trans('admin.add-post') }}</a>
+                <a href="{{ route('admin.posts.add', ['post_lang' => app()->getLocale()]) }}" class="btn btn-primary add-post-btn">+ {{ trans('admin.add-post') }}</a>
             </div>
             <div class="search-wrap d-flex justify-content-start align-items-center mb-3">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -69,7 +69,7 @@
                             </div>
                         @endif
 
-                        @if (empty($posts))
+                        @if (count($posts) === 0)
                             <tr role="alert">
                                 <td colspan="6">
                                     <p class="alert alert-primary text-center">{{ trans('admin.empty-post') }}</p>
