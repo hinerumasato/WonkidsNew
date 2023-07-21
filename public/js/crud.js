@@ -1,4 +1,4 @@
-const state = window.location.href === addPostLink ? 'add' : 'edit';
+const state = window.location.href.split('?')[0] === addPostLink ? 'add' : 'edit';
 
 function isImageFile(extension) {
     return extension === 'jpg' || 
