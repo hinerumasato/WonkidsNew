@@ -3,16 +3,18 @@
 }
 
 [lazy-element="loaded"] {
-    animation: lazyFade 1s forwards;
+    animation: lazyFade 1s 0.5 forwards;
 }
 
 @keyframes lazyFade {
 
     0% {
+        top: 100px;
         opacity: 0;
     }
 
     100% {
+        top: 0;
         opacity: 1;
     }
 }

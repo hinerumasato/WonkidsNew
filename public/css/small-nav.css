@@ -1,5 +1,17 @@
+nav {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 hr {
     margin: 0;
+}
+
+.small-nav_list {
+    list-style: none;
+}
+
+.small-nav_sublist {
+    list-style: none;
 }
 
 .small-nav_item {

@@ -1,3 +1,12 @@
+header {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header ul {
+    list-style: none;
+    padding-left: 0 !important;
+}
+
 .home_header {
     height: var(--header-height);
     background-color: transparent;
