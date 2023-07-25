@@ -15,10 +15,6 @@
         }
 
         @media (max-width: 430px) {
-            .category-img {
-                padding-top: 50%;
-            }
-
             .category-wrap {
                 height: 150px;
             }
@@ -42,3 +38,18 @@
         </div>
     @endforeach
 </div>
+
+@push('scripts')
+    <script>
+        function squareImage() {
+            const categoryImgs = document.querySelectorAll('.category-img');
+            categoryImgs.forEach(img => {
+                img.style.height = img.offsetWidth + 'px';
+            });
+        }
+        window.onresize = () => {
+            squareImage();
+        }
+        squareImage();
+    </script>
+@endpush
