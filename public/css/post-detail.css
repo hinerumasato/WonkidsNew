@@ -13,6 +13,10 @@
     font-size: 21px;
 }
 
+textarea img, iframe {
+    max-width: 100%;
+}
+
 @media (max-width: 572px) {
     .post-detail_category {
         font-size: 24px;
