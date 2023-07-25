@@ -88,6 +88,10 @@ class MediaController extends Controller
             $mediaSlugs[] = StringHelper::toSlug($type);
         }
 
+        $medias = PaginateHelper::paginate($medias, 20, null, [
+            'path' => route('home.media.index'),
+        ]);
+
         return view('client.media', [
             'title' => $title,
             'smallSliderTitle' => $smallSliderTitle,
@@ -151,6 +155,10 @@ class MediaController extends Controller
 
         $mediaNavs = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
         $type = $mediaDetail->getType();
+
+        $medias = PaginateHelper::paginate($medias, 20, null, [
+            'path' => route('home.media.index'),
+        ]);
 
         return view('client.media-detail', [
             'title' => $title,
