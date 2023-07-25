@@ -89,7 +89,7 @@ class MediaController extends Controller
         }
 
         $medias = PaginateHelper::paginate($medias, 20, null, [
-            'path' => route('home.media.index'),
+            'path' => route('home.media.index-slug', ['mediaSlug' => $mediaSlug]),
         ]);
 
         return view('client.media', [
@@ -157,7 +157,7 @@ class MediaController extends Controller
         $type = $mediaDetail->getType();
 
         $medias = PaginateHelper::paginate($medias, 20, null, [
-            'path' => route('home.media.index'),
+            'path' => route('home.media.index-slug', ['mediaSlug' => $mediaSlug]),
         ]);
 
         return view('client.media-detail', [
