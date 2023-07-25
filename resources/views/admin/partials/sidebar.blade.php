@@ -29,7 +29,8 @@
         const currentUrl = window.location.href;
         const navItems = document.querySelectorAll('.nav-item.nav-link');
         navItems.forEach(item => {
-            if(currentUrl.includes(item.getAttribute('href')))
+            const itemUrl = item.getAttribute('href');
+            if(isSameLink(currentUrl, itemUrl))
                 item.classList.add('active');
         });
     </script>

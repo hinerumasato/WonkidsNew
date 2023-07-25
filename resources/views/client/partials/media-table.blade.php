@@ -29,4 +29,7 @@
             @endforeach
         </tbody>
     </table>
+
+    {!! $medias->links('vendor.pagination.xet_debut') !!}
+
 </div>

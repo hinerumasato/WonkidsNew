@@ -76,6 +76,7 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('js/admin.js')}}"></script>
+    <script src="{{asset('js/util.js')}}"></script>
     <script>
         tinymce.init({
             selector: 'textarea',

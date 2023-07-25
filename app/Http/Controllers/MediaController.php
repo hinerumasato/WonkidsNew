@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PaginateHelper;
 use App\Helpers\StringHelper;
 use App\Models\Language;
 use App\Models\Media;
@@ -39,6 +40,10 @@ class MediaController extends Controller
         foreach ($mediaTypes as $type) {
             $mediaSlugs[] = StringHelper::toSlug($type);
         }
+
+        $medias = PaginateHelper::paginate($medias, 20, null, [
+            'path' => route('home.media.index'),
+        ]);
 
         return view('client.media', [
             'title' => $title,
@@ -82,7 +87,6 @@ class MediaController extends Controller
         foreach ($mediaTypes as $type) {
             $mediaSlugs[] = StringHelper::toSlug($type);
         }
-
 
         return view('client.media', [
             'title' => $title,

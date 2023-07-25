@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-xl-1 col-sm-2 col-4 header_left justify-content-center d-flex">
-        <img src="{{ asset('imgs/logo/logo.png') }}" alt="" class="header_logo">
+        <a href="{{route('home.index')}}"><img src="{{ asset('imgs/logo/logo.png') }}" alt="" class="header_logo"></a>
     </div>
     <div class="col-xl-9 d-xl-block d-none header_center align-items-center px-5">
         <ul class="header_menu_list d-xl-flex" style="height: 100%; margin: 0">

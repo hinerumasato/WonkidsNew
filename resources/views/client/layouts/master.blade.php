@@ -36,6 +36,7 @@
     <script src="{{asset('js/preloader.js')}}"></script>
     <script src="{{asset('js/placeholder.js')}}"></script>
     <script src="{{asset('js/lazy.js')}}"></script>
+    <script src="{{asset('js/util.js')}}"></script>
     @yield('scripts')
     @stack('scripts')
 

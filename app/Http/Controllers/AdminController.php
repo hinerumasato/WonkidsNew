@@ -44,7 +44,10 @@ class AdminController extends Controller
         }
 
         $posts = PaginateHelper::paginate($posts, 10, null, [
-            'path' => route('admin.index'),
+            'path' => route('admin.index', [
+                'post_lang' => $languageLocale, 
+                'post_category' => $request->input('post_category')
+            ]),
         ]);
 
         $user = Auth::user();
