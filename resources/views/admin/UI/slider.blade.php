@@ -17,14 +17,15 @@
         </li>
     </ul>
 
-    <button class="my-3 text-white add-slider-btn border-0">
+    <button onclick="openExplorer();" class="my-3 text-white add-slider-btn border-0">
         <img src="{{ asset('imgs/icon/plus.png') }}" alt="">
         <span>Thêm Slider</span>
     </button>
 
     <div class="slider-img-wrap row row-cols-2 mt-4">
-        <img src="{{ asset('imgs/sliders/slider1.jpg') }}" alt="" class="slider-img col">
-        <img src="{{ asset('imgs/sliders/slider2.jfif') }}" alt="" class="slider-img col">
+        @foreach ($sliders as $slider)
+            <img src="{{ $slider->links }}" alt="" class="slider-img col">
+        @endforeach
     </div>
 
 
@@ -45,8 +46,15 @@
     </div>
 
     <button class="save-btn">Lưu</button>
+
+    <input type="file" class="d-none slider-input" multiple accept="image/png, image/gif, image/jpeg">
 @endsection
 
 @section('scripts')
+    <script>
+        const uploadSliderLink = @json(route('upload-slider'));
+    </script>
+
+    <script src="{{ asset('js/MyBlobInfo.js') }}"></script>
     <script src="{{ asset('js/admin/ui/slider.js') }}"></script>
 @endsection

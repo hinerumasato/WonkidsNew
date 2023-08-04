@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\LocaleController;
 use App\Http\Controllers\API\MediaController;
 use App\Http\Controllers\API\MediaStagingAreaController;
+use App\Http\Controllers\API\SliderController;
 use App\Http\Controllers\API\UploadImgController;
 use App\Http\Controllers\API\StagingAreaController;
 use App\Http\Controllers\API\UserController;
@@ -36,3 +37,5 @@ Route::post('/media/area/upload', [MediaStagingAreaController::class, 'upload'])
 Route::post('/media/upload', [MediaController::class, 'upload'])->name('upload-media');
 
 Route::post('/locale/change', [LocaleController::class, 'changeLocale'])->name('change-locale');
+
+Route::post('/ui/slider', [SliderController::class, 'upload'])->name('upload-slider');
