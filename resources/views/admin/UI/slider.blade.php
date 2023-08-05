@@ -17,14 +17,25 @@
         </li>
     </ul>
 
-    <button onclick="openExplorer();" class="my-3 text-white add-slider-btn border-0">
+    <button class="my-3 text-white add-slider-btn border-0">
         <img src="{{ asset('imgs/icon/plus.png') }}" alt="">
         <span>Thêm Slider</span>
     </button>
 
-    <div class="slider-img-wrap row row-cols-2 mt-4">
+    <div class="slider-img-wrap row mt-4">
+
+        @if (count($sliders) == 0)
+            <div class="alert alert-primary text-center fw-bold" role="alert">
+                CHƯA CÓ SLIDER NÀO, TRANG WEB SẼ SỬ DỤNG SLIDER MẶC ĐỊNH
+            </div>
+        @endif
+
         @foreach ($sliders as $slider)
-            <img src="{{ $slider->links }}" alt="" class="slider-img col">
+            <div class="col slider-icon-wrap">
+                <div class="pseudo-slider-icon"></div>
+                <img src="{{ $slider->links }}" alt="" class="slider-img w-100 h-100">
+                <i class="fa-solid fa-trash trash-icon"></i>
+            </div>
         @endforeach
     </div>
 
@@ -32,7 +43,7 @@
     <div class="content-details">
         <h2 class="content-details-title">Nội dung chi tiết</h2>
         @foreach ($allLanguages as $language)
-            <div class="content-details-input-wrap mt-3 d-flex" locale="{{$language->locale}}">
+            <div class="content-details-input-wrap mt-3 d-flex" locale="{{ $language->locale }}">
                 <input type="text" class="content-details-text-field w-75 border-0" placeholder="Nhập nội dung...">
                 <span class="input-label">Nội dung</span>
                 <div class="content-details-select-language w-25">
@@ -48,11 +59,33 @@
     <button class="save-btn">Lưu</button>
 
     <input type="file" class="d-none slider-input" multiple accept="image/png, image/gif, image/jpeg">
+
+    <button type="button" class="btn btn-primary modal-btn d-none" data-bs-toggle="modal" data-bs-target="#sliderModel"></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="sliderModel" tabindex="-1" aria-labelledby="sliderModelLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="sliderModelLabel">Thông báo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xoá Slider này?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger slider-delete-btn">Xoá</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script>
         const uploadSliderLink = @json(route('upload-slider'));
+        const deleteSliderLink = @json(route('delete-slider'));
     </script>
 
     <script src="{{ asset('js/MyBlobInfo.js') }}"></script>

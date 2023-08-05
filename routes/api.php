@@ -39,3 +39,4 @@ Route::post('/media/upload', [MediaController::class, 'upload'])->name('upload-m
 Route::post('/locale/change', [LocaleController::class, 'changeLocale'])->name('change-locale');
 
 Route::post('/ui/slider', [SliderController::class, 'upload'])->name('upload-slider');
+Route::delete('/ui/slider', [SliderController::class, 'deleteOne'])->name('delete-slider');

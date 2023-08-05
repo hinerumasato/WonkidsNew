@@ -27,4 +27,21 @@ class SliderController extends Controller
             'link' => $this->sliderModel->getLatestImage()->links,
         ]);
     }
+
+    public function deleteOne(Request $request) {
+        $link = $request->input('link');
+        $isDeleted = $this->sliderModel->deleteByLink($link);
+        if($isDeleted) {
+            
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
+
+        else {
+            return response()->json([
+                'message' => 'Cannot find link',
+            ]);
+        }
+    }
 }

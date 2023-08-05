@@ -13,7 +13,7 @@
     background: #d63b27;
 }
 
-.add-slider-btn > span {
+.add-slider-btn>span {
     color: #FFF;
     font-family: Inter;
     font-size: 20px;
@@ -34,6 +34,7 @@
 .slider-img {
     cursor: pointer;
     height: 300px;
+    position: relative;
 }
 
 .content-details {
@@ -103,4 +104,43 @@
     background-color: white;
     padding: 0 8px;
     color: #888;
+}
+
+.slider-icon-wrap {
+    cursor: pointer;
+    position: relative;
+    margin-top: 8px;
+}
+
+.slider-icon-wrap:hover .pseudo-slider-icon {
+    display: block;
+}
+
+.pseudo-slider-icon {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .3;
+    z-index: 9;
+}
+
+.slider-icon-wrap:hover .trash-icon {
+    display: flex;
+    align-items: center;
+}
+
+.trash-icon {
+    font-size: 36px;
+    display: none;
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 32px;
+    position: absolute;
+    color: #fff;
+    top: calc(50% - 50px);
+    right: calc(50% - 50px);
+    z-index: 10;
 }

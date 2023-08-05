@@ -9,33 +9,61 @@
                 aria-label=""></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img data-src="{{ asset('imgs/sliders/slider1.jpg') }}" class="d-block w-100 slider_img"
-                    alt="...">
-                <div class="slider_float_in">
-                    <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
-                        class="slider_logo_img">
-                    <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+            @if (count($sliders) == 0)
+                <div class="carousel-item active">
+                    <img data-src="{{ asset('imgs/sliders/slider1.jpg') }}" class="d-block w-100 slider_img"
+                        alt="...">
+                    <div class="slider_float_in">
+                        <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
+                            class="slider_logo_img">
+                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img data-src="{{ asset('imgs/sliders/slider2.jfif') }}" class="d-block w-100 slider_img"
-                    alt="...">
-                <div class="slider_float_in">
-                    <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
-                        class="slider_logo_img">
-                    <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                <div class="carousel-item">
+                    <img data-src="{{ asset('imgs/sliders/slider2.jfif') }}" class="d-block w-100 slider_img"
+                        alt="...">
+                    <div class="slider_float_in">
+                        <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
+                            class="slider_logo_img">
+                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img data-src="{{ asset('imgs/sliders/slider3.jfif') }}" class="d-block w-100 slider_img"
-                    alt="...">
-                <div class="slider_float_in">
-                    <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
-                        class="slider_logo_img">
-                    <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                <div class="carousel-item">
+                    <img data-src="{{ asset('imgs/sliders/slider3.jfif') }}" class="d-block w-100 slider_img"
+                        alt="...">
+                    <div class="slider_float_in">
+                        <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
+                            class="slider_logo_img">
+                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="carousel-item active">
+                    <img data-src="{{ $sliders[0]->links }}" class="d-block w-100 slider_img"
+                        alt="...">
+                    <div class="slider_float_in">
+                        <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
+                            class="slider_logo_img">
+                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                    </div>
+                </div>
+
+                @foreach ($sliders as $index => $slider)
+                    @if ($index > 0)
+                        <div class="carousel-item">
+                            <img data-src="{{ $slider->links }}" class="d-block w-100 slider_img"
+                                alt="...">
+                            <div class="slider_float_in">
+                                <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
+                                    class="slider_logo_img">
+                                <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+                
+            @endif
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
