@@ -44,7 +44,7 @@
         <h2 class="content-details-title">Nội dung chi tiết</h2>
         @foreach ($allLanguages as $language)
             <div class="content-details-input-wrap mt-3 d-flex" locale="{{ $language->locale }}">
-                <input type="text" class="content-details-text-field w-75 border-0" placeholder="Nhập nội dung...">
+                <input type="text" value="{{ $descriptions[$language->locale] }}" class="content-details-text-field w-75 border-0" placeholder="Nhập nội dung...">
                 <span class="input-label">Nội dung</span>
                 <div class="content-details-select-language w-25">
                     <button class="btn btn-white" type="button" aria-expanded="false">
@@ -86,6 +86,7 @@
     <script>
         const uploadSliderLink = @json(route('upload-slider'));
         const deleteSliderLink = @json(route('delete-slider'));
+        const updateSliderDescriptionLink = @json(route('update-slider-description'));
     </script>
 
     <script src="{{ asset('js/MyBlobInfo.js') }}"></script>

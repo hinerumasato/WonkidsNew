@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Helpers\StringHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Language extends Model {
@@ -22,6 +23,10 @@ class Language extends Model {
 
     public function medias(): BelongsToMany {
         return $this->belongsToMany(Media::class, 'medias_languages')->withPivot('name');
+    }
+
+    public function sliderDescription(): BelongsTo {
+        return $this->belongsTo(SliderDescription::class);
     }
 
     public function findByLocale($locale) {

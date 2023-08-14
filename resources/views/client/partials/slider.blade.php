@@ -16,7 +16,7 @@
                     <div class="slider_float_in">
                         <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
                             class="slider_logo_img">
-                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                        <p class="slider_float_in_content">{{ $description }}</p>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -25,7 +25,7 @@
                     <div class="slider_float_in">
                         <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
                             class="slider_logo_img">
-                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                        <p class="slider_float_in_content">{{ $description }}</p>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -34,7 +34,7 @@
                     <div class="slider_float_in">
                         <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
                             class="slider_logo_img">
-                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                        <p class="slider_float_in_content">{{ $description }}</p>
                     </div>
                 </div>
             @else
@@ -44,7 +44,7 @@
                     <div class="slider_float_in">
                         <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
                             class="slider_logo_img">
-                        <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                        <p class="slider_float_in_content">{{ $description }}</p>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                             <div class="slider_float_in">
                                 <img src="{{ asset('imgs/sliders/wonkidsclub_logo_slider.png') }}" alt=""
                                     class="slider_logo_img">
-                                <p class="slider_float_in_content">{{ trans('home.slider-content') }}</p>
+                                <p class="slider_float_in_content">{{ $description }}</p>
                             </div>
                         </div>
                     @endif

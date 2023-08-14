@@ -10,6 +10,7 @@ const app = {
     sliderIconWraps: [],
     heightRatio: 70, //Percent Unit
     modalBtn: document.querySelector('.modal-btn'),
+    saveBtn: document.querySelector('.save-btn'),
     
     initialization: function() {
         this.sliderWrap = document.querySelector('.slider-img-wrap');
@@ -134,10 +135,26 @@ const app = {
         window.location.reload();
     },
 
+    postNewDescription: async function() {
+        const localeFields = document.querySelectorAll('div[locale]');
+        const formData = new FormData();
+        localeFields.forEach(field => {
+            const locale = field.getAttribute('locale');
+            const value = field.querySelector('input').value;
+            formData.append(locale, value);
+        });
+
+        await fetch(updateSliderDescriptionLink, {
+            method: 'POST',
+            body: formData,
+        });
+
+        window.location.reload();
+    },
+
     handleEvents: function() {
-        this.addSliderBtn.onclick = () => {
-            this.openFileExplorer();
-        }
+        this.addSliderBtn.onclick = () => this.openFileExplorer();
+        this.saveBtn.onclick = () => this.postNewDescription();
 
         if(this.sliderIconWraps.length > 0) {
             this.sliderIconWraps.forEach(wrap => {
@@ -151,6 +168,7 @@ const app = {
                 };
             })
         }
+
     },
 
     start: function() {

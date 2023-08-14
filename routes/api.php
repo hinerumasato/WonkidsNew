@@ -4,6 +4,7 @@ use App\Http\Controllers\API\LocaleController;
 use App\Http\Controllers\API\MediaController;
 use App\Http\Controllers\API\MediaStagingAreaController;
 use App\Http\Controllers\API\SliderController;
+use App\Http\Controllers\API\SliderDescriptionController;
 use App\Http\Controllers\API\UploadImgController;
 use App\Http\Controllers\API\StagingAreaController;
 use App\Http\Controllers\API\UserController;
@@ -40,3 +41,5 @@ Route::post('/locale/change', [LocaleController::class, 'changeLocale'])->name('
 
 Route::post('/ui/slider', [SliderController::class, 'upload'])->name('upload-slider');
 Route::delete('/ui/slider', [SliderController::class, 'deleteOne'])->name('delete-slider');
+
+Route::post('ui/slider-description', [SliderDescriptionController::class, 'update'])->name('update-slider-description');
