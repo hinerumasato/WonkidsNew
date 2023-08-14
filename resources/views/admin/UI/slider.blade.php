@@ -90,5 +90,5 @@
     </script>
 
     <script src="{{ asset('js/MyBlobInfo.js') }}"></script>
-    <script src="{{ asset('js/admin/UI/slider.js') }}"></script>
+    <script src="{{ asset('js/Admin/UI/slider.js') }}"></script>
 @endsection
