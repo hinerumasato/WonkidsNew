@@ -20,7 +20,10 @@ class SliderDescription extends Model
     public function getDescriptionByLocale($locale) {
         $languageModel = new Language();
         $language = $languageModel->findByLocale($locale);
-        return $this->where('language_id', $language->id)->first()->content;
+        $sliderDescription = $this->where('language_id', $language->id)->first();
+        if($sliderDescription)
+            return $sliderDescription->content;
+        else return '';
     }
 
     public function getAllDescription() {

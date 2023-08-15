@@ -138,12 +138,17 @@
     </div>
     <div class="col-2 col-xl header_right">
         <div class="header_right_languages d-xl-flex d-none">
-            <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img class="flag-img"
+            @foreach ($languages as $language)
+                <a class="locale-link" href="{{ route('change-language', ['locale' => $language->locale]) }}">
+                    <img class="flag-img" src="{{ $language->icon }}" alt="">
+                </a>    
+            @endforeach
+            {{-- <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img class="flag-img"
                     src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}" alt=""></a>
             <a class="locale-link" href="{{ route('change-language', ['locale' => 'ko']) }}"><img class="flag-img"
                     src="{{ asset('imgs/flags/south-korea-flag-icon-32.png') }}" alt=""></a>
             <a class="locale-link" href="{{ route('change-language', ['locale' => 'en']) }}"><img class="flag-img"
-                    src="{{ asset('imgs/flags/uk-flag-icon-32.png') }}" alt=""></a>
+                    src="{{ asset('imgs/flags/uk-flag-icon-32.png') }}" alt=""></a> --}}
         </div>
     </div>
 </header>

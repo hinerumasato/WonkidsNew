@@ -41,10 +41,14 @@
 
 
     <div class="content-details">
-        <h2 class="content-details-title">Nội dung chi tiết</h2>
+        <h2 class="content-details-title">Mô tả Slider</h2>
         @foreach ($allLanguages as $language)
             <div class="content-details-input-wrap mt-3 d-flex" locale="{{ $language->locale }}">
-                <input type="text" value="{{ $descriptions[$language->locale] }}" class="content-details-text-field w-75 border-0" placeholder="Nhập nội dung...">
+                @if (array_key_exists($language->locale, $descriptions))
+                    <input type="text" value="{{ $descriptions[$language->locale] }}" class="content-details-text-field w-75 border-0" placeholder="Nhập nội dung...">
+                @else
+                    <input type="text" class="content-details-text-field w-75 border-0" placeholder="Nhập nội dung...">
+                @endif
                 <span class="input-label">Nội dung</span>
                 <div class="content-details-select-language w-25">
                     <button class="btn btn-white" type="button" aria-expanded="false">

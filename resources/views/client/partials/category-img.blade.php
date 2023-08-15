@@ -2,6 +2,7 @@
     <style>
         .category-name {
             color: #3771AD;
+            font-family: 'Times New Roman', Times, serif
         }
 
         .category-wrap:hover .category-name {
