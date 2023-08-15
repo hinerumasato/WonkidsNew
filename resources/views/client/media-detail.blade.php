@@ -9,6 +9,10 @@
         .media-link:hover {
             text-decoration: underline;
         }
+
+        iframe {
+            max-width: 100%;
+        }
     </style>
 @endsection
 @section('content')

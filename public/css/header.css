@@ -103,7 +103,7 @@ header ul {
 }
 
 .header_subitem:hover {
-    transition: border .3s;
+    transition: border .1s;
     border-left: 5px solid var(--main-color);
 }
 
