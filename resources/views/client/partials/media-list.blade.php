@@ -21,7 +21,7 @@
 
 <div class="container mb-3">
     <ul class="nav nav-tabs media-nav">
-        <li class="nav-item">
+        <li class="nav-item d-none d-xl-block">
             <a slug="media-contents" class="nav-link text-dark bg-body-secondary rounded-0" aria-current="page"
                     href="{{ route('home.media.index') }}">@lang('general.all')</a>
         </li>
