@@ -23,7 +23,7 @@
     <ul class="nav nav-tabs media-nav">
         @foreach ($mediaNavs as $media)
             <li class="nav-item">
-                <a slug="{{ $media['slug'] }}" class="nav-link text-dark bg-body-tertiary rounded-0" aria-current="page"
+                <a slug="{{ $media['slug'] }}" class="nav-link text-dark bg-body-secondary rounded-0" aria-current="page"
                     href="{{ route('home.media.index-slug', ['mediaSlug' => $media['slug']]) }}">{{ $media['name'] }}</a>
             </li>
         @endforeach
@@ -39,7 +39,7 @@
                 const href = window.location.href;
                 if(href.includes(slug)) {
                     link.classList.add('active');
-                    link.classList.remove('bg-body-tertiary');
+                    link.classList.remove('bg-body-secondary');
                 }
             });
         }   
