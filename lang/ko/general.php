@@ -4,6 +4,8 @@ return [
     'edit-post-success' => '수정 완료되었습니다',
     'delete-post-success' => '삭제되었습니다',
 
+    'all' => 'All',
+
     'home' => '홈',
     'about-us' => '개요',
     'operation' => '운영',

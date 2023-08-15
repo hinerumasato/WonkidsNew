@@ -21,6 +21,10 @@
 
 <div class="container mb-3">
     <ul class="nav nav-tabs media-nav">
+        <li class="nav-item">
+            <a slug="media-contents" class="nav-link text-dark bg-body-secondary rounded-0" aria-current="page"
+                    href="{{ route('home.media.index') }}">@lang('general.all')</a>
+        </li>
         @foreach ($mediaNavs as $media)
             <li class="nav-item">
                 <a slug="{{ $media['slug'] }}" class="nav-link text-dark bg-body-secondary rounded-0" aria-current="page"
@@ -37,7 +41,8 @@
             navLinks.forEach(link => {
                 const slug = encodeURIComponent(link.getAttribute('slug'));
                 const href = window.location.href;
-                if(href.includes(slug)) {
+                const hrefSlug = href.split('/')[href.split('/').length - 1];
+                if(hrefSlug === slug) {
                     link.classList.add('active');
                     link.classList.remove('bg-body-secondary');
                 }

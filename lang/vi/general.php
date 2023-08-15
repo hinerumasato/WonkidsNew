@@ -4,6 +4,8 @@ return [
     'edit-post-success' => 'Cập nhật bài viết thành công',
     'delete-post-success' => "Xoá bài viết thành công",
 
+    'all' => 'Tất cả',
+
     'name' => 'Tên',
     'tel' => 'SĐT',
     'title' => 'Tiêu đề',

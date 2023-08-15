@@ -4,6 +4,8 @@ return [
     'edit-post-success' => 'Update post successfully',
     'delete-post-success' => 'Delete post successfully',
 
+    'all' => 'All',
+
     'name' => 'Name',
     'tel' => 'Tel',
     'title' => 'title',
