@@ -19,7 +19,7 @@ class Post extends Model
     public $timestamps = false;
 
     public function languages(): BelongsToMany {
-        return $this->belongsToMany(Language::class, 'posts_has_languages')->withPivot('title', 'content', 'slug')->withTimestamps();
+        return $this->belongsToMany(Language::class, 'posts_has_languages')->withPivot('title', 'content', 'slug', 'user_id', 'view')->withTimestamps();
     }
 
     public function category(): BelongsTo {
@@ -67,5 +67,10 @@ class Post extends Model
         }
         $post = Post::find($post_id);
         $post->languages()->detach();
+    }
+
+    public function updateView() {
+        $this->pivot->view++;
+        $this->pivot->save();
     }
 }

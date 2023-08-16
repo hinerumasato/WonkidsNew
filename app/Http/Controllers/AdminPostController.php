@@ -15,6 +15,7 @@ use App\Models\PostLanguageMedia;
 use App\Models\PostLanguageUploadImg;
 use App\Models\StagingArea;
 use App\Models\UploadImg;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
@@ -176,6 +177,7 @@ class AdminPostController extends Controller
                 "title" => $title, 
                 "content" => $content, 
                 "slug" => StringHelper::toSlug($title),
+                "user_id" => Auth::user()->id,
             ],
         ]);
 
@@ -196,6 +198,7 @@ class AdminPostController extends Controller
                         "title" => $title, 
                         "content" => $content,
                         "slug" => StringHelper::toSlug($title),
+                        "user_id" => Auth::user()->id,
                     ],
                 ]);
             }
@@ -229,6 +232,7 @@ class AdminPostController extends Controller
             "title" => $title,
             "content" => $content,
             "slug" => StringHelper::toSlug($title),
+            "user_id" => Auth::user()->id,
         ]);
 
         $post->category_id = $category_id;

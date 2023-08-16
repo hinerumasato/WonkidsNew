@@ -17,7 +17,7 @@ textarea img, iframe {
     max-width: 100%;
 }
 
-@media (max-width: 572px) {
+@media (max-width: 768px) {
     .post-detail_category {
         font-size: 24px;
         font-weight: bold;

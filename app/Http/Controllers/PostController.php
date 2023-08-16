@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
 use App\Models\Category;
+use App\Models\User;
 
 class PostController extends Controller {
 
@@ -69,10 +70,21 @@ class PostController extends Controller {
         
         $postTitle = $postFind->pivot->title;
         $postContent = $postFind->pivot->content;
+        $postTime = $postFind->pivot->updated_at->format('Y-m-d');
+        $postAuthor = User::find($postFind->pivot->user_id);
+        $postView = $postFind->pivot->view + 1;
+
+        $postFind->updateView();
 
         $category = $postFind->category->languages()->where('locale', $locale)->first()->pivot->name;
         
-        $post = ["postTitle" => $postTitle, "postContent" => $postContent];
+        $post = [
+            "postTitle" => $postTitle, 
+            "postContent" => $postContent, 
+            "postTime" => $postTime,
+            "postAuthor" => $postAuthor->name,
+            "postView" => $postView,
+        ];
         $title = $postTitle;
         $this->smallSliderTitle = trans('general.11zones') ?? "Document";
 
