@@ -1,22 +1,7 @@
 [lazy-element] {
-    opacity: 0;
-    top: 0;
-    position: relative;
+    visibility: hidden;
 }
 
 [lazy-element="loaded"] {
-    animation: lazyFade 1.5s 0.5s forwards;
-}
-
-@keyframes lazyFade {
-
-    0% {
-        top: 100px;
-        opacity: 0;
-    }
-
-    100% {
-        top: 0;
-        opacity: 1;
-    }
+    visibility: visible;
 }

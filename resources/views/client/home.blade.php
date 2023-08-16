@@ -9,7 +9,7 @@
     </div>
     @include('client.partials.slider')  
     <div class="container">
-        <div class="about container_content" lazy-element>
+        <div class="about container_content" lazy-element animation="animate__fadeInUpBig">
             <h2 class="about_title container_content_title">{{ trans('home.about-title') }}</h2>
             <p class="about_content">{{ trans('home.about-content') }}</p>
             <button class="about_read_btn">
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="wonkids_club_is container_content" lazy-element>
+        <div class="wonkids_club_is container_content" lazy-element animation="animate__fadeInUpBig">
             <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
             <ul class="wonkids_club_list container_list row gap-3">
                 <li class="container_item col-lg col-12">
@@ -52,15 +52,15 @@
         </div>
     </div>
 
-    <div class="home_container_video" lazy-element>
+    <div class="home_container_video" lazy-element animation="animate__fadeInUpBig">
         <iframe class="container_iframe" width="60%" height="76%" src="https://www.youtube.com/embed/MMDRukV6Kbg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
     <div class="container">
-        <div class="container_content" lazy-element>
+        <div class="container_content" lazy-element animation="animate__fadeInUpBig">
             <h2 class="container_content_title">{{ trans('home.media-content') }}</h2>
             <ul class="container_list row justify-content-between media_list">
-                <li class="container_item col-lg-6 col-12">
+                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInTopLeft">
                     <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsSong['slug']])}}" class="container_link">
                         <i class="fa-solid fa-music container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-song') }}</p>
@@ -69,7 +69,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="container_item col-lg-6 col-12">
+                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInTopRight">
                     <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsStory['slug']])}}" class="container_link">
                         <i class="fa-solid fa-book container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-story') }}</p>
@@ -78,7 +78,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="container_item col-lg-6 col-12">
+                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInBottomLeft">
                     <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsCraft['slug']])}}" class="container_link">
                         <i class="fa-solid fa-scissors container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-activities') }}</p>
@@ -87,7 +87,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="container_item col-lg-6 col-12">
+                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInBottomRight">
                     <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsMemorize['slug']])}}" class="container_link">
                         <i class="fa-solid fa-bookmark container_list_icon"></i>
                         <p class="container_content_item_title">{{ trans('home.wonkids-bible') }}</p>
@@ -117,7 +117,7 @@
             </div>
         </div> --}}
 
-        <div id="qa" class="container_content contact_content" lazy-element>
+        <div id="qa" class="container_content contact_content" lazy-element animation="animate__fadeInUpBig">
             @if (session('msg'))
                 <div class="alert alert-success">
                     {{ session('msg') }}
@@ -127,13 +127,13 @@
             <form action="" method="POST">
                 @csrf
                 <div class="container_form_up">
-                    <input type="text" name="name" id="name" placeholder="{{trans('general.name')}}*">
-                    <input type="email" name="email" id="email" placeholder="{{trans('general.email')}}*">
-                    <input type="text" name="phone" id="tel" placeholder="{{trans('general.tel')}}">
+                    <input type="text" name="name" id="name" placeholder="{{trans('general.name')}}*" lazy-element animation="animate__zoomInDown">
+                    <input type="email" name="email" id="email" placeholder="{{trans('general.email')}}*" lazy-element animation="animate__zoomInDown">
+                    <input type="text" name="phone" id="tel" placeholder="{{trans('general.tel')}}" lazy-element animation="animate__zoomInDown">
                 </div>
-                <input type="text" name="title" id="" placeholder="{{trans('general.title')}}" class="title_input">
-                <textarea class="container_text_area" name="message" id="message" placeholder="{{trans('general.message')}}*"></textarea>
-                <div class="container_button_wrap">
+                <input type="text" name="title" id="" placeholder="{{trans('general.title')}}" class="title_input" lazy-element animation="animate__zoomInDown">
+                <textarea class="container_text_area" name="message" id="message" placeholder="{{trans('general.message')}}*" lazy-element animation="animate__zoomInDown"></textarea>
+                <div class="container_button_wrap" lazy-element animation="animate__bounceInRight">
                     <button class="container_submit_btn" type="submit">
                         <i class="fa-solid fa-share"></i>
                         SEND

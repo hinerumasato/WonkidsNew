@@ -9,6 +9,10 @@ window.addEventListener('load', () => {
 
 function load(element) {
     element.setAttribute('lazy-element', 'loaded');
+    if(element.hasAttribute('animation')) {
+        const animationName = element.getAttribute('animation')
+        element.classList.add('animate__animated', animationName);
+    }
 }
 
 function ready() {
