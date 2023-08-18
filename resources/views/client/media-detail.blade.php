@@ -13,15 +13,33 @@
         iframe {
             max-width: 100%;
         }
+
+        @media (max-width: 768px) {
+
+            .detail-header {
+                border: solid 1px #C7C8C9;
+                padding: 16px;
+            }
+
+            .detail-header > p:first-child {
+                border-bottom: solid 1px #C7C8C9;
+                padding-bottom: 16px;
+                border-right: transparent !important;
+            }
+
+            .detail-header > p {
+                text-align: center
+            }
+        }
     </style>
 @endsection
 @section('content')
     @include('client.partials.small-slider')
     @include('client.partials.small-nav')
     <div class="container my-5">
-        <div class="row">
-            <p class="col-3 h4 fw-bold">{{ $type }}</p>
-            <p class="col-7 h4 fw-bold">
+        <div class="d-md-flex d-block detail-header">
+            <p class="h4 fw-bold me-3 pe-3" style="border-right: solid 1px #C7C8C9;">{{ $type }}</p>
+            <p class="h4 fw-bold">
                 {{ $mediaDetail->title }}
             </p>
         </div>

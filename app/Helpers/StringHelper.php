@@ -81,4 +81,9 @@ class StringHelper {
         $arr = explode('.', $fileName);
         return $arr[count($arr) - 1];
     }
+
+    public static function createBreadcumb($options): string {
+        $result = '<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">';
+        return $result;
+    }
 }

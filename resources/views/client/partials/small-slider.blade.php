@@ -7,6 +7,7 @@
                 <h2 class="d-block d-lg-none fs-3 text-white">{{ $smallSliderTitle }}</h2>
             </div>
             <h2 class="text-center col small-slider_title d-none d-lg-block">{{ $smallSliderTitle }}</h2>
+            @include('vendor.breadcumb.default')
         </div>
     </div>
 </div>

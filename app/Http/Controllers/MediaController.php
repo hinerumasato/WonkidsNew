@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Breadcumb\Breadcumb;
 use App\Helpers\PaginateHelper;
 use App\Helpers\StringHelper;
 use App\Models\Language;
@@ -44,6 +45,10 @@ class MediaController extends Controller
         $medias = PaginateHelper::paginate($medias, 20, null, [
             'path' => route('home.media.index'),
         ]);
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+        ], trans('general.media'));
 
         return view('client.media', [
             'title' => $title,
@@ -92,6 +97,16 @@ class MediaController extends Controller
             'path' => route('home.media.index-slug', ['mediaSlug' => $mediaSlug]),
         ]);
 
+        foreach ($mediaNavs as $media) {
+            if($media['slug'] === $mediaSlug) {
+                Breadcumb::createBreadcumb('>', [
+                    trans('home.title') => route('home.index'),
+                    trans('general.media') => route('home.media.index'),
+                ], $media['name']);
+                break;
+            }
+        }
+
         return view('client.media', [
             'title' => $title,
             'smallSliderTitle' => $smallSliderTitle,
@@ -101,6 +116,7 @@ class MediaController extends Controller
             'mediaSlugs' => $mediaSlugs,
             'detailSlugs' => $detailSlugs,
         ]);
+
     }
 
     public function detail($mediaSlug, $detailSlug) {
@@ -159,6 +175,17 @@ class MediaController extends Controller
         $medias = PaginateHelper::paginate($medias, 20, null, [
             'path' => route('home.media.index-slug', ['mediaSlug' => $mediaSlug]),
         ]);
+
+        foreach ($mediaNavs as $media) {
+            if($media['slug'] === $mediaSlug) {
+                Breadcumb::createBreadcumb('>', [
+                    trans('home.title') => route('home.index'),
+                    trans('general.media') => route('home.media.index'),
+                    $media['name'] => route('home.media.index-slug', ['mediaSlug' => $media['slug']]),
+                ], trans('general.detail'));
+                break;
+            }
+        }
 
         return view('client.media-detail', [
             'title' => $title,

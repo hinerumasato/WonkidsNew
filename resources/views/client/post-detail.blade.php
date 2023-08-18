@@ -16,13 +16,13 @@
                     <i class="fa-regular fa-user d-block d-md-inline"></i>
                     {{ $post["postAuthor"] }}
                 </div>
-                <div class="post-detail-time text-center">
+                {{-- <div class="post-detail-time text-center">
                     <i class="fa-regular fa-clock d-block d-md-inline"></i>
                     {{ $post["postTime"] }}
-                </div>
+                </div> --}}
                 <div class="post-detail-view text-center">
                     <i class="fa-regular fa-eye d-block d-md-inline"></i>
-                    {{ $post["postView"] }}
+                    @lang('general.viewed'): {{ $post["postView"] }}
                 </div>
             </div>
         </div>

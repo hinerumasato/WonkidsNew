@@ -1,6 +1,6 @@
-<nav class="side-nav">
-    <div class="side-nav-header bg-light d-flex align-items-center">
-        <div class="px-3 d-flex w-100 justify-content-between">
+<nav class="side-nav offcanvas offcanvas-start" tabindex="-1" id="sidenavOffcanvas">
+    <div class="side-nav-header offcanvas-header bg-light d-flex align-items-center">
+        <div class="d-flex w-100 justify-content-between">
             <div class="language d-flex align-items-center">
                 <a class="locale-link" href="{{ route('change-language', ['locale' => 'vi']) }}"><img
                         class="flag-img" src="{{ asset('imgs/flags/vietnam-flag-icon-32.png') }}"
@@ -12,13 +12,11 @@
                         class="flag-img" src="{{ asset('imgs/flags/uk-flag-icon-32.png') }}" alt=""></a>
             </div>
 
-            <button class="close-side-nav-btn">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
     </div>
 
-    <div class="side-nav-content">
+    <div class="side-nav-content offcanvas-body">
         <ul class="side-nav-list">
             <li class="side-nav-item d-flex justify-content-between"><a href="{{ route('home.index') }}"
                     class="side-nav-link">{{ trans('home.menu-item-1') }}</a></li>
@@ -132,3 +130,42 @@
         </ul>
     </div>
 </nav>
+
+@push('scripts')
+    <script>
+        function displaySubMenu() {
+            const openSubMenuBtns = document.querySelectorAll('.side-nav-submenu-open-btn');
+            
+            openSubMenuBtns.forEach((btn, index) => {
+                btn.onclick = () => {
+                    const parent = btn.parentNode.parentNode;
+                    const subMenu = parent.querySelector('.side-nav-submenu')
+                    const computedHeight = subMenu.scrollHeight;
+                    const icon = btn.querySelector('i');
+
+                    if(!btn.classList.contains('open')) {
+                        // subMenu.style.height = `${computedHeight}px`;
+                        subMenu.style.display = `block`;
+                        subMenu.classList.add('animate__animated', 'animate__fadeInDown', 'animate__faster');
+                        subMenu.style.marginTop = `${20}px`;
+                        btn.classList.add('open');
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                    else {
+                        subMenu.classList.remove('animate__animated', 'animate__fadeInDown', 'animate__faster');
+                        subMenu.style.display = `none`;
+                        subMenu.style.marginTop = `0`;
+                        btn.classList.remove('open');
+                        icon.classList.add('fa-plus');
+                        icon.classList.remove('fa-minus');
+                    }
+                }
+            });
+
+        }
+
+        displaySubMenu();
+
+    </script>
+@endpush

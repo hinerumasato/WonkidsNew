@@ -6,6 +6,9 @@ return [
 
     'all' => 'Tất cả',
 
+    'viewed' => 'Lượt xem',
+    'detail' => 'Chi tiết',
+
     'name' => 'Tên',
     'tel' => 'SĐT',
     'title' => 'Tiêu đề',
@@ -19,7 +22,8 @@ return [
     'media' => 'Nội dung truyền thông',
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',
-    'wonkidsclub' => 'Wonkids club',
+    'wonkidsclub' => 'Wonkidsclub',
+    'wonderful-story' => 'Wonderful Story',
     'share' => 'Chia sẻ',
     'introduction' => 'Giới thiệu',
     'document-share' => 'Chia sẻ tài liệu',

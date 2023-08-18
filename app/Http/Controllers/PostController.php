@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Breadcumb\Breadcumb;
 use App\Helpers\LoopHelper;
 use App\Helpers\PaginateHelper;
 use Illuminate\Http\Request;
@@ -21,6 +22,10 @@ class PostController extends Controller {
     
     public function index(Request $request) {
 
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+        ], trans('general.11zones'));
+        
         $languageModel = new Language();
         $postModel = new Post();
 
@@ -90,6 +95,11 @@ class PostController extends Controller {
 
 
         $postDetailCategoryId = $postFind->category->id;
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+            trans('general.11zones') => route('posts.index'),
+        ], $category);
 
         return view('client.post-detail', [
                 'title' => $title, 

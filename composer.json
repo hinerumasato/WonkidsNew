@@ -28,7 +28,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/StringHelper.php"
+            "app/Helpers/StringHelper.php",
+            "app/Breadcumb/Breadcumb.php"
         ]
     },
     "autoload-dev": {

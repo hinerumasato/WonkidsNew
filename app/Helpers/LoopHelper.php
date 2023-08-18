@@ -123,12 +123,12 @@ class LoopHelper {
             $route = route('posts.index')."?category=".$item['id'];
             if ($item['parent_id'] == $parent_id) {
                 if(LoopHelper::hasChild($item['id'], $data)) {
-                    $html .= "<li class='$itemClass'><span class='d-flex justify-content-between'><a class='$linkClass' href='$route'>" . $item['name'] . "</a><button class='side-nav-submenu-open-btn'>
+                    $html .= "<li class='$itemClass'><div class='d-flex justify-content-between'><a class='$linkClass' href='$route'>" . $item['name'] . "</a><button class='side-nav-submenu-open-btn'>
                                                     <i class='fa-solid fa-plus side-nav-icon'></i>
-                                                    </button></span>";
+                                                    </button></div>";
                 }
                 else {
-                    $html .= "<li class='$itemClass'><span class='d-flex justify-content-between'><a class='$linkClass' href='$route'>" . $item['name'] . "</a></span>";
+                    $html .= "<li class='$itemClass'><div class='d-flex justify-content-between'><a class='$linkClass' href='$route'>" . $item['name'] . "</a></div>";
                 }
                 $html .= LoopHelper::buildHTML($data, $listClass, $itemClass, $linkClass, $item['id']);
                 $html .= "</li>";

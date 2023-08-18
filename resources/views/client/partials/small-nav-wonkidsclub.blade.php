@@ -1,37 +1,29 @@
 <div class="container mt-5">
-    <nav class="d-lg-block d-none">
-        <ul class="small-nav_list d-flex justify-content-center my-0">
+    <nav>
+        <ul class="small-nav_list d-lg-flex justify-content-center my-0 d-none">
             <li class="small-nav_item mx-3">
-                <a href="{{ route('posts.index') }}">
-                    {{ trans('home.11-period') }}
+                <a href="{{route('home.about-us')}}">
+                    @lang('general.about-us')
                     <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
-                {!! $smallNavHTML !!}
             </li>
+
             <li class="small-nav_item mx-3">
-                <a href="{{route('home.media.index')}}">
-                    {{ trans('home.media-content') }}
+                <a href="{{route('home.operation')}}">
+                    @lang('general.operation')
                     <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
-
-                <ul class="small-nav_sublist media-contents_sublist">
-                    @foreach ($medias as $media)
-                        <li class="small-nav_subitem">
-                            <a href="{{route('home.media.index-slug', ['mediaSlug' => $media['slug']])}}" class="small-nav_sublink">{{ $media['name'] }}</a>
-                        </li>
-                    @endforeach
-                </ul>
             </li>
         </ul>
     </nav>
 
-
     <div class="d-block d-lg-none">
         <select name="" id="" class="w-100 text-center py-3 small-nav-select">
-            <option value="{{ route('posts.index') }}">@lang('home.11-period')</option>
-            <option value="{{ route('home.media.index') }}">@lang('home.media-content')</option>
+            <option value="{{ route('home.about-us') }}">@lang('general.about-us')</option>
+            <option value="{{ route('home.operation') }}">@lang('general.operation')</option>
         </select>
     </div>
+
     <hr>
 </div>
 
@@ -39,7 +31,7 @@
     <script src="{{ asset('js/fittop.js') }}"></script>
     <script>
         const windowLink = window.location.href;
-        const smallNavItems = document.querySelectorAll('.small-nav_item');
+        const smallNavItems = document.querySelectorAll('.small-nav_item')
         smallNavItems.forEach(item => {
             const link = item.querySelector('a').getAttribute('href');
             if(windowLink.includes(link))
@@ -50,6 +42,7 @@
 
     <script>
         const selectElement = document.querySelector('select');
+        
         selectElement.value = window.location.href;
         selectElement.onchange = () => window.location.replace(selectElement.value);
     </script>

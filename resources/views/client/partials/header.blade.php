@@ -1,6 +1,6 @@
-<header class="w-100 row align-items-center home_header justify-content-between">
+<header class="w-100 d-flex align-items-center home_header justify-content-between">
     <div class="d-xl-none d-block col-2">
-        <button class="btn btn-light open-side-nav-btn">
+        <button class="btn btn-light open-side-nav-btn" data-bs-toggle="offcanvas" data-bs-target="#sidenavOffcanvas">
             <i class="fa-solid fa-bars fs-2"></i>
         </button>
         @include('client.partials.sidenav')
@@ -174,51 +174,6 @@
             }
         }
 
-        function displaySideNav() {
-            const sideNav = document.querySelector('.side-nav');
-            const barBtn = document.querySelector('.open-side-nav-btn');
-            const closeBarBtn = document.querySelector('.close-side-nav-btn');
-
-
-            barBtn.onclick = () => {
-                sideNav.classList.add('open');
-            }
-
-            closeBarBtn.onclick = () => {
-                sideNav.classList.remove('open');
-            }
-        }
-
-        function displaySubMenu() {
-            const openSubMenuBtns = document.querySelectorAll('.side-nav-submenu-open-btn');
-            
-            openSubMenuBtns.forEach((btn, index) => {
-                btn.onclick = () => {
-                    const parent = btn.parentNode.parentNode;
-                    const subMenu = parent.querySelector('.side-nav-submenu')
-                    const icon = btn.querySelector('i');
-
-                    if(!btn.classList.contains('open')) {
-                        subMenu.style.height = 'fit-content';
-                        subMenu.style.marginTop = `${20}px`;
-                        btn.classList.add('open');
-                        icon.classList.remove('fa-plus');
-                        icon.classList.add('fa-minus');
-                    }
-                    else {
-                        subMenu.style.height = '0';
-                        subMenu.style.marginTop = `0`;
-                        btn.classList.remove('open');
-                        icon.classList.add('fa-plus');
-                        icon.classList.remove('fa-minus');
-                    }
-                }
-            });
-
-        }
-
         setHeaderClass();
-        displaySideNav();
-        displaySubMenu();
     </script>
 @endpush

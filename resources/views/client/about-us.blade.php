@@ -1,7 +1,7 @@
 @extends('client.layouts.master')
 @section('content')
-
 @include('client.partials.small-slider')
+@include('client.partials.small-nav-wonkidsclub')
 
 <div class="about-us_container container">
     <section class="about-us_section">

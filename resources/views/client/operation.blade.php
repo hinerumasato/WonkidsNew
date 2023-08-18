@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('content')
 @include('client.partials.small-slider')
+@include('client.partials.small-nav-wonkidsclub')
 <div class="container">
     <ul style="list-style: upper-roman" class="fw-bold fs-3">
         <li class="my-5 mx-4">

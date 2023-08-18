@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Breadcumb\Breadcumb;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Partials\AdminLayoutController;
 use App\Http\Controllers\Partials\CategoryController;
 use App\Http\Controllers\Partials\HeaderController;
 use App\Http\Controllers\Partials\SliderController;
 use App\Http\Controllers\Partials\SmallNavController;
+use App\Http\Controllers\Vendor\BreadcumbController;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
@@ -22,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
     }
 
     /**
@@ -39,6 +41,8 @@ class AppServiceProvider extends ServiceProvider
 
         //Paginator
         Paginator::useBootstrapFive();
+
+        //Breadcumb
 
         //Client
         View::composer('client.partials.header', function($view) {

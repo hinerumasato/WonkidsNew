@@ -6,13 +6,17 @@ return [
 
     'all' => 'All',
 
+    'viewed' => 'Viewed',
+    'detail' => 'Detail',
+
     'home' => '홈',
     'about-us' => '개요',
     'operation' => '운영',
     'book' => 'Wonderful Story Book',
     'media' => '미디어 콘텐츠',
     'camp' => 'Wonderful Story Camp',
-    'wonkidsclub' => 'Wonkids club',
+    'wonkidsclub' => 'Wonkidsclub',
+    'wonderful-story' => 'Wonderful Story',
     'share' => '공유',
     'introduction' => '소개',
     'document-share' => '서류 공유',

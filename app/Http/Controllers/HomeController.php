@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Breadcumb\Breadcumb;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
@@ -42,6 +43,12 @@ class HomeController extends Controller {
     public function aboutUs() {
         $title = trans('general.about-us') ?? "Document";
         $this->smallSliderTitle = $title;
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+            trans('general.wonkidsclub') => route('home.about-us'),
+        ], trans('general.about-us'));
+
         return view('client.about-us', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,
@@ -51,6 +58,12 @@ class HomeController extends Controller {
     public function operation() {
         $title = trans('general.operation') ?? "Document";
         $this->smallSliderTitle = $title;
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+            trans('general.wonkidsclub') => route('home.about-us'),
+        ], trans('general.operation'));
+
         return view('client.operation', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,
@@ -60,6 +73,12 @@ class HomeController extends Controller {
     public function book() {
         $title = trans('general.book') ?? "Document";
         $this->smallSliderTitle = $title;
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+            trans('general.wonderful-story') => route('home.book'),
+        ], trans('general.book'));
+
         return view('client.book', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,
@@ -69,6 +88,12 @@ class HomeController extends Controller {
     public function camp() {
         $title = trans('general.camp') ?? "Document";
         $this->smallSliderTitle = $title;
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+            trans('general.wonderful-story') => route('home.book'),
+        ], trans('general.camp'));
+
         return view('client.camp', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,
@@ -78,6 +103,12 @@ class HomeController extends Controller {
     public function wonkidsclub() {
         $title = trans('general.wonkidsclub') ?? "Document";
         $this->smallSliderTitle = $title;
+
+        Breadcumb::createBreadcumb('>', [
+            trans('home.title') => route('home.index'),
+            trans('general.wonderful-story') => route('home.book'),
+        ], trans('general.wonkidsclub'));
+
         return view('client.wonkidsclub', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,

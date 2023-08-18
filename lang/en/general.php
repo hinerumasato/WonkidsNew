@@ -6,6 +6,9 @@ return [
 
     'all' => 'All',
 
+    'viewed' => 'Viewed',
+    'detail' => 'Detail',
+
     'name' => 'Name',
     'tel' => 'Tel',
     'title' => 'title',
@@ -18,7 +21,8 @@ return [
     'media' => 'Media Contents',
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',
-    'wonkidsclub' => 'Wonkids club',
+    'wonkidsclub' => 'Wonkidsclub',
+    'wonderful-story' => 'Wonderful Story',
     'share' => 'Share',
     'introduction' => 'Introduction',
     'document-share' => 'Document sharing',
