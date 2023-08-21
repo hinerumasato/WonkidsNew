@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminUIController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -28,6 +29,16 @@ Auth::routes(['verify' => true]);
 
 
 Route::get("/chang-language/{locale}", [LocaleController::class, 'changeLocale'])->name("change-language");
+Route::get('clear-cache', function() {
+    Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    if($exitCode === 0) {
+        return redirect()->back()->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+    }
+
+    return 'Cannot Clear Cache';
+
+});
 
 Route::prefix('/mail')->name('mail.')->group(function() {
     Route::get('/success/{token}', [MailController::class, 'success'])->name('success');
