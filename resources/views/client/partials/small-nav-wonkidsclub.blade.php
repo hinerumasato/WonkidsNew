@@ -4,14 +4,12 @@
             <li class="small-nav_item mx-3">
                 <a href="{{route('home.about-us')}}">
                     @lang('general.about-us')
-                    <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
             </li>
 
             <li class="small-nav_item mx-3">
-                <a href="{{route('home.operation')}}">
-                    @lang('general.operation')
-                    <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
+                <a href="{{route('home.management')}}">
+                    @lang('general.management')
                 </a>
             </li>
         </ul>
@@ -20,7 +18,7 @@
     <div class="d-block d-lg-none">
         <select name="" id="" class="w-100 text-center py-3 small-nav-select">
             <option value="{{ route('home.about-us') }}">@lang('general.about-us')</option>
-            <option value="{{ route('home.operation') }}">@lang('general.operation')</option>
+            <option value="{{ route('home.management') }}">@lang('general.management')</option>
         </select>
     </div>
 

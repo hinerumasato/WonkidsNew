@@ -46,7 +46,7 @@ class HomeController extends Controller {
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
-            trans('general.wonkidsclub') => route('home.about-us'),
+            trans('general.club') => route('home.about-us'),
         ], trans('general.about-us'));
 
         return view('client.about-us', [
@@ -55,16 +55,16 @@ class HomeController extends Controller {
         ]);
     }
 
-    public function operation() {
-        $title = trans('general.operation') ?? "Document";
+    public function management() {
+        $title = trans('general.management') ?? "Document";
         $this->smallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
-            trans('general.wonkidsclub') => route('home.about-us'),
-        ], trans('general.operation'));
+            trans('general.club') => route('home.about-us'),
+        ], trans('general.management'));
 
-        return view('client.operation', [
+        return view('client.management', [
             'title' => $title, 
             'smallSliderTitle' => $this->smallSliderTitle,
         ]);
@@ -101,13 +101,13 @@ class HomeController extends Controller {
     }
 
     public function wonkidsclub() {
-        $title = trans('general.wonkidsclub') ?? "Document";
+        $title = trans('general.club') ?? "Document";
         $this->smallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
             trans('general.wonderful-story') => route('home.book'),
-        ], trans('general.wonkidsclub'));
+        ], trans('general.club'));
 
         return view('client.wonkidsclub', [
             'title' => $title, 

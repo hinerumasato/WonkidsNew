@@ -7,28 +7,56 @@
     @include('client.partials.small-slider')
     @include('client.partials.small-nav-wonderful')
     <div class="container">
-        <h2 class="py-5 fs-1 fw-bold">Wonkids Club</h2>
+        <h2 class="py-5 fs-1 fw-bold">@lang('wonkidsclub.title')</h2>
         <img src="{{asset('imgs/wonkidsclub/wonkidsclub_title.jpg')}}" alt="" class="w-100">
         <p class="fs-6 lh-base">
-            Wonkids Club là một chương trình dạy Kinh Thánh truyền thông dành cho thiếu nhi, kể nhiều câu chuyện Kinh Thánh theo từng thời kì và giúp các em học kinh thánh một cách thú vị bằng nhiều hoạt động khác nhau như : kể chuyện kinh thánh, múa ngợi khen, hoạt động, học thuộc lòng câu gốc một cách thú vị. <br>
-            Wonkids Club là chương trình dạy Kinh Thánh dành cho thiếu nhi phù hợp với thời đại  công nghệ thông tin,  bên cạnh đó cũng giúp phụ huynh và giáo viên trường Chúa nhật dễ dàng hơn trong việc dạy Kinh Thánh cho trẻ theo từng tuần. Chúng tôi cũng dự định sẽ mở rộng mạng lưới giảng dạy theo đơn vị khu vực, hệ phái và quốc gia.
+            @lang('wonkidsclub.about')
         </p>
 
         <ul>
-            <h2 class="py-5 fs-1 fw-bold">Lịch sử</h2>
+            <h2 class="py-5 fs-1 fw-bold">@lang('wonkidsclub.history')</h2>
             <li class="d-flex mb-3">
                 <p class="wonderful-year">2016</p>
-                <p>Thành lập nhóm Wonkids Club (gồm 6 giáo sĩ Hàn Quốc tại Việt Nam tham dự)</p>
+                <p>@lang('wonkidsclub.2016')</p>
             </li>
             <li class="d-flex mb-3">
                 <p class="wonderful-year">2017</p>
-                <p>Chuẩn bị bản kế hoạch của Wonkids Club và bắt đầu chế tác nội dung phần Cựu ước</p>
+                <p>@lang('wonkidsclub.2017')</p>
             </li>
             <li class="d-flex mb-3">
                 <p class="wonderful-year">2019</p>
                 <div class="wrap">
-                    <p>4/2019: Chuẩn bị bản kế hoạch trang web của Wonkids Club</p>
-                    <p>9/2019: Xây dựng trang web của Wonkids Club</p>
+                    <p>@lang('wonkidsclub.2019.1')</p>
+                    <p>@lang('wonkidsclub.2019.2')</p>
+                </div>
+            </li>
+
+            <li class="d-flex mb-3">
+                <p class="wonderful-year">2020</p>
+                <div class="wrap">
+                    <p>@lang('wonkidsclub.2020')</p>
+                </div>
+            </li>
+
+            <li class="d-flex mb-3">
+                <p class="wonderful-year">2021</p>
+                <div class="wrap">
+                    <p>@lang('wonkidsclub.2021.1')</p>
+                    <p>@lang('wonkidsclub.2021.2')</p>
+                </div>
+            </li>
+
+            <li class="d-flex mb-3">
+                <p class="wonderful-year">2022</p>
+                <div class="wrap">
+                    <p>@lang('wonkidsclub.2022')</p>
+                </div>
+            </li>
+
+            <li class="d-flex mb-3">
+                <p class="wonderful-year">2023</p>
+                <div class="wrap">
+                    <p>@lang('wonkidsclub.2023')</p>
                 </div>
             </li>
         </ul>

@@ -36,8 +36,8 @@
                         </a>
                     </li>
                     <li class="side-nav-subitem">
-                        <a href="{{ route('home.operation') }}" class="side-nav-sublink">
-                            @lang('general.operation')
+                        <a href="{{ route('home.management') }}" class="side-nav-sublink">
+                            @lang('general.management')
                         </a>
                     </li>
                 </ul>

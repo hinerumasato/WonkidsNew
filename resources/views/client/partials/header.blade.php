@@ -52,7 +52,7 @@
                             </a>
                             <ul class="menu_submenu">
                                 <li class="menu_subitem"><a href="{{ route('home.wonkidsclub') }}"
-                                        class="menu_sublink">Giới thiệu</a></li>
+                                        class="menu_sublink">@lang('general.introduction')</a></li>
                                 <li class="menu_subitem"><a href="" class="menu_sublink">@lang('general.document-share')</a>
                                 </li>
                             </ul>
@@ -75,8 +75,8 @@
                         </a>
                     </li>
                     <li class="header_subitem">
-                        <a href="{{ route('home.operation') }}" class="header_sublink">
-                            @lang('general.operation')
+                        <a href="{{ route('home.management') }}" class="header_sublink">
+                            @lang('general.management')
                         </a>
                     </li>
                 </ul>

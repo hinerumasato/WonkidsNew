@@ -26,7 +26,7 @@
             <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
             <ul class="wonkids_club_list container_list row gap-3">
                 <li class="container_item col-lg col-12">
-                    <a href="{{route('home.operation')}}" class="container_link">
+                    <a href="{{route('home.management')}}" class="container_link">
                         <i class="fa-solid fa-user-group container_list_icon"></i>
                         <p class="wonkids_club_list_title">{{ trans('home.operating-instructions') }}</p>
                     </a>

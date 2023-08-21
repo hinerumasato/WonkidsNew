@@ -18,7 +18,7 @@ return [
 
     'home' => 'Trang chủ',
     'about-us' => 'Khái quát',
-    'operation' => 'Điều hành',
+    'management' => 'Điều hành',
     'media' => 'Nội dung truyền thông',
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',

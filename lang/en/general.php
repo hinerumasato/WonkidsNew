@@ -17,7 +17,7 @@ return [
 
     'home' => 'Home',
     'about-us' => 'About',
-    'operation' => 'Operation',
+    'management' => 'Management',
     'media' => 'Media Contents',
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',
