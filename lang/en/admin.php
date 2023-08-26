@@ -43,4 +43,5 @@ return [
 
     //ui setting
     'ui.setting' => 'UI Setting',
+    'ui.slider.alert' => 'No slider yet, site is using the default slider',
 ];

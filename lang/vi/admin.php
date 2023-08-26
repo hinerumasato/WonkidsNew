@@ -42,4 +42,6 @@ return [
 
     //ui setting
     'ui.setting' => 'Thiết lập giao diện',
+
+    'ui.slider.alert' => 'Chưa có slider nào, trang web đang sử dụng slider mặc định',
 ];

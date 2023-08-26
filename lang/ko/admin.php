@@ -43,4 +43,5 @@ return [
 
     //ui setting
     'ui.setting' => 'UI Setting',
+    'ui.slider.alert' => '슬라이더가 없습니다. 사이트에서 기본 슬라이더를 사용하고 있습니다.',
 ];

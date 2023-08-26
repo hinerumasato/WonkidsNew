@@ -43,11 +43,21 @@ class AdminController extends Controller
             $posts = $searchPosts;
         }
 
+        $params = [];
+
+        foreach ($request->all() as $key => $value) {
+            if($key != 'page')
+                $params[$key] = $value; 
+        }
+
+        $path = route('admin.index', $params);
+
         $posts = PaginateHelper::paginate($posts, 10, null, [
-            'path' => route('admin.index', [
-                'post_lang' => $languageLocale, 
-                'post_category' => $request->input('post_category')
-            ]),
+            // 'path' => route('admin.index', [
+            //     'post_lang' => $languageLocale, 
+            //     'post_category' => $request->input('post_category')
+            // ]),
+            'path' => $path,
         ]);
 
         $user = Auth::user();

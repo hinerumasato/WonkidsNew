@@ -56,6 +56,9 @@ function searchPost() {
         if(e.key === 'Enter') {
             const  url = new URL(window.location.href);
             const searchValue = searchInput.value;
+            url.searchParams.delete('post_category');
+            url.searchParams.delete('page');
+
             url.searchParams.set('search', searchValue);
             window.location.replace(url.toString());
         }
@@ -138,8 +141,12 @@ function submitSelectDelete() {
 }
 
 function searchListener() {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const oldSearchValue = params.get('search');
     const searchWrap = document.querySelector('.search-wrap');
     const input = searchWrap.querySelector('input');
+    input.value = oldSearchValue;
 
     searchWrap.onclick = () => {
         searchWrap.classList.add('active');

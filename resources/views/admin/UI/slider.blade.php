@@ -25,8 +25,8 @@
     <div class="slider-img-wrap row mt-4">
 
         @if (count($sliders) == 0)
-            <div class="alert alert-primary text-center fw-bold" role="alert">
-                CHƯA CÓ SLIDER NÀO, TRANG WEB SẼ SỬ DỤNG SLIDER MẶC ĐỊNH
+            <div class="alert alert-primary text-center fw-bold" role="alert" style="text-transform: uppercase">
+                @lang('admin.ui.slider.alert')
             </div>
         @endif
 
