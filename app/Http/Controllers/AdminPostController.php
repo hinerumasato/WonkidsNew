@@ -238,7 +238,8 @@ class AdminPostController extends Controller
         $post->category_id = $category_id;
         $post->save();
 
-        $redirectUrl = route('admin.index').'/?post_lang='.$locale;
+        $postCategory = $request->input('category_id') ?? 0;
+        $redirectUrl = route('admin.index').'/?post_lang='.$locale.'&post_category='.$postCategory;
 
         return redirect($redirectUrl)->with('msg', trans('general.edit-post-success'));
     }
