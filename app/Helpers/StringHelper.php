@@ -41,6 +41,7 @@ class StringHelper {
 
     public static function toSlug($str) {
         $result = mb_strtolower(str_replace(" ", "-", StringHelper::removeVietnameseSpecialCharacter($str)), 'UTF-8');
+        $result = str_replace("/", "-", $result);
         return $result;
     }
 
