@@ -218,6 +218,12 @@ header ul {
     text-decoration: none;
 }
 
+@media (max-width: 1400px) {
+    .header_menu_link {
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 1200px) {
     .home_header {
         background-color: #fff;
