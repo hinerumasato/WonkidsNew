@@ -53,7 +53,7 @@
     </div>
 
     <div class="home_container_video" lazy-element animation="animate__fadeInUpBig">
-        <iframe class="container_iframe" width="60%" height="76%" src="https://www.youtube.com/embed/MMDRukV6Kbg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe src="https://drive.google.com/file/d/11BNrl7exdt6Yzx8Jt4lH-vK9y9m5PqBT/preview" width="60%" height="76%" allow="autoplay"></iframe>
     </div>
 
     <div class="container">

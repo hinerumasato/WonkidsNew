@@ -5,7 +5,7 @@ return [
     "menu-item-1"                       => "HOME",
     "menu-item-2"                       => "Wonkids Club",
     "menu-item-3"                       => "Wonkids Club Contents",
-    "menu-item-4"                       => "Wonderful Story",
+    "menu-item-4"                       => "Wonderful Story Series",
     "menu-item-5"                       => "Community",
     "menu-item-6"                       => "Language",
 

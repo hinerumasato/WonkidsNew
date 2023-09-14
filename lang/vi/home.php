@@ -5,7 +5,7 @@ return [
     "menu-item-1"                       => "HOME",
     "menu-item-2"                       => "Wonkids Club",
     "menu-item-3"                       => "Nội dung Wonkids Club",
-    "menu-item-4"                       => "Wonderful Story",
+    "menu-item-4"                       => "Series Wonderful Story",
     "menu-item-5"                       => "Cộng đồng",
     "menu-item-6"                       => "Ngôn ngữ",
 

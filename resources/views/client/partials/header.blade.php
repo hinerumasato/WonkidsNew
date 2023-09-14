@@ -19,50 +19,6 @@
 
             <li class="header_menu_item d-flex justify-content-between">
                 <a href="#" class="header_menu_link">
-                    {{ trans('home.menu-item-4') }}
-                    <button class="side-nav-submenu-open-btn">
-                        <i class="fa-solid fa-angle-down"></i>
-                    </button>
-                    <ul class="header_submenu">
-                        <li class="header_subitem">
-                            <a href="{{ route('home.book') }}" class="header_sublink">
-                                @lang('general.book')
-                            </a>
-                            <ul class="menu_submenu">
-                                <li class="menu_subitem"><a href="{{ route('home.book') }}"
-                                        class="menu_sublink">@lang('general.introduction')</a></li>
-                                <li class="menu_subitem"><a href="" class="menu_sublink">@lang('general.document-share')</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="header_subitem">
-                            <a href="{{ route('home.camp') }}" class="header_sublink">
-                                @lang('general.camp')
-                            </a>
-                            <ul class="menu_submenu">
-                                <li class="menu_subitem"><a href="{{ route('home.camp') }}"
-                                        class="menu_sublink">@lang('general.introduction')</a></li>
-                                <li class="menu_subitem"><a href="" class="menu_sublink">@lang('general.document-share')</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="header_subitem">
-                            <a href="{{ route('home.wonkidsclub') }}" class="header_sublink">
-                                @lang('general.club')
-                            </a>
-                            <ul class="menu_submenu">
-                                <li class="menu_subitem"><a href="{{ route('home.wonkidsclub') }}"
-                                        class="menu_sublink">@lang('general.introduction')</a></li>
-                                <li class="menu_subitem"><a href="" class="menu_sublink">@lang('general.document-share')</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </a>
-            </li>
-
-            <li class="header_menu_item d-flex justify-content-between">
-                <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-2') }}
                     <button class="side-nav-submenu-open-btn">
                         <i class="fa-solid fa-angle-down"></i>
@@ -81,6 +37,7 @@
                     </li>
                 </ul>
             </li>
+
             <li class="header_menu_item d-flex justify-content-between">
                 <a href="#" class="header_menu_link">
                     {{ trans('home.menu-item-3') }}
@@ -104,6 +61,32 @@
                                     </li>
                                 @endforeach
                             </ul>
+                        </li>
+                    </ul>
+                </a>
+            </li>
+
+            <li class="header_menu_item d-flex justify-content-between">
+                <a href="#" class="header_menu_link">
+                    {{ trans('home.menu-item-4') }}
+                    <button class="side-nav-submenu-open-btn">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+                    <ul class="header_submenu">
+                        <li class="header_subitem">
+                            <a href="{{ route('home.book') }}" class="header_sublink">
+                                @lang('general.book')
+                            </a>
+                        </li>
+                        <li class="header_subitem">
+                            <a href="{{ route('home.camp') }}" class="header_sublink">
+                                @lang('general.camp')
+                            </a>
+                        </li>
+                        <li class="header_subitem">
+                            <a href="{{ route('home.wonkidsclub') }}" class="header_sublink">
+                                @lang('general.club')
+                            </a>
                         </li>
                     </ul>
                 </a>

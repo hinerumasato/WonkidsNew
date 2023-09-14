@@ -10,7 +10,7 @@ return [
     'detail' => 'Detail',
 
     'home' => '홈',
-    'about-us' => '개요',
+    'about-us' => '소개',
     'management' => '운영',
     'book' => 'Wonderful Story Book',
     'media' => '미디어 콘텐츠',

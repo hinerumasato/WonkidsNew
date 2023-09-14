@@ -4,32 +4,17 @@
             <li class="small-nav_item mx-3">
                 <a href="{{route('home.book')}}">
                     @lang('general.book')
-                    <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
-                <ul class="small-nav_sublist media-contents_sublist">
-                    <li class="small-nav_subitem"><a href="{{route('home.book')}}" class="small-nav_sublink">@lang('general.introduction')</a></li>
-                    <li class="small-nav_subitem"><a href="" class="small-nav_sublink">@lang('general.document-share')</a></li>
-                </ul>
             </li>
             <li class="small-nav_item mx-3">
                 <a href="{{route('home.camp')}}">
                     @lang('general.camp')
-                    <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
-                <ul class="small-nav_sublist media-contents_sublist">
-                    <li class="small-nav_subitem"><a href="{{route('home.camp')}}" class="small-nav_sublink">@lang('general.introduction')</a></li>
-                    <li class="small-nav_subitem"><a href="" class="small-nav_sublink">@lang('general.document-share')</a></li>
-                </ul>
             </li>
             <li class="small-nav_item mx-3">
                 <a href="{{route('home.wonkidsclub')}}">
                     @lang('general.club')
-                    <i class="fa-solid fa-angle-down" style="font-size: 9px"></i>
                 </a>
-                <ul class="small-nav_sublist media-contents_sublist">
-                    <li class="small-nav_subitem"><a href="{{route('home.wonkidsclub')}}" class="small-nav_sublink">@lang('general.introduction')</a></li>
-                    <li class="small-nav_subitem"><a href="" class="small-nav_sublink">@lang('general.document-share')</a></li>
-                </ul>
             </li>
         </ul>
     </nav>
