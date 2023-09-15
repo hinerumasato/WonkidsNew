@@ -60,10 +60,12 @@ function showMediaDialog(editor) {
         onSubmit: function(e) {
             const selectedValue = e.getData().mediaContent;
             const selectedMedia = editor.selection.getContent();
+            const formatElement = selectedMedia.replaceAll('<p>&nbsp;</p>', '');
+
             const node = editor.dom.create('div', {
                 'media': selectedValue,
             });
-            node.innerHTML = selectedMedia;
+            node.innerHTML = formatElement;
             const deleteItems = node.querySelectorAll('div[media]');
             deleteItems.forEach(item => {
                 item.removeAttribute('media');

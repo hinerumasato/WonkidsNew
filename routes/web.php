@@ -29,7 +29,7 @@ Auth::routes(['verify' => true]);
 
 
 Route::get("/chang-language/{locale}", [LocaleController::class, 'changeLocale'])->name("change-language");
-Route::get('clear-cache', function() {
+Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     $exitCode = Artisan::call('view:clear');
     if($exitCode === 0) {
