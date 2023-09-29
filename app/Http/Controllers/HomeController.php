@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
 use App\Models\Media;
+use App\Models\Category;
 use App\Models\QA;
 
 class HomeController extends Controller {
@@ -20,24 +21,40 @@ class HomeController extends Controller {
 
     public function index() {
 
+        $languageModel = new Language();
+        $categoryModel = new Category();
+        $postModel = new Post();
         $mediaModel = new Media();
+
+
+        $title = trans('general.home');
+        $languages = $languageModel->all();
+        $zones = $categoryModel->getOneLevelCategories();
+        $zonesNames = [];
+        $zonesAmounts = [];
+
+        foreach ($zones as $zone) {
+            $zonesNames[] = $categoryModel->getName($zone["id"]);
+            $zonesAmounts[] = $postModel->getAmountByCategory($zone["id"]);
+        }
+
         $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
         $wonkidsSong = $medias[0];
         $wonkidsStory = $medias[1];
         $wonkidsCraft = $medias[2];
         $wonkidsMemorize = $medias[3];
         
-
-        $title = trans('general.home') ?? "Document";
-        $this->smallSliderTitle = $title;
-        return view('client.home', [
-            'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
-            'wonkidsSong' => $wonkidsSong,
-            'wonkidsStory' => $wonkidsStory,
-            'wonkidsCraft' => $wonkidsCraft,
-            'wonkidsMemorize' => $wonkidsMemorize,
-        ]);
+        return view('client.home', compact(
+            'title', 
+            'languages', 
+            'zones', 
+            'zonesNames', 
+            'zonesAmounts', 
+            'wonkidsSong', 
+            'wonkidsStory', 
+            'wonkidsCraft', 
+            'wonkidsMemorize',
+        ));
     }
 
     public function aboutUs() {

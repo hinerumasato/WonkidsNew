@@ -20,3 +20,17 @@
         opacity: 1;
     }
 }
+
+@keyframes fadeInTop {
+    from {
+        top: calc(var(--slider-img-top) - 50px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInBottom {
+    from {
+        top: calc(var(--slider-content-top) + 50px);
+        opacity: 0;
+    }
+}

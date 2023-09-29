@@ -53,6 +53,11 @@ class Post extends Model
         return $result;
     }
 
+    public function getAmountByCategory($categoryId) {
+        $posts = $this->where('category_id', $categoryId)->get();
+        return count($posts);
+    }
+
     public function deleteOne($post_id) {
         $postLanguageMedia = new PostLanguageMedia();        
         $postLanguageMedia->deleteByPostId($post_id);

@@ -26,10 +26,18 @@ class Category extends Model
         $result = [];
         $categories = $this->all();
         $dataTree = LoopHelper::dataTree($categories->toArray());
+
         foreach ($dataTree as $item) {
-            if($item['level'] == 1)
+            if($item['level'] == 1) {
                 $result[] = $item;
+            }
         }
         return $result;
+    }
+
+    public function getName($categoryId) {
+        $category = Category::find($categoryId);
+        $name = $category->languages()->where('locale', app()->getLocale())->first()->pivot->name;
+        return $name;
     }
 }

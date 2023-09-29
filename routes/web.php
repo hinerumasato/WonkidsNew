@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminUIController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +29,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes(['verify' => true]);
 
 
+// Route::get("/test", [TestController::class, 'render'])->name('test');
 Route::get("/chang-language/{locale}", [LocaleController::class, 'changeLocale'])->name("change-language");
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
@@ -108,5 +110,3 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
     });
 });
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

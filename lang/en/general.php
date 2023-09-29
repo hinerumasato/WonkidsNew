@@ -5,9 +5,14 @@ return [
     'delete-post-success' => 'Delete post successfully',
 
     'all' => 'All',
+    'posts' => 'Post(s)',
 
+    'view-details' => 'View details',
+    'see-all' => 'See all',
     'viewed' => 'Viewed',
     'detail' => 'Detail',
+    'read-more' => 'Read more',
+    'see-more' => 'See more',
 
     'name' => 'Name',
     'tel' => 'Tel',
@@ -35,4 +40,6 @@ return [
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',
     'club' => 'Wonkids Club',
+
+    'contact' => 'Contact',
 ];

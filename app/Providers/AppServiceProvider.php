@@ -49,6 +49,10 @@ class AppServiceProvider extends ServiceProvider
             app()->call([HeaderController::class, 'index'], ['view' => $view]);
         });
 
+        View::composer('client.partials.test-header', function($view) {
+            app()->call([HeaderController::class, 'index'], ['view' => $view]);
+        });
+
         View::composer('client.partials.sidenav', function($view) {
             app()->call([HeaderController::class, 'index'], ['view' => $view]);
         });

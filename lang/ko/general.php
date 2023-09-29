@@ -5,9 +5,14 @@ return [
     'delete-post-success' => '삭제되었습니다',
 
     'all' => 'All',
+    'posts' => '게시물',
 
+    'view-details' => '상세보기',
+    'see-all' => '모두 보기',
     'viewed' => 'Viewed',
     'detail' => 'Detail',
+    'read-more' => '더 읽어 보세요',
+    'see-more' => '더 보기',
 
     'home' => '홈',
     'about-us' => '소개',
@@ -36,4 +41,6 @@ return [
     'book' => '원더풀스토리 책',
     'camp' => '원더풀스토리 캠프',
     'club' => '원키즈클럽',
+
+    'contact' => '연락하다',
 ];
