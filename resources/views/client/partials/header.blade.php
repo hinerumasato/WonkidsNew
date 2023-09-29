@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <div class="header-info-follow d-flex gap-2 align-items-center">
+            <div class="header-info-follow d-md-flex d-none gap-2 align-items-center">
                 <span>Follow:</span>
                 <i class="fa-brands fa-facebook"></i>
                 <i class="fa-brands fa-google"></i>

@@ -115,3 +115,27 @@
     width: 200px;
     border-radius: 10px;
 }
+
+@media (max-width: 768px) and (min-width: 576) {
+
+    .media-list {
+        flex-wrap: wrap;
+    }
+
+    .media-item {
+        margin-top: 20px;
+        width: calc(100% / 2 - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+
+    .media-list {
+        flex-wrap: wrap;
+    }
+
+    .media-item {
+        margin-top: 20px;
+        width: 100%;
+    }
+}

@@ -2,14 +2,14 @@
     <div class="footer-main">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-3 fw-bold text-white">
+                <div class="col-md-3 col-12 fw-bold text-white">
                     <h4 class="text-uppercase fw-bold">@lang('general.wonkidsclub')</h4>
                     <p>
                         @lang('footer.slogan')
                     </p>
                 </div>
 
-                <div class="col-3 fw-bold text-white">
+                <div class="col-md-3 col-12 fw-bold text-white">
                     <h4 class="fw-bold text-uppercase">@lang('general.contact')</h4>
                     <ul class="p-0 footer-contact-list">
                         <li>
