@@ -40,7 +40,7 @@
             </div>
 
             <div class="row my-3">
-                <div class="col-md-1 d-md-block d-none col-0 prev-btn">
+                <div class="col-md-1 d-md-flex d-none col-0 prev-btn">
                     <i class="fa-solid fa-chevron-left"></i>
                 </div>
 
@@ -65,7 +65,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-1 d-md-block d-none col-0 next-btn">
+                <div class="col-md-1 d-md-flex d-none col-0 next-btn">
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </div>

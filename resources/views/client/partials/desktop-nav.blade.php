@@ -1,12 +1,10 @@
 <nav class="desktop-nav navbar navbar-expand-xl bg-body-white d-xl-flex d-none">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img class="py-2 px-3" src="{{ asset('imgs/logo/logo.png') }}" alt="" width="175"
-                height="82">
+            <img class="py-2 px-3" src="{{ asset('imgs/logo/logo.png') }}" alt="" width="175" height="82">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
