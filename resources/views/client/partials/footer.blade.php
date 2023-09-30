@@ -4,14 +4,14 @@
             <div class="row justify-content-between">
                 <div class="col-md-3 col-12 fw-bold text-white">
                     <h4 class="text-uppercase fw-bold">@lang('general.wonkidsclub')</h4>
-                    <p>
+                    <p class="fw-normal">
                         @lang('footer.slogan')
                     </p>
                 </div>
 
                 <div class="col-md-3 col-12 fw-bold text-white">
                     <h4 class="fw-bold text-uppercase">@lang('general.contact')</h4>
-                    <ul class="p-0 footer-contact-list">
+                    <ul class="p-0 footer-contact-list fw-normal">
                         <li>
                             <i class="fa-solid fa-house"></i>
                             <span>Quận 7, TP.HCM</span>

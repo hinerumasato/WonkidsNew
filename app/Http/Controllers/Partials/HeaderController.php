@@ -29,6 +29,7 @@ class HeaderController extends Controller
         $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
 
         $subCategoriesList = LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
+        $subMobileCategoriesList = LoopHelper::buildHTML($oneLevelCategories, 'nav-list', 'nav-item', 'nav-link');
         $sideNav = LoopHelper::buildSideNavHTML(
             $oneLevelCategories, 
             'side-nav-submenu', 
@@ -41,6 +42,7 @@ class HeaderController extends Controller
             'languages' => $languages,
             'medias' => $medias,
             'subCategoriesList' => $subCategoriesList,
+            'subMobileCategoriesList' => $subMobileCategoriesList,
             'sideNav' => $sideNav,
             'menu' => $menu,
         ]);

@@ -67,3 +67,24 @@
         font-size: 14px;
     }
 }
+
+@media (max-width: 576px) {
+
+    .slider {
+        height: 250px;
+    }
+
+    .slider_img {
+        height: 250px;
+    }
+
+    .slider_logo_img {
+        width: 300px;
+        height: 200px;
+    }
+
+    .slider_float_in_content {
+        display: block;
+        font-size: 9px;
+    }
+}

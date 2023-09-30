@@ -40,11 +40,11 @@
             </div>
 
             <div class="row my-3">
-                <div class="col-1 prev-btn">
+                <div class="col-md-1 d-md-block d-none col-0 prev-btn">
                     <i class="fa-solid fa-chevron-left"></i>
                 </div>
 
-                <div class="col-10 zones-wrapper" item="lg-3 md-2 sm-1">
+                <div class="col-md-10 col-12 zones-wrapper" item="xl-3 lg-2 md-2 sm-1">
                     <ul class="zones-list m-0">
                         @foreach ($zones as $key => $zone)
                             <li class="zones-item shadow p-4">
@@ -65,7 +65,7 @@
                     </ul>
                 </div>
 
-                <div class="col-1 next-btn">
+                <div class="col-md-1 d-md-block d-none col-0 next-btn">
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
             </div>
@@ -148,6 +148,9 @@
                 <h2 class="fw-bold text-uppercase">
                     @lang('home.contact.title')
                 </h2>
+
+                <img class="md-contact-img" src="{{ asset('imgs/contact/contact_img.png') }}" alt="">
+
                 <a class="text-uppercase primary-btn fw-bold mt-5">
                     @lang('general.contact')
                 </a>
