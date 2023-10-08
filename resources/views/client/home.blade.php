@@ -15,7 +15,7 @@
     <div class="container mt-5">
         <div class="home_content row justify-content-between">
             <div class="col-xl-5 col-lg-4">
-                <img class="w-100 h-100" src="{{ asset('imgs/banners/about_banner.png') }}" alt="">
+                <img class="w-100 h-100" src="{{ asset('imgs/logo/logo.png') }}" alt="">
             </div>
             <div class="col-xl-6 col-lg-7 home_about_content">
                 <h2 class="fw-bold text-uppercase">@lang('home.about-title')</h2>
@@ -44,13 +44,12 @@
                     <i class="fa-solid fa-chevron-left"></i>
                 </div>
 
-                <div class="col-md-10 col-12 zones-wrapper" item="xl-3 lg-2 md-2 sm-1">
+                <div class="col-md-10 col-12 zones-wrapper" item="xl-4 lg-2 md-2 sm-1">
                     <ul class="zones-list m-0">
                         @foreach ($zones as $key => $zone)
                             <li class="zones-item shadow p-4">
                                 <img width="150" height="150" src="{{ $zone['img'] }}" alt="">
-                                <h5 class="mt-3 fw-bold text-uppercase">{{ $zonesNames[$key] }}</h5>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry ...</p>
+                                <h5 class="mt-3 fw-bold text-uppercase fs-6">{{ $zonesNames[$key] }}</h5>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="zones-item-amount">
                                         <i class="fa-solid fa-list"></i>
@@ -90,7 +89,7 @@
 
                 <div class="col-xl-9 col-lg-12 wrapper d-flex justify-content-between media-list">
                     <div class="wonkids-song media-item">
-                        <img class="w-100" src="{{ asset('imgs/medias/song.png') }}" alt="">
+                        <i class="fa-brands fa-itunes-note"></i>
                         <div class="media-item-content">
                             <h6 class="fw-bold text-center">@lang('home.wonkids-song')</h6>
                             <p>
@@ -102,7 +101,7 @@
                         </div>
                     </div>
                     <div class="wonkids-story media-item">
-                        <img class="w-100" src="{{ asset('imgs/medias/story.png') }}" alt="">
+                        <i class="fa-solid fa-book"></i>
                         <div class="media-item-content">
                             <h6 class="fw-bold text-center">@lang('home.wonkids-story')</h6>
                             <p>
@@ -114,7 +113,7 @@
                         </div>
                     </div>
                     <div class="wonkids-craft media-item">
-                        <img class="w-100" src="{{ asset('imgs/medias/craft.png') }}" alt="">
+                        <i class="fa-solid fa-scissors"></i>
                         <div class="media-item-content">
                             <h6 class="fw-bold text-center">@lang('home.wonkids-activities')</h6>
                             <p>
@@ -126,7 +125,7 @@
                         </div>
                     </div>
                     <div class="wonkids-bible media-item">
-                        <img class="w-100" src="{{ asset('imgs/medias/bible.png') }}" alt="">
+                        <i class="fa-solid fa-bookmark"></i>
                         <div class="media-item-content">
                             <h6 class="fw-bold text-center">@lang('home.wonkids-bible')</h6>
                             <p>

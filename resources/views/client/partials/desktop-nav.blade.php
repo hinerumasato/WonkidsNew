@@ -92,6 +92,18 @@
                         {{ trans('home.menu-item-5') }}
                         <i class="fa-solid fa-angle-down nav-icon"></i>
                     </a>
+                    <ul class="animate__animated animate__fadeInDown animate__faster">
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc" class="header_sublink">
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="header_sublink">
+                                Zalo
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">

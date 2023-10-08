@@ -1,12 +1,10 @@
 <nav class="mobile-nav navbar navbar-expand-xl bg-body-white d-xl-none d-flex">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img class="py-2 px-3" src="{{ asset('imgs/logo/logo.png') }}" alt="" width="175"
-                height="82">
+            <img class="py-2 px-3" src="{{ asset('imgs/logo/logo.png') }}" alt="" width="175" height="82">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,8 +49,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('home.media.index') }}"
-                            >{{ trans('home.media-content') }}</a>
+                            <a href="{{ route('home.media.index') }}">{{ trans('home.media-content') }}</a>
                             <ul>
                                 @foreach ($medias as $media)
                                     <li class="nav-item">
@@ -70,8 +67,7 @@
                         <i class="fa-solid fa-angle-right nav-icon"></i>
                     </a>
 
-                    <ul
-                        class="header-language-list animate__animated animate__fadeInDown animate__faster">
+                    <ul class="header-language-list animate__animated animate__fadeInDown animate__faster">
                         <li class="nav-item">
                             <a href="{{ route('home.book') }}">
                                 @lang('general.book')
@@ -94,13 +90,13 @@
                         {{ trans('home.menu-item-6') }}
                         <i class="fa-solid fa-angle-right nav-icon"></i>
                     </a>
-                    
+
                     <ul class="header-language-list animate__animated animate__fadeInDown animate__faster">
                         @foreach ($languages as $language)
-                        <li class="nav-item">
-                            <a
-                            href="{{ route('change-language', ['locale' => $language->locale]) }}">{{ $language->name }}</a>
-                        </li>
+                            <li class="nav-item">
+                                <a
+                                    href="{{ route('change-language', ['locale' => $language->locale]) }}">{{ $language->name }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </li>
@@ -108,7 +104,21 @@
                 <li class="nav-item">
                     <a class="nav-link open-btn" aria-current="page" href="#">
                         {{ trans('home.menu-item-5') }}
+                        <i class="fa-solid fa-angle-right nav-icon"></i>
                     </a>
+                    <ul class="header-language-list animate__animated animate__fadeInDown animate__faster">
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc"
+                                class="header_sublink">
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="header_sublink">
+                                Zalo
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item align-self-center ms-auto">

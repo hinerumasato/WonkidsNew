@@ -120,6 +120,15 @@
     display: none;
 }
 
+.media-item > i {
+    color: var(--main-color);
+    text-align: center;
+    font-size: 40px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 16px;
+}
+
 @media (max-width: 1024px) {
 
     .contact img {
