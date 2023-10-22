@@ -13,7 +13,7 @@ return [
 
     "about-title"                       => "Wonkidsclub là",
     // "about-content"                     => "một chương trình dạy Kinh Thánh dành cho nhóm thiếu nhi bằng nội dung truyền thông(media contents).",
-    "about-content"                     => "Wonkidsclub là một chương trình dạy kinh thánh truyền thông dành cho thiếu nhi, kể nhiều câu chuyện kinh thánh theo từng thời kỳ, và giúp các em học kinh thánh một cách thú vị bằng nhiều hoạt động khác nhau",
+    "about-content"                     => "Một chương trình dạy kinh thánh truyền thông dành cho thiếu nhi, kể nhiều câu chuyện kinh thánh theo từng thời kỳ, và giúp các em học kinh thánh một cách thú vị bằng nhiều hoạt động khác nhau",
     "learn-more"                        => "Đọc thêm",
 
     "small-nav-title"                   => "Wonkids Club",

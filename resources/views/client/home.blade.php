@@ -77,9 +77,9 @@
                 <div class="col-xl-3 col-lg-12">
                     <h5 class="fw-bold text-uppercase">@lang('general.media')</h5>
 
-                    <p class="mt-3 pe-5">
+                    {{-- <p class="mt-3 pe-5">
                         @lang('home.media.description')
-                    </p>
+                    </p> --}}
 
                     <a href="{{ route('home.media.index') }}" class="text-uppercase media-all-link fw-bold my-3">
                         <span class="me-2">@lang('general.see-all')</span>
@@ -156,7 +156,7 @@
             </div>
 
             <div class="col-lg-6 col-12 d-flex justify-content-center">
-                <img class="w-100" src="{{ asset('imgs/contact/contact_img.png') }}" alt="">
+                <img width="250" src="{{ asset('imgs/contact/contact_img.png') }}" alt="">
             </div>
         </div>
     </div>

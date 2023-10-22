@@ -11,10 +11,10 @@ return [
 
     "slider-content"                    => "Experience the joy of reading Bible stories",
 
-    // "about-title"                       => "Wonkids Club is",
-    "about-title"                       => "About us",
-    // "about-content"                     => "A Children Bible Study Group through various Media Contents.",
-    "about-content"                     => "This is a website that teaches the Bible to children using media contents. We provide a treasure trove of Bible resources for kids, helping them understand and engage with Bible stories in a fun and engaging way. Here, kids will find songs, videos, games, and activities related to the Bible.",
+    "about-title"                       => "Wonkids Club is",
+    // "about-title"                       => "About us",
+    "about-content"                     => "A Children Bible Study Group through various Media Contents.",
+    // "about-content"                     => "This is a website that teaches the Bible to children using media contents. We provide a treasure trove of Bible resources for kids, helping them understand and engage with Bible stories in a fun and engaging way. Here, kids will find songs, videos, games, and activities related to the Bible.",
     "learn-more"                        => "Learn more",
 
     "small-nav-title"                   => "Wonkids Club",
