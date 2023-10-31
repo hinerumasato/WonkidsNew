@@ -8,61 +8,6 @@
 @section('content')
     @include('client.partials.small-slider')
     @include('client.partials.small-nav-wonkidsclub')
-    {{-- <div class="container">
-        <h2 class="py-5 fs-1 fw-bold">@lang('wonkidsclub.title')</h2>
-        <img src="{{asset('imgs/wonkidsclub/wonkidsclub_title.jpg')}}" alt="" class="w-100">
-        <p class="fs-6 lh-base">
-            @lang('wonkidsclub.about')
-        </p>
-
-        <ul>
-            <h2 class="py-5 fs-1 fw-bold">@lang('wonkidsclub.history')</h2>
-            <li class="d-flex mb-3">
-                <p class="about-year">2016</p>
-                <p>@lang('wonkidsclub.2016')</p>
-            </li>
-            <li class="d-flex mb-3">
-                <p class="about-year">2017</p>
-                <p>@lang('wonkidsclub.2017')</p>
-            </li>
-            <li class="d-flex mb-3">
-                <p class="about-year">2019</p>
-                <div class="wrap">
-                    <p>@lang('wonkidsclub.2019.1')</p>
-                    <p>@lang('wonkidsclub.2019.2')</p>
-                </div>
-            </li>
-
-            <li class="d-flex mb-3">
-                <p class="about-year">2020</p>
-                <div class="wrap">
-                    <p>@lang('wonkidsclub.2020')</p>
-                </div>
-            </li>
-
-            <li class="d-flex mb-3">
-                <p class="about-year">2021</p>
-                <div class="wrap">
-                    <p>@lang('wonkidsclub.2021.1')</p>
-                    <p>@lang('wonkidsclub.2021.2')</p>
-                </div>
-            </li>
-
-            <li class="d-flex mb-3">
-                <p class="about-year">2022</p>
-                <div class="wrap">
-                    <p>@lang('wonkidsclub.2022')</p>
-                </div>
-            </li>
-
-            <li class="d-flex mb-3">
-                <p class="about-year">2023</p>
-                <div class="wrap">
-                    <p>@lang('wonkidsclub.2023')</p>
-                </div>
-            </li>
-        </ul>
-    </div> --}}
 
     <div class="container about mt-4">
         <h2 class="text-center text-uppercase fw-bold text-main">@lang('wonkidsclub.title')</h2>
@@ -87,7 +32,7 @@
                 <div class="line"></div>
             </div>
             <div class="col-md-4 col-12">
-                <h2 class="fw-bold text-center text-uppercase text-main">Lịch sử phát triển</h2>
+                <h2 class="fw-bold text-center text-uppercase text-main">@lang('wonkidsclub.history')</h2>
             </div>
             <div class="col-md-4 col-12 d-none d-md-block">
                 <div class="line"></div>
