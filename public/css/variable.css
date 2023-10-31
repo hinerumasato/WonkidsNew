@@ -29,4 +29,13 @@
     --admin-triad-color-2: #CAFC26;
     --admin-triad-color-3: #86B000;
     --admin-triad-color-4: #1A56B0;
+    
+}
+
+.text-main {
+    color: #6E3B70 !important;
+}
+
+.bg-tertiary {
+    background-color: #F2F4F8 !important;
 }
