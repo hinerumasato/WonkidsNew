@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Helpers\LoopHelper;
 
+use function GuzzleHttp\Promise\all;
+
 class Category extends Model
 {
     use HasFactory;
@@ -39,5 +41,15 @@ class Category extends Model
         $category = Category::find($categoryId);
         $name = $category->languages()->where('locale', app()->getLocale())->first()->pivot->name;
         return $name;
+    }
+
+    public function getAllChildId($categoryId) {
+        $categories = Category::all();
+        $result = [];
+        foreach ($categories as $category) {
+            if($category->parent_id === $categoryId)
+                $result[] = $category->id;
+        }
+        return $result;
     }
 }

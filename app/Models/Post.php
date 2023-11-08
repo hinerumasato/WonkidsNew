@@ -54,8 +54,20 @@ class Post extends Model
     }
 
     public function getAmountByCategory($categoryId) {
+        $categoryModel = new Category();
         $posts = $this->where('category_id', $categoryId)->get();
-        return count($posts);
+        $result = count($posts);
+        $childIds = $categoryModel->getAllChildId($categoryId);
+        if(count($childIds) == 0)
+            return count($posts);
+        else {
+            $childPosts = [];
+            for($i = 0; $i < count($childIds); $i++)
+                $childPosts[] = $this->where('category_id', $childIds[$i])->get();
+            foreach($childPosts as $childPost)
+                $result += count($childPost);
+            return $result;
+        }
     }
 
     public function deleteOne($post_id) {

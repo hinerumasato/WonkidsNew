@@ -43,11 +43,11 @@
 
 
 html[lang="ko"] body {
-    font-family: 'Noto Serif KR', serif;
+    font-family: "Malgun Gothic", sans-serif;
 }
 
 html body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .primary-btn {

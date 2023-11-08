@@ -8,11 +8,11 @@ return [
     'posts' => 'Post(s)',
 
     'view-details' => 'View details',
-    'see-all' => 'See all',
+    'see-all' => 'All',
     'viewed' => 'Viewed',
     'detail' => 'Detail',
     'read-more' => 'Read more',
-    'see-more' => 'See more',
+    'see-more' => 'More',
 
     'name' => 'Name',
     'tel' => 'Tel',
@@ -26,7 +26,7 @@ return [
     'media' => 'Media Contents',
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',
-    'wonkidsclub' => 'Wonkidsclub',
+    'wonkidsclub' => 'Wonkids Club',
     'wonderful-story' => 'Wonderful Story',
     'share' => 'Share',
     'introduction' => 'Introduction',
@@ -42,4 +42,7 @@ return [
     'club' => 'Wonkids Club',
 
     'contact' => 'Contact',
+
+    'media.item' => 'Item',
+    'media.title' => 'Title',
 ];

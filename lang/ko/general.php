@@ -7,12 +7,16 @@ return [
     'all' => 'All',
     'posts' => '게시물',
 
-    'view-details' => '상세보기',
-    'see-all' => '모두 보기',
+    // 'view-details' => '상세보기',
+    'view-details' => 'More',
+    // 'see-all' => '모두 보기',
+    'see-all' => 'All',
     'viewed' => 'Viewed',
     'detail' => 'Detail',
-    'read-more' => '더 읽어 보세요',
-    'see-more' => '더 보기',
+    // 'read-more' => '더 읽어 보세요',
+    'read-more' => 'More',
+    // 'see-more' => '더 보기',
+    'see-more' => 'More',
 
     'home' => '홈',
     'about-us' => '소개',
@@ -20,7 +24,7 @@ return [
     'book' => 'Wonderful Story Book',
     'media' => '미디어 콘텐츠',
     'camp' => 'Wonderful Story Camp',
-    'wonkidsclub' => 'Wonkidsclub',
+    'wonkidsclub' => 'Wonkids Club',
     'wonderful-story' => '원더풀스토리',
     'share' => '공유',
     'introduction' => '소개',
@@ -42,5 +46,8 @@ return [
     'camp' => '원더풀스토리 캠프',
     'club' => '원키즈클럽',
 
-    'contact' => '연락하다',
+    'contact' => '연락해 주세요',
+
+    'media.item' => '항목',
+    'media.title' => '제목',
 ];

@@ -8,12 +8,13 @@
 @section('content')
     @include('client.partials.slider')
 
-    {{-- <div id="preloader" class="">
-        <img src="{{asset('imgs/preloader/preloader.gif')}}" alt="">
-    </div> --}}
+    <div id="preloader" class="">
+        <img src="{{ asset('imgs/preloader/preloader.gif') }}" alt="">
+    </div>
 
     <div class="container mt-5">
-        <div class="home_content row justify-content-between">
+
+        <div class="home_content row justify-content-between mt-5">
             <div class="col-xl-5 col-lg-4">
                 <img class="w-100 h-100" src="{{ asset('imgs/logo/logo.png') }}" alt="">
             </div>
@@ -57,7 +58,7 @@
                                     </div>
 
                                     <a href="{{ route('posts.index', ['category' => $zone['id']]) }}"
-                                        class="zones-item-link text-lowercase">@lang('general.see-more')</a>
+                                        class="zones-item-link">@lang('general.see-more')</a>
                                 </div>
                             </li>
                         @endforeach
@@ -138,6 +139,36 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="video-container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 vertical-align-center d-none d-lg-block">
+                    <hr>
+                </div>
+                <div class="col-lg-2">
+                    <h1 class="fw-bold fs-2 text-uppercase text-center">Giới thiệu</h1>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row row-cols-md-2 row-cols-1 g-5">
+                <div class="col">
+                    <div class="shadow p-3">
+                        <video class="w-100 h-100" src="{{ asset(trans('home.video.first')) }}" controls></video>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="shadow p-3">
+                        <video class="w-100 h-100" src="{{ asset(trans('home.video.second')) }}" controls></video>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

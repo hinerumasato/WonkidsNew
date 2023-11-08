@@ -113,11 +113,6 @@
                                 Facebook
                             </a>
                         </li>
-                        <li>
-                            <a href="" class="header_sublink">
-                                Zalo
-                            </a>
-                        </li>
                     </ul>
                 </li>
 

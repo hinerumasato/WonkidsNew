@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="col-md-3 col-12 fw-bold text-white">
-                    <h4 class="fw-bold text-uppercase">@lang('general.contact')</h4>
+                    <h4 class="fw-bold text-uppercase">@lang('footer.contact')</h4>
                     <ul class="p-0 footer-contact-list fw-normal">
                         <li>
                             <i class="fa-solid fa-house"></i>

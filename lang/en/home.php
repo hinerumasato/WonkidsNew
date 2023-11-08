@@ -35,4 +35,7 @@ return [
     "qa"                                => "Contact Us ",
     "contact.title"                     => "Do you have any questions or suggestions?<br>Please contact us.",
     "media.description"                 => "Welcome to the media content, students and teachers. This is where you can find songs, stories, activities, and original quotes from each lecture. We hope this will help you find and access the summarized materials.",
+    
+    "video.first"                       => "videos/(English) 홍보영상 1.mov",
+    "video.second"                      => "videos/[English] 홍보영상 2)_Final Oct.mov",
 ];

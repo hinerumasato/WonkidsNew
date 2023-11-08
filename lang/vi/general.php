@@ -27,7 +27,7 @@ return [
     'media' => 'Nội dung truyền thông',
     'book' => 'Wonderful Story Book',
     'camp' => 'Wonderful Story Camp',
-    'wonkidsclub' => 'Wonkidsclub',
+    'wonkidsclub' => 'Wonkids Club',
     'wonderful-story' => 'Wonderful Story',
     'share' => 'Chia sẻ',
     'introduction' => 'Giới thiệu',
@@ -42,5 +42,8 @@ return [
     'camp' => 'Wonderful Story Camp',
     'club' => 'Wonkids Club',
     
-    'contact' => 'Liên hệ'
+    'contact' => 'Liên hệ',
+
+    'media.item' => 'Thể loại',
+    'media.title' => 'Tiêu đề',
 ];
