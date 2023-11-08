@@ -50,6 +50,7 @@ class Category extends Model
             if($category->parent_id === $categoryId)
                 $result[] = $category->id;
         }
+
         return $result;
     }
 }

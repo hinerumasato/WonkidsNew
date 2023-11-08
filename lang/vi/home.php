@@ -35,6 +35,6 @@ return [
     "contact.title"                     => "BẠN CÓ CÂU HỎI HOẶC GÓP Ý?<br>HÃY LIÊN HỆ VỚI CHÚNG TÔI.",
     "media.description"                 => "Đây là nơi lưu trữ các bài hát, câu chuyện, câu gốc và hoạt động của mỗi bài học. Giáo viên có thể tìm và truy cập những tài liệu đã được phân loại theo các phần sau",
 
-    "video.first"                       => "videos/(Tieng Viet) 홍보영상 1.mov",
-    "video.second"                      => "videos/[TV] 홍보영상 2_Final Oct.mov",
+    "video.first"                       => "videos/(Tieng Viet)_video_1.mov",
+    "video.second"                      => "videos/[TV]_final.mov",
 ];

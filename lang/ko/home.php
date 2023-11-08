@@ -35,6 +35,6 @@ return [
     "contact.title"                     => "질문이나 의견이 있으신가요? 저희에게 연락하십시오.",
     "media.description"                 => "학생 여러분과 선생님 여러분을 미디어 콘텐츠에 오신 것을 환영합니다. 여기에서는 각 강의의 노래, 이야기, 활동, 원본 인용문을 찾을 수 있습니다. 이 자료가 요약된 자료를 찾고 접근하는 데 도움이 되기를 바랍니다.",
 
-    "video.first"                       => "videos/(Korean) 원키즈 홍보영상 1.mp4",
-    "video.second"                      => "videos/(Korean) 홍보영상 2_Final Oct.mov",
+    "video.first"                       => "videos/(Korean)_video_1.mp4",
+    "video.second"                      => "videos/(Korean)_final.mov",
 ];
