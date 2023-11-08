@@ -47,7 +47,7 @@ class Category extends Model
         $categories = Category::all();
         $result = [];
         foreach ($categories as $category) {
-            if($category->parent_id === $categoryId)
+            if($category->parent_id == $categoryId)
                 $result[] = $category->id;
         }
 
