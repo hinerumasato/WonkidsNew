@@ -145,13 +145,13 @@
     <div class="container mt-5">
         <div class="video-container">
             <div class="row align-items-center">
-                <div class="col-lg-5 vertical-align-center d-none d-lg-block">
+                <div class="col-lg-4 vertical-align-center d-none d-lg-block">
                     <hr>
                 </div>
-                <div class="col-lg-2">
-                    <h1 class="fw-bold fs-2 text-uppercase text-center">Giới thiệu</h1>
+                <div class="col-lg-4">
+                    <h1 class="fw-bold fs-2 text-uppercase text-center">@lang('general.video-clip')</h1>
                 </div>
-                <div class="col-lg-5 d-none d-lg-block">
+                <div class="col-lg-4 d-none d-lg-block">
                     <hr>
                 </div>
             </div>
@@ -175,10 +175,6 @@
     <div class="container contact mt-5">
         <div class="row justify-content-between">
             <div class="col-lg-6 col-12">
-                <h2 class="fw-bold text-uppercase">
-                    @lang('home.contact.title')
-                </h2>
-
                 <img class="md-contact-img" src="{{ asset('imgs/contact/contact_img.png') }}" alt="">
 
                 <a class="text-uppercase primary-btn fw-bold mt-5">

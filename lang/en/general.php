@@ -41,8 +41,9 @@ return [
     'camp' => 'Wonderful Story Camp',
     'club' => 'Wonkids Club',
 
-    'contact' => 'Contact',
+    'contact' => 'Contact us',
 
     'media.item' => 'Item',
     'media.title' => 'Title',
+    'video-clip' => 'Video clips for Wonkids Club',
 ];

@@ -46,4 +46,6 @@ return [
 
     'media.item' => 'Thể loại',
     'media.title' => 'Tiêu đề',
+
+    'video-clip' => 'Video giới thiệu',
 ];

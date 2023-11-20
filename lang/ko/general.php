@@ -46,8 +46,9 @@ return [
     'camp' => '원더풀스토리 캠프',
     'club' => '원키즈클럽',
 
-    'contact' => '연락해 주세요',
+    'contact' => 'Contact us',
 
     'media.item' => '항목',
     'media.title' => '제목',
+    'video-clip' => ' 소개 영상',
 ];
