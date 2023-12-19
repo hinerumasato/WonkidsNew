@@ -37,3 +37,7 @@
         @include('client.partials.category-table')
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{asset('js/postDetailContent.js')}}"></script>
+@endsection

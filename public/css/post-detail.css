@@ -17,6 +17,11 @@ textarea img, iframe {
     max-width: 100%;
 }
 
+.post-detail_content table a {
+    color: blue !important;
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .post-detail_category {
         font-size: 24px;
