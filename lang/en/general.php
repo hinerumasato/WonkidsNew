@@ -46,4 +46,13 @@ return [
     'media.item' => 'Item',
     'media.title' => 'Title',
     'video-clip' => 'Video clips for Wonkids Club',
+    'download-popup' => '<p>Greetings to all Wonkids users in the love of God.</p>
+    <p>We sincerely thank you for visiting the Wonkids website and utilizing our materials. We are excited to announce that starting January 2024, downloading our materials will require a free membership registration. This change is aimed at fostering closer connections with you and welcoming your valuable feedback for continuous improvement.</p>
+    <p>Please be assured that you can still freely view all our materials online, just as before. We truly appreciate your cooperation and continued support for Wonkid Club.</p>
+    Amen.',
+
+    'popup.notification' => 'Notification',
+    'popup.submit' => 'Download',
+    'popup.cancel' => 'Cancel'
+
 ];

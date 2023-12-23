@@ -187,9 +187,25 @@
             </div>
         </div>
     </div>
+
+    <div class="popup">
+        <div class="popup-inner">
+            <div class="popup-icon">
+                <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="popup-title">@lang('general.popup.notification')</div>
+            <div class="popup-content">
+                <p>@lang('general.download-popup')</p>
+            </div>
+            <div class="popup-button-group">
+                <button class="popup-ok-button">OK</button>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
     <script src="{{ asset('js/home.js') }}"></script>
     <script src="{{ asset('js/carouse.js') }}"></script>
+    <script src="{{ asset('js/popup.js') }}"></script>
 @endsection

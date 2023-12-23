@@ -1,5 +1,4 @@
 (function () {
-
     const getBreakPoints = () => {
         const viewport = window.screen.width;
         const breakpoints = {
@@ -63,5 +62,18 @@
     }
 
     cardSlider();
+
+    const showHomePagePopup = function() {
+
+        const showPopup = function(popup) {
+            popup.classList.add('show');
+        }
+
+        const popup = document.querySelector('.popup');
+        if(!sessionStorage.getItem("read-popup"))
+            showPopup(popup);
+    }
+
+    showHomePagePopup();
 
 })();

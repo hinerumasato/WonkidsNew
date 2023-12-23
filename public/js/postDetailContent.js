@@ -1,17 +1,24 @@
 const app = {
 
     links: null,
+    popupElement: document.querySelector('.popup'),
 
     detailLinksClickHandler: function() {
         Array.from(this.links).forEach(link => {
             link.onclick = e => {
                 e.preventDefault();
                 const url = e.target.href;
-                if(confirm("Từ ngày 1/1/2024 sẽ xác thực")) {
+                this.showPopup();
+                const popupConfirmBtn = this.popupElement.querySelector('.popup-submit-button');
+                popupConfirmBtn.onclick = () => {
                     window.location.replace(url);
                 }
             }
         })
+    },
+
+    showPopup: function() {
+        this.popupElement.classList.add('show');
     },
 
     initializeElements: function() {
@@ -26,4 +33,6 @@ const app = {
         this.initializeElements();
         this.handleEvents();
     }
-}.start();
+}
+
+app.start();

@@ -6,6 +6,7 @@
     --menu-z-index: 9999;
     --home-menu-text-color: #fff;
     --main-color: #924094;
+    --secondary-color: #307064;
     --body-background: #FFFFFF;
     --footer-background: #484848;
 
@@ -59,4 +60,87 @@ html body {
     display: inline-block;
     width: 200px;
     border-radius: 10px;
+}
+
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+    overflow: auto;
+    z-index: 99999;
+}
+
+.popup.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.popup-inner {
+    width: 600px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 16px 30px;
+    height: fit-content;
+}
+
+.popup-icon {
+    font-size: 80px;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.popup-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--main-color);
+    font-size: 24px;
+    margin-bottom: 30px;
+    border-bottom: dashed 1px #ccc;
+    text-transform: uppercase;
+}
+
+.popup-content {
+    text-align: justify;
+    font-size: 16px;
+}
+
+.popup-content img {
+    float: left;
+}
+
+.popup-button-group {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+
+.popup-button-group button {
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: all .3s;
+}
+
+.popup-button-group button:hover {
+    opacity: .7;
+}
+
+.popup-submit-button {
+    
+}
+
+.popup-cancel-button {
+    background-color: darkgray !important;
 }

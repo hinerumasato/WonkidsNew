@@ -48,4 +48,12 @@ return [
     'media.title' => 'Tiêu đề',
 
     'video-clip' => 'Video giới thiệu',
+
+    'download-popup' => '<p>Xin chào hết thảy quý vị trong tình yêu của Chúa.
+    Chúng tôi xin chân thành cảm ơn quý vị đã ghé thăm website và sử dụng tài liệu của Wonkids trong suốt thời gian qua. <strong>Hiện tại Mục vụ Wonkids Club có kế hoạch chỉ cung cấp tài liệu tải xuống cho những người đăng ký làm thành viên từ tháng 1 năm 2024</strong>. Điều này sẽ giúp chúng tôi dễ dàng tiếp cận, liên lạc và phản hồi với quý vị hơn.</p> 
+    <p><strong>Xin lưu ý quý vị vẫn có thể xem tài liệu miễn phí mà không cần đăng ký thành viên như trước đây</strong>.  Kính mong nhận được sự hợp tác tích cực từ quý vị. Xin chân thành cảm ơn. Muốn thật hết lòng!</p>',
+
+    'popup.notification' => 'Thông báo',
+    'popup.submit' => 'Đã hiểu và tiếp tục tải',
+    'popup.cancel' => 'Cancel',
 ];
