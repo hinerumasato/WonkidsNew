@@ -37,9 +37,13 @@ Route::delete('/delete-img-area', [UploadImgController::class, 'deleteOne'])->na
 Route::post('/media/area/upload', [MediaStagingAreaController::class, 'upload'])->name('upload-media-area');
 Route::post('/media/upload', [MediaController::class, 'upload'])->name('upload-media');
 
-Route::post('/locale/change', [LocaleController::class, 'changeLocale'])->name('change-locale');
+// Route::post('/locale/change', [LocaleController::class, 'changeLocale'])->name('change-locale');
 
 Route::post('/ui/slider', [SliderController::class, 'upload'])->name('upload-slider');
 Route::delete('/ui/slider', [SliderController::class, 'deleteOne'])->name('delete-slider');
 
 Route::post('ui/slider-description', [SliderDescriptionController::class, 'update'])->name('update-slider-description');
+
+Route::get('/v1/user', [UserController::class, 'getLoginUser'])->name('get-login-user');
+Route::post('/v1/login', [UserController::class, 'login']);
+Route::post('/v1/register', [UserController::class, 'register']);
