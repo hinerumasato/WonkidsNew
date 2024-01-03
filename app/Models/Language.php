@@ -25,6 +25,10 @@ class Language extends Model {
         return $this->belongsToMany(Media::class, 'medias_languages')->withPivot('name');
     }
 
+    public function menus(): BelongsToMany {
+        return $this->belongsToMany(Menu::class, 'menu_language')->withPivot('name');
+    }
+
     public function sliderDescription(): BelongsTo {
         return $this->belongsTo(SliderDescription::class);
     }

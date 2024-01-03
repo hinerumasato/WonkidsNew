@@ -13,6 +13,7 @@ use App\Http\Controllers\CacheController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,8 +30,18 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes(['verify' => true]);
 
 
+// Route::get("/test", [TestController::class, 'render'])->name('test');
 Route::get("/chang-language/{locale}", [LocaleController::class, 'changeLocale'])->name("change-language");
-Route::get('clear-cache', [CacheController::class, 'clear'])->name('clear-cache');
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    if($exitCode === 0) {
+        return redirect()->back()->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+    }
+
+    return 'Cannot Clear Cache';
+
+});
 
 Route::prefix('/mail')->name('mail.')->group(function() {
     Route::get('/success/{token}', [MailController::class, 'success'])->name('success');
@@ -100,5 +111,3 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
     });
 });
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

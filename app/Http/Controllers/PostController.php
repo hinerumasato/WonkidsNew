@@ -12,13 +12,6 @@ use App\Models\Category;
 use App\Models\User;
 
 class PostController extends Controller {
-
-    private $smallSliderTitle;
-
-    public function __construct()
-    {
-        $this->smallSliderTitle = "Document";
-    }
     
     public function index(Request $request) {
 
@@ -30,7 +23,7 @@ class PostController extends Controller {
         $postModel = new Post();
 
         $title = trans('general.11zones') ?? "Document";
-        $this->smallSliderTitle = $title;
+        $newSmallSliderTitle = $title;
         $category_id = $request->input('category');
         $locale = app()->getLocale() ?? 'vi';
         $language = $languageModel->findByLocale($locale);
@@ -45,7 +38,7 @@ class PostController extends Controller {
         return view('client.post', [
                 'title' => $title, 
                 "posts" => $posts,
-                'smallSliderTitle' => $this->smallSliderTitle,
+                'newSmallSliderTitle' => $newSmallSliderTitle,
             ]
         );
     }
@@ -91,7 +84,7 @@ class PostController extends Controller {
             "postView" => $postView,
         ];
         $title = $postTitle;
-        $this->smallSliderTitle = trans('general.11zones') ?? "Document";
+        $newSmallSliderTitle = trans('general.11zones') ?? "Document";
 
 
         $postDetailCategoryId = $postFind->category->id;
@@ -105,7 +98,7 @@ class PostController extends Controller {
                 'title' => $title, 
                 'post' => $post, 
                 'category' => $category,
-                'smallSliderTitle' => $this->smallSliderTitle,
+                'smallSliderTitle' => $newSmallSliderTitle,
                 'postDetailCategoryId' => $postDetailCategoryId,
                 'posts' => $posts,
             ]);

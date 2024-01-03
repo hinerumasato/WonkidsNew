@@ -7,42 +7,54 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Language;
 use App\Models\Media;
+use App\Models\Category;
 use App\Models\QA;
 
 class HomeController extends Controller {
 
-    private $smallSliderTitle;
-
-    public function __construct()
-    {
-        $this->smallSliderTitle = 'Document';   
-    }
 
     public function index() {
 
+        $languageModel = new Language();
+        $categoryModel = new Category();
+        $postModel = new Post();
         $mediaModel = new Media();
+
+
+        $title = trans('general.home');
+        $languages = $languageModel->all();
+        $zones = $categoryModel->getOneLevelCategories();
+        $zonesNames = [];
+        $zonesAmounts = [];
+
+        foreach ($zones as $zone) {
+            $zonesNames[] = $categoryModel->getName($zone["id"]);
+            $zonesAmounts[] = $postModel->getAmountByCategory($zone["id"]);
+        }
+
         $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
         $wonkidsSong = $medias[0];
         $wonkidsStory = $medias[1];
         $wonkidsCraft = $medias[2];
         $wonkidsMemorize = $medias[3];
         
-
-        $title = trans('general.home') ?? "Document";
-        $this->smallSliderTitle = $title;
-        return view('client.home', [
-            'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
-            'wonkidsSong' => $wonkidsSong,
-            'wonkidsStory' => $wonkidsStory,
-            'wonkidsCraft' => $wonkidsCraft,
-            'wonkidsMemorize' => $wonkidsMemorize,
-        ]);
+        return view('client.home', compact(
+            'title', 
+            'languages', 
+            'zones', 
+            'zonesNames', 
+            'zonesAmounts', 
+            'wonkidsSong', 
+            'wonkidsStory', 
+            'wonkidsCraft', 
+            'wonkidsMemorize',
+        ));
     }
 
     public function aboutUs() {
+        $newSmallSliderDescription = trans('wonkidsclub.about');
         $title = trans('general.about-us') ?? "Document";
-        $this->smallSliderTitle = $title;
+        $newSmallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
@@ -51,13 +63,14 @@ class HomeController extends Controller {
 
         return view('client.about-us', [
             'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
+            'newSmallSliderDescription' => $newSmallSliderDescription,
         ]);
     }
 
     public function management() {
         $title = trans('general.management') ?? "Document";
-        $this->smallSliderTitle = $title;
+        $newSmallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
@@ -66,13 +79,13 @@ class HomeController extends Controller {
 
         return view('client.management', [
             'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
 
     public function book() {
         $title = trans('general.book') ?? "Document";
-        $this->smallSliderTitle = $title;
+        $newSmallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
@@ -81,13 +94,13 @@ class HomeController extends Controller {
 
         return view('client.book', [
             'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
 
     public function camp() {
         $title = trans('general.camp') ?? "Document";
-        $this->smallSliderTitle = $title;
+        $newSmallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
@@ -96,13 +109,13 @@ class HomeController extends Controller {
 
         return view('client.camp', [
             'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
 
     public function wonkidsclub() {
         $title = trans('general.club') ?? "Document";
-        $this->smallSliderTitle = $title;
+        $newSmallSliderTitle = $title;
 
         Breadcumb::createBreadcumb('>', [
             trans('home.title') => route('home.index'),
@@ -111,7 +124,7 @@ class HomeController extends Controller {
 
         return view('client.wonkidsclub', [
             'title' => $title, 
-            'smallSliderTitle' => $this->smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
 

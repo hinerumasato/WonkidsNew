@@ -5,14 +5,15 @@ return [
     "menu-item-1"                       => "HOME",
     "menu-item-2"                       => "Wonkids Club",
     "menu-item-3"                       => "Nội dung Wonkids Club",
-    "menu-item-4"                       => "Wonderful Story",
+    "menu-item-4"                       => "Series Wonderful Story",
     "menu-item-5"                       => "Cộng đồng",
     "menu-item-6"                       => "Ngôn ngữ",
 
     "slider-content"                    => "Sân chơi với những câu chuyện Kinh Thánh thú vị",
 
-    "about-title"                       => "Wonkids Club là",
-    "about-content"                     => "một chương trình dạy Kinh Thánh dành cho nhóm thiếu nhi bằng nội dung truyền thông(media contents).",
+    "about-title"                       => "Wonkidsclub là",
+    // "about-content"                     => "một chương trình dạy Kinh Thánh dành cho nhóm thiếu nhi bằng nội dung truyền thông(media contents).",
+    "about-content"                     => "Một chương trình dạy kinh thánh truyền thông dành cho thiếu nhi, kể nhiều câu chuyện kinh thánh theo từng thời kỳ, và giúp các em học kinh thánh một cách thú vị bằng nhiều hoạt động khác nhau",
     "learn-more"                        => "Đọc thêm",
 
     "small-nav-title"                   => "Wonkids Club",
@@ -31,4 +32,9 @@ return [
 
     "notification-content"              => "Nội dung thông báo",
     "qa"                                => "Hỏi đáp",
+    "contact.title"                     => "BẠN CÓ CÂU HỎI HOẶC GÓP Ý?<br>HÃY LIÊN HỆ VỚI CHÚNG TÔI.",
+    "media.description"                 => "Đây là nơi lưu trữ các bài hát, câu chuyện, câu gốc và hoạt động của mỗi bài học. Giáo viên có thể tìm và truy cập những tài liệu đã được phân loại theo các phần sau",
+
+    "video.first"                       => "videos/(Tieng Viet)_video_1.mov",
+    "video.second"                      => "videos/[TV]_final.mov",
 ];

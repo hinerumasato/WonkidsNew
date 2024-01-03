@@ -1,6 +1,6 @@
 <?php
 return [
-    'title' => 'Wonkidsclub',
+    'title' => 'Wonkids Club',
     'about' => 'Wonkids Club là một chương trình dạy Kinh Thánh truyền thông dành cho thiếu nhi, kể nhiều câu chuyện Kinh Thánh theo từng thời kì và giúp các em học kinh thánh một cách thú vị bằng nhiều hoạt động khác nhau như : kể chuyện kinh thánh, múa ngợi khen, hoạt động, học thuộc lòng câu gốc một cách thú vị. <br>
             Wonkids Club là chương trình dạy Kinh Thánh dành cho thiếu nhi phù hợp với thời đại  công nghệ thông tin,  bên cạnh đó cũng giúp phụ huynh và giáo viên trường Chúa nhật dễ dàng hơn trong việc dạy Kinh Thánh cho trẻ theo từng tuần. Chúng tôi cũng dự định sẽ mở rộng mạng lưới giảng dạy theo đơn vị khu vực, hệ phái và quốc gia.',
     'history' => 'Lịch sử',

@@ -9,11 +9,14 @@ use App\Models\Language;
 use App\Models\Media;
 use App\Helpers\LoopHelper;
 use App\Helpers\StringHelper;
+use App\Models\Menu;
 
 class HeaderController extends Controller
 {
     public static function index($view) {
         $mediaModel = new Media();
+        $menuModel = new Menu();
+        $menu = $menuModel->findAllWithLanguage();
         $currentLocale = app()->getLocale();
         $currentLanguage = Language::where('locale', $currentLocale)->first();
         $categories = $currentLanguage->categories;
@@ -26,6 +29,7 @@ class HeaderController extends Controller
         $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
 
         $subCategoriesList = LoopHelper::buildHTML($oneLevelCategories, 'menu_submenu', 'menu_subitem', 'menu_sublink');
+        $subMobileCategoriesList = LoopHelper::buildHTML($oneLevelCategories, 'nav-list', 'nav-item', 'nav-link');
         $sideNav = LoopHelper::buildSideNavHTML(
             $oneLevelCategories, 
             'side-nav-submenu', 
@@ -38,7 +42,9 @@ class HeaderController extends Controller
             'languages' => $languages,
             'medias' => $medias,
             'subCategoriesList' => $subCategoriesList,
+            'subMobileCategoriesList' => $subMobileCategoriesList,
             'sideNav' => $sideNav,
+            'menu' => $menu,
         ]);
     }
 }

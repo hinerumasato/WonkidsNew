@@ -53,6 +53,23 @@ class Post extends Model
         return $result;
     }
 
+    public function getAmountByCategory($categoryId) {
+        $categoryModel = new Category();
+        $posts = $this->where('category_id', $categoryId)->get();
+        $result = count($posts);
+        $childIds = $categoryModel->getAllChildId($categoryId);
+        if(count($childIds) == 0)
+            return count($posts);
+        else {
+            $childPosts = [];
+            for($i = 0; $i < count($childIds); $i++)
+                $childPosts[] = $this->where('category_id', $childIds[$i])->get();
+            foreach($childPosts as $childPost)
+                $result += count($childPost);
+            return $result;
+        }
+    }
+
     public function deleteOne($post_id) {
         $postLanguageMedia = new PostLanguageMedia();        
         $postLanguageMedia->deleteByPostId($post_id);

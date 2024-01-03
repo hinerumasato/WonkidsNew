@@ -1,168 +1,211 @@
 @extends('client.layouts.master')
-@section('content')
+
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 @endsection
-<main>
+
+@section('content')
+    @include('client.partials.slider')
+
     <div id="preloader" class="">
-        <img src="{{asset('imgs/preloader/preloader.gif')}}" alt="">
+        <img src="{{ asset('imgs/preloader/preloader.gif') }}" alt="">
     </div>
-    @include('client.partials.slider')  
-    <div class="container">
-        <div class="about container_content" lazy-element animation="animate__fadeInUpBig">
-            <h2 class="about_title container_content_title">{{ trans('home.about-title') }}</h2>
-            <p class="about_content">{{ trans('home.about-content') }}</p>
-            <button class="about_read_btn">
-                <a class="about_read_link" href="{{route('home.about-us')}}">{{ trans('home.learn-more') }}</a>
-            </button>
-            <div class="container_icon">
-                <span class="with_icon"></span>
-                <span class="diamond_icon"></span>
-                <span class="with_icon"></span>
+
+    <div class="container mt-5">
+
+        <div class="home_content row justify-content-between mt-5">
+            <div class="col-xl-5 col-lg-4">
+                <img class="w-100 h-100" src="{{ asset('imgs/logo/logo.png') }}" alt="">
+            </div>
+            <div class="col-xl-6 col-lg-7 home_about_content">
+                <h2 class="fw-bold text-uppercase">@lang('home.about-title')</h2>
+                <p class="mt-3">
+                    @lang('home.about-content')
+                </p>
+                <a class="mt-3 text-uppercase" href="{{ route('home.about-us') }}">@lang('general.read-more')</a>
             </div>
         </div>
 
-        <div class="wonkids_club_is container_content" lazy-element animation="animate__fadeInUpBig">
-            <h2 class="container_content_title">{{ trans('home.small-nav-title') }}</h2>
-            <ul class="wonkids_club_list container_list row gap-3">
-                <li class="container_item col-lg col-12">
-                    <a href="{{route('home.management')}}" class="container_link">
-                        <i class="fa-solid fa-user-group container_list_icon"></i>
-                        <p class="wonkids_club_list_title">{{ trans('home.operating-instructions') }}</p>
-                    </a>
-                </li>
-                <li class="container_item col-lg col-12">
-                    <a href="{{route('posts.index')}}" class="container_link">
-                        <i class="fa-solid fa-book container_list_icon"></i>
-                        <p class="wonkids_club_list_title">{{ trans('home.11-period') }}</p>
-                    </a>
-                </li>
-                <li class="container_item col-lg col-12">
-                    <a href="{{route('home.media.index')}}" class="container_link">
-                        <i class="fa-solid fa-video container_list_icon"></i>
-                        <p class="wonkids_club_list_title">{{ trans('home.media-content') }}</p>
-                    </a>
-                </li>
-            </ul>
-            <div class="container_icon">
-                <span class="with_icon"></span>
-                <span class="diamond_icon"></span>
-                <span class="with_icon"></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="home_container_video" lazy-element animation="animate__fadeInUpBig">
-        <iframe class="container_iframe" width="60%" height="76%" src="https://www.youtube.com/embed/MMDRukV6Kbg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-
-    <div class="container">
-        <div class="container_content" lazy-element animation="animate__fadeInUpBig">
-            <h2 class="container_content_title">{{ trans('home.media-content') }}</h2>
-            <ul class="container_list row justify-content-between media_list">
-                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInTopLeft">
-                    <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsSong['slug']])}}" class="container_link">
-                        <i class="fa-solid fa-music container_list_icon"></i>
-                        <p class="container_content_item_title">{{ trans('home.wonkids-song') }}</p>
-                        <div class="media_description">
-                            {{ trans('home.wonkids-song-description') }}
-                        </div>
-                    </a>
-                </li>
-                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInTopRight">
-                    <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsStory['slug']])}}" class="container_link">
-                        <i class="fa-solid fa-book container_list_icon"></i>
-                        <p class="container_content_item_title">{{ trans('home.wonkids-story') }}</p>
-                        <div class="media_description">
-                            {{ trans('home.wonkids-story-description') }}
-                        </div>
-                    </a>
-                </li>
-                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInBottomLeft">
-                    <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsCraft['slug']])}}" class="container_link">
-                        <i class="fa-solid fa-scissors container_list_icon"></i>
-                        <p class="container_content_item_title">{{ trans('home.wonkids-activities') }}</p>
-                        <div class="media_description">
-                            {{ trans('home.wonkids-activities-description') }}
-                        </div>
-                    </a>
-                </li>
-                <li class="container_item col-lg-6 col-12" lazy-element animation="animate__fadeInBottomRight">
-                    <a href="{{route('home.media.index-slug', ['mediaSlug' => $wonkidsMemorize['slug']])}}" class="container_link">
-                        <i class="fa-solid fa-bookmark container_list_icon"></i>
-                        <p class="container_content_item_title">{{ trans('home.wonkids-bible') }}</p>
-                        <div class="media_description">
-                            {{ trans('home.wonkids-bible-description') }}
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <div class="container_icon">
-                <span class="with_icon"></span>
-                <span class="diamond_icon"></span>
-                <span class="with_icon"></span>
-            </div>
-        </div>
-
-        {{-- <div class="container_content" lazy-element>
-            <h2 class="container_content_title">{{ trans('home.notification-content') }}</h2>
-            <a class="notification_link" href="#">
-                <img src="{{asset('imgs/notifications/notification1.jpg')}}" alt="" class="notification_img">
-                <p class="notification_description">Tôi đang xây dựng một trang web</p>
-            </a>
-            <div class="container_icon">
-                <span class="with_icon"></span>
-                <span class="diamond_icon"></span>
-                <span class="with_icon"></span>
-            </div>
-        </div> --}}
-
-        <div id="qa" class="container_content contact_content" lazy-element animation="animate__fadeInUpBig">
-            @if (session('msg'))
-                <div class="alert alert-success">
-                    {{ session('msg') }}
+        <div class="home_content zones">
+            <div class="row align-items-center">
+                <div class="col-lg-5 vertical-align-center d-none d-lg-block">
+                    <hr>
                 </div>
-            @endif
-            <h2 class="container_content_title">@lang('home.qa')</h2>
-            <form action="" method="POST">
-                @csrf
-                <div class="container_form_up">
-                    <input type="text" name="name" id="name" placeholder="{{trans('general.name')}}*" lazy-element animation="animate__zoomInDown">
-                    <input type="email" name="email" id="email" placeholder="{{trans('general.email')}}*" lazy-element animation="animate__zoomInDown">
-                    <input type="text" name="phone" id="tel" placeholder="{{trans('general.tel')}}" lazy-element animation="animate__zoomInDown">
+                <div class="col-lg-2">
+                    <h1 class="fw-bold fs-2 text-uppercase text-center">@lang('general.11zones')</h1>
                 </div>
-                <input type="text" name="title" id="" placeholder="{{trans('general.title')}}" class="title_input" lazy-element animation="animate__zoomInDown">
-                <textarea class="container_text_area" name="message" id="message" placeholder="{{trans('general.message')}}*" lazy-element animation="animate__zoomInDown"></textarea>
-                <div class="container_button_wrap" lazy-element animation="animate__bounceInRight">
-                    <button class="container_submit_btn" type="submit">
-                        <i class="fa-solid fa-share"></i>
-                        SEND
-                    </button>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <hr>
                 </div>
-            </form>
+            </div>
+
+            <div class="row my-3">
+                <div class="col-md-1 d-md-flex d-none col-0 prev-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+
+                <div class="col-md-10 col-12 zones-wrapper" item="xl-4 lg-2 md-2 sm-1">
+                    <ul class="zones-list m-0">
+                        @foreach ($zones as $key => $zone)
+                            <li class="zones-item shadow p-4">
+                                <img width="150" height="150" src="{{ $zone['img'] }}" alt="">
+                                <h5 class="mt-3 fw-bold text-uppercase fs-6">{{ $zonesNames[$key] }}</h5>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="zones-item-amount">
+                                        <i class="fa-solid fa-list"></i>
+                                        <span>{{ $zonesAmounts[$key] }} @lang('general.posts')</span>
+                                    </div>
+
+                                    <a href="{{ route('posts.index', ['category' => $zone['id']]) }}"
+                                        class="zones-item-link">@lang('general.see-more')</a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="col-md-1 d-md-flex d-none col-0 next-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
         </div>
     </div>
 
-</main>
+    <div class="home-media-contents-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-12">
+                    <h5 class="fw-bold text-uppercase">@lang('general.media')</h5>
+
+                    {{-- <p class="mt-3 pe-5">
+                        @lang('home.media.description')
+                    </p> --}}
+
+                    <a href="{{ route('home.media.index') }}" class="text-uppercase media-all-link fw-bold my-3">
+                        <span class="me-2">@lang('general.see-all')</span>
+                        <i class="fa-solid fa-right-long"></i>
+                    </a>
+                </div>
+
+                <div class="col-xl-9 col-lg-12 wrapper d-flex justify-content-between media-list">
+                    <div class="wonkids-song media-item">
+                        <i class="fa-brands fa-itunes-note"></i>
+                        <div class="media-item-content">
+                            <h6 class="fw-bold text-center">@lang('home.wonkids-song')</h6>
+                            <p>
+                                @lang('home.wonkids-song-description')
+                            </p>
+
+                            <a href="{{ route('home.media.index-slug', ['mediaSlug' => $wonkidsSong['slug']]) }}"
+                                class="media-item-content-link">@lang('general.view-details')</a>
+                        </div>
+                    </div>
+                    <div class="wonkids-story media-item">
+                        <i class="fa-solid fa-book"></i>
+                        <div class="media-item-content">
+                            <h6 class="fw-bold text-center">@lang('home.wonkids-story')</h6>
+                            <p>
+                                @lang('home.wonkids-story-description')
+                            </p>
+
+                            <a href="{{ route('home.media.index-slug', ['mediaSlug' => $wonkidsStory['slug']]) }}"
+                                class="media-item-content-link">@lang('general.view-details')</a>
+                        </div>
+                    </div>
+                    <div class="wonkids-craft media-item">
+                        <i class="fa-solid fa-scissors"></i>
+                        <div class="media-item-content">
+                            <h6 class="fw-bold text-center">@lang('home.wonkids-activities')</h6>
+                            <p>
+                                @lang('home.wonkids-activities-description')
+                            </p>
+
+                            <a href="{{ route('home.media.index-slug', ['mediaSlug' => $wonkidsCraft['slug']]) }}"
+                                class="media-item-content-link">@lang('general.view-details')</a>
+                        </div>
+                    </div>
+                    <div class="wonkids-bible media-item">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <div class="media-item-content">
+                            <h6 class="fw-bold text-center">@lang('home.wonkids-bible')</h6>
+                            <p>
+                                @lang('home.wonkids-bible-description')
+                            </p>
+
+                            <a href="{{ route('home.media.index-slug', ['mediaSlug' => $wonkidsMemorize['slug']]) }}"
+                                class="media-item-content-link">@lang('general.view-details')</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="video-container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 vertical-align-center d-none d-lg-block">
+                    <hr>
+                </div>
+                <div class="col-lg-4">
+                    <h1 class="fw-bold fs-2 text-uppercase text-center">@lang('general.video-clip')</h1>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row row-cols-md-2 row-cols-1 g-5">
+                <div class="col">
+                    <div class="shadow p-3">
+                        <video class="w-100 h-100" src="{{ asset(trans('home.video.first')) }}" controls></video>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="shadow p-3">
+                        <video class="w-100 h-100" src="{{ asset(trans('home.video.second')) }}" controls></video>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container contact mt-5">
+        <div class="row justify-content-between">
+            <div class="col-lg-6 col-12">
+                <img class="md-contact-img" src="{{ asset('imgs/contact/contact_img.png') }}" alt="">
+
+                <a class="text-uppercase primary-btn fw-bold mt-5">
+                    @lang('general.contact')
+                </a>
+            </div>
+
+            <div class="col-lg-6 col-12 d-flex justify-content-center">
+                <img width="250" src="{{ asset('imgs/contact/contact_img.png') }}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="popup">
+        <div class="popup-inner">
+            <div class="popup-icon">
+                <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="popup-title">@lang('general.popup.notification')</div>
+            <div class="popup-content">
+                <p>@lang('general.download-popup')</p>
+            </div>
+            <div class="popup-button-group">
+                <button class="popup-ok-button">OK</button>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
-    <script>
-        let msg = @json(session('msg'));
-        if(msg != null) {
-            window.location.replace(@json(route('home.index')) + '#qa');
-        }
-    </script>
-
-    <script>
-        const containerItems = document.querySelectorAll('.container_item');
-        containerItems.forEach(item => {
-            const link = item.querySelector('a');
-            item.onclick = () => {
-                link.click();
-            }
-        });
-    </script>
-
-    <script src="{{asset('js/header.js')}}"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/carouse.js') }}"></script>
+    <script src="{{ asset('js/popup.js') }}"></script>
 @endsection

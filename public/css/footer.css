@@ -1,16 +1,22 @@
-footer {
-    background-color: var(--footer-background);
-    height: 230px;
-    display: flex;
-    align-items: center;
+.footer-main {
+    padding: 24px 0;
+    background-color: #484848;
 }
 
-.footer_title {
-    font-size: 18px;
-    color: #fff;
-    font-weight: bold;
+.footer-contact-list {
+    list-style: none;
 }
-.footer_description {
-    font-size: 12px;
-    color: #BCBCBC;
+
+.footer-contact-list > li {
+    padding: 4px 0;
+}
+
+.footer-copyright {
+    background-color: #D9D9D9;
+    color: #000;
+    font-size: 16px;
+}
+
+.footer-copyright p {
+    margin: 0 !important;
 }

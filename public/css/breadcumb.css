@@ -1,0 +1,13 @@
+.breadcrumb {
+    margin-bottom: 0 !important;
+}
+
+.breadcrumb-item a {
+    color: #000 !important;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #6E3B70 !important;
+    font-weight: bold;
+}

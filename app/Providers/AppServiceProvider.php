@@ -9,6 +9,7 @@ use App\Http\Controllers\Partials\CategoryController;
 use App\Http\Controllers\Partials\HeaderController;
 use App\Http\Controllers\Partials\SliderController;
 use App\Http\Controllers\Partials\SmallNavController;
+use App\Http\Controllers\Partials\SmallSliderController;
 use App\Http\Controllers\Vendor\BreadcumbController;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
@@ -34,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
         if (env('APP_ENV') === 'production') {
             URL::forceScheme('https');
         }
@@ -46,6 +46,10 @@ class AppServiceProvider extends ServiceProvider
 
         //Client
         View::composer('client.partials.header', function($view) {
+            app()->call([HeaderController::class, 'index'], ['view' => $view]);
+        });
+
+        View::composer('client.partials.test-header', function($view) {
             app()->call([HeaderController::class, 'index'], ['view' => $view]);
         });
 
@@ -63,6 +67,10 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('client.partials.slider', function($view) {
             app()->call([SliderController::class, 'index'], ['view' => $view]);
+        });
+
+        View::composer('client.partials.small-slider', function($view) {
+            app()->call([SmallSliderController::class, 'index'], ['view' => $view]);
         });
 
         //Admin

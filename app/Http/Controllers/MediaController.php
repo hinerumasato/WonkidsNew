@@ -25,7 +25,7 @@ class MediaController extends Controller
     }
 
     public function index() {
-        $smallSliderTitle = trans('general.media');
+        $newSmallSliderTitle = trans('general.media');
         $title = trans('general.media');
         $medias = $this->postLanguageMediaModel->getAllByLocale(app()->getLocale());
         $mediaTypes = $this->mediaModel->getTypes($medias);
@@ -52,7 +52,7 @@ class MediaController extends Controller
 
         return view('client.media', [
             'title' => $title,
-            'smallSliderTitle' => $smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
             'medias' => $medias,
             'mediaTypes' => $mediaTypes,
             'mediaNavs' => $mediaNavs,
@@ -62,7 +62,7 @@ class MediaController extends Controller
     }
 
     public function indexSlug($mediaSlug) {
-        $smallSliderTitle = trans('general.media');
+        $newSmallSliderTitle = trans('general.media');
         $title = trans('general.media');
 
         $mediaType =  $this->mediaModel->getBySlug($mediaSlug, app()->getLocale());
@@ -109,7 +109,7 @@ class MediaController extends Controller
 
         return view('client.media', [
             'title' => $title,
-            'smallSliderTitle' => $smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
             'medias' => $medias,
             'mediaTypes' => $mediaTypes,
             'mediaNavs' => $mediaNavs,
@@ -120,7 +120,7 @@ class MediaController extends Controller
     }
 
     public function detail($mediaSlug, $detailSlug) {
-        $smallSliderTitle = trans('general.media');
+        $newSmallSliderTitle = trans('general.media');
         $title = trans('general.media');
         $newRoute = route('home.media.index');
 
@@ -189,7 +189,7 @@ class MediaController extends Controller
 
         return view('client.media-detail', [
             'title' => $title,
-            'smallSliderTitle' => $smallSliderTitle,
+            'newSmallSliderTitle' => $newSmallSliderTitle,
             'mediaDetail' => $mediaDetail,
             'medias' => $medias,
             'mediaTypes' => $mediaTypes,
