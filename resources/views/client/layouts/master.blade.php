@@ -31,10 +31,11 @@
     <link rel="stylesheet" href="{{ asset('css/lazy.css') }}">
     <link rel="stylesheet" href="{{ asset('css/variable.css') }}">
     <link rel="stylesheet" href="{{ asset('css/preloader.css') }}">
-
+    
     {{-- CDNS --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     @yield('css')
     @stack('css')
@@ -53,6 +54,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <script src="{{ asset('js/preloader.js') }}"></script>
     <script src="{{ asset('js/placeholder.js') }}"></script>

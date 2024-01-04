@@ -17,15 +17,15 @@
                                     Chào mừng đã đến với <br />
                                     <span class="fw-bold register-text-color">Wonkidsclub</span>
                                 </h1>
-                                <p style="color: hsl(217, 10%, 50.8%)" class="fs-5">
+                                <p style="color: hsl(217, 10%, 50.8%)">
 
                                     Cảm ơn bạn đã quan tâm và sử dụng tài liệu của chúng tôi. Để có thể tải tất cả tài liệu
                                     mong bạn dành ít thời gian đăng nhập/ đăng ký. Nếu có bất kỳ thắc mắc hoặc cần sự hỗ
                                     trợ, xin vui lòng liên hệ với chúng tôi qua số ĐT 070 771 7745 hoặc Fanpage Facebook:
                                 <p><a class="register-second-text"
                                         href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc">https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc</a>
-                                </p style="color: hsl(217, 10%, 50.8%)">
-                                    Xin chân thành cảm ơn.
+                                </p>
+                                Xin chân thành cảm ơn.
                                 </p>
                             </div>
 
@@ -36,50 +36,17 @@
                                             <img src="https://wonkidsclub.net/imgs/sliders/wonkidsclub_logo_slider.png"
                                                 alt="" width="60%">
                                         </div>
-                                        <!-- 2 column grid layout with text inputs for the first and last names -->
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4">
-                                                <div class="form-floating">
-                                                    <input type="text" id="registerName" class="form-control"
-                                                        placeholder="" />
-                                                    <label class="form-label" for="registerName">Họ và tên*</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <div class="form-floating">
-                                                    <input type="text" id="registerPhone" class="form-control"
-                                                        placeholder="" />
-                                                    <label class="form-label" for="registerPhone">SĐT</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-floating mb-4">
-                                            <input type="text" id="registerChurch" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerChurch">Hội thánh*</label>
-                                        </div>
-
-                                        <div class="form-floating mb-4">
-                                            <input type="text" id="registerBirthYear" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerBirthYear">Năm sinh*</label>
-                                        </div>
 
                                         <!-- Email input -->
                                         <div class="form-floating mb-4">
-                                            <input type="email" id="registerEmail" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerEmail">Địa chỉ Email*</label>
+                                            <input type="email" id="loginEmail" class="form-control" placeholder="" />
+                                            <label class="form-label" for="loginEmail">Địa chỉ Email*</label>
                                         </div>
 
                                         <!-- Password input -->
                                         <div class="form-floating mb-4">
-                                            <input type="password" id="registerPassword" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerPassword">Mật khẩu*</label>
-                                        </div>
-
-                                        <!-- Password input -->
-                                        <div class="form-floating mb-4">
-                                            <input type="password" id="registerPasswordConfirmation" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerPasswordConfirmation">Nhập lại mật khẩu*</label>
+                                            <input type="password" id="loginPassword" class="form-control" placeholder="" />
+                                            <label class="form-label" for="loginPassword">Password*</label>
                                         </div>
 
                                         <!-- Checkbox
@@ -92,14 +59,14 @@
                                                     </div> -->
 
                                         <!-- Submit button -->
-                                        <button type="submit" class="btn btn-block py-3 mb-4 w-100 fw-bold register-bg-color">
-                                            Đăng ký
+                                        <button type="submit" class="btn btn-block mb-4 w-100 fw-bold register-bg-color py-3">
+                                            Đăng nhập
                                         </button>
 
                                         <p>
-                                            Bạn đã có tài khoản? <a href="/client/login" class="register-second-text">Vui lòng
+                                            Bạn chưa có tài khoản? <a href="/client/register" class="register-second-text">Vui lòng
                                                 đăng
-                                                nhập tại đây</a>
+                                                ký tại đây</a>
                                         </p>
                                     </div>
                                 </div>

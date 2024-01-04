@@ -44,12 +44,16 @@ class UserController extends Controller
     }
 
     public function register(Request $request) {
+        $locale = $request->client_locale;
+        app()->setLocale($locale);
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required'],
             'name' => ['required'],
             'birthYear' => ['required'],
             'church' => ['required'],
+        ], [
+            'email.unique' => trans('validation.unique', ['attribute' => 'email']),
         ]);
 
         if($validator->fails()) {

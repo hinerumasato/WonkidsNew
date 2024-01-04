@@ -11,6 +11,8 @@ class LoginPageController extends Controller
      * @return View
      */
     public function render() {
-        
+        return view('client.login', [
+            'title' => 'Đăng nhập',
+        ]);
     }
 }

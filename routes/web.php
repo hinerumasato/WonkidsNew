@@ -113,9 +113,9 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
     });
 });
 
-Route::get('/login', [LoginPageController::class, 'render'])->name('login-page');
-Route::prefix('/auth')->name('auth.')->group(function() {
+Route::prefix('/client')->name('auth.')->group(function() {
     Route::get('/register', [RegisterPageController::class, 'render'])->name('register-page');
+    Route::get('/login', [LoginPageController::class, 'render'])->name('login-page');
 });
 
 Auth::routes();

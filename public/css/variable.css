@@ -39,3 +39,26 @@
 .bg-tertiary {
     background-color: #F2F4F8 !important;
 }
+
+.tick-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid transparent;
+    display: flex; /* Thêm display: flex */
+    align-items: center; /* Thêm align-items: center */
+}
+
+.tick-icon i {
+    margin: auto; /* Sử dụng margin: auto để canh giữa icon */
+}
+
+.tick-icon.valid {
+    background-color: #4CAF50; /* Màu xanh lá cây */
+    border-color: #4CAF50;
+}
