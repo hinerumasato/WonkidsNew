@@ -11,8 +11,10 @@ use App\Http\Controllers\AdminQAController;
 use App\Http\Controllers\AdminUIController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\LoginPageController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\RegisterPageController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -110,4 +112,10 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
         Route::get('/slider', [AdminUIController::class, 'slider'])->name('slider');
     });
 });
+
+Route::get('/login', [LoginPageController::class, 'render'])->name('login-page');
+Route::prefix('/auth')->name('auth.')->group(function() {
+    Route::get('/register', [RegisterPageController::class, 'render'])->name('register-page');
+});
+
 Auth::routes();
