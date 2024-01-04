@@ -15,6 +15,8 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
+use App\Repositories\ClientRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -77,5 +79,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('admin.layouts.master', function($view) {
             app()->call([AdminLayoutController::class, 'index'], ['view' => $view]);
         });
+
+        $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
     }
 }
