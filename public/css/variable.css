@@ -5,7 +5,7 @@
     --md-slider-height: 400px;
     --menu-z-index: 9999;
     --home-menu-text-color: #fff;
-    --main-color: #924094;
+    --main-color: #6E3B70;
     --secondary-color: #307064;
     --body-background: #FFFFFF;
     --footer-background: #484848;
@@ -30,6 +30,23 @@
     --admin-triad-color-3: #86B000;
     --admin-triad-color-4: #1A56B0;
     
+}
+
+.btn-main {
+    background-color: var(--main-color);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btn-main:hover {
+    background-color: #341935;
+}
+
+.btn-root {
+    text-decoration: none;
+    color: #000;
 }
 
 .text-main {

@@ -8,7 +8,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="w-100 navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="w-100 navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('home.index') }}">
                         {{ trans('home.menu-item-1') }}
@@ -116,7 +116,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item align-self-center ms-auto">
+                {{-- <li class="nav-item align-self-center ms-auto">
                     <div class="header-languages d-flex align-items-center gap-2">
                         @foreach ($languages as $language)
                             <a class="locale-link"
@@ -126,7 +126,9 @@
                             </a>
                         @endforeach
                     </div>
-                </li>
+                </li> --}}
+
+                <li class="nav-item align-self-center ms-auto auth-header"></li>
             </ul>
         </div>
     </div>
