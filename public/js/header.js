@@ -15,7 +15,7 @@
                 <div class="d-flex align-items-center"></div>
                 <div class="wrapper text-center fw-bold">
                     <div>Xin chào ${data.data.name}</div>
-                    <button class="btn-main px-3 py-1 border-0 rounded logout-btn">Đăng xuất</button>
+                    <button class="btn-main px-3 py-1 border-0 rounded logout-btn mt-1">Đăng xuất</button>
                 </div>
                 `
             } else {
