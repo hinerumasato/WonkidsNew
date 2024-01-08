@@ -55,6 +55,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/postDetailContent.js') }}"></script>
+    <script type="module" src="{{ asset('js/postDetailContent.js') }}"></script>
     <script src="{{ asset('js/popup.js') }}"></script>
 @endsection

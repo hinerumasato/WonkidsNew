@@ -54,6 +54,6 @@ return [
     <p><strong>Xin lưu ý quý vị vẫn có thể xem tài liệu miễn phí mà không cần đăng ký thành viên như trước đây</strong>.  Kính mong nhận được sự hợp tác tích cực từ quý vị. Xin chân thành cảm ơn. Muốn thật hết lòng!</p>',
 
     'popup.notification' => 'Thông báo',
-    'popup.submit' => 'Đã hiểu và tiếp tục tải',
+    'popup.submit' => 'Tiếp tục',
     'popup.cancel' => 'Cancel',
 ];

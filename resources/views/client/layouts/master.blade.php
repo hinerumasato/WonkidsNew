@@ -60,6 +60,7 @@
     <script src="{{ asset('js/placeholder.js') }}"></script>
     <script src="{{ asset('js/lazy.js') }}"></script>
     <script src="{{ asset('js/util.js') }}"></script>
+    <script type="module" src="{{ asset('js/Toast.js') }}"></script>
     @yield('scripts')
     @stack('scripts')
 </body>
