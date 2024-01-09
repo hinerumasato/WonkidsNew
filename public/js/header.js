@@ -1,6 +1,8 @@
 (function() {
+
     const renderAuthHeader = () => {
-        const authHeader = document.querySelector('.auth-header');
+        const authHeaders = document.querySelectorAll('.auth-header');
+        console.log(authHeaders);
         const token = localStorage.getItem('token');
         const headres = new Headers();
         headres.append('Authorization', `Bearer ${token}`);
@@ -11,43 +13,48 @@
         .then(response => response.json())
         .then(data => {
             if(data.statusCode == 200) {
-                authHeader.innerHTML += /* html */ `
-                <div class="d-flex align-items-center"></div>
-                <div class="wrapper text-center fw-bold">
-                    <div>Xin chào ${data.data.name}</div>
-                    <button class="btn-main px-3 py-1 border-0 rounded logout-btn mt-1">Đăng xuất</button>
-                </div>
-                `
+                authHeaders.forEach(authHeader => {
+                    authHeader.innerHTML += /* html */ `
+                    <div class="d-flex align-items-center"></div>
+                    <div class="wrapper text-center fw-bold">
+                        <div>Xin chào ${data.data.name}</div>
+                        <button class="btn-main px-3 py-1 border-0 rounded logout-btn mt-1">Đăng xuất</button>
+                    </div>
+                    `
+                })
             } else {
-                authHeader.innerHTML += /* html */ `
-                <div class="auth-btn-wrapper">
-                    <a href="/client/login" class="btn-root">Đăng nhập</a>
-                    <a href="/client/register" class="btn-main px-3 py-2 rounded fw-bold">Đăng ký</a>
-                </div>
-            `
+                authHeaders.forEach(authHeader => {
+                    authHeader.innerHTML += /* html */ `
+                    <div class="auth-btn-wrapper mt-2">
+                        <a href="/client/login" class="btn-root">Đăng nhập</a>
+                        <a href="/client/register" class="btn-main text-white px-3 py-2 rounded fw-bold">Đăng ký</a>
+                    </div>
+                `
+                })
             }
         }).then(() => {
             const logoutBtn = document.querySelector('.logout-btn');
-            console.log(logoutBtn);
-            logoutBtn.onclick = () => {
-                localStorage.removeItem('token');
-                
-                Toastify({
-                    text: 'Đăng xuất thành công',
-                    duration: 3000,
-                    destination: "/client/login",
-                    newWindow: false,
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "center", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
-                        background: `linear-gradient(to right, #2196F3, #1976D2)`,
-                    },
-                }).showToast();
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000);
+            if(logoutBtn) {
+                logoutBtn.onclick = () => {
+                    localStorage.removeItem('token');
+                    
+                    Toastify({
+                        text: 'Đăng xuất thành công',
+                        duration: 3000,
+                        destination: "/client/login",
+                        newWindow: false,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "center", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: `linear-gradient(to right, #2196F3, #1976D2)`,
+                        },
+                    }).showToast();
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                }
             }
         })
     }
