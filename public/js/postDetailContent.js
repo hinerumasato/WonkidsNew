@@ -17,7 +17,9 @@ const app = {
                         window.location.replace(url);
                     }
                 } else {
-                    const href = e.target.href;
+                    const href = link.href;
+                    console.log(link);
+                    console.log(href);
                     const apiUrl = "/api/v1/user";
                     const token = localStorage.getItem('token');
                     const headres = new Headers();
