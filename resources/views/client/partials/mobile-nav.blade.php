@@ -127,6 +127,10 @@
                         @endforeach
                     </div>
                 </li>
+
+                <li class="nav-item align-self-center ms-auto">
+                    <li class="nav-item align-self-center ms-auto auth-header"></li>
+                </li>
             </ul>
         </div>
     </div>
