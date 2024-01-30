@@ -23,6 +23,7 @@ return [
     'member.role' => 'VAI TRÒ',
     'member.join-date' => 'NGÀY GIA NHẬP',
     'member.phone' => 'SỐ ĐIỆN THOẠI',
+    'member.church' => 'Hội thánh',
 
     //member add
     'member.add.email-address' => 'Địa chỉ Email',

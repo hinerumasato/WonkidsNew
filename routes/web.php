@@ -15,7 +15,6 @@ use App\Http\Controllers\LoginPageController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\RegisterPageController;
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 

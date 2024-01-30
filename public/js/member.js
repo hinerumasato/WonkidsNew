@@ -158,4 +158,4 @@ function changeData(...rules) {
 
 
 
-changeData('.name_col' ,'.email_col', '.phone_col');
+changeData('.name_col' ,'.email_col', '.phone_col', '.church_col');

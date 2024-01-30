@@ -66,6 +66,7 @@
                     <th>{{ trans('admin.member.role') }}</th>
                     <th>{{ trans('admin.member.join-date') }}</th>
                     <th>{{ trans('admin.member.phone') }}</th>
+                    <th>{{ trans('admin.member.church') }}</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -83,7 +84,7 @@
 
                         <td>{{ DateHelper::formatVietNamDate($member->created_at) }}</td>
                         <td feild="phone" class="phone_col" data="{{ $member->phone }}">{{ $member->phone }}</td>
-
+                        <td feild="church" class="church_col" data="{{$member->church}}">{{ $member->church }}</td>
                         <td>
                             <button onclick='inboxTo(@json($member));' class="member_inbox_btn" data-bs-toggle="modal" data-bs-target="#sendMessageModal"><i class="fa-solid fa-envelope"></i></button>
                         </td>

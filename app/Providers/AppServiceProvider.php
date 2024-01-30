@@ -11,6 +11,8 @@ use App\Http\Controllers\Partials\SliderController;
 use App\Http\Controllers\Partials\SmallNavController;
 use App\Http\Controllers\Partials\SmallSliderController;
 use App\Http\Controllers\Vendor\BreadcumbController;
+use App\Models\User;
+use Flat3\Lodata\Facades\Lodata;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
@@ -77,5 +79,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('admin.layouts.master', function($view) {
             app()->call([AdminLayoutController::class, 'index'], ['view' => $view]);
         });
+
+        // Lodata
+        Lodata::discover(User::class);
     }
 }
