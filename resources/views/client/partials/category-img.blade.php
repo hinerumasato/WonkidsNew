@@ -7,15 +7,15 @@
         @foreach ($rootCategories as $key => $value)
             @if ($key == 0)
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-{{ $key }}-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-{{ $key }}" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">{{ $rootCategoryNames[$key] }}</button>
+                    <button class="nav-link active" id="pills-{{ $key }}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{ $key }}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                        {{ $rootCategoryNames[$key] }}
+                    </button>
                 </li>
             @else
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-{{ $key }}-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-{{ $key }}" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">{{ $rootCategoryNames[$key] }}</button>
+                    <button class="nav-link" id="pills-{{ $key }}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{ $key }}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                        {{ $rootCategoryNames[$key] }}
+                    </button>
                 </li>
             @endif
         @endforeach
