@@ -1,8 +1,8 @@
 (function() {
-
     const renderAuthHeader = () => {
         const authHeaders = document.querySelectorAll('.auth-header');
-        console.log(authHeaders);
+        const locale = document.querySelector('html').getAttribute('lang');
+        const language = new Language(locale);
         const token = localStorage.getItem('token');
         const headres = new Headers();
         headres.append('Authorization', `Bearer ${token}`);
@@ -26,8 +26,8 @@
                 authHeaders.forEach(authHeader => {
                     authHeader.innerHTML += /* html */ `
                     <div class="auth-btn-wrapper mt-2">
-                        <a href="/client/login" class="btn-root">Đăng nhập</a>
-                        <a href="/client/register" class="btn-main text-white px-3 py-2 rounded fw-bold">Đăng ký</a>
+                        <a href="/client/login" class="btn-root">${language.trans('login')}</a>
+                        <a href="/client/register" class="btn-main text-white px-3 py-2 rounded fw-bold">${language.trans('signup')}</a>
                     </div>
                 `
                 })
