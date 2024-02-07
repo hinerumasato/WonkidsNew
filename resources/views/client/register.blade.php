@@ -14,18 +14,15 @@
                         <div class="row gx-lg-5 align-items-center">
                             <div class="col-lg-6 mb-5 mb-lg-0 d-lg-block d-none">
                                 <h1 class="my-5 display-3 fw-bold ls-tight text-center" style="font-size: 55px">
-                                    Chào mừng đã đến với <br />
-                                    <span class="fw-bold register-text-color">Wonkidsclub</span>
+                                    @lang('auth.welcome.title')
                                 </h1>
                                 <p style="color: hsl(217, 10%, 50.8%)" class="fs-5">
 
-                                    Cảm ơn bạn đã quan tâm và sử dụng tài liệu của chúng tôi. Để có thể tải tất cả tài liệu
-                                    mong bạn dành ít thời gian đăng nhập/ đăng ký. Nếu có bất kỳ thắc mắc hoặc cần sự hỗ
-                                    trợ, xin vui lòng liên hệ với chúng tôi qua số ĐT 070 771 7745 hoặc Fanpage Facebook:
+                                    @lang('auth.welcome.content')
                                 <p><a class="register-second-text"
                                         href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc">https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc</a>
                                 </p style="color: hsl(217, 10%, 50.8%)">
-                                    Xin chân thành cảm ơn.
+                                    @lang('auth.welcome.appreciate')
                                 </p>
                             </div>
 
@@ -42,44 +39,44 @@
                                                 <div class="form-floating">
                                                     <input type="text" id="registerName" class="form-control"
                                                         placeholder="" />
-                                                    <label class="form-label" for="registerName">Họ và tên*</label>
+                                                    <label class="form-label" for="registerName">@lang('auth.form.name')*</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-floating">
                                                     <input type="text" id="registerPhone" class="form-control"
                                                         placeholder="" />
-                                                    <label class="form-label" for="registerPhone">SĐT</label>
+                                                    <label class="form-label" for="registerPhone">@lang('auth.form.phone')</label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-floating mb-4">
                                             <input type="text" id="registerChurch" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerChurch">Hội thánh*</label>
+                                            <label class="form-label" for="registerChurch">@lang('auth.form.church')*</label>
                                         </div>
 
                                         <div class="form-floating mb-4">
                                             <input type="text" id="registerBirthYear" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerBirthYear">Năm sinh*</label>
+                                            <label class="form-label" for="registerBirthYear">@lang('auth.form.year-of-birth')*</label>
                                         </div>
 
                                         <!-- Email input -->
                                         <div class="form-floating mb-4">
                                             <input type="email" id="registerEmail" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerEmail">Địa chỉ Email*</label>
+                                            <label class="form-label" for="registerEmail">@lang('auth.form.email')*</label>
                                         </div>
 
                                         <!-- Password input -->
                                         <div class="form-floating mb-4">
                                             <input type="password" id="registerPassword" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerPassword">Mật khẩu*</label>
+                                            <label class="form-label" for="registerPassword">@lang('auth.form.password')*</label>
                                         </div>
 
                                         <!-- Password input -->
                                         <div class="form-floating mb-4">
                                             <input type="password" id="registerPasswordConfirmation" class="form-control" placeholder="" />
-                                            <label class="form-label" for="registerPasswordConfirmation">Nhập lại mật khẩu*</label>
+                                            <label class="form-label" for="registerPasswordConfirmation">@lang('auth.form.password-confirmation')*</label>
                                         </div>
 
                                         <!-- Checkbox
@@ -93,13 +90,11 @@
 
                                         <!-- Submit button -->
                                         <button type="submit" class="btn btn-block py-3 mb-4 w-100 fw-bold register-bg-color">
-                                            Đăng ký
+                                            @lang('auth.signup')
                                         </button>
 
                                         <p>
-                                            Bạn đã có tài khoản? <a href="/client/login" class="register-second-text">Vui lòng
-                                                đăng
-                                                nhập tại đây</a>
+                                            @lang('auth.form.already-have-account') <a href="/client/login" class="register-second-text">@lang('auth.form.already-have-account-link')</a>
                                         </p>
                                     </div>
                                 </div>

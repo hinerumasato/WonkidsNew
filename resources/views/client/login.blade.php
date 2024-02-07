@@ -14,18 +14,15 @@
                         <div class="row gx-lg-5 align-items-center">
                             <div class="col-lg-6 mb-5 mb-lg-0 d-lg-block d-none">
                                 <h1 class="my-5 display-3 fw-bold ls-tight text-center" style="font-size: 55px">
-                                    Chào mừng đã đến với <br />
-                                    <span class="fw-bold register-text-color">Wonkidsclub</span>
+                                    @lang('auth.welcome.title')
                                 </h1>
                                 <p style="color: hsl(217, 10%, 50.8%)">
 
-                                    Cảm ơn bạn đã quan tâm và sử dụng tài liệu của chúng tôi. Để có thể tải tất cả tài liệu
-                                    mong bạn dành ít thời gian đăng nhập/ đăng ký. Nếu có bất kỳ thắc mắc hoặc cần sự hỗ
-                                    trợ, xin vui lòng liên hệ với chúng tôi qua số ĐT 070 771 7745 hoặc Fanpage Facebook:
+                                    @lang('auth.welcome.content')
                                 <p><a class="register-second-text"
                                         href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc">https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc</a>
                                 </p>
-                                Xin chân thành cảm ơn.
+                                    @lang('auth.welcome.appreciate')
                                 </p>
                             </div>
 
@@ -40,13 +37,13 @@
                                         <!-- Email input -->
                                         <div class="form-floating mb-4">
                                             <input type="email" id="loginEmail" class="form-control" placeholder="" />
-                                            <label class="form-label" for="loginEmail">Địa chỉ Email*</label>
+                                            <label class="form-label" for="loginEmail">@lang('auth.form.email')*</label>
                                         </div>
 
                                         <!-- Password input -->
                                         <div class="form-floating mb-4">
                                             <input type="password" id="loginPassword" class="form-control" placeholder="" />
-                                            <label class="form-label" for="loginPassword">Password*</label>
+                                            <label class="form-label" for="loginPassword">@lang('auth.form.password')*</label>
                                         </div>
 
                                         <!-- Checkbox
@@ -60,13 +57,11 @@
 
                                         <!-- Submit button -->
                                         <button type="submit" class="btn btn-block mb-4 w-100 fw-bold register-bg-color py-3">
-                                            Đăng nhập
+                                            @lang('auth.login')
                                         </button>
 
                                         <p>
-                                            Bạn chưa có tài khoản? <a href="/client/register" class="register-second-text">Vui lòng
-                                                đăng
-                                                ký tại đây</a>
+                                            @lang('auth.form.already-have-account') <a href="/client/register" class="register-second-text">@lang('auth.form.already-have-account-link')</a>
                                         </p>
                                     </div>
                                 </div>
