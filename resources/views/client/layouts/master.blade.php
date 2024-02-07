@@ -55,8 +55,8 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
     <script src="{{ asset('js/preloader.js') }}"></script>
+    <script src="{{ asset('js/language/language.js') }}"></script>
     <script src="{{ asset('js/placeholder.js') }}"></script>
     <script src="{{ asset('js/lazy.js') }}"></script>
     <script src="{{ asset('js/util.js') }}"></script>
