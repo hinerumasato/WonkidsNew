@@ -1,6 +1,11 @@
 .category-card {
     padding: 16px;
     cursor: pointer;
+    transition: all .3s;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
 }
 
 .category-card-img {
