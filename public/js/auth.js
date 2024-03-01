@@ -123,7 +123,11 @@ class Authentication {
                     localStorage.setItem('token', token);
                     this.toast(data.message, 'success');
                     setTimeout(() => {
-                        window.location.replace('/');
+                        if('referrer' in document) {
+                            window.location.href = document.referrer;
+                        } else {
+                            window.history.back();
+                        }
                     }, 1000);
                 }
             }).catch(error => {

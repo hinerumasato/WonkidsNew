@@ -29,7 +29,7 @@ const app = {
                     .then(response => response.json())
                     .then(data => {
                         if(data.statusCode === 200)
-                            window.location.replace(href);
+                            window.location.href = href;
                         else throw new Error('Token đã hết hạn, vui lòng đăng nhập lại');
                     }).catch(error => {
                         const toast = new Toast(error.message, 'error');
