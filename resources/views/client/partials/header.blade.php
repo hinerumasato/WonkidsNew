@@ -35,20 +35,4 @@
         fitTop('.menu_submenu', '.menu_subitem');
         fitTop('.menu_submenu', '.header_subitem');
     </script>
-    <script>
-        function setHeaderClass() {
-            const header = document.querySelector("header");
-            const route = window.location.href;
-            const homeURL = @json(route('home.index')) + '/';
-            if (homeURL === route.split('?')[0] || homeURL === route.split('#')[0]) {
-                header.classList.add("home_header");
-                header.classList.remove("other_header");
-            } else {
-                header.classList.add("other_header");
-                header.classList.remove("home_header");
-            }
-        }
-
-        setHeaderClass();
-    </script>
 @endpush

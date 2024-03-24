@@ -13,7 +13,7 @@
                     <div class="container">
                         <div class="row gx-lg-5 align-items-center">
                             <div class="col-lg-6 mb-5 mb-lg-0 d-lg-block d-none">
-                                <h1 class="my-5 display-3 fw-bold ls-tight text-center" style="font-size: 55px">
+                                <h1 class="my-5 display-3 fw-bold ls-tight text-center" style="font-size: 50px">
                                     @lang('auth.welcome.title')
                                 </h1>
                                 <p style="color: hsl(217, 10%, 50.8%)">

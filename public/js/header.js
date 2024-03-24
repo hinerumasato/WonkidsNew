@@ -6,7 +6,7 @@
         const token = localStorage.getItem('token');
         const headres = new Headers();
         headres.append('Authorization', `Bearer ${token}`);
-        fetch('api/v1/user', {
+        fetch('/api/v1/user', {
             method: 'GET',
             headers: headres,
         })
