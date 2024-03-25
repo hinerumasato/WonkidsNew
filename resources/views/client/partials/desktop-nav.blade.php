@@ -109,8 +109,7 @@
                     <ul class="header-language-list animate__animated animate__fadeInDown animate__faster">
                         @foreach ($languages as $language)
                             <li>
-                                <a
-                                    href="{{ route('change-language', ['locale' => $language->locale]) }}">{{ $language->name }}</a>
+                                <a href="{{ route('change-language', ['locale' => $language->locale]) }}">{{ $language->name }}</a>
                             </li>
                         @endforeach
                     </ul>

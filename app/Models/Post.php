@@ -48,8 +48,6 @@ class Post extends Model
             }
         }
 
-
-
         return $result;
     }
 
