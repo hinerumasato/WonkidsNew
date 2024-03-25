@@ -16,7 +16,6 @@ class HeaderController extends Controller
     public static function index($view) {
         $mediaModel = new Media();
         $menuModel = new Menu();
-        $menu = $menuModel->findAllWithLanguage();
         $currentLocale = app()->getLocale();
         $currentLanguage = Language::where('locale', $currentLocale)->first();
         $categories = $currentLanguage->categories;
@@ -44,7 +43,6 @@ class HeaderController extends Controller
             'subCategoriesList' => $subCategoriesList,
             'subMobileCategoriesList' => $subMobileCategoriesList,
             'sideNav' => $sideNav,
-            'menu' => $menu,
         ]);
     }
 }

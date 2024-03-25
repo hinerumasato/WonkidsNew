@@ -43,7 +43,7 @@ class Category extends Model
 
     
     /**
-     * @deprecated since version 2.0.0
+     * @deprecated since version 1.2.0
      */
     public function getOneLevelCategories() {
         $result = [];
