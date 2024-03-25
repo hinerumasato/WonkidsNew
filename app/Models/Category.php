@@ -24,6 +24,27 @@ class Category extends Model
         return $this->belongsToMany(Language::class, 'categories_has_languages')->withPivot('name')->withTimestamps();
     }
 
+    public function getOneLevelCategoriesData($locale) {
+        return Category::select("categories")
+            ->join("categories as c2", function($join){
+                $join->on("categories.id", "=", "c2.parent_id");
+            })
+            ->join("categories_has_languages", function($join){
+                $join->on("categories_has_languages.category_id", "=", "c2.id");
+            })
+            ->join("languages", function($join){
+                $join->on("categories_has_languages.language_id", "=", "languages.id");
+            })
+            ->select("c2.*", "categories_has_languages.name")
+            ->where("categories.parent_id", "=", 0)
+            ->where("languages.locale", "=", $locale)
+            ->get();
+    }
+
+    
+    /**
+     * @deprecated since version 2.0.0
+     */
     public function getOneLevelCategories() {
         $result = [];
         $categories = $this->all();
@@ -44,13 +65,7 @@ class Category extends Model
     }
 
     public function getAllChildId($categoryId) {
-        $categories = Category::all();
-        $result = [];
-        foreach ($categories as $category) {
-            if($category->parent_id == $categoryId)
-                $result[] = $category->id;
-        }
-
+        $result = Category::where('parent_id', $categoryId)->pluck('id')->toArray();
         return $result;
     }
 }
