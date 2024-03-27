@@ -1,8 +1,7 @@
 @extends('client.layouts.master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home/bundle.css') }}">
 @endsection
 
 @section('content')
