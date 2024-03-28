@@ -12,43 +12,57 @@ use App\Models\QA;
 
 class HomeController extends Controller {
 
+    private $categoryModel;
+    private $languageModel;
+    private $postModel;
+    private $mediaModel;
+    
+    public function __construct() {
+        $this->categoryModel = new Category();
+        $this->languageModel = new Language();
+        $this->postModel = new Post();
+        $this->mediaModel = new Media();
+    }
 
-    public function index() {
+    private function getArrayOfNumPosts(): array {
+        $map = [];
+        $allCategories = Category::all();
 
-        $languageModel = new Language();
-        $categoryModel = new Category();
-        $postModel = new Post();
-        $mediaModel = new Media();
-
-
-        $title = trans('general.home');
-        $languages = $languageModel->all();
-        $zones = $categoryModel->getOneLevelCategories();
-        $zonesNames = [];
-        $zonesAmounts = [];
-
-        foreach ($zones as $zone) {
-            $zonesNames[] = $categoryModel->getName($zone["id"]);
-            $zonesAmounts[] = $postModel->getAmountByCategory($zone["id"]);
+        foreach ($allCategories as $category) {
+            $id = $category->id;
+            $parentId = $category->parent_id;
+            $num = $this->categoryModel->getNumberPostsById($id, app()->getLocale());
+            $map[$id] = $num;
+            if(array_key_exists($parentId, $map)) {
+                $old = $map[$parentId];
+                $new = $old + $num;
+                $map[$parentId] = $new;
+            }
         }
 
-        $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+        return $map;
+    }
+
+    public function index() {
+        $title = trans('general.home');
+        $languages = Language::all();
+        $zones = $this->categoryModel->getOneLevelCategoriesData(app()->getLocale());
+        $medias = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
         $wonkidsSong = $medias[0];
         $wonkidsStory = $medias[1];
         $wonkidsCraft = $medias[2];
         $wonkidsMemorize = $medias[3];
         
-        return view('client.home', compact(
-            'title', 
-            'languages', 
-            'zones', 
-            'zonesNames', 
-            'zonesAmounts', 
-            'wonkidsSong', 
-            'wonkidsStory', 
-            'wonkidsCraft', 
-            'wonkidsMemorize',
-        ));
+        return view('client.home', [
+            'title' => $title, 
+            'languages' => $languages, 
+            'zones' => $zones, 
+            'wonkidsSong' => $wonkidsSong, 
+            'wonkidsStory' => $wonkidsStory, 
+            'wonkidsCraft' => $wonkidsCraft, 
+            'wonkidsMemorize' => $wonkidsMemorize,
+            'postsNumArray' => $this->getArrayOfNumPosts(),
+        ]);
     }
 
     public function aboutUs() {
