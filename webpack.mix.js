@@ -10,12 +10,13 @@ mix.styles([
     'resources/css/small-nav.css',
     'resources/css/lazy.css',
     'resources/css/variable.css',
-    'resources/css/preloader.css'
+    'resources/css/preloader.css',
+    'resources/css/splide-customize.css',
 ], 'public/css/master/bundle.css');
 
 mix.styles([
-    'public/css/home.css',
-    'public/css/slider.css',
+    'resources/css/home.css',
+    'resources/css/slider.css',
 ], 'public/css/home/bundle.css');
 
 mix.options({

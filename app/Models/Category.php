@@ -35,12 +35,33 @@ class Category extends Model
             ->join("languages", function($join){
                 $join->on("categories_has_languages.language_id", "=", "languages.id");
             })
-            ->select("c2.*", "categories_has_languages.name")
+            ->select("c2.id", "c2.parent_id", "c2.img", "categories_has_languages.name")
             ->where("categories.parent_id", "=", 0)
             ->where("languages.locale", "=", $locale)
             ->get();
     }
 
+    public function getChildCategories(int $categoryId) {
+        return Category::select("categories")
+        ->join("categories as c2", function($join){
+            $join->on("categories.parent_id", "=", "c2.id");
+        })
+        ->select("categories.id")
+        ->where("categories.parent_id", "=", 9)
+        ->get();
+    }
+
+    public function getNumberPostsById(int $categoryId, string $locale) {    
+        $count = Category::where('id', $categoryId)
+        ->withCount(['posts' => function ($query) use ($locale) {
+            $query->join('posts_has_languages', 'posts.id', '=', 'posts_has_languages.post_id')
+                ->join('languages', 'posts_has_languages.language_id', '=', 'languages.id')
+                ->where('languages.locale', '=', $locale);
+        }])
+        ->first()
+        ->posts_count;
+        return $count;
+    }
     
     /**
      * @deprecated since version 1.2.0
