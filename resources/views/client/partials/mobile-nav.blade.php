@@ -115,35 +115,31 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@lang('general.select-your-language')</h1>
+                                    <h3 class="modal-title fs-5" id="exampleModalLabel">@lang('general.select-your-language')</h3>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="row row-cols-2">
-                                        @foreach ($languages as $language)
-                                            <div class="col mt-3">
-                                                @if ($currentLanguage->locale == $language->locale)
-                                                    <div class="header-language-modal-link active">
-                                                        <div class="d-flex gap-2">
-                                                            <img src="{{ $language->icon }}"
-                                                                alt="{{ $language->name }} flag">
-                                                            <span>{{ $language->name }}</span>
-                                                        </div>
-                                                    </div>
-                                                @else
-                                                    <a class="header-language-modal-link"
-                                                        href="{{ route('change-language', ['locale' => $language->locale]) }}">
-                                                        <div class="d-flex gap-2">
-                                                            <img src="{{ $language->icon }}"
-                                                                alt="{{ $language->name }} flag">
-                                                            <span>{{ $language->name }}</span>
-                                                        </div>
-                                                    </a>
-                                                @endif
+                                    @foreach ($languages as $language)
+                                        @if ($currentLanguage->locale == $language->locale)
+                                            <div class="header-language-modal-link active">
+                                                <div class="d-flex gap-2">
+                                                    <img src="{{ $language->icon }}"
+                                                        alt="{{ $language->name }} flag">
+                                                    <span>{{ $language->name }}</span>
+                                                </div>
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        @else
+                                            <a class="header-language-modal-link"
+                                                href="{{ route('change-language', ['locale' => $language->locale]) }}">
+                                                <div class="d-flex gap-2">
+                                                    <img src="{{ $language->icon }}"
+                                                        alt="{{ $language->name }} flag">
+                                                    <span>{{ $language->name }}</span>
+                                                </div>
+                                            </a>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

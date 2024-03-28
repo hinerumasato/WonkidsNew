@@ -262,6 +262,12 @@
 .header-language-modal-link {
     text-decoration: none;
     color: #000;
+    padding: 16px 0;
+    display: block;
+}
+
+.header-language-modal-link:not(:last-child) {
+    border-bottom: solid 1px #ccc;
 }
 
 .header-language-modal-link:hover {
