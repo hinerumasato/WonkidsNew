@@ -25,7 +25,7 @@
             } else {
                 authHeaders.forEach(authHeader => {
                     authHeader.innerHTML += /* html */ `
-                    <div class="auth-btn-wrapper mt-2">
+                    <div class="auth-btn-wrapper">
                         <a href="/client/login" class="btn-root">${language.trans('login')}</a>
                         <a href="/client/register" class="btn-main text-white px-3 py-2 rounded fw-bold">${language.trans('signup')}</a>
                     </div>
