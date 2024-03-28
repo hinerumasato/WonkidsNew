@@ -56,4 +56,6 @@ return [
     'popup.notification' => 'Thông báo',
     'popup.submit' => 'Tiếp tục',
     'popup.cancel' => 'Cancel',
+
+    'select-your-language' => "Chọn ngôn ngữ của bạn",
 ];
