@@ -59,5 +59,7 @@ return [
 
     'popup.notification' => '안내의 말씀',
     'popup.submit' => 'Download',
-    'popup.cancel' => 'Cancel'
+    'popup.cancel' => 'Cancel',
+
+    'select-your-language' => "Chọn ngôn ngữ của bạn",
 ];

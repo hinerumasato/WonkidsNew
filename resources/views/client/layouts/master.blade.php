@@ -20,7 +20,7 @@
     <link href="https://db.onlinewebfonts.com/c/3a025ae92e6446cec24efcb6d29e5bf3?family=Malgun+Gothic" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{{asset('css/master/bundle.css')}}">
+    <link rel="stylesheet" href="{{asset('css/master/bundle.css?v=1.2.0')}}">
     
     {{-- CDNS --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
