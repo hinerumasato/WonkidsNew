@@ -85,21 +85,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link open-btn" aria-current="page" href="#">
-                        {{ trans('home.menu-item-6') }}
-                        <i class="fa-solid fa-angle-right nav-icon"></i>
-                    </a>
-
-                    <ul class="header-language-list animate__animated animate__fadeInDown animate__faster">
-                        @foreach ($languages as $language)
-                            <li class="nav-item">
-                                <a
-                                    href="{{ route('change-language', ['locale' => $language->locale]) }}">{{ $language->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link open-btn" aria-current="page" href="#">
@@ -116,21 +101,55 @@
                     </ul>
                 </li>
 
-                <li class="nav-item align-self-center ms-auto">
-                    <div class="header-languages d-flex align-items-center gap-2">
-                        @foreach ($languages as $language)
-                            <a class="locale-link"
-                                href="{{ route('change-language', ['locale' => $language->locale]) }}">
-                                <img class="flag-img" width="30" height="20" src="{{ $language->icon }}"
-                                    alt="">
-                            </a>
-                        @endforeach
+                <li class="nav-item">
+                    <button type="button" id="headerLanguageSelect" data-bs-toggle="modal"
+                        data-bs-target="#languageModalMobile">
+                        <img src="{{ $currentLanguage->icon }}" alt="Vietnam Flag">
+                        <span>{{$currentLanguage->name}}</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="languageModalMobile" tabindex="-1" aria-labelledby="languageModalMobile"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@lang('general.select-your-language')</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row row-cols-2">
+                                        @foreach ($languages as $language)
+                                            <div class="col mt-3">
+                                                @if ($currentLanguage->locale == $language->locale)
+                                                    <div class="header-language-modal-link active">
+                                                        <div class="d-flex gap-2">
+                                                            <img src="{{ $language->icon }}"
+                                                                alt="{{ $language->name }} flag">
+                                                            <span>{{ $language->name }}</span>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <a class="header-language-modal-link"
+                                                        href="{{ route('change-language', ['locale' => $language->locale]) }}">
+                                                        <div class="d-flex gap-2">
+                                                            <img src="{{ $language->icon }}"
+                                                                alt="{{ $language->name }} flag">
+                                                            <span>{{ $language->name }}</span>
+                                                        </div>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
-
-                <li class="nav-item align-self-center ms-auto">
-                    <li class="nav-item align-self-center ms-auto auth-header"></li>
-                </li>
+                <li class="nav-item align-self-center ms-auto auth-header"></li>
             </ul>
         </div>
     </div>

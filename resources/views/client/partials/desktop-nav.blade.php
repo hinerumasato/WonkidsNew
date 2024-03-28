@@ -94,24 +94,11 @@
                     </a>
                     <ul class="animate__animated animate__fadeInDown animate__faster">
                         <li>
-                            <a href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc" class="header_sublink">
+                            <a href="https://www.facebook.com/profile.php?id=100066749546942&mibextid=2JQ9oc"
+                                class="header_sublink">
                                 Facebook
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">
-                        {{ trans('home.menu-item-6') }}
-                        <i class="fa-solid fa-angle-down nav-icon"></i>
-                    </a>
-
-                    <ul class="header-language-list animate__animated animate__fadeInDown animate__faster">
-                        @foreach ($languages as $language)
-                            <li>
-                                <a href="{{ route('change-language', ['locale' => $language->locale]) }}">{{ $language->name }}</a>
-                            </li>
-                        @endforeach
                     </ul>
                 </li>
 
@@ -127,7 +114,53 @@
                     </div>
                 </li> --}}
 
+
+
                 <li class="nav-item align-self-center ms-auto auth-header"></li>
+                <li class="nav-item mx-2">
+                    <button type="button" id="headerLanguageSelect" class="ms-auto" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        <img src="{{ $currentLanguage->icon }}" alt="Vietnam Flag">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@lang('general.select-your-language')</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row row-cols-2">
+                                        @foreach ($languages as $language)    
+                                            <div class="col mt-3">
+                                                @if ($currentLanguage->locale == $language->locale)
+                                                <div class="header-language-modal-link active">
+                                                    <div class="d-flex gap-2">
+                                                        <img src="{{$language->icon}}" alt="{{$language->name}} flag">
+                                                        <span>{{$language->name}}</span>
+                                                    </div>
+                                                </div>
+                                                @else
+                                                    <a class="header-language-modal-link" href="{{route('change-language', ['locale' => $language->locale])}}">
+                                                        <div class="d-flex gap-2">
+                                                            <img src="{{$language->icon}}" alt="{{$language->name}} flag">
+                                                            <span>{{$language->name}}</span>
+                                                        </div>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

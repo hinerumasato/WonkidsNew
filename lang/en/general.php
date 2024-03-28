@@ -53,6 +53,8 @@ return [
 
     'popup.notification' => 'Notification',
     'popup.submit' => 'Download',
-    'popup.cancel' => 'Cancel'
+    'popup.cancel' => 'Cancel',
+
+    'select-your-language' => "Select your language",
 
 ];
