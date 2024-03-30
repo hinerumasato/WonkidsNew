@@ -6,11 +6,6 @@
 
 @section('content')
     @include('client.partials.slider')
-
-    <div id="preloader">
-        <img src="{{ asset('imgs/preloader/preloader.gif') }}" alt="Preloader">
-    </div>
-
     <div class="container mt-5">
 
         <div class="home_content row justify-content-between mt-5">
