@@ -47,7 +47,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="{{ asset('js/preloader.js') }}"></script>
     <script src="{{ asset('js/language/language.js') }}"></script>
     <script src="{{ asset('js/placeholder.js') }}"></script>
     <script src="{{ asset('js/lazy.js') }}"></script>
