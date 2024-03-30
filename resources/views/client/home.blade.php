@@ -8,6 +8,10 @@
     @include('client.partials.slider')
     <div class="container mt-5">
 
+        {{-- <div id="preloader">
+            <img src="{{ asset('imgs/preloader/preloader.gif') }}" alt="Preloader">
+        </div> --}}
+        
         <div class="home_content row justify-content-between mt-5">
             <div class="col-xl-5 col-lg-4">
                 <img class="w-100 h-100" src="{{ asset('imgs/logo/logo.png') }}" alt="">
