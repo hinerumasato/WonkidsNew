@@ -98,12 +98,12 @@ class LoopHelper {
     }
 
     public static function buildCategorySubListHTML($data, $listClass, $itemClass, $linkClass) {
-        
+
         $parentIds = LoopHelper::getIdArrayByData($data);
         $childCategoryId = $data->id;
         $data = Category::all();
         $childIds = LoopHelper::getIdArrayByData($data->toArray(), 'child', $childCategoryId);
-        
+
         $html = LoopHelper::buildFlatHTML($parentIds, $listClass, $itemClass, $linkClass);
         $html .= LoopHelper::buildFlatHTML($childIds, $listClass, $itemClass, $linkClass, 'child');
 

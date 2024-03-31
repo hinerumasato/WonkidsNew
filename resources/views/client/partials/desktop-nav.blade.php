@@ -121,6 +121,7 @@
                     <button type="button" id="headerLanguageSelect" class="ms-auto" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
                         <img src="{{ $currentLanguage->icon }}" alt="Vietnam Flag">
+                        <span class="header-current-language-name">{{$currentLanguage->name}}</span>
                         <i class="fa-solid fa-angle-down"></i>
                     </button>
 
