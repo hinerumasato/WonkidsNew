@@ -16,7 +16,7 @@ class HomeController extends Controller {
     private $languageModel;
     private $postModel;
     private $mediaModel;
-    
+
     public function __construct() {
         $this->categoryModel = new Category();
         $this->languageModel = new Language();
@@ -25,22 +25,7 @@ class HomeController extends Controller {
     }
 
     private function getArrayOfNumPosts(): array {
-        $map = [];
-        $allCategories = Category::all();
-
-        foreach ($allCategories as $category) {
-            $id = $category->id;
-            $parentId = $category->parent_id;
-            $num = $this->categoryModel->getNumberPostsById($id, app()->getLocale());
-            $map[$id] = $num;
-            if(array_key_exists($parentId, $map)) {
-                $old = $map[$parentId];
-                $new = $old + $num;
-                $map[$parentId] = $new;
-            }
-        }
-
-        return $map;
+        return $this->categoryModel->getAllNumberPosts(app()->getLocale());
     }
 
     public function index() {
@@ -52,14 +37,14 @@ class HomeController extends Controller {
         $wonkidsStory = $medias[1];
         $wonkidsCraft = $medias[2];
         $wonkidsMemorize = $medias[3];
-        
+
         return view('client.home', [
-            'title' => $title, 
-            'languages' => $languages, 
-            'zones' => $zones, 
-            'wonkidsSong' => $wonkidsSong, 
-            'wonkidsStory' => $wonkidsStory, 
-            'wonkidsCraft' => $wonkidsCraft, 
+            'title' => $title,
+            'languages' => $languages,
+            'zones' => $zones,
+            'wonkidsSong' => $wonkidsSong,
+            'wonkidsStory' => $wonkidsStory,
+            'wonkidsCraft' => $wonkidsCraft,
             'wonkidsMemorize' => $wonkidsMemorize,
             'postsNumArray' => $this->getArrayOfNumPosts(),
         ]);
@@ -76,7 +61,7 @@ class HomeController extends Controller {
         ], trans('general.about-us'));
 
         return view('client.about-us', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
             'newSmallSliderDescription' => $newSmallSliderDescription,
         ]);
@@ -92,7 +77,7 @@ class HomeController extends Controller {
         ], trans('general.management'));
 
         return view('client.management', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
@@ -107,7 +92,7 @@ class HomeController extends Controller {
         ], trans('general.book'));
 
         return view('client.book', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
@@ -122,7 +107,7 @@ class HomeController extends Controller {
         ], trans('general.camp'));
 
         return view('client.camp', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
@@ -137,7 +122,7 @@ class HomeController extends Controller {
         ], trans('general.club'));
 
         return view('client.wonkidsclub', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }

@@ -51,18 +51,29 @@ class Category extends Model
         ->get();
     }
 
-    public function getNumberPostsById(int $categoryId, string $locale) {    
-        $count = Category::where('id', $categoryId)
+    public function getAllNumberPosts(string $locale): array {
+        $categories = Category::query()
         ->withCount(['posts' => function ($query) use ($locale) {
             $query->join('posts_has_languages', 'posts.id', '=', 'posts_has_languages.post_id')
                 ->join('languages', 'posts_has_languages.language_id', '=', 'languages.id')
                 ->where('languages.locale', '=', $locale);
         }])
-        ->first()
-        ->posts_count;
-        return $count;
+        ->get();
+
+        $map = [];
+        foreach ($categories as $category) {
+            $postsCount = $category->posts_count;
+            $map[$category->id] = $postsCount;
+
+            if(array_key_exists($category->parent_id, $map)) {
+                $old = $map[$category->parent_id];
+                $new = $old + $postsCount;
+                $map[$category->parent_id] = $new;
+            }
+        }
+        return $map;
     }
-    
+
     /**
      * @deprecated since version 1.2.0
      */
