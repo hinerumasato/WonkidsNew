@@ -8,7 +8,7 @@ use Spatie\ResponseCache\Facades\ResponseCache;
 
 class LocaleController extends Controller
 {
-    public function changeLocale($locale) {        
+    public function changeLocale($locale) {
         LocaleHelper::changeLocale($locale);
         ResponseCache::clear();
         return redirect()->back();

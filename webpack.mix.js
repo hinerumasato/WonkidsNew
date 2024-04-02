@@ -19,6 +19,12 @@ mix.styles([
     'resources/css/slider.css',
 ], 'public/css/home/bundle.css');
 
+mix.styles([
+    'resources/css/category-list.css',
+    'resources/css/post.css',
+    'resources/css/category-img.css',
+], 'public/css/post/bundle.css');
+
 mix.options({
     watchOptions: {
         poll: 1000

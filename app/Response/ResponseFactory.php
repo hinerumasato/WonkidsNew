@@ -10,8 +10,8 @@ class ResponseFactory {
     // private static $object;
 
     /**
-     * @param statusCode HttpResponse Code
-     * @param message Response message
+     * @param int statusCode HttpResponse Code
+     * @param string message Response message
      * @param object Response object (can null)
      * @return array array of response [statusCode => $statusCode, message => $message, data => $object];
      */

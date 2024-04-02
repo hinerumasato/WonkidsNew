@@ -1,32 +1,3 @@
-@push('css')
-    <style>
-        .category-name {
-            color: #3771AD;
-            font-family: 'Times New Roman', Times, serif
-        }
-
-        .category-wrap:hover .category-name {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 485px) {
-            .category-name {
-                font-size: 10px;
-            }
-        }
-
-        @media (max-width: 430px) {
-            .category-wrap {
-                height: 150px;
-            }
-
-            .category-name {
-                font-size: 10px;
-            }
-        }
-    </style>
-@endpush
-
 <div class="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 py-5 ">
     @foreach ($categoriesData as $data)
         <div class="col my-2 category-wrap">

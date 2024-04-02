@@ -7,14 +7,9 @@
 
 @endphp
 
-{!! LoopHelper::buildCategorySubListHTML(Category::find($categoryHrefId) ,'category-list', 'category-item', 'category-link'); !!}
+{!! LoopHelper::buildCategorySubListHTML(Category::find($categoryHrefId) ,'category-list', 'category-item', 'category-link') !!}
 
 <hr>
-
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/category-list.css') }}">
-@endpush
-
 @push('scripts')
     <script>
 

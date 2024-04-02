@@ -1,0 +1,24 @@
+.category-name {
+    color: #3771AD;
+    font-family: 'Times New Roman', Times, serif
+}
+
+.category-wrap:hover .category-name {
+    text-decoration: underline;
+}
+
+@media (max-width: 485px) {
+    .category-name {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 430px) {
+    .category-wrap {
+        height: 150px;
+    }
+
+    .category-name {
+        font-size: 10px;
+    }
+}

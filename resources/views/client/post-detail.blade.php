@@ -1,6 +1,7 @@
 @extends('client.layouts.master')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/post-detail.css')}}">
+    <link rel="stylesheet" href="{{asset('css/post/bundle.css')}}">
 @endsection
 @section('content')
 @include('client.partials.small-slider')
@@ -33,7 +34,8 @@
     </div>
 
     <div class="container mt-5">
-        @include('client.partials.category-list')
+        {{-- @include('client.partials.category-list') --}}
+        <h2 class="fs-3 fw-bold text-uppercase">Các bài viết khác</h2>
         @include('client.partials.category-table')
     </div>
 

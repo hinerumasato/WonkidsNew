@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'reload' => \App\Http\Middleware\ReloadOnBackButton::class,
+        'cache.response' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
     ];
 
     protected $middlewareAliases = [

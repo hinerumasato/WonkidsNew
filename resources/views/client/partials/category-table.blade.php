@@ -1,21 +1,19 @@
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/post.css') }}">
-@endpush
-
-<table class="table table-borderless">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Tiêu đề</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($posts as $key => $post)
+<div class="table-wrapper">
+    <table id="postsTable" class="table table-responsive table-borderless table-hover table-success">
+        <thead>
             <tr>
-                <td>{{ $key + 1 }}</td>
-                <td><a href="{{ route('posts.post-detail', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
-                </td>
+                <th>#</th>
+                <th>@lang('general.title')</th>
+                {{-- <th>Thể loại</th> --}}
             </tr>
-        @endforeach
-    </tbody>
-</table>
+        </thead>
+    </table>
+</div>
+
+@push('scripts')
+    <script>
+        const APP_URL = @json(env('APP_URL'));
+    </script>
+
+    <script src="{{asset('js/post-datatable.js')}}?v={{env('STATIC_FILE_VERSION')}}"></script>
+@endpush

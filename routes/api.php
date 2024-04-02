@@ -8,6 +8,7 @@ use App\Http\Controllers\API\SliderDescriptionController;
 use App\Http\Controllers\API\UploadImgController;
 use App\Http\Controllers\API\StagingAreaController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,10 @@ Route::delete('/ui/slider', [SliderController::class, 'deleteOne'])->name('delet
 
 Route::post('ui/slider-description', [SliderDescriptionController::class, 'update'])->name('update-slider-description');
 
-Route::get('/v1/user', [UserController::class, 'getLoginUser'])->name('get-login-user');
-Route::post('/v1/login', [UserController::class, 'login']);
-Route::post('/v1/register', [UserController::class, 'register']);
+Route::group(['middleware' => 'cache.response'], function() {
+    Route::get('/v1/user', [UserController::class, 'getLoginUser'])->name('get-login-user');
+    Route::post('/v1/login', [UserController::class, 'login']);
+    Route::post('/v1/register', [UserController::class, 'register']);
+    
+    Route::get('/v1/posts', [PostController::class, 'getPosts'])->name('get-posts-api');
+});

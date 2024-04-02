@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -116,5 +117,9 @@ Route::prefix('/client')->name('auth.')->group(function() {
     Route::get('/register', [RegisterPageController::class, 'render'])->name('register-page');
     Route::get('/login', [LoginPageController::class, 'render'])->name('login-page');
 });
+
+// Route::prefix('/test')->name('test.')->group(function () {
+//     Route::get('/index', [TestController::class, 'index'])->name('index');
+// });
 
 Auth::routes();

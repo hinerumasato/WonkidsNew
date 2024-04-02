@@ -19,6 +19,7 @@ class Locale
     {
         $locale = session('locale') ?? 'vi';
         App::setlocale($locale);
-        return $next($request);
+        $response = $next($request);
+        return $response;
     }
 }

@@ -16,7 +16,7 @@ return [
 
     'name' => 'Name',
     'tel' => 'Tel',
-    'title' => 'title',
+    'title' => 'Title',
     'message' => 'Message',
     'notification' => 'Notification',
 
@@ -36,9 +36,6 @@ return [
     '11zones' => '11 Zones',
 
     'search' => 'Search',
-
-    'book' => 'Wonderful Story Book',
-    'camp' => 'Wonderful Story Camp',
     'club' => 'Wonkids Club',
 
     'contact' => 'Contact us',
