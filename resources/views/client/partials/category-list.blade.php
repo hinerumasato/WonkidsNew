@@ -7,7 +7,7 @@
 
 @endphp
 
-{!! LoopHelper::buildCategorySubListHTML(Category::find($categoryHrefId) ,'category-list', 'category-item', 'category-link'); !!}
+{!! LoopHelper::buildCategorySubListHTML(Category::find($categoryHrefId) ,'category-list', 'category-item', 'category-link') !!}
 
 <hr>
 
