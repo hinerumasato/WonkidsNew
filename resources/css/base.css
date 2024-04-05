@@ -44,7 +44,7 @@
 
 
 html[lang="ko"] body {
-    font-family: "Malgun Gothic", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 html body {
@@ -191,4 +191,35 @@ html body {
 
 #cancelCookieBtn:hover {
     background-color: #a698c5;
+}
+
+@media (max-width: 1115px) {
+    #cookieConsentForm {
+        flex-direction: column;
+        padding: 0 24px;
+    }
+
+    #cookieConsentForm p {
+        margin-top: 8px;
+    }
+
+    #cookieConsentForm .button-wrapper {
+        padding-bottom: 8px;
+    }
+
+    #cookieConsentForm.show {
+        height: 110px;
+    }
+}
+
+@media (max-width: 497px) {
+    #cookieConsentForm.show {
+        height: 130px;
+    }
+}
+
+@media (max-width: 348px) {
+    #cookieConsentForm.show {
+        height: 150px;
+    }
 }
