@@ -34,17 +34,20 @@
     {{-- Google Analyst --}}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GNB73DHJV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-9GNB73DHJV');
-    </script>
     <title>{{ $title }}</title>
 </head>
 
 <body>
+    {{-- Cookies Consents Form --}}
+    <div id="cookieConsentForm">
+        <p>
+            <strong>@lang('general.do-you-like-cookies')</strong> 
+            <img src="{{asset('imgs/icon/cookies.png')}}" alt="Cookies Image" width="16px" height="16px">
+            <span>@lang('general.cookies-description')</span>
+        </p>
+        <button id="cancelCookieBtn">@lang('general.cancel')</button>
+        <button id="acceptCookieBtn">@lang('general.accept-cookies')</button>
+    </div>
     @include('client.partials.header')
 
     @yield('content')
@@ -58,6 +61,9 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script src="{{ asset('js/google-analytics.js') }}?v={{env('STATIC_FILE_VERSION')}}"></script>
+
     <script src="{{ asset('js/language/language.js') }}"></script>
     <script src="{{ asset('js/placeholder.js') }}"></script>
     <script src="{{ asset('js/lazy.js') }}"></script>

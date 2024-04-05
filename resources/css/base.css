@@ -140,3 +140,55 @@ html body {
 .popup-cancel-button {
     background-color: darkgray !important;
 }
+
+#cookieConsentForm {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    overflow: hidden;
+    background-color: #4C3B70;
+    z-index: 3;
+    gap: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+#cookieConsentForm.show {
+    height: 60px;
+}
+
+#cookieConsentForm p {
+    margin: 0;
+    color: #FFF;
+}
+
+#acceptCookieBtn {
+    padding: 4px 8px;
+    background-color: #773AFC;
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: all .3s;
+    border-radius: 8px;
+}
+
+#acceptCookieBtn:hover {
+    background-color: #5529b4;
+}
+
+#cancelCookieBtn {
+    padding: 4px 8px;
+    background-color: #CAB9F0;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    transition: all .3s;
+}
+
+#cancelCookieBtn:hover {
+    background-color: #a698c5;
+}

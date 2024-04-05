@@ -41,9 +41,6 @@ return [
     '11zones' => '11존',
 
     'search' => '검색',
-
-    'book' => '원더풀스토리 책',
-    'camp' => '원더풀스토리 캠프',
     'club' => '원키즈클럽',
 
     'contact' => 'Contact us',
@@ -61,5 +58,9 @@ return [
     'popup.submit' => 'Download',
     'popup.cancel' => 'Cancel',
 
-    'select-your-language' => "Chọn ngôn ngữ của bạn",
+    'select-your-language' => "언어 선택",
+    'do-you-like-cookies' => '당신은 쿠키를 좋아하세요?',
+    'cookies-description' => '우리는 당신에게 최상의 웹사이트 경험을 보장하기 위해 쿠키를 사용합니다.',
+    'accept-cookies' => '쿠키 허용',
+    'cancel' => 'Cancel',
 ];

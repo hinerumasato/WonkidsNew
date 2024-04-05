@@ -37,13 +37,6 @@
     {{-- Google Analyst --}}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GNB73DHJV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-9GNB73DHJV');
-    </script>
     @yield('css')
 </head>
 
@@ -89,6 +82,8 @@
     <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+    <script src="{{ asset('js/google-analytics.js') }}?v={{env('STATIC_FILE_VERSION')}}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/admin.js') }}"></script>

@@ -36,9 +36,6 @@ return [
     '11zones' => '11 Zones',
 
     'search' => 'Search',
-
-    'book' => 'Wonderful Story Book',
-    'camp' => 'Wonderful Story Camp',
     'club' => 'Wonkids Club',
 
     'contact' => 'Contact us',
@@ -56,5 +53,8 @@ return [
     'popup.cancel' => 'Cancel',
 
     'select-your-language' => "Select your language",
-
+    'do-you-like-cookies' => 'Do you like cookies?',
+    'cookies-description' => 'We use cookies to ensure you best experience on our website',
+    'accept-cookies' => 'Accept cookies',
+    'cancel' => 'Cancel',
 ];
