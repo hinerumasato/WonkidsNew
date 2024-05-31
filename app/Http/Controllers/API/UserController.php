@@ -102,6 +102,8 @@ class UserController extends Controller
 
     public function forgotPassword(Request $request) {
         $email = $request->email;
+        $locale = $request->locale;
+        app()->setLocale($locale);
         $user = User::where('email', $email)->first();
         if($user == null) {
             return response()->json([
