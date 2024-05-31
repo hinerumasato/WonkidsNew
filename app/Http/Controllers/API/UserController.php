@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\mail\ResetPasswordMail;
+use App\Mail\ResetPasswordMail;
 use App\Models\User;
 use App\Response\ResponseFactory;
 use Illuminate\Http\Request;
