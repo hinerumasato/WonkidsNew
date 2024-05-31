@@ -40,6 +40,12 @@
             <button id="acceptCookieBtn">@lang('general.accept-cookies')</button>
         </div>
     </div>
+
+    <div id="loadingOverlay">
+        <div class="spinner-border text-white" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     @include('client.partials.header')
 
     @yield('content')

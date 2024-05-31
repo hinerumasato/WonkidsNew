@@ -122,13 +122,13 @@ class Authentication {
                     const token = data.token;
                     localStorage.setItem('token', token);
                     this.toast(data.message, 'success');
-                    setTimeout(() => {
-                        if('referrer' in document) {
-                            window.location.href = document.referrer;
-                        } else {
-                            window.history.back();
-                        }
-                    }, 1000);
+                    const url = new URL(document.referrer);
+                    const path = url.pathname;
+                    if(!path || path === '/reset-password') {
+                        window.location.href = '/';
+                    } else {
+                        window.location.href = document.referrer;
+                    }
                 }
             }).catch(error => {
                 const errorMessage = error.message;
@@ -136,6 +136,50 @@ class Authentication {
                 this.removeAlertAndTick();
             })
         } else {
+            this.toast('Đã có lỗi xảy ra, vui lòng xem lại thông tin', 'error');
+            const card = document.querySelector('.card');
+            card.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    showLoading() {
+        document.getElementById('loadingOverlay').classList.add('show');
+    }
+
+    hideLoading() {
+        document.getElementById('loadingOverlay').classList.remove('show');
+    }
+
+    forgotPasswordHandler() {
+        this.email = document.querySelector('input[type="email"]');
+        const validation = this.validate([
+            this.isEmail(),
+        ]);
+        if(validation) {
+            const formData = new FormData();
+            formData.append('email', this.email.value);
+            formData.append('locale', document.querySelector('html').getAttribute('lang'));
+            const url = '/api/v1/forgot-password';
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+            }).then(response => {
+                return response.json();
+            }).then(data => {
+                if(data.statusCode === 404)
+                    throw {message: data.message}
+                else {
+                    this.hideLoading();
+                    this.toast(data.message, 'success');
+                }
+            }).catch(error => {
+                this.hideLoading();
+                const errorMessage = error.message;
+                this.toast(errorMessage, 'error');
+                this.removeAlertAndTick();
+            })
+        } else {
+            this.hideLoading();
             this.toast('Đã có lỗi xảy ra, vui lòng xem lại thông tin', 'error');
             const card = document.querySelector('.card');
             card.scrollIntoView({ behavior: 'smooth' });
@@ -349,6 +393,15 @@ class Authentication {
             this.loginSubmitHandler();
         }
     }
+
+    forgotPassword() {
+        this.sumbitBtn.onclick = e => {
+            e.preventDefault();
+            this.showLoading();
+            this.removeAlertAndTick();
+            this.forgotPasswordHandler();
+        }
+    }
 }
 
 (() => {
@@ -357,6 +410,8 @@ class Authentication {
     }
     else if (window.location.pathname === '/client/login') {
         new Authentication().login();
+    } else if(window.location.pathname === '/client/forgot-password') {
+        new Authentication().forgotPassword();
     }
 
 })();

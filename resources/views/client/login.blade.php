@@ -60,9 +60,15 @@
                                             @lang('auth.login')
                                         </button>
 
-                                        <p>
-                                            @lang('auth.form.already-have-account') <a href="/client/register" class="register-second-text">@lang('auth.form.already-have-account-link')</a>
-                                        </p>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <p class="m-0">
+                                                @lang('auth.form.still-not-have-account') <a href="/client/register" class="register-second-text">@lang('auth.form.register-here')</a>
+                                            </p>
+                                                
+                                            <a href="/client/forgot-password" class="register-second-text bg-white border-0">
+                                                @lang('auth.forgot-password')?
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

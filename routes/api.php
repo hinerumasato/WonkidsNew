@@ -47,3 +47,4 @@ Route::post('ui/slider-description', [SliderDescriptionController::class, 'updat
 Route::get('/v1/user', [UserController::class, 'getLoginUser'])->name('get-login-user');
 Route::post('/v1/login', [UserController::class, 'login']);
 Route::post('/v1/register', [UserController::class, 'register']);
+Route::post('/v1/forgot-password', [UserController::class, 'forgotPassword']);
