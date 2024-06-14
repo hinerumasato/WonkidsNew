@@ -55,7 +55,7 @@
                                             </p>
                                             <p class="card-text mt-3"><a
                                                     href="{{ route('posts.index', ['category' => $item->id]) }}"
-                                                    class="card-link">Xem chi tiết</a></p>
+                                                    class="card-link">@lang('general.view-details')</a></p>
                                         </div>
                                     </a>
                                 </div>
