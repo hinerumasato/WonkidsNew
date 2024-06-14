@@ -13,6 +13,11 @@ return [
     'form.email' => 'Email',
     'form.password' => '비밀번호',
     'form.password-confirmation' => '비밀번호 확인',
+    'form.still-not-have-account' => '아직 계정이 없으신가요?',
     'form.already-have-account' => '회원 가입하셨습니까?',
     'form.already-have-account-link' => '로그인',
+    'form.register-here' => '회원가입하기',
+    'form.reset-password' => '비밀번호 재설정',
+
+    'forgot-password' => '비밀번호 찾기',
 ];

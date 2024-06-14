@@ -12,9 +12,11 @@
         "laravel/passport": "^11.8",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "laravel/ui": "^4.2"
+        "laravel/ui": "^4.2",
+        "spatie/laravel-responsecache": "^7.4"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.12",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",

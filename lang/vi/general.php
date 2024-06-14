@@ -37,9 +37,6 @@ return [
     '11zones' => '11 Thời kỳ',
 
     'search' => 'Tìm kiếm',
-
-    'book' => 'Wonderful Story Book',
-    'camp' => 'Wonderful Story Camp',
     'club' => 'Wonkids Club',
     
     'contact' => 'Liên hệ',
@@ -56,4 +53,11 @@ return [
     'popup.notification' => 'Thông báo',
     'popup.submit' => 'Tiếp tục',
     'popup.cancel' => 'Cancel',
+
+    'select-your-language' => "Chọn ngôn ngữ của bạn",
+
+    'do-you-like-cookies' => 'Bạn có thích cookie không?',
+    'cookies-description' => 'Chúng tôi sử dụng cookie để đảm bảo bạn có trải nghiệm tốt nhất trên trang web của chúng tôi.',
+    'accept-cookies' => 'Chấp nhận cookie',
+    'cancel' => 'Huỷ',
 ];

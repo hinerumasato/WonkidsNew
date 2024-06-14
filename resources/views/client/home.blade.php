@@ -1,19 +1,17 @@
 @extends('client.layouts.master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home/bundle.css?v=') }}{{ env('STATIC_FILE_VERSION') }}">
 @endsection
 
 @section('content')
     @include('client.partials.slider')
-
-    <div id="preloader" class="">
-        <img src="{{ asset('imgs/preloader/preloader.gif') }}" alt="">
-    </div>
-
     <div class="container mt-5">
 
+        {{-- <div id="preloader">
+            <img src="{{ asset('imgs/preloader/preloader.gif') }}" alt="Preloader">
+        </div> --}}
+        
         <div class="home_content row justify-content-between mt-5">
             <div class="col-xl-5 col-lg-4">
                 <img class="w-100 h-100" src="{{ asset('imgs/logo/logo.png') }}" alt="">
@@ -40,34 +38,34 @@
                 </div>
             </div>
 
-            <div class="row my-3">
-                <div class="col-md-1 d-md-flex d-none col-0 prev-btn">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </div>
-
-                <div class="col-md-10 col-12 zones-wrapper" item="xl-4 lg-2 md-2 sm-1">
-                    <ul class="zones-list m-0">
-                        @foreach ($zones as $key => $zone)
-                            <li class="zones-item shadow p-4">
-                                <img width="150" height="150" src="{{ $zone['img'] }}" alt="">
-                                <h5 class="mt-3 fw-bold text-uppercase fs-6">{{ $zonesNames[$key] }}</h5>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="zones-item-amount">
-                                        <i class="fa-solid fa-list"></i>
-                                        <span>{{ $zonesAmounts[$key] }} @lang('general.posts')</span>
+            <div class="zone-list">
+                <section id="zoneCarousel" class="splide" aria-label="Beautiful Zone">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            @foreach ($zones as $zone)
+                                <li class="splide__slide">
+                                    <div class="shadow zone-item">
+                                        <a class="zone-item-link" href="{{route('posts.index')}}?category={{$zone->id}}">
+                                            <div class="zone-item-img" style="background-image: url('{{$zone->img}}')"></div>
+                                            <div class="zone-item-info">
+                                                <h2 class="fs-5 text-uppercase">{{ $zone->name }}</h2>
+                                                <div class="zone-item-actions">
+                                                    <div class="d-block d-md-flex align-items-center justify-content-between">
+                                                        <div class="zone-item-post-amounts">
+                                                            <i class="fa-solid fa-list"></i>
+                                                            <span>{{$postsNumArray[$zone->id]}} @lang('general.posts')</span>
+                                                        </div>
+                                                        <a href="{{route('posts.index')}}?category={{$zone->id}}" class="zone-item-view-btn">Xem thêm</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-
-                                    <a href="{{ route('posts.index', ['category' => $zone['id']]) }}"
-                                        class="zones-item-link">@lang('general.see-more')</a>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <div class="col-md-1 d-md-flex d-none col-0 next-btn">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -205,7 +203,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/home.js?v=') }}{{ env('STATIC_FILE_VERSION') }}"></script>
     <script src="{{ asset('js/carouse.js') }}"></script>
     <script src="{{ asset('js/popup.js') }}"></script>
 @endsection

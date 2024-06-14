@@ -12,43 +12,42 @@ use App\Models\QA;
 
 class HomeController extends Controller {
 
+    private $categoryModel;
+    private $languageModel;
+    private $postModel;
+    private $mediaModel;
+
+    public function __construct() {
+        $this->categoryModel = new Category();
+        $this->languageModel = new Language();
+        $this->postModel = new Post();
+        $this->mediaModel = new Media();
+    }
+
+    private function getArrayOfNumPosts(): array {
+        return $this->categoryModel->getAllNumberPosts(app()->getLocale());
+    }
 
     public function index() {
-
-        $languageModel = new Language();
-        $categoryModel = new Category();
-        $postModel = new Post();
-        $mediaModel = new Media();
-
-
         $title = trans('general.home');
-        $languages = $languageModel->all();
-        $zones = $categoryModel->getOneLevelCategories();
-        $zonesNames = [];
-        $zonesAmounts = [];
-
-        foreach ($zones as $zone) {
-            $zonesNames[] = $categoryModel->getName($zone["id"]);
-            $zonesAmounts[] = $postModel->getAmountByCategory($zone["id"]);
-        }
-
-        $medias = $mediaModel->getAllByLocaleAddSlug(app()->getLocale());
+        $languages = Language::all();
+        $zones = $this->categoryModel->getOneLevelCategoriesData(app()->getLocale());
+        $medias = $this->mediaModel->getAllByLocaleAddSlug(app()->getLocale());
         $wonkidsSong = $medias[0];
         $wonkidsStory = $medias[1];
         $wonkidsCraft = $medias[2];
         $wonkidsMemorize = $medias[3];
-        
-        return view('client.home', compact(
-            'title', 
-            'languages', 
-            'zones', 
-            'zonesNames', 
-            'zonesAmounts', 
-            'wonkidsSong', 
-            'wonkidsStory', 
-            'wonkidsCraft', 
-            'wonkidsMemorize',
-        ));
+
+        return view('client.home', [
+            'title' => $title,
+            'languages' => $languages,
+            'zones' => $zones,
+            'wonkidsSong' => $wonkidsSong,
+            'wonkidsStory' => $wonkidsStory,
+            'wonkidsCraft' => $wonkidsCraft,
+            'wonkidsMemorize' => $wonkidsMemorize,
+            'postsNumArray' => $this->getArrayOfNumPosts(),
+        ]);
     }
 
     public function aboutUs() {
@@ -62,7 +61,7 @@ class HomeController extends Controller {
         ], trans('general.about-us'));
 
         return view('client.about-us', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
             'newSmallSliderDescription' => $newSmallSliderDescription,
         ]);
@@ -78,7 +77,7 @@ class HomeController extends Controller {
         ], trans('general.management'));
 
         return view('client.management', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
@@ -93,7 +92,7 @@ class HomeController extends Controller {
         ], trans('general.book'));
 
         return view('client.book', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
@@ -108,7 +107,7 @@ class HomeController extends Controller {
         ], trans('general.camp'));
 
         return view('client.camp', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }
@@ -123,7 +122,7 @@ class HomeController extends Controller {
         ], trans('general.club'));
 
         return view('client.wonkidsclub', [
-            'title' => $title, 
+            'title' => $title,
             'newSmallSliderTitle' => $newSmallSliderTitle,
         ]);
     }

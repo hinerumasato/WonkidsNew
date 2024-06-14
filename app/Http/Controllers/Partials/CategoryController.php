@@ -12,26 +12,10 @@ class CategoryController extends Controller
 
     public static function index($view) {
         $categoryModel = new Category();
-        $allCategories = Category::all();
-        $rootCategories = $categoryModel->getRootCategories();
-        $categoryImgs = [];
-        $categoryNames = [];
-        $rootCategoryNames = [];
-        foreach ($allCategories as $category) {
-            $categoryImgs[] = $categoryModel->find($category->id)->img;
-            $categoryNames[] = $categoryModel->find($category->id)->languages()->where('locale', app()->getLocale())->first()->pivot->name;
-        }
-
-        foreach ($rootCategories as $category) {
-            $rootCategoryNames[] = $category->languages->where('locale', '=', app()->getLocale())->first()->pivot->name;
-        }
+        $categoriesData = $categoryModel->getOneLevelCategoriesData(app()->getLocale());
 
         $view->with([
-            'allCategories' => $allCategories,
-            'categoryImgs' => $categoryImgs,
-            'categoryNames' => $categoryNames,
-            'rootCategories' => $rootCategories,
-            'rootCategoryNames' => $rootCategoryNames,
+            'categoriesData' => $categoriesData,
         ]);
     }
 }

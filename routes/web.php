@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ForgotPasswordPageController;
+use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -115,6 +117,10 @@ Route::prefix("/admin")->middleware(['auth', 'verified', 'reload'])->name("admin
 Route::prefix('/client')->name('auth.')->group(function() {
     Route::get('/register', [RegisterPageController::class, 'render'])->name('register-page');
     Route::get('/login', [LoginPageController::class, 'render'])->name('login-page');
+    Route::get('/forgot-password', [ForgotPasswordPageController::class, 'render'])->name('forgot-password-page');
 });
+
+Route::get('/reset-password', [ResetPasswordController::class, 'render'])->name('reset-password-page');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password');
 
 Auth::routes();

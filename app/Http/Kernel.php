@@ -32,12 +32,14 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
-            \App\Http\Middleware\StoreCache::class,
+            // \App\Http\Middleware\StoreCache::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\Locale::class,
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class,
         ],
 
         'api' => [
@@ -67,4 +69,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'reload' => \App\Http\Middleware\ReloadOnBackButton::class,
     ];
+
+    protected $middlewareAliases = [
+        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+        'cacheResponse' => \Spatie\ResponseCache\Middlewares\CacheResponse::class,
+     ];
 }

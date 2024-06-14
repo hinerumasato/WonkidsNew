@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPasswordMail;
 use App\Models\User;
 use App\Response\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use DB;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -94,6 +98,40 @@ class UserController extends Controller
                 'message' => 'failed'
             ], 404);
         }
+    }
 
+    public function forgotPassword(Request $request) {
+        $email = $request->email;
+        $locale = $request->locale;
+        app()->setLocale($locale);
+        $user = User::where('email', $email)->first();
+        if($user == null) {
+            return response()->json([
+                'message' => 'Email không tồn tại',
+            ], 404);
+        }
+
+        $token = Hash::make($user->email . $user->id . $user->password . Carbon::now());
+        // Store to password_resets table
+        DB::table('password_resets')->where('email', $email)->delete();
+        $inserted = DB::table('password_resets')->insert([
+            'email' => $email,
+            'token' => $token,
+            'created_at' => Carbon::now(),
+        ]);
+
+        if($inserted) {
+            // Send mail
+            $mail = new ResetPasswordMail(__('form.reset-password'), $token);
+            Mail::to($email)->send($mail);
+            return response()->json([
+                'message' => __('mail.notification'),
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'failed',
+            ], 404);
+        }
+        
     }
 }

@@ -196,6 +196,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\BreadcumbServiceProvider::class,
+        Spatie\ResponseCache\ResponseCacheServiceProvider::class,
     ],
 
     /*

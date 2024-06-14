@@ -26,33 +26,6 @@
     cursor: pointer;
 }
 
-.zones-wrapper {
-    overflow: hidden;
-    scroll-behavior: smooth;
-}
-
-.zones-list {
-    list-style: none;
-    width: max-content;
-    display: flex;
-    padding: 0;
-    justify-content: space-between;
-}
-
-.zones-item-amount {
-    color: #6B7280;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.zones-item-link {
-    color: #FFF;
-    text-decoration: none;
-    background: var(--secondary-color);
-    padding: 4px 8px;
-    border-radius: 8px;
-}
-
 .home-media-contents-wrapper {
     margin-top: 86px;
     background-color: #F2F4F8;
@@ -129,6 +102,75 @@
     padding-top: 16px;
 }
 
+.indicator-btn {
+    height: 100%;
+    background-color: #F2F4F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.indicator-btn:hover {
+    background-color: #abadb1;
+}
+
+.zone-item {
+    margin-bottom: 30px;
+    padding: 16px;
+    border-top: 1px solid var(--secondary-color);
+    transition: all .3s;
+    width: calc(100% - 24px);
+}
+
+.zone-item:first-child {
+    margin-left: 2px;
+}
+
+.zone-item:hover {
+    transform: translateY(-6px);
+}
+
+.zone-item-link {
+    color: #000;
+    text-decoration: none;
+    display: block;
+}
+
+.zone-item-info {
+    padding: 24px 0 0;
+}
+
+.zone-item-info h2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.zone-item-post-amounts {
+    color: #6B7280;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.zone-item-view-btn {
+    color: #FFF;
+    text-decoration: none;
+    background: var(--secondary-color);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.zone-item-img {
+    width: 60%;
+    padding-top: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 @media (max-width: 1024px) {
 
     .contact img {
@@ -155,10 +197,6 @@
 }
 
 @media (max-width: 576px) {
-
-    .zones-wrapper {
-        overflow: scroll;   
-    }
 
     .media-list {
         flex-wrap: wrap;

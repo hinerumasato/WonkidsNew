@@ -4,6 +4,7 @@ class Authentication {
         this.password = document.querySelector('input[type="password"]');
         this.sumbitBtn = document.querySelector('button[type="submit"]');
         this.locale = document.querySelector('html').getAttribute('lang');
+        this.language = new Language(this.locale);
     }
 
     successField(field) {
@@ -122,13 +123,13 @@ class Authentication {
                     const token = data.token;
                     localStorage.setItem('token', token);
                     this.toast(data.message, 'success');
-                    setTimeout(() => {
-                        if('referrer' in document) {
-                            window.location.href = document.referrer;
-                        } else {
-                            window.history.back();
-                        }
-                    }, 1000);
+                    const url = new URL(document.referrer);
+                    const path = url.pathname;
+                    if(!path || path === '/reset-password') {
+                        window.location.href = '/';
+                    } else {
+                        window.location.href = document.referrer;
+                    }
                 }
             }).catch(error => {
                 const errorMessage = error.message;
@@ -136,9 +137,55 @@ class Authentication {
                 this.removeAlertAndTick();
             })
         } else {
-            this.toast('Đã có lỗi xảy ra, vui lòng xem lại thông tin', 'error');
-            const card = document.querySelector('.card');
-            card.scrollIntoView({ behavior: 'smooth' });
+            this.showSubmitError();
+        }
+    }
+
+    showSubmitError() {
+        this.hideLoading();
+        this.toast(this.language.trans('error'), 'error');
+        const card = document.querySelector('.card');
+        card.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    showLoading() {
+        document.getElementById('loadingOverlay').classList.add('show');
+    }
+
+    hideLoading() {
+        document.getElementById('loadingOverlay').classList.remove('show');
+    }
+
+    forgotPasswordHandler() {
+        this.email = document.querySelector('input[type="email"]');
+        const validation = this.validate([
+            this.isEmail(),
+        ]);
+        if(validation) {
+            const formData = new FormData();
+            formData.append('email', this.email.value);
+            formData.append('locale', document.querySelector('html').getAttribute('lang'));
+            const url = '/api/v1/forgot-password';
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+            }).then(response => {
+                return response.json();
+            }).then(data => {
+                if(data.statusCode === 404)
+                    throw {message: data.message}
+                else {
+                    this.hideLoading();
+                    this.toast(data.message, 'success');
+                }
+            }).catch(error => {
+                this.hideLoading();
+                const errorMessage = error.message;
+                this.toast(errorMessage, 'error');
+                this.removeAlertAndTick();
+            })
+        } else {
+            this.showSubmitError();
         }
     }
 
@@ -177,7 +224,7 @@ class Authentication {
 
     errorHandler() {
         Toastify({
-            text: "Đã có lỗi xảy ra, vui lòng xem lại thông tin",
+            text: this.language.trans('error'),
             duration: 3000,
             // destination: "https://github.com/apvarun/toastify-js",
             newWindow: true,
@@ -209,15 +256,15 @@ class Authentication {
      */
 
     isEmail() {
-        if (!this.email.value) return this.errorField(this.email, 'Chưa nhập email');
+        if (!this.email.value) return this.errorField(this.email, this.language.trans('emailNotEntered'));
         const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
         if (regex.test(this.email.value))
             return this.successField(this.email);
-        return this.errorField(this.email, 'Email không hợp lệ')
+        return this.errorField(this.email, this.language.trans('emailNotValid'));
     }
 
     isPassword() {
-        if (!this.password.value) return this.errorField(this.password, 'Chưa nhập password');
+        if (!this.password.value) return this.errorField(this.password, this.language.trans('passwordNotEntered'));
         return this.successField(this.password);
     }
 
@@ -229,14 +276,14 @@ class Authentication {
      * @see errorField
      */
     isBirthYear(birthYear) {
-        if (!birthYear.value) return this.errorField(birthYear, 'Chưa nhập năm sinh');
+        if (!birthYear.value) return this.errorField(birthYear, this.language.trans('birthyearNotEntered'));
         const str = birthYear.value;
         if (this.isNumber(str)) {
             const year = parseInt(str);
             if (year >= 1900 && year <= new Date().getFullYear()) {
                 return this.successField(birthYear);
-            } else return this.errorField(birthYear, 'Năm sinh không hợp lệ');
-        } else return this.errorField(birthYear, 'Năm sinh không được chứa ký tự đặc biệt');
+            } else return this.errorField(birthYear, this.language.trans('notValidBirthyear'));
+        } else return this.errorField(birthYear, this.language.trans('birthyearMustnotContainSpecialCharacter'));
     }
 
     /**
@@ -248,7 +295,7 @@ class Authentication {
         if (!phone.value) return this.successField(phone);
         if (this.isNumber(phone.value))
             return this.successField(phone);
-        return this.errorField(phone, 'SĐT không chưa ký tự đặc biệt');
+        return this.errorField(phone, this.language.trans('phoneMustnotContainSpecialCharacter'));
     }
 
     /**
@@ -258,12 +305,12 @@ class Authentication {
      * @see errorField
      */
     isName(name) {
-        if (!name.value) return this.errorField(name, 'Chưa nhập tên');
+        if (!name.value) return this.errorField(name, this.language.trans('nameNotEntered'));
         const value = name.value;
         const regex = /^[^\p{P}\p{S}\p{N}]+$/u;
         if (regex.test(value))
             return this.successField(name);
-        else return this.errorField(name, 'Tên không được chứa ký tự đặc biệt')
+        else return this.errorField(name, this.language.trans('nameMustnotContainSpecialCharacter'))
     }
 
     /**
@@ -275,12 +322,12 @@ class Authentication {
      */
     isMatchPassword(passwordConfirmation) {
         if (!passwordConfirmation.value)
-            return this.errorField(passwordConfirmation, 'Chưa nhập lại password');
+            return this.errorField(passwordConfirmation, this.language.trans('passwordConfirmationNotEntered'));
         const passwordValue = this.password.value;
         const confirmationValue = passwordConfirmation.value;
         if (passwordValue === confirmationValue)
             return this.successField(passwordConfirmation);
-        return this.errorField(passwordConfirmation, 'Nhập lại password chưa khớp')
+        return this.errorField(passwordConfirmation, this.language.trans('passwordConfirmationNotMatch'));
     }
 
     /**
@@ -291,7 +338,7 @@ class Authentication {
      * @see errorField
      */
     isChurch(church) {
-        if (!church.value) return this.errorField(church, 'Chưa nhập hội thánh');
+        if (!church.value) return this.errorField(church, this.language.trans('churchNotEntered'));
         return this.successField(church);
     }
 
@@ -349,6 +396,15 @@ class Authentication {
             this.loginSubmitHandler();
         }
     }
+
+    forgotPassword() {
+        this.sumbitBtn.onclick = e => {
+            e.preventDefault();
+            this.showLoading();
+            this.removeAlertAndTick();
+            this.forgotPasswordHandler();
+        }
+    }
 }
 
 (() => {
@@ -357,6 +413,8 @@ class Authentication {
     }
     else if (window.location.pathname === '/client/login') {
         new Authentication().login();
+    } else if(window.location.pathname === '/client/forgot-password') {
+        new Authentication().forgotPassword();
     }
 
 })();

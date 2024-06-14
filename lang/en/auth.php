@@ -31,6 +31,11 @@ return [
     'form.password' => 'Password',
     'form.password-confirmation' => 'Re-enter the password',
     'form.already-have-account' => 'Already have an account?',
+    'form.still-not-have-account' => 'Still not have an account?',
     'form.already-have-account-link' => 'Log in',
+    'form.register-here' => 'Register here',
+    'form.reset-password' => 'Reset password',
+    
+    'forgot-password' => 'Forgot password',
 
 ];

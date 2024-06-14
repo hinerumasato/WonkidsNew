@@ -33,4 +33,11 @@ return [
     'form.already-have-account' => 'Bạn đã có tài khoản?',
     'form.already-have-account-link' => 'Vui lòng đăng nhập tại đây',
 
+    'form.reset-password' => 'Lấy lại mật khẩu',
+    
+    'form.still-not-have-account' => 'Bạn chưa có tài khoản?',
+    'form.register-here' => 'Đăng ký ngay',
+
+    'forgot-password' => 'Quên mật khẩu',
+
 ];
