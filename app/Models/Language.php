@@ -18,7 +18,7 @@ class Language extends Model {
     }
 
     public function categories(): BelongsToMany {
-        return $this->belongsToMany(Category::class, 'categories_has_languages')->withPivot('name')->withTimestamps();
+        return $this->belongsToMany(Category::class, 'categories_has_languages')->withPivot('name', 'description')->withTimestamps();
     }
 
     public function medias(): BelongsToMany {

@@ -32,7 +32,7 @@
         const smallNavItems = document.querySelectorAll('.small-nav_item')
         smallNavItems.forEach(item => {
             const link = item.querySelector('a').getAttribute('href');
-            if(windowLink.includes(link))
+            if (windowLink.includes(link))
                 item.classList.add('active');
         });
         fitTop('.small-nav_sublist', '.small-nav_subitem');
@@ -40,7 +40,7 @@
 
     <script>
         const selectElement = document.querySelector('select');
-        
+
         selectElement.value = window.location.href;
         selectElement.onchange = () => window.location.replace(selectElement.value);
     </script>

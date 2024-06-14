@@ -8,14 +8,13 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-
-
     public static function index($view) {
-        $categoryModel = new Category();
-        $categoriesData = $categoryModel->getOneLevelCategoriesData(app()->getLocale());
+        $rootCategories = Category::where('parent_id', 0)->get();
+        $categoryMap = Category::findAllWithRoot();
 
         $view->with([
-            'categoriesData' => $categoriesData,
+            'categoryMap' => $categoryMap,
+            'rootCategories' => $rootCategories,
         ]);
     }
 }

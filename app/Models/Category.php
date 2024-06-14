@@ -12,14 +12,41 @@ use App\Helpers\LoopHelper;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'active'];
 
     public function posts(): HasMany {
         return $this->hasMany(Post::class);
     }
 
     public function languages(): BelongsToMany {
-        return $this->belongsToMany(Language::class, 'categories_has_languages')->withPivot('name')->withTimestamps();
+        return $this->belongsToMany(Language::class, 'categories_has_languages')->withPivot('name', 'description')->withTimestamps();
+    }
+
+    public static function findAllWithRoot() {
+        $categories = Category::all();
+        $rootCategories = Category::where('parent_id', 0)->get();
+        $rootIds = $rootCategories->pluck('id')->toArray();
+        $categoryMap = [];
+
+        foreach($rootCategories as $rootItem) {
+            $categoryMap[$rootItem->id] = [];
+        }
+
+        foreach($categories as $category) {
+            $parentId = $category->parent_id;
+            if(in_array($parentId, $rootIds)) {
+                $categoryMap[$parentId][] = $category;
+            } else {
+                while(!in_array($parentId, $rootIds) && $parentId != 0) {
+                    $parentCategory = Category::find($parentId);
+                    $parentId = $parentCategory->parent_id;
+                    if(in_array($parentId, $rootIds)) {
+                        $categoryMap[$parentId][] = $category;
+                    }
+                }
+            }
+        }
+        return $categoryMap;
     }
 
     public function getOneLevelCategoriesData($locale) {

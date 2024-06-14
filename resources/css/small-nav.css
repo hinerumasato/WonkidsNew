@@ -66,6 +66,14 @@ hr {
     animation: displayAnimation 0.3s linear 1 alternate;
 }
 
+#smallNav .nav-link {
+    color: #6E3B70 !important;
+}
+
+#smallNav .nav-link.active {
+    color: #111 !important;
+}
+
 /* .small-nav_sublist::before {
     content: "";
     position: absolute;

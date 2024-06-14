@@ -40,6 +40,41 @@
     color: #FFF;
 }
 
+.card {
+    cursor: pointer;
+}
+
+.card-text.card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 70px;
+}
+
+.card-link {
+    background-color: #253d58;
+    color: #FFF;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all .3s;
+}
+
+.card-link:hover {
+    background-color: #B2D6FF;
+    color: #000;
+}
+
+#categoryImg .nav-link {
+    color: #253d58;
+}
+
+#categoryImg .nav-link.active {
+    color: #FFF;
+    background-color: #FA9163 !important;
+}
+
 #categoryNavPills .nav-link.active {
     background: #4CADAD !important;
 }
