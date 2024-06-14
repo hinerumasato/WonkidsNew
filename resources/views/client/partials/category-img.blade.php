@@ -1,30 +1,5 @@
 @push('css')
-    <style>
-        .category-name {
-            color: #3771AD;
-            font-family: 'Times New Roman', Times, serif
-        }
-
-        .category-wrap:hover .category-name {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 485px) {
-            .category-name {
-                font-size: 10px;
-            }
-        }
-
-        @media (max-width: 430px) {
-            .category-wrap {
-                height: 150px;
-            }
-
-            .category-name {
-                font-size: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('css/category-img.css')}}">
 @endpush
 
 <div class="row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 py-5 ">
@@ -39,45 +14,3 @@
         </div>
     @endforeach
 </div>
-
-@push('scripts')
-    <script>
-
-        const app = {
-
-            categoryImgs: document.querySelectorAll('.category-img'),
-
-            squareImage: function() {
-                this.categoryImgs.forEach(img => {
-                    img.style.height = img.offsetWidth + 'px';
-                });
-            },
-
-            animateImage: function(image) {
-                image.classList.add('animate__animated', 'animate__pulse', 'animate__faster');
-            },
-
-            removeAnimateImage(image) {
-                image.classList.remove('animate__animated', 'animate__pulse', 'animate__faster');
-            },
-
-            initialization: function() {
-                this.squareImage();
-            },
-
-            handleEvents: function() {
-                window.onresize = () => this.squareImage();
-                this.categoryImgs.forEach(image => {
-                    image.onmouseover = () => this.animateImage(image);
-                    image.onmouseleave = () => this.removeAnimateImage(image);
-                });
-            },
-
-            start: function() {
-                this.initialization();
-                this.handleEvents();
-            }
-        }.start();
-
-    </script>
-@endpush

@@ -33,12 +33,15 @@ class PostController extends Controller {
                 'path' => route('posts.index') . '?category='. $category_id,
             ]);
         }
+
+        $newSmallSliderDescription = trans('breadcrumb.description.post');
         
 
         return view('client.post', [
                 'title' => $title, 
                 "posts" => $posts,
                 'newSmallSliderTitle' => $newSmallSliderTitle,
+                'newSmallSliderDescription' => $newSmallSliderDescription,
             ]
         );
     }
