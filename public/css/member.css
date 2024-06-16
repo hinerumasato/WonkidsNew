@@ -1,0 +1,124 @@
+.member_title {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 44px;
+    color: #1A4F83;
+}
+
+.member_quantity {
+    width: 48px;
+    height: 32px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    color: #8CA7C1;
+    border: solid 1px #1A4F8340;
+    border-radius: 25%;
+    text-align: center;
+    line-height: 32px;
+    margin-left: 10px;
+}
+
+.member_right {
+    height: 40px;
+}
+
+.menber_find_input {
+    width: 300px;
+    box-shadow: 0px 5px 20px rgba(26, 79, 131, 0.05);
+    border-radius: 4px;
+    margin-right: 30px;
+    padding-left: 40px;
+    border: none;
+}
+
+.menber_find_input:focus {
+    outline: none !important;
+}
+
+.add_member_btn {
+    color: #fff;
+    background-color: #0098E6;
+    width: 180px;
+    height: 100%;
+    border: none;
+    position: relative;
+    padding: 0 16px 0 30px;
+    font-family: 'Open Sans';
+}
+
+.add_member_btn::before {
+    content: "+";
+    font-size: 12px;
+    line-height: 22px;
+    position: absolute;
+    top: 9px;
+    left: 6px;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+}
+
+.member_avatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.member_table {
+    font-family: 'Open Sans';
+}
+
+.member_table thead {
+    background: linear-gradient(0deg, rgba(244, 246, 249, 0.5), rgba(244, 246, 249, 0.5)), #FFFFFF;
+    box-shadow: 0px 1px 0px rgba(26, 79, 131, 0.1);
+}
+
+.member_table th {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(26, 79, 131, 0.75);
+}
+
+.member_table td {
+    color: #1A4F83BF;
+}
+
+.member_inbox_btn {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #1A4F83;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.member_inbox_btn:hover {
+    color: #1A4F8380;
+}
+
+.member_button_group {
+    display: none;
+}
+
+.member_save_btn {
+    color: #5CB85C;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.member_cancel_btn {
+    color: #FF2748;
+    cursor: pointer;
+}
+
+.role_col,.role_option,.role_select  {
+    text-transform: capitalize;
+}

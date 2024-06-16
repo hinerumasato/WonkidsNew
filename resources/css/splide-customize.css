@@ -1,0 +1,7 @@
+.splide__pagination.splide__pagination--ltr {
+    top: calc(100%);
+}
+
+.splide__pagination__page.is-active {
+    background-color: var(--main-color) !important;
+}

@@ -1,0 +1,26 @@
+.solved {
+    color: #619616 !important;
+}
+
+.answered {
+    color: rgb(101, 101, 243) !important
+}
+
+.problem {
+    font-weight: bold;
+    color: #FF2748;
+}
+
+.qa-info > p {
+    margin: 0 10px;
+}
+
+.find-us > div {
+    margin: 10px 0;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.find-us > div:hover {
+    opacity: .7;
+}

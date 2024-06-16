@@ -1,0 +1,79 @@
+.upload-post_header {
+    background-color: #F7F7F7;
+}
+
+.upload-post-info {
+    background-color: #fff;
+}
+
+.upload-post-info-imgs {
+    min-height: 70px;
+}
+
+.upload-post-info-wrap:first-child {
+    margin-left: 0;
+}
+
+.upload-post-info-wrap {
+    margin-left: 5px;
+}
+
+.upload-post-info-img {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    border: 3px solid #ccc;
+}
+
+
+.upload-post-info-wrap {
+    position: relative;
+}
+
+.upload-post-info-others {
+    padding: 0 30px;
+}
+
+.upload-post-info-others .upload-post-info-wrap {
+    display: flex;
+}
+
+.upload-post-info-link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.upload-post-info-link:hover {
+    text-decoration: underline;
+}
+
+.upload-post-info-others .upload-post-info-wrap > .upload-post-info-link {
+    display: block;
+    width: 100%;
+}
+
+.upload-post-info-others .upload-post-info-wrap > input {
+    position: relative;
+}
+
+.upload-post-info-wrap > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.file-action-btn {
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all .2s;
+}
+
+.file-action-btn:hover {
+    background-color: #e0e0e0;
+}

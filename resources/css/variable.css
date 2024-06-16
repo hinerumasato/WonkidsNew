@@ -1,0 +1,81 @@
+:root {
+    /* --noto-san-font: font-family: 'Quicksand', sans-serif; font-family: 'Roboto', sans-serif; */
+    --header-height: 100px;
+    --slider-height: 1000px;
+    --md-slider-height: 400px;
+    --menu-z-index: 9999;
+    --home-menu-text-color: #fff;
+    --main-color: #6E3B70;
+    --secondary-color: #307064;
+    --body-background: #FFFFFF;
+    --footer-background: #484848;
+
+    --slider-img-top: calc(50% - 225px);
+    --slider-img-left: calc(50% - 342px);
+
+    --slider-img-md-left: calc(50% - 150px);
+
+    --slider-content-top: calc(50% - -154px);
+    --slider-content-left: calc(50% - 320px);
+
+    --sub-menu-top: calc(100% + calc(var(--header-height) / 2) - 13px);
+    --back-light: #2A59FE4D;
+    --input-border: #2A59FE;
+
+    --admin-main-color: #0D6EFD;
+
+    /* Triad */
+    --admin-triad-color-1: #e53e27;
+    --admin-triad-color-2: #CAFC26;
+    --admin-triad-color-3: #86B000;
+    --admin-triad-color-4: #1A56B0;
+    
+}
+
+.btn-main {
+    background-color: var(--main-color);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btn-main:hover {
+    background-color: #341935;
+}
+
+.btn-root {
+    text-decoration: none;
+    color: #000;
+}
+
+.text-main {
+    color: #6E3B70 !important;
+}
+
+.bg-tertiary {
+    background-color: #F2F4F8 !important;
+}
+
+.tick-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid transparent;
+    display: flex; /* Thêm display: flex */
+    align-items: center; /* Thêm align-items: center */
+}
+
+.tick-icon i {
+    margin: auto; /* Sử dụng margin: auto để canh giữa icon */
+}
+
+.tick-icon.valid {
+    background-color: #4CAF50; /* Màu xanh lá cây */
+    border-color: #4CAF50;
+}

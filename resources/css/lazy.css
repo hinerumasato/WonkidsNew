@@ -1,0 +1,7 @@
+[lazy-element] {
+    visibility: hidden;
+}
+
+[lazy-element="loaded"] {
+    visibility: visible;
+}

@@ -1,0 +1,22 @@
+.footer-main {
+    padding: 24px 0;
+    background-color: #484848;
+}
+
+.footer-contact-list {
+    list-style: none;
+}
+
+.footer-contact-list > li {
+    padding: 4px 0;
+}
+
+.footer-copyright {
+    background-color: #D9D9D9;
+    color: #000;
+    font-size: 16px;
+}
+
+.footer-copyright p {
+    margin: 0 !important;
+}

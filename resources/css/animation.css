@@ -1,0 +1,36 @@
+@keyframes displayAnimation {
+    from {
+        top: 90%;
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes floatRight {
+    from {
+        left: 90%;
+        opacity: 0;
+    }
+
+    to {
+        left: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInTop {
+    from {
+        top: calc(var(--slider-img-top) - 50px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInBottom {
+    from {
+        top: calc(var(--slider-content-top) + 50px);
+        opacity: 0;
+    }
+}

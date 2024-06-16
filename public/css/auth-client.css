@@ -1,0 +1,22 @@
+:root {
+    --register-color: #6E3B70;
+    --second-register-color: #3B526E;
+}
+
+.register-text-color {
+    color: var(--register-color);
+}
+
+.register-second-text {
+    color: var(--second-register-color);
+}
+
+.register-bg-color {
+    background-color: var(--register-color);
+    color: #FFF;
+}
+
+.register-second-bg {
+    background-color: var(--second-register-color);
+    color: #FFF;
+}
