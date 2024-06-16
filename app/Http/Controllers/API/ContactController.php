@@ -20,6 +20,6 @@ class ContactController extends Controller
         return response()->json([
             'statusCode' => 200,
             'message' => 'Send contact successfully',
-        ]);
+        ]); 
     }
 }
